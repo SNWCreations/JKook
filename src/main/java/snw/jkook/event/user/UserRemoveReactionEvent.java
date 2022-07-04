@@ -1,6 +1,7 @@
 package snw.jkook.event.user;
 
 import snw.jkook.entity.CustomEmoji;
+import snw.jkook.entity.Reaction;
 import snw.jkook.entity.User;
 import snw.jkook.message.Message;
 import snw.jkook.event.HandlerList;
@@ -8,18 +9,18 @@ import snw.jkook.event.HandlerList;
 import java.util.Objects;
 
 /**
- * Represents an event related to a user added a reaction to a message.
+ * Represents an event related to a user removed a reaction to a message.
  */
 public class UserRemoveReactionEvent extends UserEvent {
     private static final HandlerList handlers = new HandlerList();
 
     private final Message message;
-    private final CustomEmoji emoji;
+    private final Reaction reaction;
 
-    public UserRemoveReactionEvent(final long timeStamp, final User user, final Message message, final CustomEmoji emoji) {
+    public UserRemoveReactionEvent(final long timeStamp, final User user, final Message message, final Reaction reaction) {
         super(timeStamp, user);
         this.message = Objects.requireNonNull(message);
-        this.emoji = Objects.requireNonNull(emoji);
+        this.reaction = Objects.requireNonNull(reaction);
     }
 
     /**
@@ -30,10 +31,10 @@ public class UserRemoveReactionEvent extends UserEvent {
     }
 
     /**
-     * Get the emoji that the user added.
+     * Get the reaction that the user removed.
      */
-    public CustomEmoji getEmoji() {
-        return emoji;
+    public Reaction getReaction() {
+        return reaction;
     }
 
     public static HandlerList getHandlers() {
