@@ -50,4 +50,42 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder {
      * Return true if this guild is public.
      */
     boolean isPublic();
+
+    NotifyType getNotifyType();
+
+    /**
+     * Represents notify type.
+     */
+    enum NotifyType {
+
+        /**
+         * Use the settings defined by the guild.
+         */
+        DEFAULT(0),
+
+        /**
+         * Always notify.
+         */
+        ALL(1),
+
+        /**
+         * Notify on be mentioned only.
+         */
+        MENTION_ONLY(2),
+
+        /**
+         * Never notify.
+         */
+        NO_NOTIFY(3);
+
+        private final int value;
+
+        NotifyType(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
 }
