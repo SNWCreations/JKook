@@ -11,8 +11,8 @@ import snw.jkook.event.HandlerList;
 public class GuildInfoUpdateEvent extends GuildEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    public GuildInfoUpdateEvent(final Guild guild) {
-        super(guild);
+    public GuildInfoUpdateEvent(final long timeStamp, final Guild guild) {
+        super(timeStamp, guild);
     }
 
     public static HandlerList getHandlers() {

@@ -9,8 +9,8 @@ import snw.jkook.event.HandlerList;
 public class GuildDeleteEvent extends GuildEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    public GuildDeleteEvent(Guild guild) {
-        super(guild);
+    public GuildDeleteEvent(final long timeStamp, final Guild guild) {
+        super(timeStamp, guild);
     }
 
     public static HandlerList getHandlers() {

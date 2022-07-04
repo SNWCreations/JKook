@@ -15,8 +15,8 @@ public class GuildBanUserEvent extends GuildEvent {
     private final User banned;
     private final User operator;
 
-    public GuildBanUserEvent(final Guild guild, final User banned, final User operator) {
-        super(guild);
+    public GuildBanUserEvent(final long timeStamp, final Guild guild, final User banned, final User operator) {
+        super(timeStamp, guild);
         this.banned = Objects.requireNonNull(banned);
         this.operator = Objects.requireNonNull(operator);
     }

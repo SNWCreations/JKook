@@ -15,8 +15,8 @@ public class GuildUnbanUserEvent extends GuildEvent {
     private final User unbanned;
     private final User operator;
 
-    public GuildUnbanUserEvent(final Guild guild, final User unbanned, final User operator) {
-        super(guild);
+    public GuildUnbanUserEvent(final long timeStamp, final Guild guild, final User unbanned, final User operator) {
+        super(timeStamp, guild);
         this.unbanned = Objects.requireNonNull(unbanned);
         this.operator = Objects.requireNonNull(operator);
     }
