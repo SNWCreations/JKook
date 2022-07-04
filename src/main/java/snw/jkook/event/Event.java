@@ -6,9 +6,17 @@ package snw.jkook.event;
  * make a static method called "getHandlers()" and it should return an instance of {@link HandlerList}.
  */
 public abstract class Event {
+    protected final long timeStamp;
 
     /* This class should not be constructed. Construct its subclass instead. */
-    protected Event() {
+    protected Event(long timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
+    /**
+     * Get the time stamp of this event.
+     */
+    public long getTimeStamp() {
+        return timeStamp;
+    }
 }

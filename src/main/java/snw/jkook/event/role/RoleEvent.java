@@ -11,7 +11,8 @@ import java.util.Objects;
 public abstract class RoleEvent extends Event {
     private final Role role;
 
-    RoleEvent(final Role role) {
+    RoleEvent(final long timeStamp, final Role role) {
+        super(timeStamp);
         this.role = Objects.requireNonNull(role);
     }
 

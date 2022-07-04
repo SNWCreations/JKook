@@ -11,7 +11,8 @@ import java.util.Objects;
 public abstract class UserEvent extends Event {
     private final User user;
 
-    UserEvent(final User user) {
+    UserEvent(final long timeStamp, final User user) {
+        super(timeStamp);
         this.user = Objects.requireNonNull(user);
     }
 
