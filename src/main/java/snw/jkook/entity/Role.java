@@ -1,5 +1,7 @@
 package snw.jkook.entity;
 
+import snw.jkook.Permission;
+
 /**
  * Represents a role in a Kook guild.
  */
