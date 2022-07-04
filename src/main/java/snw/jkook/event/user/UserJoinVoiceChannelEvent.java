@@ -14,8 +14,8 @@ public class UserJoinVoiceChannelEvent extends UserEvent {
 
     private final VoiceChannel channel;
 
-    public UserJoinVoiceChannelEvent(final User user, final VoiceChannel channel) {
-        super(user);
+    public UserJoinVoiceChannelEvent(final long timeStamp, final User user, final VoiceChannel channel) {
+        super(timeStamp, user);
         this.channel = Objects.requireNonNull(channel);
     }
 

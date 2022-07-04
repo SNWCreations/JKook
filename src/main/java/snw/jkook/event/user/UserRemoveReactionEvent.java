@@ -16,8 +16,8 @@ public class UserRemoveReactionEvent extends UserEvent {
     private final Message message;
     private final CustomEmoji emoji;
 
-    public UserRemoveReactionEvent(final User user, final Message message, final CustomEmoji emoji) {
-        super(user);
+    public UserRemoveReactionEvent(final long timeStamp, final User user, final Message message, final CustomEmoji emoji) {
+        super(timeStamp, user);
         this.message = Objects.requireNonNull(message);
         this.emoji = Objects.requireNonNull(emoji);
     }

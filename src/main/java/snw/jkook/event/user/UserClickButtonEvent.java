@@ -12,8 +12,8 @@ public class UserClickButtonEvent extends UserEvent {
     private final String messageId;
     private final String value;
 
-    public UserClickButtonEvent(User user, String messageId, String value) {
-        super(user);
+    public UserClickButtonEvent(final long timeStamp, final User user, final String messageId, final String value) {
+        super(timeStamp, user);
         this.messageId = messageId;
         this.value = value;
     }

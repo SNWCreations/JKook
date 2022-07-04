@@ -16,8 +16,8 @@ import snw.jkook.event.HandlerList;
 public class UserInfoUpdateEvent extends UserEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    public UserInfoUpdateEvent(final User user) {
-        super(user);
+    public UserInfoUpdateEvent(final long timeStamp, final User user) {
+        super(timeStamp, user);
     }
 
     public static HandlerList getHandlers() {

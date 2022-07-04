@@ -14,8 +14,8 @@ public class UserJoinGuildEvent extends UserEvent {
 
     private final Guild guild;
 
-    public UserJoinGuildEvent(User user, Guild guild) {
-        super(user);
+    public UserJoinGuildEvent(final long timeStamp, final User user, final Guild guild) {
+        super(timeStamp, user);
         this.guild = Objects.requireNonNull(guild);
     }
 

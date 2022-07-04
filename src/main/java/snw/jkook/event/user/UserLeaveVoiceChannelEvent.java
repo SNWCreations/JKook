@@ -14,8 +14,8 @@ public class UserLeaveVoiceChannelEvent extends UserEvent {
 
     private final VoiceChannel channel;
 
-    public UserLeaveVoiceChannelEvent(final User user, final VoiceChannel channel) {
-        super(user);
+    public UserLeaveVoiceChannelEvent(final long timeStamp, final User user, final VoiceChannel channel) {
+        super(timeStamp, user);
         this.channel = Objects.requireNonNull(channel);
     }
 

@@ -16,8 +16,8 @@ public class UserAddReactionEvent extends UserEvent {
     private final Message message;
     private final CustomEmoji emoji;
 
-    public UserAddReactionEvent(final User user, final Message message, final CustomEmoji emoji) {
-        super(user);
+    public UserAddReactionEvent(final long timeStamp, final User user, final Message message, final CustomEmoji emoji) {
+        super(timeStamp, user);
         this.message = Objects.requireNonNull(message);
         this.emoji = Objects.requireNonNull(emoji);
     }

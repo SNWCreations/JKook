@@ -14,8 +14,8 @@ public class UserLeaveGuildEvent extends UserEvent {
 
     private final Guild guild;
 
-    public UserLeaveGuildEvent(User user, Guild guild) {
-        super(user);
+    public UserLeaveGuildEvent(final long timeStamp, final User user, final Guild guild) {
+        super(timeStamp, user);
         this.guild = Objects.requireNonNull(guild);
     }
 
