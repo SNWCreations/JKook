@@ -67,8 +67,8 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     /**
      * Ban the user from this guild.
      *
-     * @param user The user to be banned
-     * @param reason The reason
+     * @param user           The user to be banned
+     * @param reason         The reason
      * @param delMessageDays The value passed in determines how many days the message sent by this user is deleted
      */
     void ban(User user, @Nullable String reason, int delMessageDays);

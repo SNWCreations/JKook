@@ -4,6 +4,7 @@ import snw.jkook.entity.Invitation;
 
 /**
  * Represents the objects that can hold the invitations.
+ *
  * @see Invitation
  */
 public interface InviteHolder {
@@ -12,7 +13,7 @@ public interface InviteHolder {
      * Create an invitation of this object.
      *
      * @param validSeconds The length of time the invitation link is valid (in seconds)
-     * @param validTimes Number of times the link is valid.
+     * @param validTimes   Number of times the link is valid.
      * @return The invite link URL string
      */
     String createInvite(int validSeconds, int validTimes);

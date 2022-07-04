@@ -49,6 +49,7 @@ public interface HttpAPI {
 
     /**
      * Upload a file to Kook server.
+     *
      * @param file The file to upload
      * @return The URL string of the remote file
      */
@@ -56,6 +57,7 @@ public interface HttpAPI {
 
     /**
      * Upload a file to Kook server.
+     *
      * @param binary The binary data to upload
      * @return The URL string of the remote file
      */
