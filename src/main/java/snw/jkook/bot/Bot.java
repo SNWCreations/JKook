@@ -51,16 +51,14 @@ public interface Bot {
     FileConfiguration getConfig();
 
     /**
-     * Discards all the changes in the <b>main</b> configuration stored in memory and reloads from disk.
-     *
-     * @implSpec This method should fail silently.
+     * Discards all the changes in the <b>main</b> configuration stored in memory and reloads from disk. <p>
+     * This method should fail silently.
      */
     void reloadConfig();
 
     /**
-     * Attempts to save default configuration file.
-     *
-     * @implSpec This should fail silently.
+     * Attempts to save default configuration file. <p>
+     * This should fail silently.
      */
     void saveDefaultConfig();
 
