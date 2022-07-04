@@ -120,7 +120,7 @@ public enum Permission {
     /**
      * Guild members that have this permission can add the reaction that has been added to a message.
      */
-    FOLLOW_ADD_REACTION(514288),
+    FOLLOW_ADD_REACTION(524288),
 
     //// ----- Permissions related to voice channels -----
 
@@ -138,7 +138,7 @@ public enum Permission {
      * Guild members who do not have this permission must speak on the channel by pressing the specified key.
      * (The key is configured by users.)
      */
-    FREE_TALK(47194304),
+    FREE_TALK(4194304),
 
     /**
      * Guild members that have this permission can determine whether they can refuse to hear other member's voices on the voice channel.
