@@ -16,8 +16,6 @@ public final class JKookCommand {
     private final Collection<JKookCommand> subcommands = new ArrayList<>();
     private final Collection<String> aliases = new ArrayList<>();
 
-    private boolean registerFlag = false;
-
     /**
      * The main constructor.
      *
@@ -61,14 +59,10 @@ public final class JKookCommand {
     /**
      * Register this command. <p>
      * Also, you can register this command using {@link snw.jkook.Core#registerCommand(JKookCommand)}. <p>
-     * But this is more easier than that. Isn't it?
+     * But this is easier than that. Isn't it?
      */
     public void register() {
-        if (registerFlag) {
-            throw new IllegalStateException("This command has already registered.");
-        }
         JKook.getCore().registerCommand(this);
-        registerFlag = true;
     }
 
     // Getters is following:
