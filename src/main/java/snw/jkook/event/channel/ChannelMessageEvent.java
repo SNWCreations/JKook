@@ -1,8 +1,8 @@
 package snw.jkook.event.channel;
 
 import snw.jkook.entity.channel.TextChannel;
-import snw.jkook.message.Message;
 import snw.jkook.event.HandlerList;
+import snw.jkook.message.Message;
 
 import java.util.Objects;
 

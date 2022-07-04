@@ -1,10 +1,9 @@
 package snw.jkook.event.user;
 
-import snw.jkook.entity.CustomEmoji;
 import snw.jkook.entity.Reaction;
 import snw.jkook.entity.User;
-import snw.jkook.message.Message;
 import snw.jkook.event.HandlerList;
+import snw.jkook.message.Message;
 
 import java.util.Objects;
 

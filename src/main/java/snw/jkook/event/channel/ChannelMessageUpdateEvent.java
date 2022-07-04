@@ -2,8 +2,8 @@ package snw.jkook.event.channel;
 
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Channel;
-import snw.jkook.message.TextChannelMessage;
 import snw.jkook.event.HandlerList;
+import snw.jkook.message.TextChannelMessage;
 
 import java.util.Objects;
 

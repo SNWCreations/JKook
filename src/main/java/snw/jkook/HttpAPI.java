@@ -2,10 +2,9 @@ package snw.jkook;
 
 import snw.jkook.entity.Guild;
 import snw.jkook.entity.User;
-import snw.jkook.entity.channel.Channel;
 import snw.jkook.entity.channel.Category;
+import snw.jkook.entity.channel.Channel;
 import snw.jkook.entity.channel.VoiceChannel;
-import snw.jkook.entity.mute.MuteResult;
 
 import java.io.File;
 import java.util.Collection;

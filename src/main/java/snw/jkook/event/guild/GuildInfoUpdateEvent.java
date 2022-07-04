@@ -1,7 +1,6 @@
 package snw.jkook.event.guild;
 
 import snw.jkook.entity.Guild;
-import snw.jkook.entity.User;
 import snw.jkook.event.HandlerList;
 
 /**

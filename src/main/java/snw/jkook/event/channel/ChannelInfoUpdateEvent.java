@@ -1,6 +1,5 @@
 package snw.jkook.event.channel;
 
-import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
 
