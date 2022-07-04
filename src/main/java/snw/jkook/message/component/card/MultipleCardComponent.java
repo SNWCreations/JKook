@@ -27,6 +27,9 @@ public class MultipleCardComponent extends BaseComponent {
         this.components = Collections.unmodifiableList(new LinkedList<>(components));
     }
 
+    /**
+     * Get the components stored by this component.
+     */
     public List<CardComponent> getComponents() {
         return components;
     }
