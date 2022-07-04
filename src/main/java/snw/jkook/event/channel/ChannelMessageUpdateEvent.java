@@ -5,6 +5,8 @@ import snw.jkook.entity.channel.Channel;
 import snw.jkook.message.TextChannelMessage;
 import snw.jkook.event.HandlerList;
 
+import java.util.Objects;
+
 /**
  * Represents an event related to a user modified a message.
  */
@@ -16,8 +18,8 @@ public class ChannelMessageUpdateEvent extends ChannelEvent {
 
     public ChannelMessageUpdateEvent(final long timeStamp, final Channel channel, final User operator, final TextChannelMessage message) {
         super(timeStamp, channel);
-        this.operator = operator;
-        this.message = message;
+        this.operator = Objects.requireNonNull(operator);
+        this.message = Objects.requireNonNull(message);
     }
 
     /**
