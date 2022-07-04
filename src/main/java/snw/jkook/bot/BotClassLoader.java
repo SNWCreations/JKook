@@ -18,6 +18,10 @@ import java.util.jar.JarFile;
  */
 public abstract class BotClassLoader extends URLClassLoader implements BotLoader {
 
+    static {
+        ClassLoader.registerAsParallelCapable(); // I think it will make the loader faster.
+    }
+
     public BotClassLoader() {
         super(new URL[]{});
     }
