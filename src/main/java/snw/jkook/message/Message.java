@@ -18,4 +18,9 @@ public interface Message extends Receivable, ReactionHolder {
      * Get the ID of this message.
      */
     String getId();
+
+    /**
+     * Delete this message if possible. (Fails silently.)
+     */
+    void delete();
 }

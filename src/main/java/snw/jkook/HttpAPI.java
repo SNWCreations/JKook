@@ -7,6 +7,7 @@ import snw.jkook.entity.channel.Category;
 import snw.jkook.entity.channel.VoiceChannel;
 import snw.jkook.entity.mute.MuteResult;
 
+import java.io.File;
 import java.util.Collection;
 
 /**
@@ -17,20 +18,6 @@ public interface HttpAPI {
      * Get the joined guilds.
      */
     Collection<Guild> getJoinedGuilds();
-
-    /**
-     * Get a voice channel by the provided user.
-     *
-     * @param user The user
-     */
-    VoiceChannel getVoiceChannelByUser(User user);
-
-    /**
-     * Get the mute status of a guild.
-     *
-     * @param guild The guild
-     */
-    MuteResult getMuteStatus(Guild guild);
 
     /**
      * Get a user by user id.
@@ -59,4 +46,26 @@ public interface HttpAPI {
      * @param id The ID
      */
     Category getChannelGroup(long id);
+
+    /**
+     * Upload a file to Kook server.
+     * @param file The file to upload
+     * @return The URL string of the remote file
+     */
+    String uploadFile(File file);
+
+    /**
+     * Upload a file to Kook server.
+     * @param binary The binary data to upload
+     * @return The URL string of the remote file
+     */
+    String uploadFile(String binary);
+
+    /**
+     * Move the users to another voice channel if possible. (Fails silently.)
+     *
+     * @param channel The target channel
+     * @param users   The users to move
+     */
+    void moveUser(VoiceChannel channel, Collection<User> users);
 }

@@ -1,8 +1,10 @@
 package snw.jkook.entity;
 
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.command.CommandSender;
 import snw.jkook.entity.abilities.AvatarHolder;
 import snw.jkook.entity.abilities.Nameable;
+import snw.jkook.entity.channel.VoiceChannel;
 import snw.jkook.message.component.BaseComponent;
 
 import java.util.Collection;
@@ -75,4 +77,43 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
      * @param component The component to send
      */
     void sendPrivateMessage(BaseComponent component);
+
+    /**
+     * Get the voice channel that this user joined.
+     */
+    @Nullable
+    VoiceChannel getJoinedVoiceChannel();
+
+    /**
+     * Kick the user from the target guild. This <b>CANNOT</b> be undone!
+     */
+    void kick(Guild guild);
+
+    /**
+     * Get the intimacy score of this user.
+     */
+    int getIntimacy();
+
+    /**
+     * Set the intimacy score of this user.
+     *
+     * @param intimacy The intimacy value
+     */
+    void setIntimacy(int intimacy);
+
+    /**
+     * Grant the specified role to this user. <p>
+     * It is <b>DANGEROUS</b>!
+     *
+     * @param role The role to grant
+     */
+    void grantRole(Role role);
+
+    /**
+     * Revoke the specified role that this user have. <p>
+     * It is <b>DANGEROUS</b>!
+     *
+     * @param role The role to revoke
+     */
+    void revokeRole(Role role);
 }

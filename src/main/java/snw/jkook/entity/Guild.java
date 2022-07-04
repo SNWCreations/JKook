@@ -3,6 +3,7 @@ package snw.jkook.entity;
 import snw.jkook.entity.abilities.AvatarHolder;
 import snw.jkook.entity.abilities.MasterHolder;
 import snw.jkook.entity.abilities.Nameable;
+import snw.jkook.entity.mute.MuteResult;
 
 import java.util.Collection;
 
@@ -50,6 +51,16 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder {
      * Return true if this guild is public.
      */
     boolean isPublic();
+
+    /**
+     * Get the mute status of this guild.
+     */
+    MuteResult getMuteStatus();
+
+    /**
+     * Leave this guild. This <b>CANNOT</b> be undone!
+     */
+    void leave();
 
     NotifyType getNotifyType();
 

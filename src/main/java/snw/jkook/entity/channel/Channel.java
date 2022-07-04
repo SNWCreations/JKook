@@ -1,6 +1,7 @@
 package snw.jkook.entity.channel;
 
 import org.jetbrains.annotations.Nullable;
+import snw.jkook.entity.Permission;
 import snw.jkook.entity.Role;
 import snw.jkook.entity.User;
 import snw.jkook.entity.abilities.Nameable;
@@ -96,4 +97,34 @@ public interface Channel extends Nameable {
             return rawDeny;
         }
     }
+
+    /**
+     * Update the role permission of this channel. Will not affect the rights they already have. (Fails silently.)
+     *
+     * @param role The role
+     * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
+     * @param rawDeny The sum of the denied permissions' value
+     */
+    void updatePermission(Role role, int rawAllow, int rawDeny);
+
+    /**
+     * Update the user's permission of this channel. Will not affect the rights they already have. (Fails silently.)
+     *
+     * @param user The role
+     * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
+     * @param rawDeny The sum of the denied permissions' value
+     */
+    void updatePermission(User user, int rawAllow, int rawDeny);
+
+    /**
+     * Delete the permission of the role in this channel. Will not affect the rights they already have.
+     * @param role The role
+     */
+    void deletePermission(Role role);
+
+    /**
+     * Delete the permission of the user in this channel. Will not affect the rights they already have.
+     * @param user The user
+     */
+    void deletePermission(User user);
 }
