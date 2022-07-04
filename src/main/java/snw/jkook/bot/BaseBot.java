@@ -39,6 +39,9 @@ public class BaseBot implements Bot {
             final HttpAPI httpAPI,
             final File file
     ) {
+        if (!(getClass().getClassLoader() instanceof BotLoader)) {
+            throw new InvalidBotException("The Bot class should be loaded by using BotLoader.");
+        }
         this.token = Objects.requireNonNull(token);
         this.configFile = Objects.requireNonNull(configFile);
         Validate.isTrue(configFile.exists(), "The configuration file does not exists.");
