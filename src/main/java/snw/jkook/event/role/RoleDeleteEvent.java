@@ -14,8 +14,8 @@ public class RoleDeleteEvent extends RoleEvent {
 
     private final User operator;
 
-    public RoleDeleteEvent(final Role role, final User operator) {
-        super(role);
+    public RoleDeleteEvent(final long timeStamp, final Role role, final User operator) {
+        super(timeStamp, role);
         this.operator = Objects.requireNonNull(operator);
     }
 

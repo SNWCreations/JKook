@@ -10,8 +10,8 @@ import snw.jkook.event.HandlerList;
 public class RoleInfoUpdateEvent extends RoleEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    public RoleInfoUpdateEvent(final Role role) {
-        super(role);
+    public RoleInfoUpdateEvent(final long timeStamp, final Role role) {
+        super(timeStamp, role);
     }
 
     public static HandlerList getHandlers() {

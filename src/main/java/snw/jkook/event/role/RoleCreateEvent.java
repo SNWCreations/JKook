@@ -14,8 +14,8 @@ public class RoleCreateEvent extends RoleEvent {
 
     private final User operator;
 
-    public RoleCreateEvent(final Role role, final User operator) {
-        super(role);
+    public RoleCreateEvent(final long timeStamp, final Role role, final User operator) {
+        super(timeStamp, role);
         this.operator = Objects.requireNonNull(operator);
     }
 
