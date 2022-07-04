@@ -10,8 +10,8 @@ import snw.jkook.event.HandlerList;
 public class ChannelInfoUpdateEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    public ChannelInfoUpdateEvent(final Channel channel) {
-        super(channel);
+    public ChannelInfoUpdateEvent(final long timeStamp, final Channel channel) {
+        super(timeStamp, channel);
     }
 
     public static HandlerList getHandlers() {

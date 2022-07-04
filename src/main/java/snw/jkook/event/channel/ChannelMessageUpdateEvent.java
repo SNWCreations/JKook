@@ -14,8 +14,8 @@ public class ChannelMessageUpdateEvent extends ChannelEvent {
     private final User operator;
     private final TextChannelMessage message;
 
-    public ChannelMessageUpdateEvent(final Channel channel, final User operator, final TextChannelMessage message) {
-        super(channel);
+    public ChannelMessageUpdateEvent(final long timeStamp, final Channel channel, final User operator, final TextChannelMessage message) {
+        super(timeStamp, channel);
         this.operator = operator;
         this.message = message;
     }

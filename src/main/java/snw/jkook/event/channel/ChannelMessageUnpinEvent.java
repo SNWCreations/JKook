@@ -14,8 +14,8 @@ public class ChannelMessageUnpinEvent extends ChannelEvent {
 
     private final Message message;
 
-    public ChannelMessageUnpinEvent(final Channel channel, final Message message) {
-        super(channel);
+    public ChannelMessageUnpinEvent(final long timeStamp, final Channel channel, final Message message) {
+        super(timeStamp, channel);
         this.message = Objects.requireNonNull(message);
     }
 

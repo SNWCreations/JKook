@@ -14,8 +14,8 @@ public class ChannelCreateEvent extends ChannelEvent {
 
     private final User operator;
 
-    public ChannelCreateEvent(final Channel channel, final User operator) {
-        super(channel);
+    public ChannelCreateEvent(final long timeStamp, final Channel channel, final User operator) {
+        super(timeStamp, channel);
         this.operator = Objects.requireNonNull(operator);
     }
 

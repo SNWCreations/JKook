@@ -14,8 +14,8 @@ public class ChannelMessageEvent extends ChannelEvent {
 
     private final Message message;
 
-    public ChannelMessageEvent(final TextChannel channel, final Message message) {
-        super(channel);
+    public ChannelMessageEvent(final long timeStamp, final TextChannel channel, final Message message) {
+        super(timeStamp, channel);
         this.message = Objects.requireNonNull(message);
     }
 

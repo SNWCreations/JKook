@@ -14,8 +14,8 @@ public class ChannelMessagePinEvent extends ChannelEvent {
 
     private final Message message;
 
-    public ChannelMessagePinEvent(final Channel channel, final Message message) {
-        super(channel);
+    public ChannelMessagePinEvent(final long timeStamp, final Channel channel, final Message message) {
+        super(timeStamp, channel);
         this.message = Objects.requireNonNull(message);
     }
 

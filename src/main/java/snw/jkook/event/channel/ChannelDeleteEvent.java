@@ -14,8 +14,8 @@ public class ChannelDeleteEvent extends ChannelEvent {
 
     private final User operator;
 
-    public ChannelDeleteEvent(final Channel channel, final User operator) {
-        super(channel);
+    public ChannelDeleteEvent(final long timeStamp, final Channel channel, final User operator) {
+        super(timeStamp, channel);
         this.operator = Objects.requireNonNull(operator);
     }
 

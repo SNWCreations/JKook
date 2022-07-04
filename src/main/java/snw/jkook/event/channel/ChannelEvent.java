@@ -11,7 +11,8 @@ import java.util.Objects;
 public abstract class ChannelEvent extends Event {
     private final Channel channel;
 
-    ChannelEvent(final Channel channel) {
+    ChannelEvent(final long timeStamp, final Channel channel) {
+        super(timeStamp);
         this.channel = Objects.requireNonNull(channel);
     }
 
