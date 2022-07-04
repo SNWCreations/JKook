@@ -1,15 +1,16 @@
 package snw.jkook.entity.channel;
 
 import org.jetbrains.annotations.Nullable;
-import snw.jkook.entity.Permission;
+import snw.jkook.Permission;
 import snw.jkook.entity.Role;
 import snw.jkook.entity.User;
+import snw.jkook.entity.abilities.InviteHolder;
 import snw.jkook.entity.abilities.Nameable;
 
 /**
  * Represents a channel.
  */
-public interface Channel extends Nameable {
+public interface Channel extends Nameable, InviteHolder {
 
     /**
      * Get the ID of this channel.

@@ -1,6 +1,7 @@
 package snw.jkook.entity;
 
 import snw.jkook.entity.abilities.AvatarHolder;
+import snw.jkook.entity.abilities.InviteHolder;
 import snw.jkook.entity.abilities.MasterHolder;
 import snw.jkook.entity.abilities.Nameable;
 import snw.jkook.entity.mute.MuteResult;
@@ -10,7 +11,7 @@ import java.util.Collection;
 /**
  * Represents a Guild.
  */
-public interface Guild extends Nameable, AvatarHolder, MasterHolder {
+public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolder {
 
     /**
      * Get the ID of this guild.
