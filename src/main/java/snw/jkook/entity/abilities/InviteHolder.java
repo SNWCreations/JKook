@@ -2,6 +2,10 @@ package snw.jkook.entity.abilities;
 
 import snw.jkook.entity.Invitation;
 
+/**
+ * Represents the objects that can hold the invitations.
+ * @see Invitation
+ */
 public interface InviteHolder {
 
     /**
