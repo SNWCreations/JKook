@@ -1,4 +1,4 @@
-package snw.jkook.entity;
+package snw.jkook;
 
 import snw.jkook.entity.channel.TextChannel;
 
