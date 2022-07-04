@@ -8,7 +8,7 @@ import java.util.Collection;
 /**
  * Represents a group of channel.
  */
-public interface ChannelGroup extends Nameable, MasterHolder {
+public interface Category extends Channel, Nameable, MasterHolder {
 
     /**
      * Return the channels in this group.
