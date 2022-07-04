@@ -1,5 +1,6 @@
 package snw.jkook.entity;
 
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.entity.abilities.AvatarHolder;
 import snw.jkook.entity.abilities.InviteHolder;
 import snw.jkook.entity.abilities.MasterHolder;
@@ -62,6 +63,27 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
      * Leave this guild. This <b>CANNOT</b> be undone!
      */
     void leave();
+
+    /**
+     * Ban the user from this guild.
+     *
+     * @param user The user to be banned
+     * @param reason The reason
+     * @param delMessageDays The value passed in determines how many days the message sent by this user is deleted
+     */
+    void ban(User user, @Nullable String reason, int delMessageDays);
+
+    /**
+     * Unban the user from this guild.
+     *
+     * @param user The user to be unbanned
+     */
+    void unban(User user);
+
+    /**
+     * Get the users banned by this guild.
+     */
+    Collection<User> getBannedUsers();
 
     NotifyType getNotifyType();
 
