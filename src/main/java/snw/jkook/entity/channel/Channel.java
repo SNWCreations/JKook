@@ -1,5 +1,6 @@
 package snw.jkook.entity.channel;
 
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.entity.Role;
 import snw.jkook.entity.User;
 import snw.jkook.entity.abilities.Nameable;
@@ -34,6 +35,7 @@ public interface Channel extends Nameable {
     /**
      * Get the category that holds this channel.
      */
+    @Nullable
     Category getParent();
 
     /**
