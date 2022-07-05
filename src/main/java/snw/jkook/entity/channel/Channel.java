@@ -46,6 +46,11 @@ public interface Channel extends Nameable, InviteHolder {
     boolean hasPassword();
 
     /**
+     * Delete this channel if possible. (Fails silently.)
+     */
+    void delete();
+
+    /**
      * Represents the overwritten permissions for a role in the channel.
      */
     class RolePermissionOverwrite {

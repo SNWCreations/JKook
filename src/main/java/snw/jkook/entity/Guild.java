@@ -1,10 +1,15 @@
 package snw.jkook.entity;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
 import snw.jkook.entity.abilities.AvatarHolder;
 import snw.jkook.entity.abilities.InviteHolder;
 import snw.jkook.entity.abilities.MasterHolder;
 import snw.jkook.entity.abilities.Nameable;
+import snw.jkook.entity.channel.Category;
+import snw.jkook.entity.channel.Channel;
+import snw.jkook.entity.channel.TextChannel;
+import snw.jkook.entity.channel.VoiceChannel;
 import snw.jkook.entity.mute.MuteResult;
 
 import java.util.Collection;
@@ -79,6 +84,31 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
      * @param user The user to be unbanned
      */
     void unban(User user);
+
+    /**
+     * Create a text channel in this guild with given information.
+     *
+     * @param name The name of the new channel
+     * @param parent The parent category of the new channel
+     * @return The new channel representation
+     */
+    TextChannel createTextChannel(String name, @Nullable Category parent);
+
+    /**
+     * Create a voice channel in this guild with given information.
+     *
+     * @param name The name of the new channel
+     * @param parent The parent category of the new channel
+     * @param size The max size of the new channel, determine the number of users this channel can hold
+     * @param quality Voice quality. 1 smooth, 2 normal, 3 high quality
+     * @return The new channel representation
+     */
+    VoiceChannel createVoiceChannel(
+            String name,
+            @Nullable Category parent,
+            @Range(from = 1, to = 99) int size,
+            @Range(from = 1, to = 3) int quality
+    );
 
     /**
      * Get the users banned by this guild.
