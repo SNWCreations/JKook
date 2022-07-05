@@ -35,6 +35,11 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     Iterable<User> getOnlineUsers();
 
     /**
+     * Get all the channels in this guild.
+     */
+    Iterable<Channel> getChannels();
+
+    /**
      * Get the voice server region of this guild.
      */
     String getVoiceChannelServerRegion();
