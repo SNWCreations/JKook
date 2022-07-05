@@ -55,13 +55,15 @@ public final class HandlerList extends HashMap<Method, Object> {
      * @param event The event instance
      */
     public void callAll(Event event) {
-        for (Map.Entry<Method, Object> entry : entrySet()) {
-            try {
-                entry.getKey().invoke(entry.getValue(), event);
-            } catch (InvocationTargetException | IllegalAccessException e) {
-                JKook.getLogger().error("Unexpected situation happened. :(", e);
-            } catch (Throwable e) {
-                JKook.getLogger().error("Something went wrong when we attempting to call a handler.", e);
+        synchronized (this) {
+            for (Map.Entry<Method, Object> entry : entrySet()) {
+                try {
+                    entry.getKey().invoke(entry.getValue(), event);
+                } catch (InvocationTargetException | IllegalAccessException e) {
+                    JKook.getLogger().error("Unexpected situation happened. :(", e);
+                } catch (Throwable e) {
+                    JKook.getLogger().error("Something went wrong when we attempting to call a handler.", e);
+                }
             }
         }
     }
