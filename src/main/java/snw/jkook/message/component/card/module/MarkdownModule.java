@@ -3,7 +3,7 @@ package snw.jkook.message.component.card.module;
 import org.apache.commons.lang.Validate;
 
 /**
- * Represents the module with plain text.
+ * Represents the module with Markdown text.
  */
 public class MarkdownModule extends BaseModule {
     private final String value;

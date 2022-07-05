@@ -3,6 +3,9 @@ package snw.jkook.message.component.card.module;
 import snw.jkook.event.user.UserClickButtonEvent;
 import snw.jkook.message.component.card.Theme;
 
+/**
+ * Represents a button module. It can cause a {@link UserClickButtonEvent}.
+ */
 public class ButtonModule extends ActionModule {
     private final EventType type;
     private final Theme theme;
