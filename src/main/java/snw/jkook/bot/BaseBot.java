@@ -111,34 +111,35 @@ public class BaseBot implements Bot {
 
     @Override
     public void saveResource(final String path, final boolean replace, final boolean ignorePathStructure) throws IllegalArgumentException {
-        final InputStream stream = getResource(path);
-        if (stream == null) {
-            throw new IllegalArgumentException("The target resource does not embedded in the Bot JAR file");
-        }
-
-        final String targetPath;
-        if (ignorePathStructure) {
-            final String[] pathSplit = path.split("/");
-            targetPath = pathSplit[pathSplit.length - 1];
-        } else {
-            targetPath = path;
-        }
-
-        final File local = new File(dataFolder, targetPath);
-        if (local.exists()) {
-            if (!replace) {
-                getLogger().warn("Cannot save resource \"" + path + "\" because it has already exists.");
-                return;
+        try (final InputStream stream = getResource(path)) {
+            if (stream == null) {
+                throw new IllegalArgumentException("The target resource does not embedded in the Bot JAR file");
             }
-            local.delete();
-        } else {
-            local.mkdirs();
-        }
 
-        try (final FileOutputStream out = new FileOutputStream(local)) {
-            byte[] data = new byte[1024];
-            while (stream.read(data) != -1) {
-                out.write(data);
+            final String targetPath;
+            if (ignorePathStructure) {
+                final String[] pathSplit = path.split("/");
+                targetPath = pathSplit[pathSplit.length - 1];
+            } else {
+                targetPath = path;
+            }
+
+            final File local = new File(dataFolder, targetPath);
+            if (local.exists()) {
+                if (!replace) {
+                    getLogger().warn("Cannot save resource \"" + path + "\" because it has already exists.");
+                    return;
+                }
+                local.delete();
+            } else {
+                local.mkdirs();
+            }
+
+            try (final FileOutputStream out = new FileOutputStream(local)) {
+                byte[] data = new byte[1024];
+                while (stream.read(data) != -1) {
+                    out.write(data);
+                }
             }
         } catch (IOException e) {
             getLogger().warn("Cannot save resource because an error occurred.", e);
