@@ -8,7 +8,7 @@ import java.util.Collection;
 /**
  * Represents a mute result.
  *
- * @see HttpAPI#getMuteStatus(Guild)
+ * @see Guild#getMuteStatus()
  */
 public interface MuteResult extends Collection<MuteData> {
 }
