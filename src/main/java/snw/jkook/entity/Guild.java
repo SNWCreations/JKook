@@ -116,6 +116,14 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     );
 
     /**
+     * Create a category in this guild with given information.
+     *
+     * @param name The name of the new category
+     * @return The new category representation
+     */
+    Category createCategory(String name);
+
+    /**
      * Get the users banned by this guild.
      */
     Collection<User> getBannedUsers();
