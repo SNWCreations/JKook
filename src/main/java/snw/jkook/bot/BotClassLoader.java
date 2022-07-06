@@ -51,11 +51,11 @@ public abstract class BotClassLoader extends URLClassLoader implements BotLoader
             // or we should read the bot.yml and parse it to get information
             final InputStream bot = jar.getInputStream(entry);
             final Yaml parser = new Yaml();
-            final Map<String, Object> ymlContent = parser.load(bot);
 
             // construct description
             final BotDescription description;
             try {
+                final Map<String, Object> ymlContent = parser.load(bot);
                 // noinspection unchecked
                 description = new BotDescription(
                         (String) ymlContent.get("name"),
@@ -66,8 +66,8 @@ public abstract class BotClassLoader extends URLClassLoader implements BotLoader
                         (String) ymlContent.get("main"),
                         (List<String>) ymlContent.getOrDefault("authors", new ArrayList<String>())
                 );
-            } catch (Exception e) {
-                throw new IllegalArgumentException("Something went wrong while we attempting to build the description", e);
+            } catch (ClassCastException e) {
+                throw new IllegalArgumentException("Invalid bot.yml", e);
             }
 
             // if the class has already loaded, a conflict has been found.
@@ -78,7 +78,7 @@ public abstract class BotClassLoader extends URLClassLoader implements BotLoader
 
             addURL(file.toURI().toURL()); // add URL of the Bot archive file so that the classloader can find the Bot main class.
             // No check, because the Exception will be handled by the caller
-            Class<? extends Bot> main = loadClass((String) ymlContent.get("main"), true).asSubclass(Bot.class);
+            Class<? extends Bot> main = loadClass(description.getMainClassName(), true).asSubclass(Bot.class);
 
             if (main.getDeclaredConstructors().length != 1) {
                 throw new IllegalAccessException("Unexpected constructor count, expected 1, got " + main.getDeclaredConstructors().length);
