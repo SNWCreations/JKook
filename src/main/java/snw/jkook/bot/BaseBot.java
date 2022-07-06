@@ -48,11 +48,11 @@ public class BaseBot implements Bot {
         Validate.isTrue(configFile.isFile(), "The configuration file is not a file, (Is it a directory?)");
         this.configuration = Objects.requireNonNull(configuration);
         this.dataFolder = Objects.requireNonNull(dataFolder);
-        // after this bot was constructed, the implementations should get the user information
-        //  about this bot and call its setUser(User) method.
         this.httpAPI = Objects.requireNonNull(httpAPI);
         this.file = Objects.requireNonNull(file);
         this.logger = LoggerFactory.getLogger(getClass());
+        // after this bot was constructed, the implementations should get the user information
+        //  about this bot and call its setUser(User) method.
     }
 
     @Override
