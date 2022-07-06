@@ -136,9 +136,10 @@ public class BaseBot implements Bot {
             }
 
             try (final FileOutputStream out = new FileOutputStream(local)) {
-                byte[] data = new byte[1024];
-                while (stream.read(data) != -1) {
-                    out.write(data);
+                int index;
+                byte[] bytes = new byte[1024];
+                while ((index = stream.read(bytes)) != -1) {
+                    out.write(bytes, 0, index);
                 }
             }
         } catch (IOException e) {
