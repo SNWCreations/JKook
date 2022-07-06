@@ -1,16 +1,13 @@
 package snw.jkook.entity;
 
 import snw.jkook.Permission;
+import snw.jkook.entity.abilities.Nameable;
+import snw.jkook.util.RequirePermission;
 
 /**
  * Represents a role in a Kook guild.
  */
-public interface Role {
-
-    /**
-     * Get the name of this role.
-     */
-    String getName();
+public interface Role extends Nameable {
 
     /**
      * Get the ID of this role.
@@ -41,7 +38,38 @@ public interface Role {
     boolean isMentionable();
 
     /**
+     * Return true if put the role's users first in the user list.
+     */
+    boolean isHoist();
+
+    /**
+     * Set whether this role can be mentioned.
+     *
+     * @param value The value to set
+     */
+    @RequirePermission(Permission.ROLE_MANAGE)
+    void setMentionable(boolean value);
+
+    /**
+     * Set the "hoist" status for this role.
+     *
+     * @param value The value to set
+     */
+    @RequirePermission(Permission.ROLE_MANAGE)
+    void setHoist(boolean value);
+
+    /**
+     * Set the permissions of this role.
+     *
+     * @param permValueSum The sum of all the permissions' value.
+     * @see Permission#getValue()
+     */
+    @RequirePermission(Permission.ROLE_MANAGE)
+    void setPermissions(int permValueSum);
+
+    /**
      * Delete this role if possible. (Fails silently.)
      */
+    @RequirePermission(Permission.ROLE_MANAGE)
     void delete();
 }

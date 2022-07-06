@@ -1,6 +1,8 @@
 package snw.jkook.entity.channel;
 
+import snw.jkook.Permission;
 import snw.jkook.entity.User;
+import snw.jkook.util.RequirePermission;
 
 import java.util.Collection;
 import java.util.List;
@@ -34,5 +36,6 @@ public interface VoiceChannel extends Channel {
      *
      * @param users The target users
      */
+    @RequirePermission(Permission.VOICE_MANAGE)
     void moveToHere(Collection<User> users);
 }

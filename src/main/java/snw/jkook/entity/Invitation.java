@@ -1,7 +1,9 @@
 package snw.jkook.entity;
 
+import snw.jkook.Permission;
 import snw.jkook.entity.abilities.MasterHolder;
 import snw.jkook.entity.channel.Channel;
+import snw.jkook.util.RequirePermission;
 
 /**
  * Represents an invitation.
@@ -27,4 +29,10 @@ public interface Invitation extends MasterHolder {
      * Get the link URL of this invitation.
      */
     String getUrl();
+
+    /**
+     * Mark this invitation as invalid.
+     */
+    @RequirePermission(Permission.INVITE_MANAGE)
+    void delete();
 }
