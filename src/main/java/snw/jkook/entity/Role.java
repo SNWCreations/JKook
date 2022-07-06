@@ -40,4 +40,8 @@ public interface Role {
      */
     boolean isMentionable();
 
+    /**
+     * Delete this role if possible. (Fails silently.)
+     */
+    void delete();
 }
