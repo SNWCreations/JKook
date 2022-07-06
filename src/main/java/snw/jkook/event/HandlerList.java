@@ -26,7 +26,9 @@ public final class HandlerList extends HashMap<Method, Object> {
     public Object put(Method method, Object object) throws IllegalArgumentException {
         // region Verification
         Validate.isTrue(!containsKey(method), "The method has already registered.");
-        Validate.isTrue(Modifier.isStatic(method.getModifiers()) && object == null, "We cannot invoke the static method with a object. Call this method with the target method and null instead.");
+        if (Modifier.isStatic(method.getModifiers())) {
+            Validate.isTrue(object == null, "We cannot invoke the static method with a object. Call this method with the target method and null instead.");
+        }
         Validate.isTrue(!Modifier.isPublic(method.getModifiers()), "We can't call the non-public methods.");
         Validate.isTrue(method.getParameterCount() == 1, "Unexpected argument count, expected 1, got " + method.getParameterCount());
 
