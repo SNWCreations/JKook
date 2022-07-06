@@ -2,6 +2,7 @@ package snw.jkook.entity.channel;
 
 import snw.jkook.entity.User;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -26,4 +27,12 @@ public interface VoiceChannel extends Channel {
     default int getUserCount() {
         return getUsers().size();
     }
+
+    /**
+     * Move the specified users to this channel. <p>
+     * Only the users that already connected to another voice channel in the list will be moved.
+     *
+     * @param users The target users
+     */
+    void moveToHere(Collection<User> users);
 }

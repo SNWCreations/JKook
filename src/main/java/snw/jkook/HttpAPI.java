@@ -67,6 +67,8 @@ public interface HttpAPI {
      *
      * @param channel The target channel
      * @param users   The users to move
+     * @deprecated Use {@link VoiceChannel#moveToHere(Collection)} instead. This method still works but not recommended.
      */
+    @Deprecated
     void moveUser(VoiceChannel channel, Collection<User> users);
 }
