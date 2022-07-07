@@ -34,7 +34,6 @@ public class BaseBot implements Bot {
     public BaseBot(
             final String token,
             final File configFile,
-            final FileConfiguration configuration,
             final File dataFolder,
             final HttpAPI httpAPI,
             final File file
@@ -46,7 +45,6 @@ public class BaseBot implements Bot {
         this.configFile = Objects.requireNonNull(configFile);
         Validate.isTrue(configFile.exists(), "The configuration file does not exists.");
         Validate.isTrue(configFile.isFile(), "The configuration file is not a file, (Is it a directory?)");
-        this.configuration = Objects.requireNonNull(configuration);
         this.dataFolder = Objects.requireNonNull(dataFolder);
         this.httpAPI = Objects.requireNonNull(httpAPI);
         this.file = Objects.requireNonNull(file);
