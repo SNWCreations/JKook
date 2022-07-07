@@ -58,11 +58,11 @@ public final class JKookCommand {
 
     /**
      * Register this command. <p>
-     * Also, you can register this command using {@link snw.jkook.Core#registerCommand(JKookCommand)}. <p>
+     * Also, you can register this command using {@link CommandManager#registerCommand(JKookCommand)}. <p>
      * But this is easier than that. Isn't it?
      */
     public void register() {
-        JKook.getCore().registerCommand(this);
+        JKook.getCommandManager().registerCommand(this);
     }
 
     // Getters is following:

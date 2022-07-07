@@ -2,6 +2,7 @@ package snw.jkook;
 
 import org.slf4j.Logger;
 import snw.jkook.bot.Bot;
+import snw.jkook.command.CommandManager;
 import snw.jkook.command.ConsoleCommandSender;
 import snw.jkook.event.EventManager;
 import snw.jkook.scheduler.Scheduler;
@@ -80,6 +81,13 @@ public final class JKook {
      */
     public static Logger getLogger() {
         return getCore().getLogger();
+    }
+
+    /**
+     * Get the command manager.
+     */
+    public static CommandManager getCommandManager() {
+        return core.getCommandManager();
     }
 
     /**
