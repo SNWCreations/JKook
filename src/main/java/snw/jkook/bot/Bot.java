@@ -15,6 +15,13 @@ import java.io.InputStream;
  */
 public interface Bot {
 
+    // NOTE:
+    // If you want to implement this interface, I suggest you to use BaseBot instead.
+    // Still want to implement this? Alright, you won.
+    // But I have something to tell you.
+    // You should define the constructor with the same parameter from BaseBot. It's easy, isn't it?
+    // Warning is here, if you don't do that and your implementation does not work, don't say anything!
+
     /**
      * Get the user representation of this Bot.
      */
