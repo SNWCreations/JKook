@@ -108,4 +108,9 @@ public interface Bot {
      * Get the binary file representation of this Bot.
      */
     File getFile();
+
+    /**
+     * Get the description of this Bot.
+     */
+    BotDescription getDescription();
 }
