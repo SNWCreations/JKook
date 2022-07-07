@@ -7,7 +7,7 @@
     <name>JKook</name>
     <groupId>snw</groupId>
     <artifactId>jkook</artifactId>
-    <version>0.2.4</version>
+    <version>0.2.5</version>
     <description>The Kook (API) Standard for Java.</description>
 
     <developers>
