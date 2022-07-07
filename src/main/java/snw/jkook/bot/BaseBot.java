@@ -27,6 +27,7 @@ public class BaseBot implements Bot {
     private final File dataFolder;
     private final HttpAPI httpAPI;
     private final File file;
+    private final BotDescription description;
 
     // Bot developers should NEVER use this constructor.
     // And they should NEVER define new constructor.
@@ -36,6 +37,7 @@ public class BaseBot implements Bot {
             final File configFile,
             final File dataFolder,
             final HttpAPI httpAPI,
+            final BotDescription description,
             final File file
     ) {
         if (!(getClass().getClassLoader() instanceof BotLoader)) {
@@ -47,6 +49,7 @@ public class BaseBot implements Bot {
         Validate.isTrue(configFile.isFile(), "The configuration file is not a file, (Is it a directory?)");
         this.dataFolder = Objects.requireNonNull(dataFolder);
         this.httpAPI = Objects.requireNonNull(httpAPI);
+        this.description = Objects.requireNonNull(description);
         this.file = Objects.requireNonNull(file);
         this.logger = LoggerFactory.getLogger(getClass());
         // after this bot was constructed, the implementations should get the user information
@@ -186,4 +189,8 @@ public class BaseBot implements Bot {
         return file;
     }
 
+    @Override
+    public BotDescription getDescription() {
+        return description;
+    }
 }
