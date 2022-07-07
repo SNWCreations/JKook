@@ -96,5 +96,5 @@ public abstract class BotClassLoader extends URLClassLoader implements BotLoader
      * @param token       The token for the Bot
      * @throws Exception Thrown if something went really wrong
      */
-    abstract <T extends Bot> T construct(final Class<T> cls, final BotDescription description, final String token) throws Exception;
+    protected abstract <T extends Bot> T construct(final Class<T> cls, final BotDescription description, final String token) throws Exception;
 }
