@@ -23,27 +23,71 @@ public interface HttpAPI {
      *
      * @param id The ID of a user
      */
-    User getUser(long id);
+    User getUser(String id);
 
     /**
      * Get a guild by guild ID.
      *
      * @param id The ID of a guild
      */
-    Guild getGuild(long id);
+    Guild getGuild(String id);
 
     /**
      * Get a channel by ID.
      *
      * @param id The channel ID
      */
-    Channel getChannel(long id);
+    Channel getChannel(String id);
 
     /**
-     * Get a channel group by ID.
+     * Get a category by ID.
      *
      * @param id The ID
      */
+    Category getCategory(String id);
+
+    /**
+     * Get a "channel group" by ID.
+     *
+     * @param id The ID
+     * @deprecated Actually, it is {@link Category}. So use {@link #getCategory(String)} instead.
+     */
+    Category getChannelGroup(String id);
+
+    /**
+     * Get a user by user id.
+     *
+     * @param id The ID of a user
+     * @deprecated Unsafe, because Kook returns string ids.
+     */
+    @Deprecated
+    User getUser(long id);
+
+    /**
+     * Get a guild by guild ID.
+     *
+     * @param id The ID of a guild
+     * @deprecated Unsafe, because Kook returns string ids.
+     */
+    @Deprecated
+    Guild getGuild(long id);
+
+    /**
+     * Get a channel by ID.
+     *
+     * @param id The channel ID
+     * @deprecated Unsafe, because Kook returns string ids.
+     */
+    @Deprecated
+    Channel getChannel(long id);
+
+    /**
+     * Get a "channel group" by ID.
+     *
+     * @param id The ID
+     * @deprecated Use {@link #getChannel} instead, because {@link Category} is a subclass of {@link Channel}.
+     */
+    @Deprecated
     Category getChannelGroup(long id);
 
     /**
