@@ -1,7 +1,6 @@
 package snw.jkook.entity.channel;
 
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.Range;
 import snw.jkook.entity.User;
 import snw.jkook.message.Message;
 import snw.jkook.message.TextChannelMessage;
@@ -21,13 +20,11 @@ public interface TextChannel extends Channel {
      * @param refer The reference message, remote will query the data around this. <p> Null to get the latest message
      * @param isPin True if query pinned message. If you provide true, then you must provide null to "refer" argument, and only the pinned messages will be returned
      * @param queryMode The query mode. Only accepts "before", "around" and "after". Case Sensitive!
-     * @param pageSize The size of the page
      */
     PageIterator<Collection<TextChannelMessage>> getMessages(
             @Nullable String refer,
             boolean isPin,
-            String queryMode,
-            @Range(from = 1, to = 100) int pageSize
+            String queryMode
     );
 
     /**
