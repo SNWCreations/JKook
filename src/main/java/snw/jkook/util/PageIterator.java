@@ -6,9 +6,9 @@ import java.util.Iterator;
  * Represents the iterator of something can have pages. <p>
  * Default page size is <code>50</code>, you can change it by using {@link #setPageSize(int)}.
  *
- * @param <T> The type of thing will be provided
+ * @param <E> The type of thing will be provided
  */
-public interface PageIterator<T> extends Iterator<T> {
+public interface PageIterator<E> extends Iterator<E> {
 
     // we don't know, and we don't want to know if this object has more page, because it costs too many resources (e.g. Network resource)
     // so we won't support this
