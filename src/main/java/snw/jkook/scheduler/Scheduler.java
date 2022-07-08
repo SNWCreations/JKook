@@ -4,6 +4,7 @@ package snw.jkook.scheduler;
  * Represents a scheduler, you can schedule tasks to run. <p>
  */
 public interface Scheduler {
+
     /**
      * Execute the provided runnable right now.
      *

@@ -13,6 +13,7 @@ import java.util.Collection;
  * Represents the entry of Kook HTTP API.
  */
 public interface HttpAPI {
+
     /**
      * Get the joined guilds.
      */
