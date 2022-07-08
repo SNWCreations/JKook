@@ -9,8 +9,9 @@ public interface CommandManager {
      * Register a command.
      *
      * @param command The command to register
+     * @throws IllegalArgumentException Thrown if the command with the same root name was registered
      */
-    void registerCommand(JKookCommand command);
+    void registerCommand(JKookCommand command) throws IllegalArgumentException;
 
     /**
      * Execute a command with given command line.
