@@ -29,12 +29,13 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     String getNickName(Guild guild);
 
     /**
-     * Set the nickname of this user in the specified guild.
+     * Set the nickname of this user in the specified guild. <p>
+     * If this object represents the Bot in this VM, then you won't need {@link Permission#CHANGE_OTHERS_NICKNAME}, but you will need {@link Permission#CHANGE_NICKNAME}.
      *
      * @param guild The guild that contains this user
      * @param name The new nickname of this user
      */
-    @RequirePermission(Permission.CHANGE_OTHERS_NICKNAME)
+    @RequirePermission({Permission.CHANGE_NICKNAME, Permission.CHANGE_OTHERS_NICKNAME})
     void setNickName(Guild guild, String name);
 
     /**
