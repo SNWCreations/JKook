@@ -6,6 +6,7 @@ import snw.jkook.entity.User;
 import snw.jkook.message.Message;
 import snw.jkook.message.TextChannelMessage;
 import snw.jkook.message.component.BaseComponent;
+import snw.jkook.util.PageIterator;
 
 import java.util.Collection;
 
@@ -22,7 +23,7 @@ public interface TextChannel extends Channel {
      * @param queryMode The query mode. Only accepts "before", "around" and "after". Case Sensitive!
      * @param pageSize The size of the page
      */
-    Collection<TextChannelMessage> getMessages(
+    PageIterator<Collection<TextChannelMessage>> getMessages(
             @Nullable String refer,
             boolean isPin,
             String queryMode,
