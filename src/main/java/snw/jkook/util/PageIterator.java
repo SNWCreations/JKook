@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 /**
  * Represents the iterator of something can have pages. <p>
+ * Requests won't be started until {@link #next()} got call.
  * Default page size is <code>50</code>, you can change it by using {@link #setPageSize(int)}.
  *
  * @param <E> The type of thing will be provided
