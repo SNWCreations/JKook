@@ -11,17 +11,6 @@ import java.util.Iterator;
  */
 public interface PageIterator<E> extends Iterator<E> {
 
-    // we don't know, and we don't want to know if this object has more page, because it costs too many resources (e.g. Network resource)
-    // so we won't support this
-    /**
-     * This method always fail.
-     * @return Nothing will be returned
-     */
-    @Override
-    default boolean hasNext() {
-        throw new UnsupportedOperationException("hasNext");
-    }
-
     /**
      * Get current size of the pages that iterator provides.
      */
