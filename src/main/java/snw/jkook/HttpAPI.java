@@ -5,6 +5,7 @@ import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Category;
 import snw.jkook.entity.channel.Channel;
 import snw.jkook.entity.channel.VoiceChannel;
+import snw.jkook.util.PageIterator;
 
 import java.io.File;
 import java.util.Collection;
@@ -17,7 +18,7 @@ public interface HttpAPI {
     /**
      * Get the joined guilds.
      */
-    Collection<Guild> getJoinedGuilds();
+    PageIterator<Collection<Guild>> getJoinedGuilds();
 
     /**
      * Get a user by user id.

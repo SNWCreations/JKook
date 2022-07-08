@@ -12,9 +12,10 @@ import snw.jkook.entity.channel.Channel;
 import snw.jkook.entity.channel.TextChannel;
 import snw.jkook.entity.channel.VoiceChannel;
 import snw.jkook.entity.mute.MuteResult;
+import snw.jkook.util.PageIterator;
 import snw.jkook.util.RequirePermission;
 
-import java.util.Collection;
+import java.util.Set;
 
 /**
  * Represents a Guild.
@@ -36,17 +37,39 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     /**
      * Get the users in this guild.
      */
-    Collection<User> getUsers();
+    PageIterator<Set<User>> getUsers();
+
+    /**
+     * Get the users in this guild. <p>
+     * This method provides more conditions to use. <p>
+     * All the arguments in this method will be regard as the search condition.
+     *
+     * @param keyword The search keywords, search in username or nickname
+     * @param roleId The role that the users have. See {@link Role#getId()}
+     * @param isMobileVerified Is the target user's mobile verified?
+     * @param isActiveTimeFirst Sort according to active time, <code>true</code> is in order, <code>false</code> is in reverse order
+     * @param isJoinedTimeFirst Sort according to joined time, <code>true</code> is in order, <code>false</code> is in reverse order
+     */
+    PageIterator<Set<User>> getUsers(
+            String keyword,
+            int roleId,
+            boolean isMobileVerified,
+            boolean isActiveTimeFirst,
+            boolean isJoinedTimeFirst
+    );
 
     /**
      * Get the online users in this guild.
+     *
+     * @deprecated This method won't work because it costs so many resources.
      */
-    Collection<User> getOnlineUsers();
+    @Deprecated
+    PageIterator<Set<User>> getOnlineUsers();
 
     /**
      * Get all the channels in this guild.
      */
-    Collection<Channel> getChannels();
+    PageIterator<Set<Channel>> getChannels();
 
     /**
      * Get the voice server region of this guild.
@@ -56,7 +79,7 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     /**
      * Get the custom emojis in this guild.
      */
-    Collection<CustomEmoji> getCustomEmojis();
+    PageIterator<Set<CustomEmoji>> getCustomEmojis();
 
     /**
      * Get the online user count.
@@ -167,7 +190,7 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     /**
      * Get the users banned by this guild.
      */
-    Collection<User> getBannedUsers();
+    PageIterator<Set<User>> getBannedUsers();
 
     /**
      * Get notify type of this guild.
