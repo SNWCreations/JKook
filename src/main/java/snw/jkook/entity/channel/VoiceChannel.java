@@ -5,7 +5,6 @@ import snw.jkook.entity.User;
 import snw.jkook.util.RequirePermission;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * Represents a channel that can chat using voice.
@@ -21,7 +20,7 @@ public interface VoiceChannel extends Channel {
     /**
      * Get the users that already joined this channel.
      */
-    List<User> getUsers();
+    Collection<User> getUsers();
 
     /**
      * Get the count of the users that already joined this channel.
