@@ -15,7 +15,7 @@ public interface Channel extends Nameable, InviteHolder {
     /**
      * Get the ID of this channel.
      */
-    long getId();
+    String getId();
 
     /**
      * Return true if the permissions of this channel is the same as its parent.
