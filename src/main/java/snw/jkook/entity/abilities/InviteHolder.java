@@ -1,6 +1,9 @@
 package snw.jkook.entity.abilities;
 
 import snw.jkook.entity.Invitation;
+import snw.jkook.util.PageIterator;
+
+import java.util.Set;
 
 /**
  * Represents the objects that can hold the invitations.
@@ -8,6 +11,11 @@ import snw.jkook.entity.Invitation;
  * @see Invitation
  */
 public interface InviteHolder {
+
+    /**
+     * Get invitations related to this object.
+     */
+    PageIterator<Set<InviteHolder>> getInvitations();
 
     /**
      * Create an invitation of this object.
