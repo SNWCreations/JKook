@@ -1,6 +1,7 @@
 package snw.jkook.util;
 
 import java.util.Iterator;
+import java.util.function.Consumer;
 
 /**
  * Represents the iterator of something can have pages. <p>
@@ -21,4 +22,18 @@ public interface PageIterator<E> extends Iterator<E> {
      * @param size The size to set
      */
     void setPageSize(int size);
+
+    // Unsupported operations are following:
+
+    // Use the methods related to the "E" objects instead.
+    @Override
+    default void remove() {
+        throw new UnsupportedOperationException("remove");
+    }
+
+    // We can't support this, it also costs so many resources!
+    @Override
+    default void forEachRemaining(Consumer<? super E> action) {
+        throw new UnsupportedOperationException("forEachRemaining");
+    }
 }
