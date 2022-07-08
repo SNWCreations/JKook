@@ -1,5 +1,7 @@
 package snw.jkook.util;
 
+import org.jetbrains.annotations.Range;
+
 import java.util.Iterator;
 import java.util.function.Consumer;
 
@@ -21,7 +23,7 @@ public interface PageIterator<E> extends Iterator<E> {
      * Set the size of the pages that this iterator provides.
      * @param size The size to set
      */
-    void setPageSize(int size);
+    void setPageSize(@Range(from = 50, to = 100) int size);
 
     // Unsupported operations are following:
 
