@@ -15,9 +15,13 @@ public interface CommandManager {
 
     /**
      * Execute a command with given command line.
+     * The value of "sender" in the method is {@link ConsoleCommandSender}.
+     *
      * @param cmdLine The command line, prefix is needed (e.g. <code>/hello</code>)
      * @throws CommandException Thrown if unexpected situation happened during the execution of the command
      * @return True if command found and executed, false otherwise
+     * @deprecated Use {@link #executeCommand(CommandSender, String)} instead.
      */
+    @Deprecated
     boolean executeCommand(String cmdLine) throws CommandException;
 }
