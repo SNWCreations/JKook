@@ -36,17 +36,17 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     /**
      * Get the users in this guild.
      */
-    Iterable<User> getUsers();
+    Collection<User> getUsers();
 
     /**
      * Get the online users in this guild.
      */
-    Iterable<User> getOnlineUsers();
+    Collection<User> getOnlineUsers();
 
     /**
      * Get all the channels in this guild.
      */
-    Iterable<Channel> getChannels();
+    Collection<Channel> getChannels();
 
     /**
      * Get the voice server region of this guild.
