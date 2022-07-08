@@ -53,6 +53,7 @@ public interface HttpAPI {
      * @param id The ID
      * @deprecated Actually, it is {@link Category}. So use {@link #getCategory(String)} instead.
      */
+    @Deprecated
     Category getChannelGroup(String id);
 
     /**
