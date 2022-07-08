@@ -15,6 +15,7 @@ public final class JKookCommand {
     private CommandExecutor executor;
     private final Collection<JKookCommand> subcommands = new ArrayList<>();
     private final Collection<String> aliases = new ArrayList<>();
+    private String description;
 
     /**
      * The main constructor.
@@ -53,6 +54,16 @@ public final class JKookCommand {
      */
     public JKookCommand addSubcommand(JKookCommand command) {
         this.subcommands.add(command);
+        return this;
+    }
+
+    /**
+     * Set the description of this command.
+     * 
+     * @param description The description to set
+     */
+    public JKookCommand setDescription(String description) {
+        this.description = description;
         return this;
     }
 
@@ -102,4 +113,10 @@ public final class JKookCommand {
         return aliases;
     }
 
+    /**
+     * Get the description of this command.
+     */
+    public String getDescription() {
+        return description;
+    }
 }
