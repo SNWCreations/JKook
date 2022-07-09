@@ -32,6 +32,12 @@ To compile and install it, you should perform the following steps:
 
 In the end, add the artifact as the dependency in your project.
 
+_Tips:_
+
+If you use the artifacts from JitPack, then `groupId` is `com.github.SNWCreations`, `artifactId` is `JKook`.
+
+If you use the artifacts that compiled by yourself, then `groupId` is `snw`, `artifactId` is `jkook`.
+
 All done! You can create your things right now!
 
 ## The JKook's Goal
