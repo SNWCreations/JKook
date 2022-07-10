@@ -16,6 +16,9 @@
 
 package snw.jkook.command;
 
+import org.jetbrains.annotations.Nullable;
+import snw.jkook.message.Message;
+
 /**
  * Represents a executor for a command.
  *
@@ -28,6 +31,19 @@ public interface CommandExecutor {
      *
      * @param sender    The sender
      * @param arguments The arguments
+     * @deprecated Use {@link #onCommand(CommandSender, String[], Message)} instead.
      */
-    void onCommand(CommandSender sender, String[] arguments);
+    @Deprecated
+    default void onCommand(CommandSender sender, String[] arguments) {
+        onCommand(sender, arguments, null);
+    }
+
+    /**
+     * Execute this command with given information.
+     *
+     * @param sender    The sender
+     * @param arguments The arguments
+     * @param message The message related to this execution (Maybe null if the console executed this command)
+     */
+    void onCommand(CommandSender sender, String[] arguments, @Nullable Message message);
 }
