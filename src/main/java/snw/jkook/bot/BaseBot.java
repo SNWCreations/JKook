@@ -17,7 +17,6 @@
 package snw.jkook.bot;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import snw.jkook.HttpAPI;
 import snw.jkook.config.file.FileConfiguration;
 import snw.jkook.config.file.YamlConfiguration;
@@ -47,13 +46,14 @@ public abstract class BaseBot implements Bot {
     // Bot developers should NEVER use this constructor.
     // And they should NEVER define new constructor.
     // This constructor should be called by Bot loaders (provided by API implementations).
-    public BaseBot(
+    protected BaseBot(
             final String token,
             final File configFile,
             final File dataFolder,
             final HttpAPI httpAPI,
             final BotDescription description,
-            final File file
+            final File file,
+            final Logger logger
     ) {
         if (!(getClass().getClassLoader() instanceof BotLoader)) {
             throw new InvalidBotException("The Bot class should be loaded by using BotLoader.");
@@ -64,7 +64,7 @@ public abstract class BaseBot implements Bot {
         this.httpAPI = Objects.requireNonNull(httpAPI);
         this.description = Objects.requireNonNull(description);
         this.file = Objects.requireNonNull(file);
-        this.logger = LoggerFactory.getLogger(getClass());
+        this.logger = Objects.requireNonNull(logger);
         // after this bot was constructed, the implementations should get the user information
         //  about this bot and call its setUser(User) method.
     }
