@@ -34,7 +34,7 @@ import java.util.Objects;
  * Represents a basic Kook Bot implementation. Use YAML as configuration. <p>
  * Bot developers should extend this class to make their own Bot program.
  */
-public class BaseBot implements Bot {
+public abstract class BaseBot implements Bot {
     private final String token;
     private User user = null; // DO NOT MODIFY THIS FIELD, OR SOMETHING BAD WILL HAPPEN
     private final Logger logger;
