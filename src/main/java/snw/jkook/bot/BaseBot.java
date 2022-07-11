@@ -16,7 +16,6 @@
 
 package snw.jkook.bot;
 
-import org.apache.commons.lang.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import snw.jkook.HttpAPI;
@@ -61,8 +60,6 @@ public abstract class BaseBot implements Bot {
         }
         this.token = Objects.requireNonNull(token);
         this.configFile = Objects.requireNonNull(configFile);
-        Validate.isTrue(configFile.exists(), "The configuration file does not exists.");
-        Validate.isTrue(configFile.isFile(), "The configuration file is not a file, (Is it a directory?)");
         this.dataFolder = Objects.requireNonNull(dataFolder);
         this.httpAPI = Objects.requireNonNull(httpAPI);
         this.description = Objects.requireNonNull(description);
