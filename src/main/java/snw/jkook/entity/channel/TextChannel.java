@@ -53,4 +53,9 @@ public interface TextChannel extends Channel {
      *                   only the user to whom it corresponds can see the incoming message
      */
     void sendComponent(BaseComponent component, @Nullable Message quote, @Nullable User tempTarget);
+
+    /**
+     * Get the limit of minimum speaking time between two statements. (in seconds)
+     */
+    int getChatLimitTime();
 }

@@ -41,7 +41,9 @@ public interface Channel extends Nameable, InviteHolder {
     /**
      * Get the limit of minimum speaking time between two statements. (in seconds)
      */
-    int getChatLimitTime();
+    default int getChatLimitTime() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Return true if this channel is {@link Category}.
