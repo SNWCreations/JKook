@@ -39,6 +39,13 @@ public interface ReactionHolder {
     void sendReaction(CustomEmoji emoji);
 
     /**
+     * Remove the specified emoji from this object.
+     *
+     * @param emoji The target emoji
+     */
+    void removeReaction(CustomEmoji emoji);
+
+    /**
      * Remove all the reactions that you have applied to this object.
      */
     void removeReactionOnThis();
