@@ -18,12 +18,13 @@ package snw.jkook.entity;
 
 import org.jetbrains.annotations.Contract;
 import snw.jkook.Permission;
+import snw.jkook.entity.abilities.Nameable;
 import snw.jkook.util.RequirePermission;
 
 /**
  * Represents a emoji in a {@link Guild}.
  */
-public interface CustomEmoji {
+public interface CustomEmoji extends Nameable {
 
     /**
      * Get the image url of this emoji.
