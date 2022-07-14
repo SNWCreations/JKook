@@ -27,6 +27,11 @@ import snw.jkook.util.RequirePermission;
 public interface CustomEmoji extends Nameable {
 
     /**
+     * Get the ID of this emoji.
+     */
+    String getId();
+
+    /**
      * Get the image url of this emoji.
      *
      * @return Always return <code>null</code>
