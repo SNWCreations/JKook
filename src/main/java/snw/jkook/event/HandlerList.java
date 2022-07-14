@@ -23,8 +23,7 @@ import snw.jkook.JKook;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Represents a list that contains all the handlers related to an event type.
@@ -74,14 +73,28 @@ public final class HandlerList extends HashMap<Method, Object> {
      */
     public void callAll(Event event) {
         synchronized (this) {
-            for (Map.Entry<Method, Object> entry : entrySet()) {
-                try {
-                    entry.getKey().invoke(entry.getValue(), event);
-                } catch (InvocationTargetException | IllegalAccessException e) {
-                    JKook.getLogger().error("Unexpected situation happened. :(", e);
-                } catch (Throwable e) {
-                    JKook.getLogger().error("Something went wrong when we attempting to call a handler.", e);
+            final List<Entry<Method, Object>> internals = new ArrayList<>();
+            final List<Entry<Method, Object>> nonInternals = new ArrayList<>();
+            for (Entry<Method, Object> entry : entrySet()) {
+                if (entry.getKey().getAnnotation(EventHandler.class).internal()) {
+                    internals.add(entry);
+                } else {
+                    nonInternals.add(entry);
                 }
+            }
+            callAll0(internals, event);
+            callAll0(nonInternals, event);
+        }
+    }
+
+    private void callAll0(Collection<Entry<Method, Object>> listeners, Event event) {
+        for (Entry<Method, Object> entry : listeners) {
+            try {
+                entry.getKey().invoke(entry.getValue(), event);
+            } catch (InvocationTargetException | IllegalAccessException e) {
+                JKook.getLogger().error("Unexpected situation happened. :(", e);
+            } catch (Throwable e) {
+                JKook.getLogger().error("Something went wrong when we attempting to call a handler.", e);
             }
         }
     }
