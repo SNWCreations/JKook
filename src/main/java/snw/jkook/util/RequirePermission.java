@@ -24,7 +24,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * A simple annotation for marking the permission-required methods. It does NOTHING.
+ * A simple annotation for marking the permission-required methods. It does NOTHING. <p>
+ * If you call the methods wrapped with this annotation, but you don't have the required permission,
+ *  the method you call will just simply return and do nothing.
  */
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.METHOD)
