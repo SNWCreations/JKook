@@ -41,11 +41,11 @@ public interface Scheduler {
      * Execute the runnable again and again.
      *
      * @param runnable The runnable to execute
-     * @param period   The time before first run
-     * @param delay    The time between two execution
+     * @param delay    The time before first run
+     * @param period   The time between two execution
      * @return The task object
      */
-    Task runTaskTimer(Runnable runnable, long period, long delay); // note: both period and delay are in millisecond.
+    Task runTaskTimer(Runnable runnable, long delay, long period); // note: both period and delay are in millisecond.
 
     /**
      * Return true if the task that represented by the ID is scheduled.
