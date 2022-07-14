@@ -32,6 +32,13 @@ public interface CustomEmoji extends Nameable {
     String getId();
 
     /**
+     * Set the name of this emoji.
+     *
+     * @param name The new name of this emoji
+     */
+    void setName(String name);
+
+    /**
      * Get the image url of this emoji.
      *
      * @return Always return <code>null</code>
