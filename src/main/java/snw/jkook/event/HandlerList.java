@@ -44,7 +44,7 @@ public final class HandlerList extends HashMap<Method, Object> {
         if (Modifier.isStatic(method.getModifiers())) {
             Validate.isTrue(object == null, "We cannot invoke the static method with a object. Call this method with the target method and null instead.");
         }
-        Validate.isTrue(!Modifier.isPublic(method.getModifiers()), "We can't call the non-public methods.");
+        Validate.isTrue(Modifier.isPublic(method.getModifiers()), "We can't call the non-public methods.");
         Validate.isTrue(method.getParameterCount() == 1, "Unexpected argument count, expected 1, got " + method.getParameterCount());
 
         final Class<?> param = method.getParameterTypes()[0];
