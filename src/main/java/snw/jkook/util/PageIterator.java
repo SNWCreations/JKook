@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 
 /**
  * Represents the iterator of something can have pages. <p>
- * Requests won't be started until {@link #next()} got call.
+ * Requests won't be started until {@link #hasNext()} got call.
  * Default page size is <code>50</code>, you can change it by using {@link #setPageSize(int)}.
  *
  * @param <E> The type of thing that will be provided
