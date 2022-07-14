@@ -39,7 +39,7 @@ public interface ReactionHolder {
     void sendReaction(CustomEmoji emoji);
 
     /**
-     * Remove the reaction that you have applied to this object.
+     * Remove all the reactions that you have applied to this object.
      */
     void removeReactionOnThis();
 }
