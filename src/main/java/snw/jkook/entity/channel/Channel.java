@@ -83,14 +83,23 @@ public interface Channel extends Nameable, InviteHolder {
             this.rawDeny = rawDeny;
         }
 
+        /**
+         * Get the role that related to this representation.
+         */
         public Role getRole() {
             return role;
         }
 
+        /**
+         * Get the allowed permissions' sum. You can use the result for {@link Permission#hasPermission}.
+         */
         public int getRawAllow() {
             return rawAllow;
         }
 
+        /**
+         * Get the denied permissions' sum. You can use the result for {@link Permission#hasPermission}.
+         */
         public int getRawDeny() {
             return rawDeny;
         }
