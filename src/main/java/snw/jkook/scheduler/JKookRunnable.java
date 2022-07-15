@@ -32,7 +32,7 @@ public abstract class JKookRunnable implements Runnable {
      * @return The task object
      */
     public synchronized Task runTaskLater(long delay) {
-        Validate.isTrue(task == null, "This runnable is already scheduled.");
+        Validate.isTrue(task == null, "This runnable has already scheduled.");
         return ((task) = JKook.getScheduler().runTaskLater(this, delay));
     }
 
@@ -44,7 +44,7 @@ public abstract class JKookRunnable implements Runnable {
      * @return The task object
      */
     public synchronized Task runTaskTimer(long delay, long period) {
-        Validate.isTrue(task == null, "This runnable is already scheduled.");
+        Validate.isTrue(task == null, "This runnable has already scheduled.");
         return ((task) = JKook.getScheduler().runTaskTimer(this, delay, period));
     }
 
