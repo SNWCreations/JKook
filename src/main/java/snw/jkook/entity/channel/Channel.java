@@ -21,6 +21,7 @@ import snw.jkook.Permission;
 import snw.jkook.entity.Role;
 import snw.jkook.entity.User;
 import snw.jkook.entity.abilities.InviteHolder;
+import snw.jkook.entity.abilities.MasterHolder;
 import snw.jkook.entity.abilities.Nameable;
 
 import java.util.Collection;
@@ -28,7 +29,7 @@ import java.util.Collection;
 /**
  * Represents a channel.
  */
-public interface Channel extends Nameable, InviteHolder {
+public interface Channel extends Nameable, InviteHolder, MasterHolder {
 
     /**
      * Get the ID of this channel.
