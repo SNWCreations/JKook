@@ -188,6 +188,12 @@ public enum Permission {
         return value;
     }
 
+    /**
+     * Return true if the targeted permission is included in <code>rawPermissionSum</code>.
+     *
+     * @param permission The permission to check
+     * @param rawPermissionSum The sum of a set of permissions
+     */
     public static boolean hasPermission(Permission permission, int rawPermissionSum) {
         if ((rawPermissionSum & 1) == 1) {
             return true;
