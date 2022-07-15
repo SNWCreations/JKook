@@ -23,6 +23,8 @@ import snw.jkook.entity.User;
 import snw.jkook.entity.abilities.InviteHolder;
 import snw.jkook.entity.abilities.Nameable;
 
+import java.util.Collection;
+
 /**
  * Represents a channel.
  */
@@ -68,6 +70,18 @@ public interface Channel extends Nameable, InviteHolder {
      * Delete this channel if possible. (Fails silently.)
      */
     void delete();
+
+    /**
+     * Get the overwritten role permission representations of this channel. <p>
+     * The result is read-only.
+     */
+    Collection<RolePermissionOverwrite> getOverwrittenRolePermissions();
+
+    /**
+     * Get the overwritten user permission representations of this channel. <p>
+     * The result is read-only.
+     */
+    Collection<UserPermissionOverwrite> getOverwrittenUserPermissions();
 
     /**
      * Represents the overwritten permissions for a role in the channel.
