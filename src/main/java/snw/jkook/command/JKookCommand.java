@@ -16,6 +16,7 @@
 
 package snw.jkook.command;
 
+import org.apache.commons.lang.Validate;
 import snw.jkook.JKook;
 
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ public final class JKookCommand {
     private final Collection<JKookCommand> subcommands = new ArrayList<>();
     private final Collection<String> aliases = new ArrayList<>();
     private String description;
+
+    private boolean registerFlag = false; // just a flag!
 
     /**
      * The main constructor.
@@ -60,6 +63,7 @@ public final class JKookCommand {
      * @param executor The executor of this command
      */
     public JKookCommand setExecutor(CommandExecutor executor) {
+        ensureNotRegistered();
         this.executor = executor;
         return this;
     }
@@ -70,6 +74,7 @@ public final class JKookCommand {
      * @param command The subcommand object
      */
     public JKookCommand addSubcommand(JKookCommand command) {
+        ensureNotRegistered();
         this.subcommands.add(command);
         return this;
     }
@@ -80,7 +85,19 @@ public final class JKookCommand {
      * @param description The description to set
      */
     public JKookCommand setDescription(String description) {
+        ensureNotRegistered();
         this.description = description;
+        return this;
+    }
+
+    /**
+     * Add an alias for this command.
+     *
+     * @param alias The alias to be added
+     */
+    public JKookCommand addAlias(String alias) {
+        ensureNotRegistered();
+        aliases.add(alias);
         return this;
     }
 
@@ -91,6 +108,7 @@ public final class JKookCommand {
      */
     public void register() {
         JKook.getCommandManager().registerCommand(this);
+        registerFlag = true;
     }
 
     // Getters is following:
@@ -135,5 +153,11 @@ public final class JKookCommand {
      */
     public String getDescription() {
         return description;
+    }
+
+    // specific-methods following:
+
+    private void ensureNotRegistered() {
+        Validate.isTrue(!registerFlag, "This command has already registered.");
     }
 }
