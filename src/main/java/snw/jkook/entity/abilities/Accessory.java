@@ -31,15 +31,8 @@ public interface Accessory {
      */
     enum Mode {
 
-        /**
-         * The default card size. <p>
-         * This parameter is valid only on the PC. (Mobile will render the LG cards using SM size.)
-         */
         LEFT("left"),
 
-        /**
-         * This size has the best compatibility.
-         */
         RIGHT("right");
 
         private final String value;
