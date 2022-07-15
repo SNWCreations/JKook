@@ -200,4 +200,19 @@ public enum Permission {
         }
         return (rawPermissionSum & permission.getValue()) == permission.getValue();
     }
+
+    /**
+     * Return the permission that represented by <code>permVal</code>. <p>
+     * If you want to know whether <code>permVal</code> contains a certain permission <b>(not equal to)</b>, use {@link #hasPermission} instead.
+     *
+     * @param permVal The value
+     */
+    public static Permission valueOf(int permVal) {
+        for (Permission perm : values()) {
+            if (perm.getValue() == permVal) {
+                return perm;
+            }
+        }
+        return null;
+    }
 }

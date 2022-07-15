@@ -30,6 +30,7 @@ public interface Accessory {
      * Represents the available modes of the accessories.
      */
     enum Mode {
+
         /**
          * The default card size. <p>
          * This parameter is valid only on the PC. (Mobile will render the LG cards using SM size.)

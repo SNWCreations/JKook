@@ -257,5 +257,19 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
         public int getValue() {
             return value;
         }
+
+        /**
+         * Return the enum instance that represented the provided value.
+         *
+         * @param value The value
+         */
+        public static NotifyType valueOf(int value) {
+            for (NotifyType type : values()) {
+                if (type.getValue() == value) {
+                    return type;
+                }
+            }
+            return null;
+        }
     }
 }
