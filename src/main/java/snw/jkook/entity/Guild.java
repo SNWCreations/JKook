@@ -214,6 +214,16 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     NotifyType getNotifyType();
 
     /**
+     * Get the avatar url of this guild.
+     *
+     * @param vip Do <b>NOT</b> provide true, or you will get {@link IllegalArgumentException}.
+     * @return The avatar url.
+     * @throws IllegalArgumentException Thrown if value of argument <code>vip</code> is <code>true</code>
+     */
+    @Override
+    String getAvatarUrl(boolean vip) throws IllegalArgumentException;
+
+    /**
      * Represents notify type.
      */
     enum NotifyType {
