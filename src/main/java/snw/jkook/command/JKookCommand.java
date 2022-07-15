@@ -20,6 +20,7 @@ import snw.jkook.JKook;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 
 /**
@@ -126,7 +127,7 @@ public final class JKookCommand {
      * Get aliases of this command.
      */
     public Collection<String> getAliases() {
-        return aliases;
+        return Collections.unmodifiableCollection(aliases);
     }
 
     /**
