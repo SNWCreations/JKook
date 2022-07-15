@@ -46,6 +46,11 @@ public interface VoiceChannel extends Channel {
     }
 
     /**
+     * Return true if this channel has been protected using password.
+     */
+    boolean hasPassword();
+
+    /**
      * Move the specified users to this channel. <p>
      * Only the users that already connected to another voice channel in the list will be moved.
      *

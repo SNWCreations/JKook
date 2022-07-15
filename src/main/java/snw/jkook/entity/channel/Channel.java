@@ -59,7 +59,8 @@ public interface Channel extends Nameable, InviteHolder {
     Category getParent();
 
     /**
-     * Return true if this channel has been protected using password.
+     * Return true if this channel has been protected using password. <p>
+     * <b>WARNING: This method does not have effect for {@link TextChannel}. Because the field behind this method does not applicable for {@link TextChannel}.</b>
      */
     boolean hasPassword();
 
