@@ -26,6 +26,11 @@ import snw.jkook.util.RequirePermission;
 public interface Role extends Nameable {
 
     /**
+     * Get the guild that owns this role.
+     */
+    Guild getGuild();
+
+    /**
      * Get the ID of this role.
      */
     int getId();
