@@ -141,7 +141,7 @@ public abstract class BaseBot implements Bot {
             final File local = new File(dataFolder, targetPath);
             if (local.exists()) {
                 if (!replace) {
-                    getLogger().warn("Cannot save resource \"" + path + "\" because it has already exists.");
+                    getLogger().warn("Cannot save resource \"{}\" because it has already exists.", path);
                     return;
                 }
                 local.delete();
