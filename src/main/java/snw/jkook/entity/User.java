@@ -116,15 +116,6 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     void setIntimacy(int intimacy);
 
     /**
-     * Return true if this user has the specified role.
-     *
-     * @param role Role to check
-     */
-    default boolean hasRole(Role role) {
-        return getRoles().contains(role);
-    }
-
-    /**
      * Grant the specified role to this user. <p>
      * It is <b>DANGEROUS</b>!
      *
