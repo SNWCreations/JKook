@@ -159,6 +159,15 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     /**
      * Update the role permission of this channel. Will not affect the rights they already have. (Fails silently.)
      *
+     * @param roleId   The role ID
+     * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
+     * @param rawDeny  The sum of the denied permissions' value
+     */
+    void updatePermission(int roleId, int rawAllow, int rawDeny);
+
+    /**
+     * Update the role permission of this channel. Will not affect the rights they already have. (Fails silently.)
+     *
      * @param role     The role
      * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
      * @param rawDeny  The sum of the denied permissions' value
