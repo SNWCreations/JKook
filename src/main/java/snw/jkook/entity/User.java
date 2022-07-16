@@ -86,9 +86,10 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
 
     /**
      * Get the roles that this user have. <p>
+     * The result is a set of role ID.
      * The result is read-only.
      */
-    Collection<Role> getRoles();
+    Collection<Integer> getRoles();
 
     /**
      * Send a component to this user.
