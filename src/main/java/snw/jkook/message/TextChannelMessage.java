@@ -30,13 +30,19 @@ public interface TextChannelMessage extends Message {
 
     /**
      * Return true if this message is pinned in the channel.
+     *
+     * @deprecated We can't implement this.
+     * @return Always false
      */
+    @Deprecated
     boolean isPinned();
 
     /**
      * Set the pinned status of this message.
      *
      * @param pinned The status
+     * @deprecated We can't implement this. So this will do nothing.
      */
+    @Deprecated
     void setPinned(boolean pinned);
 }
