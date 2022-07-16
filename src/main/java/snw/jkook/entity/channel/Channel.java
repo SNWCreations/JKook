@@ -88,21 +88,21 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
      * Represents the overwritten permissions for a role in the channel.
      */
     class RolePermissionOverwrite {
-        private final Role role;
+        private final int roleId;
         private final int rawAllow;
         private final int rawDeny;
 
-        public RolePermissionOverwrite(Role role, int rawAllow, int rawDeny) {
-            this.role = role;
+        public RolePermissionOverwrite(int roleId, int rawAllow, int rawDeny) {
+            this.roleId = roleId;
             this.rawAllow = rawAllow;
             this.rawDeny = rawDeny;
         }
 
         /**
-         * Get the role that related to this representation.
+         * Get the role ID that related to this representation.
          */
-        public Role getRole() {
-            return role;
+        public int getRoleId() {
+            return roleId;
         }
 
         /**
