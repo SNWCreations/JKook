@@ -133,4 +133,22 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
      */
     @RequirePermission(Permission.ROLE_MANAGE)
     void revokeRole(Role role);
+
+    /**
+     * Grant the specified role to this user. <p>
+     * It is <b>DANGEROUS</b>!
+     *
+     * @param roleId The role to grant
+     */
+    @RequirePermission(Permission.ROLE_MANAGE)
+    void grantRole(int roleId);
+
+    /**
+     * Revoke the specified role that this user have. <p>
+     * It is <b>DANGEROUS</b>!
+     *
+     * @param roleId The role to revoke
+     */
+    @RequirePermission(Permission.ROLE_MANAGE)
+    void revokeRole(int roleId);
 }
