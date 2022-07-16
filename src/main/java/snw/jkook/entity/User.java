@@ -141,7 +141,7 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
      * @param roleId The role to grant
      */
     @RequirePermission(Permission.ROLE_MANAGE)
-    void grantRole(int roleId);
+    void grantRole(Guild guild, int roleId);
 
     /**
      * Revoke the specified role that this user have. <p>
@@ -150,5 +150,5 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
      * @param roleId The role to revoke
      */
     @RequirePermission(Permission.ROLE_MANAGE)
-    void revokeRole(int roleId);
+    void revokeRole(Guild guild, int roleId);
 }
