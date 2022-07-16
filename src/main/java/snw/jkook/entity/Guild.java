@@ -75,14 +75,6 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     );
 
     /**
-     * Get the online users in this guild.
-     *
-     * @deprecated This method won't work because it costs so many resources.
-     */
-    @Deprecated
-    PageIterator<Set<User>> getOnlineUsers();
-
-    /**
      * Get all the channels in this guild.
      */
     PageIterator<Set<Channel>> getChannels();

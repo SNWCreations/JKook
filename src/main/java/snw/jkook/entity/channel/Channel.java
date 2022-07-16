@@ -42,13 +42,6 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     boolean isPermissionSync();
 
     /**
-     * Get the limit of minimum speaking time between two statements. (in seconds)
-     */
-    default int getChatLimitTime() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
      * Return true if this channel is {@link Category}.
      */
     default boolean isCategory() {
@@ -60,12 +53,6 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
      */
     @Nullable
     Category getParent();
-
-    /**
-     * Return true if this channel has been protected using password. <p>
-     * <b>WARNING: This method does not have effect for {@link TextChannel}. Because the field behind this method does not applicable for {@link TextChannel}.</b>
-     */
-    boolean hasPassword();
 
     /**
      * Delete this channel if possible. (Fails silently.)

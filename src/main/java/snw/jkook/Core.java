@@ -20,7 +20,6 @@ import org.slf4j.Logger;
 import snw.jkook.bot.Bot;
 import snw.jkook.command.CommandManager;
 import snw.jkook.command.ConsoleCommandSender;
-import snw.jkook.command.JKookCommand;
 import snw.jkook.event.EventManager;
 import snw.jkook.scheduler.Scheduler;
 
@@ -73,15 +72,6 @@ public interface Core {
      * Get the command manager.
      */
     CommandManager getCommandManager();
-
-    /**
-     * Register a command.
-     *
-     * @param command The command to register
-     * @deprecated Use {@link CommandManager#registerCommand(JKookCommand)} instead.
-     */
-    @Deprecated
-    void registerCommand(JKookCommand command);
 
     /**
      * Shutdown the client. Stops everything.

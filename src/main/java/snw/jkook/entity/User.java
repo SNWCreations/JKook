@@ -104,15 +104,6 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     VoiceChannel getJoinedVoiceChannel();
 
     /**
-     * Kick the user from the target guild. This <b>CANNOT</b> be undone!
-     *
-     * @deprecated Use {@link Guild#kick(User)} instead. This method still works but not recommended.
-     */
-    @RequirePermission(Permission.KICK)
-    @Deprecated
-    void kick(Guild guild);
-
-    /**
      * Get the intimacy score of this user.
      */
     int getIntimacy();

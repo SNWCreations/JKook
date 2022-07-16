@@ -20,7 +20,6 @@ import snw.jkook.entity.Guild;
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Category;
 import snw.jkook.entity.channel.Channel;
-import snw.jkook.entity.channel.VoiceChannel;
 import snw.jkook.util.PageIterator;
 
 import java.io.File;
@@ -65,51 +64,6 @@ public interface HttpAPI {
     Category getCategory(String id);
 
     /**
-     * Get a "channel group" by ID.
-     *
-     * @param id The ID
-     * @deprecated Actually, it is {@link Category}. So use {@link #getCategory(String)} instead.
-     */
-    @Deprecated
-    Category getChannelGroup(String id);
-
-    /**
-     * Get a user by user id.
-     *
-     * @param id The ID of a user
-     * @deprecated Unsafe, because Kook returns string ids.
-     */
-    @Deprecated
-    User getUser(long id);
-
-    /**
-     * Get a guild by guild ID.
-     *
-     * @param id The ID of a guild
-     * @deprecated Unsafe, because Kook returns string ids.
-     */
-    @Deprecated
-    Guild getGuild(long id);
-
-    /**
-     * Get a channel by ID.
-     *
-     * @param id The channel ID
-     * @deprecated Unsafe, because Kook returns string ids.
-     */
-    @Deprecated
-    Channel getChannel(long id);
-
-    /**
-     * Get a "channel group" by ID.
-     *
-     * @param id The ID
-     * @deprecated Use {@link #getChannel} instead, because {@link Category} is a subclass of {@link Channel}.
-     */
-    @Deprecated
-    Category getChannelGroup(long id);
-
-    /**
      * Upload a file to Kook server.
      *
      * @param file The file to upload
@@ -124,14 +78,4 @@ public interface HttpAPI {
      * @return The URL string of the remote file
      */
     String uploadFile(String binary);
-
-    /**
-     * Move the users to another voice channel if possible. (Fails silently.)
-     *
-     * @param channel The target channel
-     * @param users   The users to move
-     * @deprecated Use {@link VoiceChannel#moveToHere(Collection)} instead. This method still works but not recommended.
-     */
-    @Deprecated
-    void moveUser(VoiceChannel channel, Collection<User> users);
 }
