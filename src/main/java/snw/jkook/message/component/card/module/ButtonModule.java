@@ -16,28 +16,35 @@
 
 package snw.jkook.message.component.card.module;
 
+import snw.jkook.entity.abilities.Accessory;
 import snw.jkook.event.user.UserClickButtonEvent;
 import snw.jkook.message.component.card.Theme;
 
 /**
  * Represents a button module. It can cause a {@link UserClickButtonEvent}.
  */
-public class ButtonModule extends ActionModule {
+public class ButtonModule extends ActionModule implements Accessory {
     private final EventType type;
     private final Theme theme;
     private final String value;
-    private final String text;
+    private final PlainTextModule text;
+    private final Mode mode;
 
 
-    public ButtonModule(Theme theme, String value, String text) {
+    public ButtonModule(Theme theme, String value, PlainTextModule text) {
         this(EventType.NO_ACTION, theme, value, text);
     }
 
-    public ButtonModule(EventType type, Theme theme, String value, String text) {
+    public ButtonModule(EventType type, Theme theme, String value, PlainTextModule text) {
+        this(type, theme, value, text, null);
+    }
+
+    public ButtonModule(EventType type, Theme theme, String value, PlainTextModule text, Mode mode) {
         this.type = type;
         this.theme = theme;
         this.value = value;
         this.text = text;
+        this.mode = mode;
     }
 
     /**
@@ -57,7 +64,7 @@ public class ButtonModule extends ActionModule {
     /**
      * Get the text of this module.
      */
-    public String getText() {
+    public PlainTextModule getText() {
         return text;
     }
 
@@ -66,6 +73,11 @@ public class ButtonModule extends ActionModule {
      */
     public EventType getType() {
         return type;
+    }
+
+    @Override
+    public Mode getMode() {
+        return mode;
     }
 
     /**
