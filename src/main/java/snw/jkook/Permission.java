@@ -18,6 +18,9 @@ package snw.jkook;
 
 import snw.jkook.entity.channel.TextChannel;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Represents the permission in Kook.
  */
@@ -178,6 +181,14 @@ public enum Permission {
      */
     KEY_TALK_ONLY(2097152);
 
+    private static final Map<Integer, Permission> values = new HashMap<>();
+
+    static {
+        for (Permission value : values()) {
+            values.put(value.getValue(), value);
+        }
+    }
+
     private final int value;
 
     Permission(int value) {
@@ -206,13 +217,20 @@ public enum Permission {
      * If you want to know whether <code>permVal</code> contains a certain permission <b>(not equal to)</b>, use {@link #hasPermission} instead.
      *
      * @param permVal The value
+     * @deprecated Use {@link #value(int)} instead. Because We want to unify the naming of methods that can get the instances of the enum.
      */
+    @Deprecated
     public static Permission valueOf(int permVal) {
-        for (Permission perm : values()) {
-            if (perm.getValue() == permVal) {
-                return perm;
-            }
-        }
-        return null;
+        return values.get(permVal);
+    }
+
+    /**
+     * Return the permission that represented by <code>permVal</code>. <p>
+     * If you want to know whether <code>permVal</code> contains a certain permission <b>(not equal to)</b>, use {@link #hasPermission} instead.
+     *
+     * @param permVal The value
+     */
+    public static Permission value(int permVal) {
+        return values.get(permVal);
     }
 }

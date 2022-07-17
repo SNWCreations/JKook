@@ -20,6 +20,9 @@ import snw.jkook.entity.abilities.Accessory;
 import snw.jkook.event.user.UserClickButtonEvent;
 import snw.jkook.message.component.card.Theme;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Represents a button module. It can cause a {@link UserClickButtonEvent}.
  */
@@ -100,6 +103,14 @@ public class ButtonModule extends ActionModule implements Accessory {
          */
         RETURN_VAL("return-val");
 
+        private static final Map<String, EventType> values = new HashMap<>();
+
+        static {
+            for (EventType value : values()) {
+                values.put(value.getValue(), value);
+            }
+        }
+
         private final String value;
 
         EventType(String value) {
@@ -108,6 +119,15 @@ public class ButtonModule extends ActionModule implements Accessory {
 
         public String getValue() {
             return value;
+        }
+
+        /**
+         * Return the enum instance that represented the provided value.
+         *
+         * @param name The value
+         */
+        public static EventType value(String name) {
+            return values.get(name);
         }
     }
 }

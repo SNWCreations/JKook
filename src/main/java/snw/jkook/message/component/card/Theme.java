@@ -16,6 +16,9 @@
 
 package snw.jkook.message.component.card;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Represents themes for the cards. <p>
  * Affects the sidebar color.
@@ -23,12 +26,26 @@ package snw.jkook.message.component.card;
 public enum Theme {
 
     PRIMARY("primary"),
+
     SUCCESS("success"),
+
     DANGER("danger"),
+
     WARNING("warning"),
+
     INFO("info"),
+
     SECONDARY("secondary"),
+
     NONE("none");
+
+    private static final Map<String, Theme> values = new HashMap<>();
+
+    static {
+        for (Theme value : values()) {
+            values.put(value.getValue(), value);
+        }
+    }
 
     private final String value;
 
@@ -38,5 +55,14 @@ public enum Theme {
 
     public String getValue() {
         return value;
+    }
+
+    /**
+     * Return the enum instance that represented the provided value.
+     *
+     * @param name The value
+     */
+    public static Theme value(String name) {
+        return values.get(name);
     }
 }

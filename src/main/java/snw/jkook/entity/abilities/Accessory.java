@@ -44,5 +44,21 @@ public interface Accessory {
         public String getValue() {
             return value;
         }
+
+        /**
+         * Return the enum instance that represented the provided value.
+         *
+         * @param name The value
+         */
+        public static Mode value(String name) {
+            switch (name) {
+                case "left":
+                    return LEFT;
+                case "right":
+                    return RIGHT;
+                default:
+                    return null;
+            }
+        }
     }
 }

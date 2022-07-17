@@ -31,6 +31,8 @@ import snw.jkook.entity.mute.MuteResult;
 import snw.jkook.util.PageIterator;
 import snw.jkook.util.RequirePermission;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -243,6 +245,14 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
          */
         NO_NOTIFY(3);
 
+        private static final Map<Integer, NotifyType> values = new HashMap<>();
+
+        static {
+            for (NotifyType value : values()) {
+                values.put(value.getValue(), value);
+            }
+        }
+
         private final int value;
 
         NotifyType(int value) {
@@ -257,14 +267,20 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
          * Return the enum instance that represented the provided value.
          *
          * @param value The value
+         * @deprecated Use {@link #value(int)} instead. Because We want to unify the naming of methods that can get the instances of the enum.
          */
+        @Deprecated
         public static NotifyType valueOf(int value) {
-            for (NotifyType type : values()) {
-                if (type.getValue() == value) {
-                    return type;
-                }
-            }
-            return null;
+            return values.get(value);
+        }
+
+        /**
+         * Return the enum instance that represented the provided value.
+         *
+         * @param value The value
+         */
+        public static NotifyType value(int value) {
+            return values.get(value);
         }
     }
 }

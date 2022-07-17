@@ -16,6 +16,9 @@
 
 package snw.jkook.message.component.card.module;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Represents a countdown module.
  */
@@ -62,6 +65,14 @@ public class CountdownModule extends BaseModule {
 
         SECOND("second");
 
+        private static final Map<String, Type> values = new HashMap<>();
+
+        static {
+            for (Type value : values()) {
+                values.put(value.getValue(), value);
+            }
+        }
+
         private final String value;
 
         Type(String value) {
@@ -70,6 +81,15 @@ public class CountdownModule extends BaseModule {
 
         public String getValue() {
             return value;
+        }
+
+        /**
+         * Return the enum instance that represented the provided value.
+         *
+         * @param name The value
+         */
+        public static Type value(String name) {
+            return values.get(name);
         }
     }
 }

@@ -16,6 +16,9 @@
 
 package snw.jkook.message.component;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Represents the module with a file.
  */
@@ -85,6 +88,14 @@ public class FileComponent extends BaseComponent {
          */
         IMAGE("image");
 
+        private static final Map<String, Type> values = new HashMap<>();
+
+        static {
+            for (Type value : values()) {
+                values.put(value.getValue(), value);
+            }
+        }
+
         private final String value;
 
         Type(String value) {
@@ -93,6 +104,15 @@ public class FileComponent extends BaseComponent {
 
         public String getValue() {
             return value;
+        }
+
+        /**
+         * Return the enum instance that represented the provided value.
+         *
+         * @param value The value
+         */
+        public static Type value(String value) {
+            return values.get(value);
         }
     }
 }

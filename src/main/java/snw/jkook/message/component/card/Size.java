@@ -16,6 +16,9 @@
 
 package snw.jkook.message.component.card;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Represents the available sizes of the cards.
  */
@@ -35,6 +38,14 @@ public enum Size {
 
     MD("md");
 
+    private static final Map<String, Size> values = new HashMap<>();
+
+    static {
+        for (Size value : values()) {
+            values.put(value.getValue(), value);
+        }
+    }
+
     private final String value;
 
     Size(String value) {
@@ -43,5 +54,14 @@ public enum Size {
 
     public String getValue() {
         return value;
+    }
+
+    /**
+     * Return the enum instance that represented the provided value.
+     *
+     * @param name The value
+     */
+    public static Size value(String name) {
+        return values.get(name);
     }
 }
