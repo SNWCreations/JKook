@@ -40,9 +40,12 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
 
     /**
      * Set the name of this guild.
+     *
      * @param name The new name
+     * @deprecated We can't implement this.
      */
     @RequirePermission(Permission.OPERATOR)
+    @Deprecated
     void setName(String name);
 
     /**
