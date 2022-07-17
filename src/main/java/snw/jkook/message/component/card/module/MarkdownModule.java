@@ -16,34 +16,13 @@
 
 package snw.jkook.message.component.card.module;
 
-import org.apache.commons.lang.Validate;
 import snw.jkook.entity.abilities.Accessory;
 
 /**
  * Represents the module with Markdown text.
  */
-public class MarkdownModule extends BaseModule {
-    private final String value;
-    private final Accessory accessory;
-
+public class MarkdownModule extends PlainTextModule {
     public MarkdownModule(String value, Accessory accessory) {
-        Validate.notNull(value, "The value cannot be null");
-        Validate.isTrue(value.length() <= 5000, "Unexpected content length, expected <= 5000, got " + value.length());
-        this.value = value;
-        this.accessory = accessory;
-    }
-
-    /**
-     * Get the value of this module.
-     */
-    public String getValue() {
-        return value;
-    }
-
-    /**
-     * Get the accessory that bound to this module.
-     */
-    public Accessory getAccessory() {
-        return accessory;
+        super(value, accessory);
     }
 }
