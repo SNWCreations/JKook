@@ -41,16 +41,6 @@ import java.util.Set;
 public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolder {
 
     /**
-     * Set the name of this guild.
-     *
-     * @param name The new name
-     * @deprecated We can't implement this.
-     */
-    @RequirePermission(Permission.OPERATOR)
-    @Deprecated
-    void setName(String name);
-
-    /**
      * Get the ID of this guild.
      */
     String getId();
@@ -261,17 +251,6 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
 
         public int getValue() {
             return value;
-        }
-
-        /**
-         * Return the enum instance that represented the provided value.
-         *
-         * @param value The value
-         * @deprecated Use {@link #value(int)} instead. Because We want to unify the naming of methods that can get the instances of the enum.
-         */
-        @Deprecated
-        public static NotifyType valueOf(int value) {
-            return values.get(value);
         }
 
         /**

@@ -217,18 +217,6 @@ public enum Permission {
      * If you want to know whether <code>permVal</code> contains a certain permission <b>(not equal to)</b>, use {@link #hasPermission} instead.
      *
      * @param permVal The value
-     * @deprecated Use {@link #value(int)} instead. Because We want to unify the naming of methods that can get the instances of the enum.
-     */
-    @Deprecated
-    public static Permission valueOf(int permVal) {
-        return values.get(permVal);
-    }
-
-    /**
-     * Return the permission that represented by <code>permVal</code>. <p>
-     * If you want to know whether <code>permVal</code> contains a certain permission <b>(not equal to)</b>, use {@link #hasPermission} instead.
-     *
-     * @param permVal The value
      */
     public static Permission value(int permVal) {
         return values.get(permVal);
