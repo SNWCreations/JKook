@@ -20,13 +20,13 @@ import org.apache.commons.lang.Validate;
 import snw.jkook.message.component.FileComponent;
 
 /**
- * Represents the module that contains a file. Image files are not supported.
+ * Represents the module that contains a file. Only normal files are supported.
  */
 public class FileModule extends BaseModule {
     private final FileComponent component;
 
     public FileModule(FileComponent component) {
-        Validate.isTrue(!(component.getType() == FileComponent.Type.IMAGE), "File module does not support image files.");
+        Validate.isTrue((component.getType() == FileComponent.Type.FILE), "File module only support files. (not video or audio, use VideoModule or AudioModule instead.)");
         this.component = component;
     }
 
