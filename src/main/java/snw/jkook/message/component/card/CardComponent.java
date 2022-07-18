@@ -19,6 +19,7 @@ package snw.jkook.message.component.card;
 import snw.jkook.message.component.BaseComponent;
 import snw.jkook.message.component.card.module.BaseModule;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class CardComponent extends BaseComponent {
     private final Theme theme;
 
     public CardComponent(List<BaseModule> modules, Size size, Theme theme) {
-        this.modules = new LinkedList<>(modules);
+        this.modules = Collections.unmodifiableList(new LinkedList<>(modules));
         this.size = size;
         this.theme = theme;
     }
@@ -41,6 +42,13 @@ public class CardComponent extends BaseComponent {
      */
     public Size getSize() {
         return size;
+    }
+
+    /**
+     * Get the modules that stored in this component.
+     */
+    public List<BaseModule> getModules() {
+        return modules;
     }
 
     /**
