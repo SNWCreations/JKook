@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents the module with a file.
+ * Represents the component with a file.
  */
 public class FileComponent extends BaseComponent {
     private final String url;
