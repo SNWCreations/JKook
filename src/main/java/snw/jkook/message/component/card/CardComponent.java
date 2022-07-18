@@ -28,10 +28,12 @@ import java.util.List;
 public class CardComponent extends BaseComponent {
     private final List<BaseModule> modules;
     private final Size size;
+    private final Theme theme;
 
-    public CardComponent(List<BaseModule> modules, Size size) {
+    public CardComponent(List<BaseModule> modules, Size size, Theme theme) {
         this.modules = new LinkedList<>(modules);
         this.size = size;
+        this.theme = theme;
     }
 
     /**
@@ -48,4 +50,10 @@ public class CardComponent extends BaseComponent {
         return modules.size();
     }
 
+    /**
+     * Get theme of this component.
+     */
+    public Theme getTheme() {
+        return theme;
+    }
 }
