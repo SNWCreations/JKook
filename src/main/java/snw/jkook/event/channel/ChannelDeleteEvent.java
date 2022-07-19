@@ -27,12 +27,36 @@ import java.util.Objects;
  */
 public class ChannelDeleteEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();
+    private final String channelId;
 
     private final User operator;
 
-    public ChannelDeleteEvent(final long timeStamp, final Channel channel, final User operator) {
-        super(timeStamp, channel);
+    // please always provide null to channel argument.
+    // Because some situations (e.g. we know this channel first time), we can't provide the channel instance.
+    public ChannelDeleteEvent(final long timeStamp, final String channelId, final User operator) {
+        super(timeStamp, null);
         this.operator = Objects.requireNonNull(operator);
+        this.channelId = Objects.requireNonNull(channelId);
+    }
+
+    /**
+     * Get the ID of the deleted channel.
+     */
+    public String getChannelId() {
+        return channelId;
+    }
+
+    /**
+     * Get the channel related to this event. <p>
+     * <b>DO NOT USE THIS METHOD</b>. <p>
+     * Because in some situations (e.g. We know this channel for first time), we can't provide this.
+     *
+     * @return Always <code>null</code>
+     */
+    @Deprecated
+    @Override
+    public Channel getChannel() {
+        return null;
     }
 
     /**
