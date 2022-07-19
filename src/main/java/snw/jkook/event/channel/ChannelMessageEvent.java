@@ -18,7 +18,7 @@ package snw.jkook.event.channel;
 
 import snw.jkook.entity.channel.TextChannel;
 import snw.jkook.event.HandlerList;
-import snw.jkook.message.Message;
+import snw.jkook.message.TextChannelMessage;
 
 import java.util.Objects;
 
@@ -28,9 +28,9 @@ import java.util.Objects;
 public class ChannelMessageEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    private final Message message;
+    private final TextChannelMessage message;
 
-    public ChannelMessageEvent(final long timeStamp, final TextChannel channel, final Message message) {
+    public ChannelMessageEvent(final long timeStamp, final TextChannel channel, final TextChannelMessage message) {
         super(timeStamp, channel);
         this.message = Objects.requireNonNull(message);
     }
@@ -38,7 +38,7 @@ public class ChannelMessageEvent extends ChannelEvent {
     /**
      * Get the message related to this event.
      */
-    public Message getMessage() {
+    public TextChannelMessage getMessage() {
         return message;
     }
 
