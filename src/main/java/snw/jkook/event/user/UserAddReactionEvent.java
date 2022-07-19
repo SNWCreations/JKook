@@ -19,7 +19,6 @@ package snw.jkook.event.user;
 import snw.jkook.entity.CustomEmoji;
 import snw.jkook.entity.User;
 import snw.jkook.event.HandlerList;
-import snw.jkook.message.Message;
 
 import java.util.Objects;
 
@@ -29,20 +28,20 @@ import java.util.Objects;
 public class UserAddReactionEvent extends UserEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    private final Message message;
+    private final String messageId;
     private final CustomEmoji emoji;
 
-    public UserAddReactionEvent(final long timeStamp, final User user, final Message message, final CustomEmoji emoji) {
+    public UserAddReactionEvent(final long timeStamp, final User user, final String messageId, final CustomEmoji emoji) {
         super(timeStamp, user);
-        this.message = Objects.requireNonNull(message);
+        this.messageId = Objects.requireNonNull(messageId);
         this.emoji = Objects.requireNonNull(emoji);
     }
 
     /**
-     * Get the message related to this event.
+     * Get the message ID that related to this event.
      */
-    public Message getMessage() {
-        return message;
+    public String getMessageId() {
+        return messageId;
     }
 
     /**

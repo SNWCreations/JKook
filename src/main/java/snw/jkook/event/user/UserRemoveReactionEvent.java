@@ -19,7 +19,6 @@ package snw.jkook.event.user;
 import snw.jkook.entity.Reaction;
 import snw.jkook.entity.User;
 import snw.jkook.event.HandlerList;
-import snw.jkook.message.Message;
 
 import java.util.Objects;
 
@@ -29,20 +28,20 @@ import java.util.Objects;
 public class UserRemoveReactionEvent extends UserEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    private final Message message;
+    private final String messageId;
     private final Reaction reaction;
 
-    public UserRemoveReactionEvent(final long timeStamp, final User user, final Message message, final Reaction reaction) {
+    public UserRemoveReactionEvent(final long timeStamp, final User user, final String messageId, final Reaction reaction) {
         super(timeStamp, user);
-        this.message = Objects.requireNonNull(message);
+        this.messageId = Objects.requireNonNull(messageId);
         this.reaction = Objects.requireNonNull(reaction);
     }
 
     /**
      * Get the message related to this event.
      */
-    public Message getMessage() {
-        return message;
+    public String getMessageId() {
+        return messageId;
     }
 
     /**
