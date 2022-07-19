@@ -40,7 +40,10 @@ public interface CustomEmoji extends Nameable {
 
     /**
      * Get the guild that owns this emoji.
+     * In some situations (e.g. provided in the events related to emoji,
+     *  and this instance was created for the first time), this method will return <code>null</code>.
      */
+    @Nullable
     Guild getGuild();
 
     /**
