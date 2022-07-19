@@ -16,6 +16,7 @@
 
 package snw.jkook.entity;
 
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.Permission;
 import snw.jkook.entity.abilities.Nameable;
 import snw.jkook.util.RequirePermission;
@@ -43,8 +44,11 @@ public interface CustomEmoji extends Nameable {
     Guild getGuild();
 
     /**
-     * Get the uploader of this emoji.
+     * Get the uploader of this emoji. <p>
+     * In some situations (e.g. provided in the events related to emoji,
+     *  and this instance was created for the first time), this method will return <code>null</code>.
      */
+    @Nullable
     User getUploader();
 
     /**
