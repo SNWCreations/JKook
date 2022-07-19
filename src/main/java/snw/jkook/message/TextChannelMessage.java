@@ -16,9 +16,7 @@
 
 package snw.jkook.message;
 
-import snw.jkook.Permission;
 import snw.jkook.entity.channel.TextChannel;
-import snw.jkook.util.RequirePermission;
 
 /**
  * Represents a message from a text channel.
@@ -30,9 +28,4 @@ public interface TextChannelMessage extends Message {
      */
     TextChannel getChannel();
 
-    /**
-     * Delete this message if possible. (Fails silently.)
-     */
-    @RequirePermission(Permission.MESSAGE_MANAGE)
-    void delete();
 }
