@@ -16,7 +16,6 @@
 
 package snw.jkook.event.guild;
 
-import snw.jkook.entity.Guild;
 import snw.jkook.event.HandlerList;
 
 /**
@@ -25,8 +24,18 @@ import snw.jkook.event.HandlerList;
 public class GuildDeleteEvent extends GuildEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    public GuildDeleteEvent(final long timeStamp, final Guild guild) {
-        super(timeStamp, guild);
+    private final String guildId;
+
+    public GuildDeleteEvent(final long timeStamp, String guildId) {
+        super(timeStamp, null);
+        this.guildId = guildId;
+    }
+
+    /**
+     * Get the ID of the deleted guild.
+     */
+    public String getGuildId() {
+        return guildId;
     }
 
     public static HandlerList getHandlers() {
