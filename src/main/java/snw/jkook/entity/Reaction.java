@@ -18,7 +18,6 @@ package snw.jkook.entity;
 
 import snw.jkook.Permission;
 import snw.jkook.entity.abilities.Receivable;
-import snw.jkook.message.Message;
 import snw.jkook.util.RequirePermission;
 
 /**
@@ -27,9 +26,9 @@ import snw.jkook.util.RequirePermission;
 public interface Reaction extends Receivable {
 
     /**
-     * Get the message that holds this reaction.
+     * Get the ID of the message which holds this reaction.
      */
-    Message getMessage();
+    String getMessageId();
 
     /**
      * Get the emoji used by this reaction.
