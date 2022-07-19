@@ -81,7 +81,10 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
 
     /**
      * Return true if this user's mobile number has verified.
+     *
+     * @deprecated Kook official does not provide this attribute.
      */
+    @Deprecated
     boolean isMobileVerified();
 
     /**
