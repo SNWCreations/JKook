@@ -31,7 +31,7 @@ public interface InviteHolder {
     /**
      * Get invitations related to this object.
      */
-    PageIterator<Set<InviteHolder>> getInvitations();
+    PageIterator<Set<Invitation>> getInvitations();
 
     /**
      * Create an invitation of this object.
