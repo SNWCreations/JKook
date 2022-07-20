@@ -22,7 +22,7 @@ import snw.jkook.entity.abilities.Nameable;
 import snw.jkook.util.RequirePermission;
 
 /**
- * Represents a emoji in a {@link Guild}.
+ * Represents a emoji.
  */
 public interface CustomEmoji extends Nameable {
 
@@ -39,17 +39,15 @@ public interface CustomEmoji extends Nameable {
     void setName(String name);
 
     /**
-     * Get the guild that owns this emoji.
-     * In some situations (e.g. provided in the events related to emoji,
-     *  and this instance was created for the first time), this method will return <code>null</code>.
+     * Get the guild that owns this emoji. <p>
+     * If this emoji has not owned by a guild, or we still don't know which guild owns this yet, this method will return null.
      */
     @Nullable
     Guild getGuild();
 
     /**
      * Get the uploader of this emoji. <p>
-     * In some situations (e.g. provided in the events related to emoji,
-     *  and this instance was created for the first time), this method will return <code>null</code>.
+     * If this emoji has not owned by a guild, or we still don't know which guild owns this yet, this method will return null.
      */
     @Nullable
     User getUploader();
