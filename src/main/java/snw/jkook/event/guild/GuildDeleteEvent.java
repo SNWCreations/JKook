@@ -16,6 +16,7 @@
 
 package snw.jkook.event.guild;
 
+import snw.jkook.entity.Guild;
 import snw.jkook.event.HandlerList;
 
 /**
@@ -29,6 +30,17 @@ public class GuildDeleteEvent extends GuildEvent {
     public GuildDeleteEvent(final long timeStamp, String guildId) {
         super(timeStamp, null);
         this.guildId = guildId;
+    }
+
+    /**
+     * Get the guild related to this event.
+     *
+     * @deprecated Because of the guild was deleted, so we can't construct the instance of guild. Use {@link #getGuildId()} instead.
+     */
+    @Deprecated
+    @Override
+    public Guild getGuild() {
+        throw new UnsupportedOperationException("Use GuildDeleteEvent#getGuildId instead");
     }
 
     /**
