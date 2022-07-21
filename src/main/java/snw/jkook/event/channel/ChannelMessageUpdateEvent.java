@@ -16,7 +16,6 @@
 
 package snw.jkook.event.channel;
 
-import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
 import snw.jkook.message.TextChannelMessage;
@@ -29,12 +28,10 @@ import java.util.Objects;
 public class ChannelMessageUpdateEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    private final User operator;
     private final TextChannelMessage message;
 
-    public ChannelMessageUpdateEvent(final long timeStamp, final Channel channel, final User operator, final TextChannelMessage message) {
+    public ChannelMessageUpdateEvent(final long timeStamp, final Channel channel, final TextChannelMessage message) {
         super(timeStamp, channel);
-        this.operator = Objects.requireNonNull(operator);
         this.message = Objects.requireNonNull(message);
     }
 
@@ -43,13 +40,6 @@ public class ChannelMessageUpdateEvent extends ChannelEvent {
      */
     public TextChannelMessage getMessage() {
         return message;
-    }
-
-    /**
-     * Get the operator.
-     */
-    public User getOperator() {
-        return operator;
     }
 
     public static HandlerList getHandlers() {
