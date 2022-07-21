@@ -20,6 +20,7 @@ import snw.jkook.entity.Guild;
 import snw.jkook.entity.User;
 import snw.jkook.event.HandlerList;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +36,7 @@ public class GuildBanUserEvent extends GuildEvent {
 
     public GuildBanUserEvent(final long timeStamp, final Guild guild, final List<User> banned, final User operator, String reason) {
         super(timeStamp, guild);
-        this.banned = Objects.requireNonNull(banned);
+        this.banned = Collections.unmodifiableList(Objects.requireNonNull(banned));
         this.operator = Objects.requireNonNull(operator);
         this.reason = Objects.requireNonNull(reason);
     }
