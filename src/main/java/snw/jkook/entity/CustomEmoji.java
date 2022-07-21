@@ -59,7 +59,7 @@ public interface CustomEmoji extends Nameable {
     User getUploader();
 
     /**
-     * Delete this emoji if possible. (Fails silently.)
+     * Delete this emoji .
      */
     @RequirePermission(Permission.EMOJI_MANAGE)
     void delete();

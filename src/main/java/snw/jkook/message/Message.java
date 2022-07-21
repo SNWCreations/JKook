@@ -38,7 +38,7 @@ public interface Message extends Receivable, ReactionHolder {
     String getId();
 
     /**
-     * Delete this message if possible. (Fails silently.)
+     * Delete this message .
      */
     @RequirePermission(Permission.MESSAGE_MANAGE)
     void delete();

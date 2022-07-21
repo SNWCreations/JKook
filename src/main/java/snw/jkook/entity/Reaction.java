@@ -36,7 +36,7 @@ public interface Reaction extends Receivable {
     CustomEmoji getEmoji();
 
     /**
-     * Delete this reaction if possible. (Fails silently.) <p>
+     * Delete this reaction . <p>
      * Need {@link Permission#MESSAGE_MANAGE} <b>unless this reaction has been sent by you</b>.
      */
     @RequirePermission(Permission.MESSAGE_MANAGE)

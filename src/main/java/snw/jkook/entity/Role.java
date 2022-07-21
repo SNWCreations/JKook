@@ -89,7 +89,7 @@ public interface Role extends Nameable {
     void setPermissions(int permValueSum);
 
     /**
-     * Delete this role if possible. (Fails silently.)
+     * Delete this role .
      */
     @RequirePermission(Permission.ROLE_MANAGE)
     void delete();

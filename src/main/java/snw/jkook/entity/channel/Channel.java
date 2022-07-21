@@ -55,7 +55,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     Category getParent();
 
     /**
-     * Delete this channel if possible. (Fails silently.)
+     * Delete this channel .
      */
     void delete();
 
@@ -144,7 +144,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     }
 
     /**
-     * Update the role permission of this channel. Will not affect the rights they already have. (Fails silently.)
+     * Update the role permission of this channel. Will not affect the rights they already have.
      *
      * @param roleId   The role ID
      * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
@@ -153,7 +153,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     void updatePermission(int roleId, int rawAllow, int rawDeny);
 
     /**
-     * Update the role permission of this channel. Will not affect the rights they already have. (Fails silently.)
+     * Update the role permission of this channel. Will not affect the rights they already have.
      *
      * @param role     The role
      * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
@@ -162,7 +162,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     void updatePermission(Role role, int rawAllow, int rawDeny);
 
     /**
-     * Update the user's permission of this channel. Will not affect the rights they already have. (Fails silently.)
+     * Update the user's permission of this channel. Will not affect the rights they already have.
      *
      * @param user     The role
      * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
