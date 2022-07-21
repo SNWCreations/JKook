@@ -18,11 +18,15 @@ package snw.jkook.event.user;
 
 import snw.jkook.entity.User;
 import snw.jkook.event.HandlerList;
+import snw.jkook.event.pm.PrivateMessageReceivedEvent;
 import snw.jkook.message.PrivateMessage;
 
 /**
  * Represents the event that related to a user sent a private message to your Bot.
+ *
+ * @deprecated Use {@link PrivateMessageReceivedEvent} instead. This event still works but not recommended.
  */
+@Deprecated
 public class UserPrivateMessageEvent extends UserEvent {
     private static final HandlerList handlers = new HandlerList();
 
