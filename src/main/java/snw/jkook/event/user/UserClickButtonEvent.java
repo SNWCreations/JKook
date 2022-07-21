@@ -16,6 +16,7 @@
 
 package snw.jkook.event.user;
 
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
@@ -57,6 +58,7 @@ public class UserClickButtonEvent extends UserEvent {
      * Get the channel on which the button is clicked. <p>
      * Null is returned if user clicked this button in private chat session.
      */
+    @Nullable
     public Channel getChannel() {
         return channel;
     }
