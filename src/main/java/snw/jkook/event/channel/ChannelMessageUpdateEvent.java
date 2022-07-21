@@ -18,9 +18,6 @@ package snw.jkook.event.channel;
 
 import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
-import snw.jkook.message.TextChannelMessage;
-
-import java.util.Objects;
 
 /**
  * Represents an event related to a user modified a message.
@@ -28,18 +25,27 @@ import java.util.Objects;
 public class ChannelMessageUpdateEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    private final TextChannelMessage message;
+    private final String messageId;
+    private final String content;
 
-    public ChannelMessageUpdateEvent(final long timeStamp, final Channel channel, final TextChannelMessage message) {
+    public ChannelMessageUpdateEvent(final long timeStamp, final Channel channel, final String messageId, String content) {
         super(timeStamp, channel);
-        this.message = Objects.requireNonNull(message);
+        this.messageId = messageId;
+        this.content = content;
     }
 
     /**
-     * Get the message related to this event.
+     * Get the ID of the message that related to this event.
      */
-    public TextChannelMessage getMessage() {
-        return message;
+    public String getMessageId() {
+        return messageId;
+    }
+
+    /**
+     * Get the updated content of the message.
+     */
+    public String getContent() {
+        return content;
     }
 
     public static HandlerList getHandlers() {

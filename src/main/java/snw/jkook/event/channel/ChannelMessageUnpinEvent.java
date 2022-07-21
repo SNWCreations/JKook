@@ -18,9 +18,6 @@ package snw.jkook.event.channel;
 
 import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
-import snw.jkook.message.Message;
-
-import java.util.Objects;
 
 /**
  * Represents an event related to a message was unpinned.
@@ -28,18 +25,18 @@ import java.util.Objects;
 public class ChannelMessageUnpinEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    private final Message message;
+    private final String messageId;
 
-    public ChannelMessageUnpinEvent(final long timeStamp, final Channel channel, final Message message) {
+    public ChannelMessageUnpinEvent(final long timeStamp, final Channel channel, final String messageId) {
         super(timeStamp, channel);
-        this.message = Objects.requireNonNull(message);
+        this.messageId = messageId;
     }
 
     /**
-     * Get the message related to this event.
+     * Get the ID of the message that related to this event.
      */
-    public Message getMessage() {
-        return message;
+    public String getMessage() {
+        return messageId;
     }
 
     public static HandlerList getHandlers() {
