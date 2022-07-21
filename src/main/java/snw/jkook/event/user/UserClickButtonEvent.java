@@ -17,6 +17,7 @@
 package snw.jkook.event.user;
 
 import snw.jkook.entity.User;
+import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
 
 import java.util.Objects;
@@ -29,11 +30,13 @@ public class UserClickButtonEvent extends UserEvent {
 
     private final String messageId;
     private final String value;
+    private final Channel channel;
 
-    public UserClickButtonEvent(final long timeStamp, final User user, final String messageId, final String value) {
+    public UserClickButtonEvent(final long timeStamp, final User user, final String messageId, final String value, Channel channel) {
         super(timeStamp, user);
         this.messageId = Objects.requireNonNull(messageId);
         this.value = Objects.requireNonNull(value);
+        this.channel = channel;
     }
 
     /**
@@ -48,6 +51,14 @@ public class UserClickButtonEvent extends UserEvent {
      */
     public String getValue() {
         return value;
+    }
+
+    /**
+     * Get the channel on which the button is clicked. <p>
+     * Null is returned if user clicked this button in private chat session.
+     */
+    public Channel getChannel() {
+        return channel;
     }
 
     public static HandlerList getHandlers() {
