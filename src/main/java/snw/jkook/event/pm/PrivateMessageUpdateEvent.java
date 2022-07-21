@@ -46,4 +46,8 @@ public class PrivateMessageUpdateEvent extends PrivateMessageEvent {
     public String getContent() {
         return content;
     }
+
+    public static HandlerList getHandlers() {
+        return handlers;
+    }
 }
