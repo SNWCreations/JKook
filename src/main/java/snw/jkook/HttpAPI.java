@@ -43,7 +43,8 @@ public interface HttpAPI {
     User getUser(String id);
 
     /**
-     * Get a guild by guild ID.
+     * Get a guild by guild ID. <p>
+     * <b>Null will be returned if you don't have permission to access it.</b>
      *
      * @param id The ID of a guild
      */
