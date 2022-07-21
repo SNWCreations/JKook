@@ -40,14 +40,14 @@ public interface CustomEmoji extends Nameable {
 
     /**
      * Get the guild that owns this emoji. <p>
-     * If this emoji has not owned by a guild, or we still don't know which guild owns this yet, this method will return null.
+     * If this emoji has not owned by a guild, this method will return null.
      */
     @Nullable
     Guild getGuild();
 
     /**
      * Get the uploader of this emoji. <p>
-     * If this emoji has not owned by a guild, or we still don't know which guild owns this yet, this method will return null.
+     * If this emoji has not owned by a guild, this method will return null.
      */
     @Nullable
     User getUploader();
