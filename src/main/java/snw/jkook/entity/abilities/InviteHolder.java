@@ -16,6 +16,7 @@
 
 package snw.jkook.entity.abilities;
 
+import snw.jkook.HttpAPI;
 import snw.jkook.entity.Invitation;
 import snw.jkook.util.PageIterator;
 
@@ -47,7 +48,9 @@ public interface InviteHolder {
      *
      * @param urlCode The url code to be marked
      * @see Invitation#getUrlCode()
+     * @deprecated Use {@link HttpAPI#removeInvite(String)} instead. This method will do nothing.
      */
+    @Deprecated
     void removeInvite(String urlCode);
 
 }

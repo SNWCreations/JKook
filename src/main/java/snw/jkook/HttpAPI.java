@@ -78,4 +78,11 @@ public interface HttpAPI {
      * @return The URL string of the remote file
      */
     String uploadFile(String binary);
+
+    /**
+     * Mark the invitation that represented by the provided url code as invalid.
+     *
+     * @param urlCode The target
+     */
+    void removeInvite(String urlCode);
 }
