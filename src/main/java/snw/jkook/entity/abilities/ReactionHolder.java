@@ -17,7 +17,6 @@
 package snw.jkook.entity.abilities;
 
 import snw.jkook.entity.CustomEmoji;
-import snw.jkook.entity.Reaction;
 import snw.jkook.entity.User;
 
 import java.util.Collection;
@@ -26,11 +25,6 @@ import java.util.Collection;
  * Represents an object that can hold the reactions.
  */
 public interface ReactionHolder {
-
-    /**
-     * Get the reactions that applied to this object.
-     */
-    Collection<Reaction> getReactions();
 
     /**
      * Get the users that added the specified emoji to this object.
