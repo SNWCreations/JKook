@@ -35,7 +35,7 @@ public class ChannelMessagePinEvent extends ChannelEvent {
     /**
      * Get the ID of the message that related to this event.
      */
-    public String getMessage() {
+    public String getMessageId() {
         return messageId;
     }
 
