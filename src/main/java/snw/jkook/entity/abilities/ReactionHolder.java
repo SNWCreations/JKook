@@ -46,9 +46,4 @@ public interface ReactionHolder {
      * @param emoji The target emoji
      */
     void removeReaction(CustomEmoji emoji);
-
-    /**
-     * Remove all the reactions that you have applied to this object.
-     */
-    void removeReactionOnThis();
 }
