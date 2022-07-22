@@ -44,7 +44,7 @@ public interface HttpAPI {
 
     /**
      * Get a guild by guild ID. <p>
-     * <b>Null will be returned if you don't have permission to access it.</b>
+     * <b>Null is returned if you don't have permission to access it.</b>
      *
      * @param id The ID of a guild
      */
