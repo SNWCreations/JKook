@@ -22,7 +22,7 @@ import snw.jkook.entity.Reaction;
 import java.util.Collection;
 
 /**
- * Represents a object that can hold the reactions.
+ * Represents an object that can hold the reactions.
  */
 public interface ReactionHolder {
 
