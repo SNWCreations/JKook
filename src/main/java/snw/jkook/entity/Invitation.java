@@ -16,6 +16,7 @@
 
 package snw.jkook.entity;
 
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.Permission;
 import snw.jkook.entity.abilities.MasterHolder;
 import snw.jkook.entity.channel.Channel;
@@ -32,8 +33,10 @@ public interface Invitation extends MasterHolder {
     Guild getGuild();
 
     /**
-     * Get the channel related to this invitation.
+     * Get the channel related to this invitation. <p>
+     * Null is returned if this invitation does not relate to a channel.
      */
+    @Nullable
     Channel getChannel();
 
     /**
