@@ -16,7 +16,6 @@
 
 package snw.jkook.event.channel;
 
-import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
 
@@ -29,13 +28,8 @@ public class ChannelDeleteEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();
     private final String channelId;
 
-    private final User operator;
-
-    // please always provide null to channel argument.
-    // Because some situations (e.g. we know this channel first time), we can't provide the channel instance.
-    public ChannelDeleteEvent(final long timeStamp, final String channelId, final User operator) {
+    public ChannelDeleteEvent(final long timeStamp, final String channelId) {
         super(timeStamp, null);
-        this.operator = Objects.requireNonNull(operator);
         this.channelId = Objects.requireNonNull(channelId);
     }
 
@@ -57,13 +51,6 @@ public class ChannelDeleteEvent extends ChannelEvent {
     @Override
     public Channel getChannel() {
         return null;
-    }
-
-    /**
-     * Get the operator.
-     */
-    public User getOperator() {
-        return operator;
     }
 
     public static HandlerList getHandlers() {
