@@ -32,12 +32,6 @@ public interface Category extends Channel, Nameable {
         throw new UnsupportedOperationException("Kook does not support the users inviting other users to a category.");
     }
 
-    @Contract("_ -> fail")
-    @Override
-    default void removeInvite(String urlCode) {
-        throw new UnsupportedOperationException("Kook does not support the users inviting other users to a category.");
-    }
-
     /**
      * Return the channels in this group.
      */
