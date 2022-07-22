@@ -36,6 +36,14 @@ public interface Reaction extends Receivable {
     CustomEmoji getEmoji();
 
     /**
+     * Get the time stamp that the user sent this reaction. <p>
+     * -1 will be returned if this reaction was deleted, and we constructed this instance for first time. So this method is <b>unsafe</b>. <p>
+     * Tips: Although this reaction was deleted, the normal value will be returned if we already stored this before.
+     */
+    @Override
+    long getTimeStamp();
+
+    /**
      * Delete this reaction . <p>
      * Need {@link Permission#MESSAGE_MANAGE} <b>unless this reaction has been sent by you</b>.
      */
