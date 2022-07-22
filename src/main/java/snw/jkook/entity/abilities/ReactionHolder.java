@@ -30,8 +30,10 @@ public interface ReactionHolder {
      * Get the users that added the specified emoji to this object.
      *
      * @param emoji The emoji as the search condition
+     * @throws IllegalStateException Thrown if the Bot does not have permission to access the specified emoji.
+     *                               (e.g. The Bot is not a member of the guild behind the emoji)
      */
-    Collection<User> getUserByReaction(CustomEmoji emoji);
+    Collection<User> getUserByReaction(CustomEmoji emoji) throws IllegalStateException;
 
     /**
      * Add a emoji as the reaction to this object.
