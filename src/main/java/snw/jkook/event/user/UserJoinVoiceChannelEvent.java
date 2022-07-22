@@ -23,7 +23,7 @@ import snw.jkook.event.HandlerList;
 import java.util.Objects;
 
 /**
- * Represents an event related to a user joined a voice channel.
+ * Represents an event that means a user joined a voice channel.
  */
 public class UserJoinVoiceChannelEvent extends UserEvent {
     private static final HandlerList handlers = new HandlerList();

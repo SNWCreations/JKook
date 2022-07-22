@@ -20,7 +20,7 @@ import snw.jkook.entity.Role;
 import snw.jkook.event.HandlerList;
 
 /**
- * Represents an event related to a role was created.
+ * Represents an event that means a role was created.
  */
 public class RoleCreateEvent extends RoleEvent {
     private static final HandlerList handlers = new HandlerList();

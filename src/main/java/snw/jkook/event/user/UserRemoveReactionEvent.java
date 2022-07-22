@@ -23,7 +23,7 @@ import snw.jkook.event.HandlerList;
 import java.util.Objects;
 
 /**
- * Represents an event related to a user removed a reaction to a message.
+ * Represents an event that means a user removed a reaction to a message.
  */
 public class UserRemoveReactionEvent extends UserEvent {
     private static final HandlerList handlers = new HandlerList();

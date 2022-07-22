@@ -24,7 +24,7 @@ import snw.jkook.event.HandlerList;
 import java.util.Objects;
 
 /**
- * Represents the event related to a user clicked a button in a message.
+ * Represents the event that means a user clicked a button in a message.
  */
 public class UserClickButtonEvent extends UserEvent {
     private static final HandlerList handlers = new HandlerList();

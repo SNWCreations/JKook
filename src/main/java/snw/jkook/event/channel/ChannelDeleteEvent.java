@@ -22,7 +22,7 @@ import snw.jkook.event.HandlerList;
 import java.util.Objects;
 
 /**
- * Represents an event related to an operator deleted a channel.
+ * Represents an event that means an operator deleted a channel.
  */
 public class ChannelDeleteEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();

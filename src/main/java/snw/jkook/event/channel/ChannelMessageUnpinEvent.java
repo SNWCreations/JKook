@@ -21,7 +21,7 @@ import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
 
 /**
- * Represents an event related to a message was unpinned.
+ * Represents an event that means a message was unpinned.
  */
 public class ChannelMessageUnpinEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();

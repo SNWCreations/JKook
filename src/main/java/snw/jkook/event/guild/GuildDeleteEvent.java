@@ -20,7 +20,7 @@ import snw.jkook.entity.Guild;
 import snw.jkook.event.HandlerList;
 
 /**
- * Represents an event related to a guild was deleted.
+ * Represents an event that means a guild was deleted.
  */
 public class GuildDeleteEvent extends GuildEvent {
     private static final HandlerList handlers = new HandlerList();

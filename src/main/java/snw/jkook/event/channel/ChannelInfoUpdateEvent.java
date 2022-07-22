@@ -20,7 +20,7 @@ import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
 
 /**
- * Represents an event related to a channel was updated.
+ * Represents an event that means a channel was updated.
  */
 public class ChannelInfoUpdateEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();

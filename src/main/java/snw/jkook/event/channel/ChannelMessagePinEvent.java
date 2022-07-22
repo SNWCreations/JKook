@@ -21,7 +21,7 @@ import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
 
 /**
- * Represents an event related to a message was pinned.
+ * Represents an event that means a message was pinned.
  */
 public class ChannelMessagePinEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();

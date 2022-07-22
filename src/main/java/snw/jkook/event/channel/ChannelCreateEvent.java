@@ -20,7 +20,7 @@ import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
 
 /**
- * Represents an event related to an operator created a channel.
+ * Represents an event that means an operator created a channel.
  */
 public class ChannelCreateEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();

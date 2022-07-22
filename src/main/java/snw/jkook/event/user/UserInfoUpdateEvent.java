@@ -20,7 +20,7 @@ import snw.jkook.entity.User;
 import snw.jkook.event.HandlerList;
 
 /**
- * Represents an event related to a user's information (nickname, avatar) was updated. <p>
+ * Represents an event that means a user's information (nickname, avatar) was updated. <p>
  * To get new information, use methods in {@link User} interface. <p>
  * <b>This event will be fired only the one of the following condition is true:</b>
  * <ul>

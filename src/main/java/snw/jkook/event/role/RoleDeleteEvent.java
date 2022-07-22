@@ -20,7 +20,7 @@ import snw.jkook.entity.Role;
 import snw.jkook.event.HandlerList;
 
 /**
- * Represents an event related to a role was deleted. <p>
+ * Represents an event that means a role was deleted. <p>
  * <b>WARNING: Do not call {@link Role#delete()} using the deleted role that provided by this event. Or unexpected bad thing will happen.</b>
  */
 public class RoleDeleteEvent extends RoleEvent {

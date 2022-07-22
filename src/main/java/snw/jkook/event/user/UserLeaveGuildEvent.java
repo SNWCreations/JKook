@@ -23,7 +23,7 @@ import snw.jkook.event.HandlerList;
 import java.util.Objects;
 
 /**
- * Represents an event related to a user left the guild.
+ * Represents an event that means a user left the guild.
  */
 public class UserLeaveGuildEvent extends UserEvent {
     private static final HandlerList handlers = new HandlerList();

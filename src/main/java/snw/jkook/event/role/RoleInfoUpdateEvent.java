@@ -20,7 +20,7 @@ import snw.jkook.entity.Role;
 import snw.jkook.event.HandlerList;
 
 /**
- * Represents an event related to a role's information was updated. <p>
+ * Represents an event that means a role's information was updated. <p>
  * To get the new information, use methods in {@link Role} interface.
  */
 public class RoleInfoUpdateEvent extends RoleEvent {

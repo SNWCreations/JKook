@@ -23,7 +23,7 @@ import snw.jkook.event.HandlerList;
 import java.util.Objects;
 
 /**
- * Represents an event related to a user added a reaction to a message.
+ * Represents an event that means a user added a reaction to a message.
  */
 public class UserAddReactionEvent extends UserEvent {
     private static final HandlerList handlers = new HandlerList();

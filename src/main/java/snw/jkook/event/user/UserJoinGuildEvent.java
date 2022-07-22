@@ -23,7 +23,7 @@ import snw.jkook.event.HandlerList;
 import java.util.Objects;
 
 /**
- * Represents an event related to a user joined the guild.
+ * Represents an event that means a user joined the guild.
  */
 public class UserJoinGuildEvent extends UserEvent {
     private static final HandlerList handlers = new HandlerList();
