@@ -16,6 +16,7 @@
 
 package snw.jkook.event.channel;
 
+import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
 
@@ -26,10 +27,12 @@ public class ChannelMessagePinEvent extends ChannelEvent {
     private static final HandlerList handlers = new HandlerList();
 
     private final String messageId;
+    private final User operator;
 
-    public ChannelMessagePinEvent(final long timeStamp, final Channel channel, final String messageId) {
+    public ChannelMessagePinEvent(final long timeStamp, final Channel channel, final String messageId, User operator) {
         super(timeStamp, channel);
         this.messageId = messageId;
+        this.operator = operator;
     }
 
     /**
@@ -37,6 +40,13 @@ public class ChannelMessagePinEvent extends ChannelEvent {
      */
     public String getMessageId() {
         return messageId;
+    }
+
+    /**
+     * Get the operator.
+     */
+    public User getOperator() {
+        return operator;
     }
 
     public static HandlerList getHandlers() {
