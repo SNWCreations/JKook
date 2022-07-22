@@ -16,7 +16,6 @@
 
 package snw.jkook.entity;
 
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
 import snw.jkook.Permission;
 import snw.jkook.entity.abilities.Nameable;
@@ -45,18 +44,6 @@ public interface CustomEmoji extends Nameable {
      */
     @Nullable
     Guild getGuild();
-
-    /**
-     * Get the uploader of this emoji. <p>
-     * If this emoji has not owned by a guild, this method will return null.
-     *
-     * @return Always null
-     * @deprecated It is not useful to provide this.
-     */
-    @Nullable
-    @Deprecated
-    @Contract("-> null")
-    User getUploader();
 
     /**
      * Delete this emoji .

@@ -16,7 +16,6 @@
 
 package snw.jkook.entity.abilities;
 
-import snw.jkook.HttpAPI;
 import snw.jkook.entity.Invitation;
 import snw.jkook.util.PageIterator;
 
@@ -42,15 +41,5 @@ public interface InviteHolder {
      * @return The invite link URL string
      */
     String createInvite(int validSeconds, int validTimes);
-
-    /**
-     * Mark the invite link that matches the specified url code as invalid.
-     *
-     * @param urlCode The url code to be marked
-     * @see Invitation#getUrlCode()
-     * @deprecated Use {@link HttpAPI#removeInvite(String)} instead. This method will do nothing.
-     */
-    @Deprecated
-    void removeInvite(String urlCode);
 
 }

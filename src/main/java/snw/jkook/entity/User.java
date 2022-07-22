@@ -80,14 +80,6 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     boolean isBanned();
 
     /**
-     * Return true if this user's mobile number has verified.
-     *
-     * @deprecated Kook official does not provide this attribute.
-     */
-    @Deprecated
-    boolean isMobileVerified();
-
-    /**
      * Get the roles that this user have. <p>
      * The result is a set of role ID.
      * The result is read-only.
