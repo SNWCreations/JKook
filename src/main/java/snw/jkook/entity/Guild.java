@@ -75,6 +75,11 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     PageIterator<Set<Channel>> getChannels();
 
     /**
+     * Get all the roles in this guild.
+     */
+    PageIterator<Set<Role>> getRoles();
+
+    /**
      * Get the voice server region of this guild.
      */
     String getVoiceChannelServerRegion();
