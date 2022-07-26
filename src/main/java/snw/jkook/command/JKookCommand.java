@@ -16,6 +16,7 @@
 
 package snw.jkook.command;
 
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import snw.jkook.JKook;
 import snw.jkook.util.Validate;
 
@@ -29,23 +30,45 @@ import java.util.Objects;
  */
 public final class JKookCommand {
     private final String rootName;
-    private final char prefix;
+    @Deprecated
+    private char prefix;
     private CommandExecutor executor;
     private final Collection<JKookCommand> subcommands = new ArrayList<>();
     private final Collection<String> aliases = new ArrayList<>();
+    private final Collection<String> prefixes = new ArrayList<>();
     private String description;
 
     private boolean registerFlag = false; // just a flag!
 
     /**
-     * The main constructor.
+     * The constructor with only one prefix.
      *
      * @param rootName The name of this command (e.g. "example")
      * @param prefix   The prefix (default '/', e.g. '.')
      */
     public JKookCommand(String rootName, char prefix) {
+        this(rootName, Collections.singletonList(String.valueOf(prefix)));
+    }
+
+    /**
+     * The constructor with only one prefix.
+     *
+     * @param rootName The name of this command (e.g. "example")
+     * @param prefix   The prefix (default '/', e.g. '.')
+     */
+    public JKookCommand(String rootName, String prefix) {
+        this(rootName, Collections.singletonList(prefix));
+    }
+
+    /**
+     * The main constructor.
+     *
+     * @param rootName The name of this command (e.g. "example")
+     * @param prefixes   The prefixes (default only add '/', e.g. '.')
+     */
+    public JKookCommand(String rootName, Collection<String> prefixes) {
         this.rootName = Objects.requireNonNull(rootName);
-        this.prefix = prefix;
+        this.prefixes.addAll(prefixes);
     }
 
     /**
@@ -91,6 +114,16 @@ public final class JKookCommand {
     }
 
     /**
+     * Add a prefix to this command.
+     * @param prefix The prefix to be added
+     */
+    public JKookCommand addPrefix(String prefix) {
+        ensureNotRegistered();
+        prefixes.add(prefix);
+        return this;
+    }
+
+    /**
      * Add an alias for this command.
      *
      * @param alias The alias to be added
@@ -122,7 +155,11 @@ public final class JKookCommand {
 
     /**
      * Get the prefix of this command.
+     *
+     * @deprecated Since 0.24.0, we support more prefixes.
      */
+    @Deprecated
+    @ScheduledForRemoval(inVersion = "0.25.0")
     public char getPrefix() {
         return prefix;
     }
@@ -153,6 +190,13 @@ public final class JKookCommand {
      */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * Get the prefixes of this command.
+     */
+    public Collection<String> getPrefixes() {
+        return prefixes;
     }
 
     // specific-methods following:
