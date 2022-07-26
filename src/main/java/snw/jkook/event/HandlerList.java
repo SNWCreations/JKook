@@ -16,14 +16,17 @@
 
 package snw.jkook.event;
 
-import org.apache.commons.lang.Validate;
 import org.jetbrains.annotations.Contract;
 import snw.jkook.JKook;
+import snw.jkook.util.Validate;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Represents a list that contains all the handlers related to an event type.

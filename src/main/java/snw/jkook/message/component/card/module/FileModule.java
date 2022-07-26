@@ -16,8 +16,8 @@
 
 package snw.jkook.message.component.card.module;
 
-import org.apache.commons.lang.Validate;
 import snw.jkook.message.component.FileComponent;
+import snw.jkook.util.Validate;
 
 /**
  * Represents the module that contains a file. Only normal files are supported.

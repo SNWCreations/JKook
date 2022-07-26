@@ -16,7 +16,6 @@
 
 package snw.jkook.config.file;
 
-import org.apache.commons.lang.Validate;
 import org.jetbrains.annotations.NotNull;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
@@ -28,6 +27,7 @@ import snw.jkook.JKook;
 import snw.jkook.config.Configuration;
 import snw.jkook.config.ConfigurationSection;
 import snw.jkook.config.InvalidConfigurationException;
+import snw.jkook.util.Validate;
 
 import java.io.File;
 import java.io.FileNotFoundException;

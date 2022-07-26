@@ -16,8 +16,8 @@
 
 package snw.jkook.command;
 
-import org.apache.commons.lang.Validate;
 import snw.jkook.JKook;
+import snw.jkook.util.Validate;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -16,9 +16,9 @@
 
 package snw.jkook.message.component.card.module;
 
-import org.apache.commons.lang.Validate;
 import snw.jkook.entity.abilities.Accessory;
 import snw.jkook.entity.abilities.AccessoryHolder;
+import snw.jkook.util.Validate;
 
 /**
  * Represents the module with plain text.

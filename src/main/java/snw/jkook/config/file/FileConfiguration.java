@@ -16,12 +16,12 @@
 
 package snw.jkook.config.file;
 
-import org.apache.commons.lang.Validate;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import snw.jkook.config.Configuration;
 import snw.jkook.config.InvalidConfigurationException;
 import snw.jkook.config.MemoryConfiguration;
+import snw.jkook.util.Validate;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

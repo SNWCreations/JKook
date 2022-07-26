@@ -16,8 +16,8 @@
 
 package snw.jkook.scheduler;
 
-import org.apache.commons.lang.Validate;
 import snw.jkook.JKook;
+import snw.jkook.util.Validate;
 
 /**
  * This class provides an easy way to schedule tasks to JKook scheduler.

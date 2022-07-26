@@ -16,7 +16,6 @@
 
 package snw.jkook.entity.mute;
 
-import snw.jkook.HttpAPI;
 import snw.jkook.entity.Guild;
 
 import java.util.Collection;

@@ -16,10 +16,10 @@
 
 package snw.jkook.config;
 
-import org.apache.commons.lang.Validate;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import snw.jkook.util.Validate;
 
 import java.util.*;
 

@@ -16,8 +16,8 @@
 
 package snw.jkook.bot;
 
-import org.apache.commons.lang.Validate;
 import org.yaml.snakeyaml.Yaml;
+import snw.jkook.util.Validate;
 
 import java.io.File;
 import java.io.InputStream;
