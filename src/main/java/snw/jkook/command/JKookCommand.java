@@ -33,6 +33,8 @@ public final class JKookCommand {
     @Deprecated
     private char prefix;
     private CommandExecutor executor;
+    private UserCommandExecutor userCommandExecutor;
+    private ConsoleCommandExecutor consoleCommandExecutor;
     private final Collection<JKookCommand> subcommands = new ArrayList<>();
     private final Collection<String> aliases = new ArrayList<>();
     private final Collection<String> prefixes = new ArrayList<>();
@@ -92,6 +94,28 @@ public final class JKookCommand {
     }
 
     /**
+     * Set the executor for Kook users of this command.
+     *
+     * @param userCommandExecutor The executor of this command
+     */
+    public JKookCommand executesUser(UserCommandExecutor userCommandExecutor) {
+        ensureNotRegistered();
+        this.userCommandExecutor = userCommandExecutor;
+        return this;
+    }
+
+    /**
+     * Set the executor for console of this command.
+     *
+     * @param consoleCommandExecutor The executor of this command
+     */
+    public JKookCommand executesConsole(ConsoleCommandExecutor consoleCommandExecutor) {
+        ensureNotRegistered();
+        this.consoleCommandExecutor = consoleCommandExecutor;
+        return this;
+    }
+
+    /**
      * Add a subcommand to this command.
      *
      * @param command The subcommand object
@@ -104,7 +128,7 @@ public final class JKookCommand {
 
     /**
      * Set the description of this command.
-     * 
+     *
      * @param description The description to set
      */
     public JKookCommand setDescription(String description) {
@@ -169,6 +193,20 @@ public final class JKookCommand {
      */
     public CommandExecutor getExecutor() {
         return executor;
+    }
+
+    /**
+     * Get the executor for Kook users of this command.
+     */
+    public UserCommandExecutor getUserCommandExecutor() {
+        return userCommandExecutor;
+    }
+
+    /**
+     * Get the executor for console of this command.
+     */
+    public ConsoleCommandExecutor getConsoleCommandExecutor() {
+        return consoleCommandExecutor;
     }
 
     /**
