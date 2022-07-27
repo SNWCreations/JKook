@@ -44,6 +44,15 @@ public interface Bot {
     User getUser();
 
     /**
+     * Set the user that bound to this Bot. <p>
+     * This method should be called by API implementations, <b>NOT Bot</b>.
+     *
+     * @param user The user object
+     * @throws IllegalStateException Thrown if the Bot has already bound to a user
+     */
+    void setUser(User user) throws IllegalStateException;
+
+    /**
      * Get logger of this Bot. <p>
      * The result is different from {@link Core#getLogger()}.
      */

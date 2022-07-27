@@ -75,6 +75,7 @@ public abstract class BaseBot implements Bot {
     }
 
     // This method should be called by API implementations only.
+    @Override
     public void setUser(final User user) {
         Objects.requireNonNull(user);
         if (this.user != null) {
