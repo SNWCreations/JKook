@@ -16,9 +16,6 @@
 
 package snw.jkook.command;
 
-import org.jetbrains.annotations.Nullable;
-import snw.jkook.message.Message;
-
 /**
  * Represents an executor for a command, but only for console.
  *
@@ -31,7 +28,6 @@ public interface ConsoleCommandExecutor {
      *
      * @param sender    The sender
      * @param arguments The arguments
-     * @param message   The message related to this execution (Maybe null if the console executed this command)
      */
-    void onCommand(ConsoleCommandSender sender, String[] arguments, @Nullable Message message);
+    void onCommand(ConsoleCommandSender sender, String[] arguments);
 }
