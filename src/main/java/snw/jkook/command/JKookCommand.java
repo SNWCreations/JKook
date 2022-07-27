@@ -16,7 +16,6 @@
 
 package snw.jkook.command;
 
-import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import snw.jkook.JKook;
 import snw.jkook.util.Validate;
 
@@ -30,8 +29,6 @@ import java.util.Objects;
  */
 public final class JKookCommand {
     private final String rootName;
-    @Deprecated
-    private char prefix;
     private CommandExecutor executor;
     private UserCommandExecutor userCommandExecutor;
     private ConsoleCommandExecutor consoleCommandExecutor;
@@ -175,17 +172,6 @@ public final class JKookCommand {
      */
     public String getRootName() {
         return rootName;
-    }
-
-    /**
-     * Get the prefix of this command.
-     *
-     * @deprecated Since 0.24.0, we support more prefixes.
-     */
-    @Deprecated
-    @ScheduledForRemoval(inVersion = "0.25.0")
-    public char getPrefix() {
-        return prefix;
     }
 
     /**
