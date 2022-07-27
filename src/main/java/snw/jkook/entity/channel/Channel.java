@@ -18,6 +18,7 @@ package snw.jkook.entity.channel;
 
 import org.jetbrains.annotations.Nullable;
 import snw.jkook.Permission;
+import snw.jkook.entity.Guild;
 import snw.jkook.entity.Role;
 import snw.jkook.entity.User;
 import snw.jkook.entity.abilities.InviteHolder;
@@ -30,6 +31,11 @@ import java.util.Collection;
  * Represents a channel.
  */
 public interface Channel extends Nameable, InviteHolder, MasterHolder {
+
+    /**
+     * Get the guild that contains this channel.
+     */
+    Guild getGuild();
 
     /**
      * Get the ID of this channel.
