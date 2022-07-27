@@ -16,6 +16,7 @@
 
 package snw.jkook.message;
 
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.Permission;
 import snw.jkook.entity.abilities.ReactionHolder;
 import snw.jkook.entity.abilities.Receivable;
@@ -36,6 +37,12 @@ public interface Message extends Receivable, ReactionHolder {
      * Get the ID of this message.
      */
     String getId();
+
+    /**
+     * Get the message that quoted by this message.
+     */
+    @Nullable
+    Message getQuote();
 
     /**
      * Delete this message .
