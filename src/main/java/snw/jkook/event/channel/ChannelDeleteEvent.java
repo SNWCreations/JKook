@@ -16,6 +16,7 @@
 
 package snw.jkook.event.channel;
 
+import org.jetbrains.annotations.Contract;
 import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.HandlerList;
 
@@ -44,13 +45,12 @@ public class ChannelDeleteEvent extends ChannelEvent {
      * Get the channel related to this event. <p>
      * <b>DO NOT USE THIS METHOD</b>. <p>
      * Because in some situations (e.g. We know this channel for first time), we can't provide this.
-     *
-     * @return Always <code>null</code>
      */
     @Deprecated
     @Override
+    @Contract("-> fail")
     public Channel getChannel() {
-        return null;
+        throw new UnsupportedOperationException("No channel available for ChannelDeleteEvent!");
     }
 
     public static HandlerList getHandlers() {
