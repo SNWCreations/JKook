@@ -39,7 +39,15 @@ public interface Message extends Receivable, ReactionHolder {
     String getId();
 
     /**
-     * Get the message that quoted by this message.
+     * Get the message that quoted by this message. <p>
+     * <b>WARNING!</b> In the result of this method, only the following methods are safe:
+     * <ul>
+     *     <li>{@link #getComponent()}</li>
+     *     <li>{@link #getId()}</li>
+     *     <li>{@link #getSender()}</li>
+     *     <li>{@link #getTimeStamp()}</li>
+     * </ul>
+     * The result of the other methods are <b>undefined</b>. Maybe throwing exceptions? Or providing incorrect result?
      */
     @Nullable
     Message getQuote();
