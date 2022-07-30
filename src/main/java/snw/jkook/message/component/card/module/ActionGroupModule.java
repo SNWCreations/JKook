@@ -40,4 +40,20 @@ public class ActionGroupModule extends BaseModule {
     public List<ActionModule> getButtons() {
         return buttons;
     }
+
+    /**
+     * A simple builder for building {@link ActionGroupModule}.
+     */
+    public static class Builder {
+        private final List<ActionModule> modules = new LinkedList<>();
+
+        public Builder add(ActionModule module) {
+            modules.add(module);
+            return this;
+        }
+
+        public ActionGroupModule build() {
+            return new ActionGroupModule(modules);
+        }
+    }
 }

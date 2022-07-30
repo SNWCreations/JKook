@@ -40,4 +40,20 @@ public class ImageGroupModule extends BaseModule {
     public List<ImageModule> getImages() {
         return images;
     }
+
+    /**
+     * A simple builder for building {@link ImageGroupModule}.
+     */
+    public static class Builder {
+        private final List<ImageModule> modules = new LinkedList<>();
+
+        public Builder add(ImageModule module) {
+            modules.add(module);
+            return this;
+        }
+
+        public ImageGroupModule build() {
+            return new ImageGroupModule(modules);
+        }
+    }
 }

@@ -58,4 +58,33 @@ public class ParagraphModule extends BaseModule implements AccessoryHolder {
     public List<PlainTextModule> getModules() {
         return modules;
     }
+
+    /**
+     * A simple builder for building {@link ParagraphModule}.
+     */
+    public static class Builder {
+        private final List<PlainTextModule> modules = new LinkedList<>();
+        private Integer cols;
+        private Accessory accessory;
+
+        public Builder setColumns(int cols) {
+            this.cols = cols;
+            return this;
+        }
+
+        public Builder add(PlainTextModule module) {
+            modules.add(module);
+            return this;
+        }
+
+        public Builder setAccessory(Accessory accessory) {
+            this.accessory = accessory;
+            return this;
+        }
+
+        public ParagraphModule build() {
+            Validate.notNull(cols, "Columns is not defined yet!");
+            return new ParagraphModule(cols, modules, accessory);
+        }
+    }
 }

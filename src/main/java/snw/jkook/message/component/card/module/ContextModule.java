@@ -19,6 +19,7 @@ package snw.jkook.message.component.card.module;
 import snw.jkook.util.Validate;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ContextModule extends BaseModule {
@@ -34,5 +35,26 @@ public class ContextModule extends BaseModule {
      */
     public List<BaseModule> getModules() {
         return modules;
+    }
+
+    /**
+     * A simple builder for building {@link ContextModule}.
+     */
+    public static class Builder {
+        private final List<BaseModule> modules = new LinkedList<>();
+
+        public Builder add(PlainTextModule module) {
+            modules.add(module);
+            return this;
+        }
+
+        public Builder add(ImageModule module) {
+            modules.add(module);
+            return this;
+        }
+
+        public ContextModule build() {
+            return new ContextModule(modules);
+        }
     }
 }

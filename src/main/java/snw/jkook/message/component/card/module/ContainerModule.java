@@ -41,4 +41,20 @@ public class ContainerModule extends BaseModule {
     public List<ImageModule> getImages() {
         return images;
     }
+
+    /**
+     * A simple builder for building {@link ContainerModule}.
+     */
+    public static class Builder {
+        private final List<ImageModule> modules = new LinkedList<>();
+
+        public Builder add(ImageModule module) {
+            modules.add(module);
+            return this;
+        }
+
+        public ContainerModule build() {
+            return new ContainerModule(modules);
+        }
+    }
 }
