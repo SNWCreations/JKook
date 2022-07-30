@@ -36,6 +36,7 @@ public final class JKookCommand {
     private final Collection<String> aliases = new ArrayList<>();
     private final Collection<String> prefixes = new ArrayList<>();
     private String description;
+    private String helpContent;
 
     private boolean registerFlag = false; // just a flag!
 
@@ -135,6 +136,19 @@ public final class JKookCommand {
     }
 
     /**
+     * Set the help content of this command. <p>
+     * The provided value will show if the user requested the help of this command. <p>
+     * For example, I have command called "hi", if user just use "/help" (provided by API implementations),
+     *  The description will show. But if user use "/help hi", the help content will be sent to the user.
+     * @param helpContent The help message content
+     */
+    public JKookCommand setHelpContent(String helpContent) {
+        ensureNotRegistered();
+        this.helpContent = helpContent;
+        return this;
+    }
+
+    /**
      * Add a prefix to this command.
      * @param prefix The prefix to be added
      */
@@ -221,6 +235,13 @@ public final class JKookCommand {
      */
     public Collection<String> getPrefixes() {
         return prefixes;
+    }
+
+    /**
+     * Get the help message content of this command.
+     */
+    public String getHelpContent() {
+        return helpContent;
     }
 
     // specific-methods following:
