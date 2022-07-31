@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package snw.jkook.bot;
+package snw.jkook.plugin;
 
 import org.slf4j.Logger;
 import snw.jkook.Core;
@@ -26,53 +26,53 @@ import java.io.File;
 import java.io.InputStream;
 
 /**
- * Represents a Bot. <p>
- * To make a Bot, extend {@link BaseBot}.
+ * Represents a Plugin. <p>
+ * To make a Plugin, extend {@link BasePlugin}.
  */
-public interface Bot {
+public interface Plugin {
 
     // NOTE:
-    // If you want to implement this interface, I suggest you to use BaseBot instead.
+    // If you want to implement this interface, I suggest you to use BasePlugin instead.
     // Still want to implement this? Alright, you won.
     // But I have something to tell you.
-    // You should define the constructor with the same parameter from BaseBot. It's easy, isn't it?
+    // You should define the constructor with the same parameter from BasePlugin. It's easy, isn't it?
     // Warning is here, if you don't do that and your implementation does not work, don't say anything!
 
     /**
-     * Get the user representation of this Bot.
+     * Get the user representation of this Plugin.
      */
     User getUser();
 
     /**
-     * Set the user that bound to this Bot. <p>
-     * This method should be called by API implementations, <b>NOT Bot</b>.
+     * Set the user that bound to this Plugin. <p>
+     * This method should be called by API implementations, <b>NOT Plugin</b>.
      *
      * @param user The user object
-     * @throws IllegalStateException Thrown if the Bot has already bound to a user
+     * @throws IllegalStateException Thrown if the Plugin has already bound to a user
      */
     void setUser(User user) throws IllegalStateException;
 
     /**
-     * Get logger of this Bot. <p>
+     * Get logger of this Plugin. <p>
      * The result is different from {@link Core#getLogger()}.
      */
     Logger getLogger();
 
     /**
-     * Calls on loading this Bot. <p>
+     * Calls on loading this Plugin. <p>
      * You can do things (e.g. extract default configuration files) at this stage.
      */
     void onLoad();
 
     /**
-     * Calls on enabling this Bot. <p>
+     * Calls on enabling this Plugin. <p>
      * You can do things (e.g. Register commands) at this stage.
      */
     void onEnable();
 
     /**
-     * Calls on disabling this Bot (before client fully shutdown). <p>
-     * You can do things (e.g. close services) at this stage. And the Bot won't receive events at this stage.
+     * Calls on disabling this Plugin (before client fully shutdown). <p>
+     * You can do things (e.g. close services) at this stage. And the Plugin won't receive events at this stage.
      */
     void onDisable();
 
@@ -95,7 +95,7 @@ public interface Bot {
     void saveDefaultConfig();
 
     /**
-     * Attempts to save a resource embedded in the Bot archive file to the data folder of this Bot.
+     * Attempts to save a resource embedded in the Plugin archive file to the data folder of this Plugin.
      *
      * @param path                The canonical path (e.g. "/lang/en_US.json")
      * @param replace             Decides the API implementation will overwrite the file on the disk.
@@ -105,7 +105,7 @@ public interface Bot {
     void saveResource(String path, boolean replace, boolean ignorePathStructure) throws IllegalArgumentException;
 
     /**
-     * Get the input stream of a resource embedded in the Bot archive file.
+     * Get the input stream of a resource embedded in the Plugin archive file.
      *
      * @param path The canonical path (e.g. "/lang/en_US.json")
      * @return The input stream of the target resource, null is returned if the resource was not found
@@ -113,12 +113,12 @@ public interface Bot {
     InputStream getResource(String path);
 
     /**
-     * Get the data folder of this Bot.
+     * Get the data folder of this Plugin.
      */
     File getDataFolder();
 
     /**
-     * Get the token string for this Bot. Used for Kook HTTP API authentication. <b>NOT ENCRYPTED.</b>
+     * Get the token string for this Plugin. Used for Kook HTTP API authentication. <b>NOT ENCRYPTED.</b>
      */
     String getToken();
 
@@ -130,12 +130,12 @@ public interface Bot {
     HttpAPI getHttpAPI();
 
     /**
-     * Get the binary file representation of this Bot.
+     * Get the binary file representation of this Plugin.
      */
     File getFile();
 
     /**
-     * Get the description of this Bot.
+     * Get the description of this Plugin.
      */
-    BotDescription getDescription();
+    PluginDescription getDescription();
 }

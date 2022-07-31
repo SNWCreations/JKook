@@ -14,11 +14,21 @@
  * limitations under the License.
  */
 
-/**
- * The package related to Kook Bot in JKook framework.
- *
- * @see snw.jkook.bot.Bot
- * @see snw.jkook.bot.BaseBot
- */
+package snw.jkook.plugin;
 
-package snw.jkook.bot;
+import java.io.File;
+
+/**
+ * Represents a Plugin loader.
+ */
+public interface PluginLoader {
+
+    /**
+     * Load a Plugin (its main class) and return its instance.
+     *
+     * @param file The Plugin data source
+     * @return The Plugin instance
+     * @throws InvalidPluginException Thrown if an error occurred while the loader attempting to load the Plugin
+     */
+    Plugin loadPlugin(final File file, final String token) throws InvalidPluginException;
+}

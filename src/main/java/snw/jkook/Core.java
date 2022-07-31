@@ -17,10 +17,10 @@
 package snw.jkook;
 
 import org.slf4j.Logger;
-import snw.jkook.bot.Bot;
 import snw.jkook.command.CommandManager;
 import snw.jkook.command.ConsoleCommandSender;
 import snw.jkook.event.EventManager;
+import snw.jkook.plugin.Plugin;
 import snw.jkook.scheduler.Scheduler;
 
 /**
@@ -59,7 +59,7 @@ public interface Core {
 
     /**
      * Get the root logger. Provided by JKook API implementation. <p>
-     * <b>But it's recommended to use {@link Bot#getLogger()} instead.</b>
+     * <b>But it's recommended to use {@link Plugin#getLogger()} instead.</b>
      */
     Logger getLogger();
 

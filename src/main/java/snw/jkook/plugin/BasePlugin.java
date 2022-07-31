@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package snw.jkook.bot;
+package snw.jkook.plugin;
 
 import org.slf4j.Logger;
 import snw.jkook.HttpAPI;
@@ -29,10 +29,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 /**
- * Represents a basic Kook Bot implementation. Use YAML as configuration. <p>
- * Bot developers should extend this class to make their own Bot program.
+ * Represents a basic Kook Plugin implementation. Use YAML as configuration. <p>
+ * Plugin developers should extend this class to make their own Plugin program.
  */
-public abstract class BaseBot implements Bot {
+public abstract class BasePlugin implements Plugin {
     private final String token;
     private User user = null; // DO NOT MODIFY THIS FIELD, OR SOMETHING BAD WILL HAPPEN
     private final Logger logger;
@@ -41,22 +41,22 @@ public abstract class BaseBot implements Bot {
     private final File dataFolder;
     private final HttpAPI httpAPI;
     private final File file;
-    private final BotDescription description;
+    private final PluginDescription description;
 
-    // Bot developers should NEVER use this constructor.
+    // Plugin developers should NEVER use this constructor.
     // And they should NEVER define new constructor.
-    // This constructor should be called by Bot loaders (provided by API implementations).
-    protected BaseBot(
+    // This constructor should be called by Plugin loaders (provided by API implementations).
+    protected BasePlugin(
             final String token,
             final File configFile,
             final File dataFolder,
             final HttpAPI httpAPI,
-            final BotDescription description,
+            final PluginDescription description,
             final File file,
             final Logger logger
     ) {
-        if (!(getClass().getClassLoader() instanceof BotLoader)) {
-            throw new InvalidBotException("The Bot class should be loaded by using BotLoader.");
+        if (!(getClass().getClassLoader() instanceof PluginLoader)) {
+            throw new InvalidPluginException("This class should be loaded by using PluginLoader.");
         }
         this.token = Objects.requireNonNull(token);
         this.configFile = Objects.requireNonNull(configFile);
@@ -65,8 +65,8 @@ public abstract class BaseBot implements Bot {
         this.description = Objects.requireNonNull(description);
         this.file = Objects.requireNonNull(file);
         this.logger = Objects.requireNonNull(logger);
-        // after this bot was constructed, the implementations should get the user information
-        //  about this bot and call its setUser(User) method.
+        // after this plugin was constructed, the implementations should get the user information
+        //  about this plugin and call its setUser(User) method.
     }
 
     @Override
@@ -128,7 +128,7 @@ public abstract class BaseBot implements Bot {
     public void saveResource(final String path, final boolean replace, final boolean ignorePathStructure) throws IllegalArgumentException {
         try (final InputStream stream = getResource(path)) {
             if (stream == null) {
-                throw new IllegalArgumentException("The target resource does not embedded in the Bot JAR file");
+                throw new IllegalArgumentException("The target resource does not embedded in the Plugin JAR file");
             }
 
             final String targetPath;
@@ -204,7 +204,7 @@ public abstract class BaseBot implements Bot {
     }
 
     @Override
-    public BotDescription getDescription() {
+    public PluginDescription getDescription() {
         return description;
     }
 }

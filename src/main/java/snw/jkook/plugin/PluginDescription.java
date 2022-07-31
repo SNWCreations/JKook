@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package snw.jkook.bot;
+package snw.jkook.plugin;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 /**
- * Represents the description of a Kook Bot. <p>
- * It is not visible for Kook users. This is just designed for store the data of "bot.yml" file.
+ * Represents the description of a Kook Plugin. <p>
+ * It is not visible for Kook users. This is just designed for store the data of "plugin.yml" file.
  */
-public final class BotDescription {
+public final class PluginDescription {
     private final String name;
     private final String version;
     private final String apiVersion;
@@ -33,7 +33,7 @@ public final class BotDescription {
     private final String mainClassName;
     private final List<String> authors; // UNMODIFIABLE
 
-    public BotDescription(String name, String version, String apiVersion, String description, String website, String mainClassName, List<String> authors) {
+    public PluginDescription(String name, String version, String apiVersion, String description, String website, String mainClassName, List<String> authors) {
         this.name = Objects.requireNonNull(name);
         this.version = Objects.requireNonNull(version);
         this.apiVersion = Objects.requireNonNull(apiVersion);
@@ -44,21 +44,21 @@ public final class BotDescription {
     }
 
     /**
-     * Get the name of this Bot.
+     * Get the name of this Plugin.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Get the version of this Bot.
+     * Get the version of this Plugin.
      */
     public String getVersion() {
         return version;
     }
 
     /**
-     * Get the API version that the Bot used.
+     * Get the API version that the Plugin used.
      */
     public String getApiVersion() {
         return apiVersion;
@@ -72,7 +72,7 @@ public final class BotDescription {
     }
 
     /**
-     * Get the website of this Bot. <p>
+     * Get the website of this Plugin. <p>
      * Empty string is returned if the description is not provided in the description file.
      */
     public String getWebsite() {
@@ -80,14 +80,14 @@ public final class BotDescription {
     }
 
     /**
-     * Get the authors of this Bot.
+     * Get the authors of this Plugin.
      */
     public List<String> getAuthors() {
         return authors;
     }
 
     /**
-     * Get the main class name of this Bot.
+     * Get the main class name of this Plugin.
      */
     public String getMainClassName() {
         return mainClassName;

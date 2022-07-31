@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package snw.jkook.bot;
+package snw.jkook.plugin;
 
 import org.yaml.snakeyaml.Yaml;
 import snw.jkook.util.Validate;
@@ -30,50 +30,50 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
- * Represents a basic Bot loader implementation.
+ * Represents a basic Plugin loader implementation.
  */
-public abstract class BotClassLoader extends URLClassLoader implements BotLoader {
+public abstract class PluginClassLoader extends URLClassLoader implements PluginLoader {
 
     static {
         ClassLoader.registerAsParallelCapable(); // I think it will make the loader faster.
     }
 
-    public BotClassLoader() {
+    public PluginClassLoader() {
         super(new URL[]{});
     }
 
     @Override
-    public Bot loadBot(File file, String token) throws InvalidBotException {
+    public Plugin loadPlugin(File file, String token) throws InvalidPluginException {
         try {
-            return loadBot0(file, token);
+            return loadPlugin0(file, token);
         } catch (Exception e) {
-            throw new InvalidBotException(e);
+            throw new InvalidPluginException(e);
         }
     }
 
-    private Bot loadBot0(File file, String token) throws Exception {
-        Validate.isTrue(file.exists(), "The Bot file does not exists.");
-        Validate.isTrue(file.isFile(), "The Bot file is invalid.");
-        Validate.isTrue(file.canRead(), "The Bot file does not accessible. (We can't read it!)");
-        Validate.isTrue(!token.isEmpty(), "The Bot Token is empty.");
+    private Plugin loadPlugin0(File file, String token) throws Exception {
+        Validate.isTrue(file.exists(), "The Plugin file does not exists.");
+        Validate.isTrue(file.isFile(), "The Plugin file is invalid.");
+        Validate.isTrue(file.canRead(), "The Plugin file does not accessible. (We can't read it!)");
+        Validate.isTrue(!token.isEmpty(), "The Plugin Token is empty.");
 
         // load the given file as JarFile
         try (final JarFile jar = new JarFile(file)) { // try-with-resources!
-            // try to find bot.yml
-            JarEntry entry = jar.getJarEntry("bot.yml");
+            // try to find plugin.yml
+            JarEntry entry = jar.getJarEntry("plugin.yml");
             if (entry == null) {
-                throw new IllegalArgumentException("We cannot find bot.yml ."); // bot.yml is not found, so we don't know where is the main class
+                throw new IllegalArgumentException("We cannot find plugin.yml ."); // plugin.yml is not found, so we don't know where is the main class
             }
-            // or we should read the bot.yml and parse it to get information
-            final InputStream bot = jar.getInputStream(entry);
+            // or we should read the plugin.yml and parse it to get information
+            final InputStream plugin = jar.getInputStream(entry);
             final Yaml parser = new Yaml();
 
             // construct description
-            final BotDescription description;
+            final PluginDescription description;
             try {
-                final Map<String, Object> ymlContent = parser.load(bot);
+                final Map<String, Object> ymlContent = parser.load(plugin);
                 // noinspection unchecked
-                description = new BotDescription(
+                description = new PluginDescription(
                         (String) ymlContent.get("name"),
                         (String) ymlContent.get("version"),
                         (String) ymlContent.get("api-version"),
@@ -83,18 +83,18 @@ public abstract class BotClassLoader extends URLClassLoader implements BotLoader
                         (List<String>) ymlContent.getOrDefault("authors", new ArrayList<String>())
                 );
             } catch (ClassCastException e) {
-                throw new IllegalArgumentException("Invalid bot.yml", e);
+                throw new IllegalArgumentException("Invalid plugin.yml", e);
             }
 
             // if the class has already loaded, a conflict has been found.
-            // so many things can cause the conflict, such as a class with the same binary name, or the Bot author trying to use internal classes (e.g. java.lang.Object)
+            // so many things can cause the conflict, such as a class with the same binary name, or the Plugin author trying to use internal classes (e.g. java.lang.Object)
             if (findLoadedClass(description.getMainClassName()) != null) {
-                throw new IllegalArgumentException("The main class defined in bot.yml has already been defined in the VM.");
+                throw new IllegalArgumentException("The main class defined in plugin.yml has already been defined in the VM.");
             }
 
-            addURL(file.toURI().toURL()); // add URL of the Bot archive file so that the classloader can find the Bot main class.
+            addURL(file.toURI().toURL()); // add URL of the Plugin archive file so that the classloader can find the Plugin main class.
             // No check, because the Exception will be handled by the caller
-            Class<? extends Bot> main = loadClass(description.getMainClassName(), true).asSubclass(Bot.class);
+            Class<? extends Plugin> main = loadClass(description.getMainClassName(), true).asSubclass(Plugin.class);
 
             if (main.getDeclaredConstructors().length != 1) {
                 throw new IllegalAccessException("Unexpected constructor count, expected 1, got " + main.getDeclaredConstructors().length);
@@ -105,12 +105,12 @@ public abstract class BotClassLoader extends URLClassLoader implements BotLoader
     }
 
     /**
-     * Construct the Bot instance with given information and return it.
+     * Construct the Plugin instance with given information and return it.
      *
-     * @param cls         The Bot main class
+     * @param cls         The Plugin main class
      * @param description The description object
-     * @param token       The token for the Bot
+     * @param token       The token for the Plugin
      * @throws Exception Thrown if something went really wrong
      */
-    protected abstract <T extends Bot> T construct(final Class<T> cls, final BotDescription description, final String token) throws Exception;
+    protected abstract <T extends Plugin> T construct(final Class<T> cls, final PluginDescription description, final String token) throws Exception;
 }

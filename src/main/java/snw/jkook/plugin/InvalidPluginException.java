@@ -14,38 +14,38 @@
  * limitations under the License.
  */
 
-package snw.jkook.bot;
+package snw.jkook.plugin;
 
 /**
- * This exception will be thrown if an unexpected situation happened when the {@link BotLoader} attempting to load a Bot.
+ * This exception will be thrown if an unexpected situation happened when the {@link PluginLoader} attempting to load a Plugin.
  */
-public class InvalidBotException extends RuntimeException {
+public class InvalidPluginException extends RuntimeException {
 
     /**
-     * Constructs a new InvalidBotException with {@code null} as its
+     * Constructs a new InvalidPluginException with {@code null} as its
      * detail message.  The cause is not initialized, and may subsequently be
      * initialized by a call to {@link #initCause}.
      */
-    public InvalidBotException() {
+    public InvalidPluginException() {
     }
 
     /**
-     * Constructs a new InvalidBotException with the specified detail message.
+     * Constructs a new InvalidPluginException with the specified detail message.
      * The cause is not initialized, and may subsequently be initialized by a
      * call to {@link #initCause}.
      *
      * @param message the detail message. The detail message is saved for
      *                later retrieval by the {@link #getMessage()} method.
      */
-    public InvalidBotException(String message) {
+    public InvalidPluginException(String message) {
         super(message);
     }
 
     /**
-     * Constructs a new InvalidBotException with the specified detail message and
+     * Constructs a new InvalidPluginException with the specified detail message and
      * cause.  <p>Note that the detail message associated with
      * {@code cause} is <i>not</i> automatically incorporated in
-     * this InvalidBotException's detail message.
+     * this InvalidPluginException's detail message.
      *
      * @param message the detail message (which is saved for later retrieval
      *                by the {@link #getMessage()} method).
@@ -54,15 +54,15 @@ public class InvalidBotException extends RuntimeException {
      *                permitted, and indicates that the cause is nonexistent or
      *                unknown.)
      */
-    public InvalidBotException(String message, Throwable cause) {
+    public InvalidPluginException(String message, Throwable cause) {
         super(message, cause);
     }
 
     /**
-     * Constructs a new InvalidBotException with the specified cause and a
+     * Constructs a new InvalidPluginException with the specified cause and a
      * detail message of <code>(cause==null ? null : cause.toString())</code>
      * (which typically contains the class and detail message of
-     * <code>cause</code>).  This constructor is useful for InvalidBotExceptions
+     * <code>cause</code>).  This constructor is useful for InvalidPluginExceptions
      * that are little more than wrappers for other throwables.
      *
      * @param cause the cause (which is saved for later retrieval by the
@@ -70,7 +70,7 @@ public class InvalidBotException extends RuntimeException {
      *              permitted, and indicates that the cause is nonexistent or
      *              unknown.)
      */
-    public InvalidBotException(Throwable cause) {
+    public InvalidPluginException(Throwable cause) {
         super(cause);
     }
 }
