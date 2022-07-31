@@ -17,7 +17,6 @@
 package snw.jkook.plugin;
 
 import org.slf4j.Logger;
-import snw.jkook.HttpAPI;
 import snw.jkook.config.file.FileConfiguration;
 import snw.jkook.config.file.YamlConfiguration;
 import snw.jkook.entity.User;
@@ -39,7 +38,6 @@ public abstract class BasePlugin implements Plugin {
     private final File configFile;
     private FileConfiguration configuration;
     private final File dataFolder;
-    private final HttpAPI httpAPI;
     private final File file;
     private final PluginDescription description;
 
@@ -50,7 +48,6 @@ public abstract class BasePlugin implements Plugin {
             final String token,
             final File configFile,
             final File dataFolder,
-            final HttpAPI httpAPI,
             final PluginDescription description,
             final File file,
             final Logger logger
@@ -61,7 +58,6 @@ public abstract class BasePlugin implements Plugin {
         this.token = Objects.requireNonNull(token);
         this.configFile = Objects.requireNonNull(configFile);
         this.dataFolder = Objects.requireNonNull(dataFolder);
-        this.httpAPI = Objects.requireNonNull(httpAPI);
         this.description = Objects.requireNonNull(description);
         this.file = Objects.requireNonNull(file);
         this.logger = Objects.requireNonNull(logger);
@@ -145,8 +141,10 @@ public abstract class BasePlugin implements Plugin {
                     getLogger().warn("Cannot save resource \"{}\" because it has already exists.", path);
                     return;
                 }
+                //noinspection ResultOfMethodCallIgnored
                 local.delete();
             } else {
+                //noinspection ResultOfMethodCallIgnored
                 local.mkdirs();
             }
 
@@ -191,11 +189,6 @@ public abstract class BasePlugin implements Plugin {
     @Override
     public String getToken() {
         return token;
-    }
-
-    @Override
-    public HttpAPI getHttpAPI() {
-        return httpAPI;
     }
 
     @Override

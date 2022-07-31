@@ -29,6 +29,13 @@ import snw.jkook.scheduler.Scheduler;
 public interface Core {
 
     /**
+     * Get the HTTP API entry.
+     *
+     * @see HttpAPI
+     */
+    HttpAPI getHttpAPI();
+
+    /**
      * Get the JKook API version.
      */
     String getAPIVersion();

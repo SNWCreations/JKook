@@ -18,7 +18,6 @@ package snw.jkook.plugin;
 
 import org.slf4j.Logger;
 import snw.jkook.Core;
-import snw.jkook.HttpAPI;
 import snw.jkook.config.file.FileConfiguration;
 import snw.jkook.entity.User;
 
@@ -121,13 +120,6 @@ public interface Plugin {
      * Get the token string for this Plugin. Used for Kook HTTP API authentication. <b>NOT ENCRYPTED.</b>
      */
     String getToken();
-
-    /**
-     * Get the HTTP API.
-     *
-     * @see HttpAPI
-     */
-    HttpAPI getHttpAPI();
 
     /**
      * Get the binary file representation of this Plugin.

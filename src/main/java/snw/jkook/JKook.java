@@ -51,6 +51,14 @@ public final class JKook {
         JKook.core = core;
     }
 
+    /**
+     * Get the HTTP API entry.
+     *
+     * @see HttpAPI
+     */
+    public static HttpAPI getHttpAPI() {
+        return core.getHttpAPI();
+    }
 
     /**
      * Get the JKook API version.
