@@ -117,11 +117,6 @@ public interface Plugin {
     File getDataFolder();
 
     /**
-     * Get the token string for this Plugin. Used for Kook HTTP API authentication. <b>NOT ENCRYPTED.</b>
-     */
-    String getToken();
-
-    /**
      * Get the binary file representation of this Plugin.
      */
     File getFile();

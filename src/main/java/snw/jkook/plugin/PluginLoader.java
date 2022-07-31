@@ -30,5 +30,5 @@ public interface PluginLoader {
      * @return The Plugin instance
      * @throws InvalidPluginException Thrown if an error occurred while the loader attempting to load the Plugin
      */
-    Plugin loadPlugin(final File file, final String token) throws InvalidPluginException;
+    Plugin loadPlugin(final File file) throws InvalidPluginException;
 }

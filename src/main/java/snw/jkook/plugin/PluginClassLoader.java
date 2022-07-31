@@ -43,19 +43,18 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
     }
 
     @Override
-    public Plugin loadPlugin(File file, String token) throws InvalidPluginException {
+    public Plugin loadPlugin(File file) throws InvalidPluginException {
         try {
-            return loadPlugin0(file, token);
+            return loadPlugin0(file);
         } catch (Exception e) {
             throw new InvalidPluginException(e);
         }
     }
 
-    private Plugin loadPlugin0(File file, String token) throws Exception {
+    private Plugin loadPlugin0(File file) throws Exception {
         Validate.isTrue(file.exists(), "The Plugin file does not exists.");
         Validate.isTrue(file.isFile(), "The Plugin file is invalid.");
         Validate.isTrue(file.canRead(), "The Plugin file does not accessible. (We can't read it!)");
-        Validate.isTrue(!token.isEmpty(), "The Plugin Token is empty.");
 
         // load the given file as JarFile
         try (final JarFile jar = new JarFile(file)) { // try-with-resources!
@@ -100,7 +99,7 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
                 throw new IllegalAccessException("Unexpected constructor count, expected 1, got " + main.getDeclaredConstructors().length);
             }
 
-            return construct(main, description, token); // construct the final instance and return it
+            return construct(main, description); // construct the final instance and return it
         }
     }
 
@@ -109,8 +108,7 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
      *
      * @param cls         The Plugin main class
      * @param description The description object
-     * @param token       The token for the Plugin
      * @throws Exception Thrown if something went really wrong
      */
-    protected abstract <T extends Plugin> T construct(final Class<T> cls, final PluginDescription description, final String token) throws Exception;
+    protected abstract <T extends Plugin> T construct(final Class<T> cls, final PluginDescription description) throws Exception;
 }

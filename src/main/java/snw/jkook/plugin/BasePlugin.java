@@ -32,7 +32,6 @@ import java.util.Objects;
  * Plugin developers should extend this class to make their own Plugin program.
  */
 public abstract class BasePlugin implements Plugin {
-    private final String token;
     private User user = null; // DO NOT MODIFY THIS FIELD, OR SOMETHING BAD WILL HAPPEN
     private final Logger logger;
     private final File configFile;
@@ -45,7 +44,6 @@ public abstract class BasePlugin implements Plugin {
     // And they should NEVER define new constructor.
     // This constructor should be called by Plugin loaders (provided by API implementations).
     protected BasePlugin(
-            final String token,
             final File configFile,
             final File dataFolder,
             final PluginDescription description,
@@ -55,7 +53,6 @@ public abstract class BasePlugin implements Plugin {
         if (!(getClass().getClassLoader() instanceof PluginLoader)) {
             throw new InvalidPluginException("This class should be loaded by using PluginLoader.");
         }
-        this.token = Objects.requireNonNull(token);
         this.configFile = Objects.requireNonNull(configFile);
         this.dataFolder = Objects.requireNonNull(dataFolder);
         this.description = Objects.requireNonNull(description);
@@ -184,11 +181,6 @@ public abstract class BasePlugin implements Plugin {
     @Override
     public File getDataFolder() {
         return dataFolder;
-    }
-
-    @Override
-    public String getToken() {
-        return token;
     }
 
     @Override
