@@ -16,10 +16,17 @@
 
 package snw.jkook.scheduler;
 
+import snw.jkook.plugin.Plugin;
+
 /**
  * Represents a scheduled task.
  */
 public interface Task {
+
+    /**
+     * Get the owner of this task.
+     */
+    Plugin getPlugin();
 
     /**
      * Attempts to cancel this task.

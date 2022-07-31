@@ -16,6 +16,8 @@
 
 package snw.jkook.scheduler;
 
+import snw.jkook.plugin.Plugin;
+
 /**
  * Represents a scheduler, you can schedule tasks to run. <p>
  */
@@ -26,7 +28,7 @@ public interface Scheduler {
      *
      * @param runnable The runnable to execute
      */
-    void runTask(Runnable runnable);
+    void runTask(Plugin plugin, Runnable runnable);
 
     /**
      * Schedule the runnable to be executed after the delay.
@@ -35,7 +37,7 @@ public interface Scheduler {
      * @param delay    The delay time
      * @return The task object
      */
-    Task runTaskLater(Runnable runnable, long delay); // note: delay is millisecond.
+    Task runTaskLater(Plugin plugin, Runnable runnable, long delay); // note: delay is millisecond.
 
     /**
      * Execute the runnable again and again.
@@ -45,7 +47,7 @@ public interface Scheduler {
      * @param period   The time between two execution
      * @return The task object
      */
-    Task runTaskTimer(Runnable runnable, long delay, long period); // note: both period and delay are in millisecond.
+    Task runTaskTimer(Plugin plugin, Runnable runnable, long delay, long period); // note: both period and delay are in millisecond.
 
     /**
      * Return true if the task that represented by the ID is scheduled.
@@ -61,4 +63,10 @@ public interface Scheduler {
      * @param taskId The ID for finding the task
      */
     void cancelTask(int taskId);
+
+    /**
+     * Cancel all the tasks that related to the provided plugin.
+     * @param plugin The plugin as the task owner
+     */
+    void cancelTasks(Plugin plugin);
 }
