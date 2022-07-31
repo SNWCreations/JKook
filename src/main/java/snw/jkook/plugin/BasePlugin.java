@@ -19,7 +19,6 @@ package snw.jkook.plugin;
 import org.slf4j.Logger;
 import snw.jkook.config.file.FileConfiguration;
 import snw.jkook.config.file.YamlConfiguration;
-import snw.jkook.entity.User;
 
 import java.io.*;
 import java.net.URL;
@@ -32,7 +31,6 @@ import java.util.Objects;
  * Plugin developers should extend this class to make their own Plugin program.
  */
 public abstract class BasePlugin implements Plugin {
-    private User user = null; // DO NOT MODIFY THIS FIELD, OR SOMETHING BAD WILL HAPPEN
     private final Logger logger;
     private final File configFile;
     private FileConfiguration configuration;
@@ -60,21 +58,6 @@ public abstract class BasePlugin implements Plugin {
         this.logger = Objects.requireNonNull(logger);
         // after this plugin was constructed, the implementations should get the user information
         //  about this plugin and call its setUser(User) method.
-    }
-
-    @Override
-    public User getUser() {
-        return user;
-    }
-
-    // This method should be called by API implementations only.
-    @Override
-    public void setUser(final User user) {
-        Objects.requireNonNull(user);
-        if (this.user != null) {
-            throw new IllegalStateException();
-        }
-        this.user = user;
     }
 
     @Override

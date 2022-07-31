@@ -19,6 +19,7 @@ package snw.jkook;
 import org.slf4j.Logger;
 import snw.jkook.command.CommandManager;
 import snw.jkook.command.ConsoleCommandSender;
+import snw.jkook.entity.User;
 import snw.jkook.event.EventManager;
 import snw.jkook.plugin.Plugin;
 import snw.jkook.scheduler.Scheduler;
@@ -79,6 +80,20 @@ public interface Core {
      * Get the command manager.
      */
     CommandManager getCommandManager();
+
+    /**
+     * Get the user representation of the Bot in this VM.
+     */
+    User getUser();
+
+    /**
+     * Set the user that bound to this client. <p>
+     * This method should be called by API implementations, <b>NOT Plugin</b>.
+     *
+     * @param user The user object
+     * @throws IllegalStateException Thrown if the client has already bound to a user
+     */
+    void setUser(User user) throws IllegalStateException;
 
     /**
      * Shutdown the client. Stops everything.

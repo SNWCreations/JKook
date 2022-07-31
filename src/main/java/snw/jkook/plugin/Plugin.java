@@ -19,7 +19,6 @@ package snw.jkook.plugin;
 import org.slf4j.Logger;
 import snw.jkook.Core;
 import snw.jkook.config.file.FileConfiguration;
-import snw.jkook.entity.User;
 
 import java.io.File;
 import java.io.InputStream;
@@ -36,20 +35,6 @@ public interface Plugin {
     // But I have something to tell you.
     // You should define the constructor with the same parameter from BasePlugin. It's easy, isn't it?
     // Warning is here, if you don't do that and your implementation does not work, don't say anything!
-
-    /**
-     * Get the user representation of this Plugin.
-     */
-    User getUser();
-
-    /**
-     * Set the user that bound to this Plugin. <p>
-     * This method should be called by API implementations, <b>NOT Plugin</b>.
-     *
-     * @param user The user object
-     * @throws IllegalStateException Thrown if the Plugin has already bound to a user
-     */
-    void setUser(User user) throws IllegalStateException;
 
     /**
      * Get logger of this Plugin. <p>
