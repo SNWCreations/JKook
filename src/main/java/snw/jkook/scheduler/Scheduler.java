@@ -19,7 +19,7 @@ package snw.jkook.scheduler;
 import snw.jkook.plugin.Plugin;
 
 /**
- * Represents a scheduler, you can schedule tasks to run. <p>
+ * Represents a scheduler, you can schedule tasks to run.
  */
 public interface Scheduler {
 
@@ -28,11 +28,12 @@ public interface Scheduler {
      *
      * @param runnable The runnable to execute
      */
-    void runTask(Plugin plugin, Runnable runnable);
+    void runTask(Runnable runnable);
 
     /**
      * Schedule the runnable to be executed after the delay.
      *
+     * @param plugin The plugin as the task owner
      * @param runnable The runnable to execute
      * @param delay    The delay time
      * @return The task object
@@ -42,6 +43,7 @@ public interface Scheduler {
     /**
      * Execute the runnable again and again.
      *
+     * @param plugin The plugin as the task owner
      * @param runnable The runnable to execute
      * @param delay    The time before first run
      * @param period   The time between two execution
