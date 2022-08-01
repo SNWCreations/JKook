@@ -37,6 +37,7 @@ public abstract class BasePlugin implements Plugin {
     private final File dataFolder;
     private final File file;
     private final PluginDescription description;
+    private volatile boolean enabled = false;
 
     // Plugin developers should NEVER use this constructor.
     // And they should NEVER define new constructor.
@@ -63,6 +64,23 @@ public abstract class BasePlugin implements Plugin {
     @Override
     public Logger getLogger() {
         return logger;
+    }
+
+    @Override
+    public final void setEnabled(boolean enabled) {
+        if (!this.enabled == enabled) {
+            this.enabled = enabled;
+            if (enabled) {
+                onEnable();
+            } else {
+                onDisable();
+            }
+        }
+    }
+
+    @Override
+    public final boolean isEnabled() {
+        return enabled;
     }
 
     @Override

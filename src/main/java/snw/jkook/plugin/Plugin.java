@@ -43,6 +43,18 @@ public interface Plugin {
     Logger getLogger();
 
     /**
+     * Set the value indicating whether this plugin is currently enabled.
+     *
+     * @param enabled The status
+     */
+    void setEnabled(boolean enabled);
+
+    /**
+     * Returns a value indicating whether this plugin is currently enabled.
+     */
+    boolean isEnabled();
+
+    /**
      * Calls on loading this Plugin. <p>
      * You can do things (e.g. extract default configuration files) at this stage.
      */
