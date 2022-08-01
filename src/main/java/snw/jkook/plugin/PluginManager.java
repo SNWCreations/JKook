@@ -64,8 +64,8 @@ public interface PluginManager {
     /**
      * Loads the plugin in the specified file.
      * <p>
-     * Tips: this method just <b>load</b> the plugin, won't <b>enable</b> it.
-     * You should enable it by calling {@link #enablePlugin(Plugin)} manually.
+     * Tips: this method just <b>load</b> the plugin,
+     *  won't call {@link Plugin#onLoad()}, {@link Plugin#reloadConfig()} and {@link Plugin#onEnable()}.
      *
      * @param file The file that represents a plugin
      * @return The loaded plugin
@@ -78,6 +78,7 @@ public interface PluginManager {
      *
      * @param directory Directory to check for plugins
      * @return A list of all plugins loaded
+     * @see #enablePlugin(Plugin)
      */
     @NotNull Plugin[] loadPlugins(File directory);
 
