@@ -14,31 +14,11 @@
  * limitations under the License.
  */
 
-package snw.jkook.message.component.card.module;
-
-import snw.jkook.entity.abilities.Accessory;
+package snw.jkook.message.component.card.element;
 
 /**
- * Represents the module that contains an image file.
+ * Represents a base element of a card message.
  */
-public class ImageModule extends BaseModule implements Accessory {
-    private final String src;
-    private final Mode mode;
-
-    public ImageModule(String src, Mode mode) {
-        this.src = src;
-        this.mode = mode;
-    }
-
-    /**
-     * Get the source URL of the image file.
-     */
-    public String getSource() {
-        return src;
-    }
-
-    @Override
-    public Mode getMode() {
-        return mode;
-    }
+public abstract class BaseElement {
+     BaseElement() {}
 }

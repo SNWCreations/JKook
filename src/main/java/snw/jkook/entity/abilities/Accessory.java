@@ -22,11 +22,6 @@ package snw.jkook.entity.abilities;
 public interface Accessory {
 
     /**
-     * Get the current mode of this accessory.
-     */
-    Mode getMode();
-
-    /**
      * Represents the available modes of the accessories.
      */
     enum Mode {

@@ -66,13 +66,13 @@ public class CardBuilder {
      *     new CardBuilder()
      *         .setTheme(Theme.PRIMARY)
      *         .setSize(Size.LG)
-     *         .addModule(new HeaderModule("This is header")) // now the builder have a header
-     *         .addModule(new MarkdownModule("This is body", null) // now the builder have a body
+     *         .addModule(new HeaderModule(new PlainTextElement("This is header", false))) // now the builder have a header
+     *         .addModule(new SectionModule(new PlainTextElement("This is body"), null, null)) // now the builder have a body
      *         .newCard() // now a card will be built, and the data will be reset
      *         .setTheme(Theme.DANGER)
      *         .setSize(Size.LG)
-     *         .addModule(new HeaderModule("This is the new card!")) // the header of the second card
-     *         .addModule(new MarkdownModule("This is body of the second card", null) // the body of the second card
+     *         .addModule(new HeaderModule(new PlainTextElement("This is header of the second card", false))) // the header of the second card
+     *         .addModule(new SectionModule(new PlainTextElement("This is body of the second card"), null, null)) // the body of the second card
      *         .build(); // you will got a multiple card, and two cards inside it.
      * </pre></blockquote>
      */

@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-package snw.jkook.message.component.card.module;
+package snw.jkook.message.component.card.element;
 
 /**
- * Represents something can cause some actions.
+ * Represents the element that can cause some interaction.
  */
-public class ActionModule extends BaseModule {
-
-    protected ActionModule() {
-    }
-
+public abstract class InteractElement extends BaseElement {
+    InteractElement() {}
 }

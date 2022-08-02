@@ -16,21 +16,24 @@
 
 package snw.jkook.message.component.card.module;
 
+import snw.jkook.message.component.card.element.PlainTextElement;
 import snw.jkook.util.Validate;
 
 /**
  * Represents the header module. Accepts plain text only.
  */
 public class HeaderModule extends BaseModule {
-    private final String value;
+    private final PlainTextElement element;
 
-    public HeaderModule(String value) {
-        Validate.notNull(value, "The value cannot be null");
-        Validate.isTrue(value.length() <= 100, "Unexpected header text length. Expected <= 100, got " + value.length());
-        this.value = value;
+    public HeaderModule(PlainTextElement element) {
+        Validate.isTrue(element.getContent().length() <= 100, "Too long content for header module is not allowed.");
+        this.element = element;
     }
 
-    public String getValue() {
-        return value;
+    /**
+     * Get the element that stored by this module.
+     */
+    public PlainTextElement getElement() {
+        return element;
     }
 }

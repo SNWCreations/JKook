@@ -14,15 +14,25 @@
  * limitations under the License.
  */
 
-package snw.jkook.message.component.card.module;
+package snw.jkook.message.component.card.element;
 
-import snw.jkook.entity.abilities.Accessory;
+import snw.jkook.util.Validate;
 
 /**
- * Represents the module with Markdown text.
+ * Represents the KMarkdown element.
  */
-public class MarkdownModule extends PlainTextModule {
-    public MarkdownModule(String value, Accessory accessory) {
-        super(value, accessory);
+public class MarkdownElement extends BaseElement {
+    private final String content;
+
+    public MarkdownElement(String content) {
+        Validate.isTrue(content.length() <= 5000, "Too long content for markdown element is not allowed.");
+        this.content = content;
+    }
+
+    /**
+     * Get the content that stored by this element.
+     */
+    public String getContent() {
+        return content;
     }
 }

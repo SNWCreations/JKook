@@ -16,6 +16,7 @@
 
 package snw.jkook.message.component.card.module;
 
+import snw.jkook.message.component.card.element.ImageElement;
 import snw.jkook.util.Validate;
 
 import java.util.Collections;
@@ -27,9 +28,9 @@ import java.util.List;
  * But it is different from {@link ImageGroupModule}, the image is not cropped to a square. Multiple images are arranged vertically.
  */
 public class ContainerModule extends BaseModule {
-    private final List<ImageModule> images;
+    private final List<ImageElement> images;
 
-    public ContainerModule(List<ImageModule> images) {
+    public ContainerModule(List<ImageElement> images) {
         Validate.isTrue(images.size() >= 1, "Unexpected image module count, expected >= 1, got " + images.size());
         Validate.isTrue(images.size() <= 9, "Unexpected image module count, expected <= 9, got " + images.size());
         this.images = Collections.unmodifiableList(new LinkedList<>(images));
@@ -38,7 +39,7 @@ public class ContainerModule extends BaseModule {
     /**
      * Get the images that already stored in this module.
      */
-    public List<ImageModule> getImages() {
+    public List<ImageElement> getImages() {
         return images;
     }
 
@@ -46,9 +47,9 @@ public class ContainerModule extends BaseModule {
      * A simple builder for building {@link ContainerModule}.
      */
     public static class Builder {
-        private final List<ImageModule> modules = new LinkedList<>();
+        private final List<ImageElement> modules = new LinkedList<>();
 
-        public Builder add(ImageModule module) {
+        public Builder add(ImageElement module) {
             modules.add(module);
             return this;
         }

@@ -18,31 +18,45 @@ package snw.jkook.message.component.card.module;
 
 import snw.jkook.entity.abilities.Accessory;
 import snw.jkook.entity.abilities.AccessoryHolder;
+import snw.jkook.message.component.card.element.MarkdownElement;
+import snw.jkook.message.component.card.element.PlainTextElement;
+import snw.jkook.message.component.card.structure.Paragraph;
 import snw.jkook.util.Validate;
 
 /**
- * Represents the module with plain text.
+ * Represents a section module.
  */
-public class PlainTextModule extends BaseModule implements AccessoryHolder {
-    private final String value;
+public class SectionModule extends BaseModule implements AccessoryHolder {
+    private final Object text;
     private final Accessory accessory;
+    private final Accessory.Mode mode;
 
-    public PlainTextModule(String value, Accessory accessory) {
-        Validate.notNull(value, "The value cannot be null");
-        Validate.isTrue(value.length() <= 2000, "Unexpected content length, expected <= 2000, got " + value.length());
-        this.value = value;
+    public SectionModule(Object text, Accessory accessory, Accessory.Mode mode) {
+        Validate.isTrue(
+                text instanceof PlainTextElement ||
+               text instanceof MarkdownElement ||
+               text instanceof Paragraph,
+                "Section module only accepts plain-text, kmarkdown and paragraph."
+        );
+        this.text = text;
         this.accessory = accessory;
+        this.mode = mode;
     }
 
     /**
-     * Get the value of this module.
+     * Get the text that stored by this module.
      */
-    public String getValue() {
-        return value;
+    public Object getText() {
+        return text;
     }
 
     @Override
     public Accessory getAccessory() {
         return accessory;
+    }
+
+    @Override
+    public Accessory.Mode getMode() {
+        return mode;
     }
 }

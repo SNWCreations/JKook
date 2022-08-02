@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package snw.jkook.message.component.card.module;
+package snw.jkook.message.component.card.element;
 
 import snw.jkook.entity.abilities.Accessory;
 import snw.jkook.event.user.UserClickButtonEvent;
@@ -24,63 +24,51 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents a button module. It can cause a {@link UserClickButtonEvent}.
+ * Represents a button. It can cause a {@link UserClickButtonEvent}.
  */
-public class ButtonModule extends ActionModule implements Accessory {
-    private final EventType type;
+public class ButtonElement extends InteractElement implements Accessory {
     private final Theme theme;
     private final String value;
-    private final PlainTextModule text;
-    private final Mode mode;
+    private final EventType type;
+    private final String text;
 
-
-    public ButtonModule(Theme theme, String value, PlainTextModule text) {
-        this(EventType.NO_ACTION, theme, value, text);
+    public ButtonElement(Theme theme, String value, String text) {
+        this(theme, value, EventType.NO_ACTION, text);
     }
 
-    public ButtonModule(EventType type, Theme theme, String value, PlainTextModule text) {
-        this(type, theme, value, text, null);
-    }
-
-    public ButtonModule(EventType type, Theme theme, String value, PlainTextModule text, Mode mode) {
-        this.type = type;
+    public ButtonElement(Theme theme, String value, EventType type, String text) {
         this.theme = theme;
         this.value = value;
+        this.type = type;
         this.text = text;
-        this.mode = mode;
     }
 
     /**
-     * Get theme of this module.
+     * Get theme of this button.
      */
     public Theme getTheme() {
         return theme;
     }
 
     /**
-     * Get the value of this module.
+     * Get the value that stored by this button.
      */
     public String getValue() {
         return value;
     }
 
     /**
-     * Get the text of this module.
+     * Get the type of the event that can be caused by this button.
      */
-    public PlainTextModule getText() {
-        return text;
-    }
-
-    /**
-     * Get the event type of this module.
-     */
-    public EventType getType() {
+    public EventType getEventType() {
         return type;
     }
 
-    @Override
-    public Mode getMode() {
-        return mode;
+    /**
+     * Get the shown text of this button.
+     */
+    public String getText() {
+        return text;
     }
 
     /**

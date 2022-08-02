@@ -14,21 +14,7 @@
  * limitations under the License.
  */
 
-package snw.jkook.entity.abilities;
-
 /**
- * Represents the modules that can include other modules.
+ * This package provides the "structure" of the CardMessage in Kook.
  */
-public interface AccessoryHolder {
-
-    /**
-     * Get the accessory that this object currently holds.
-     */
-    Accessory getAccessory();
-
-    /**
-     * Get the current mode of the accessory that holds by this object.
-     */
-    Accessory.Mode getMode();
-
-}
+package snw.jkook.message.component.card.structure;

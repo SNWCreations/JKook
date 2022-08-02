@@ -16,6 +16,7 @@
 
 package snw.jkook.message.component.card.module;
 
+import snw.jkook.message.component.card.element.InteractElement;
 import snw.jkook.util.Validate;
 
 import java.util.Collections;
@@ -23,12 +24,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Represents a group of something can cause some actions. (e.g. {@link ActionModule})
+ * Represents a group of {@link InteractElement}.
  */
 public class ActionGroupModule extends BaseModule {
-    private final List<ActionModule> buttons;
+    private final List<InteractElement> buttons;
 
-    public ActionGroupModule(List<ActionModule> buttons) {
+    public ActionGroupModule(List<InteractElement> buttons) {
         Validate.isTrue(buttons.size() >= 1, "Unexpected image module count, expected >= 1, got " + buttons.size());
         Validate.isTrue(buttons.size() <= 4, "Unexpected image module count, expected <= 4, got " + buttons.size());
         this.buttons = Collections.unmodifiableList(new LinkedList<>(buttons));
@@ -37,7 +38,7 @@ public class ActionGroupModule extends BaseModule {
     /**
      * Get the images that already stored in this module.
      */
-    public List<ActionModule> getButtons() {
+    public List<InteractElement> getButtons() {
         return buttons;
     }
 
@@ -45,9 +46,9 @@ public class ActionGroupModule extends BaseModule {
      * A simple builder for building {@link ActionGroupModule}.
      */
     public static class Builder {
-        private final List<ActionModule> modules = new LinkedList<>();
+        private final List<InteractElement> modules = new LinkedList<>();
 
-        public Builder add(ActionModule module) {
+        public Builder add(InteractElement module) {
             modules.add(module);
             return this;
         }

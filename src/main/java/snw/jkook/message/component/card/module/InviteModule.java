@@ -17,37 +17,19 @@
 package snw.jkook.message.component.card.module;
 
 /**
- * Represents a module that contains an audio.
+ * Represents a module that contains an invitation link (or code).
  */
-public class AudioModule extends BaseModule {
-    private final String title;
-    private final String src;
-    private final String cover;
+public class InviteModule extends BaseModule {
+    private final String code;
 
-    public AudioModule(String title, String src, String cover) {
-        this.title = title;
-        this.src = src;
-        this.cover = cover;
+    public InviteModule(String code) {
+        this.code = code;
     }
 
     /**
-     * Get the title of this module.
+     * Get the link/code that stored by this module.
      */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * Get the source URL of this module.
-     */
-    public String getSource() {
-        return src;
-    }
-
-    /**
-     * Get the cover picture URL that will be used for this module.
-     */
-    public String getCover() {
-        return cover;
+    public String getCode() {
+        return code;
     }
 }

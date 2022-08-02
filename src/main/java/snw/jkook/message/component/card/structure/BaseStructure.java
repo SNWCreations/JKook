@@ -14,32 +14,11 @@
  * limitations under the License.
  */
 
-package snw.jkook.message.component.card.module;
+package snw.jkook.message.component.card.structure;
 
 /**
- * Represents the module that contains a video.
+ * Represents a structure object in CardMessage.
  */
-public class VideoModule extends BaseModule {
-    private final String title;
-    private final String src;
-
-    public VideoModule(String title, String src) {
-        this.title = title;
-        this.src = src;
-    }
-
-    /**
-     * Get the title of this module.
-     */
-    public String getTitle() {
-        return title;
-    }
-
-    /**
-     * Get the source URL of this module.
-     */
-    public String getSource() {
-        return src;
-    }
-
+public abstract class BaseStructure {
+    BaseStructure() {}
 }

@@ -16,6 +16,7 @@
 
 package snw.jkook.message.component.card.module;
 
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.message.component.FileComponent;
 import snw.jkook.util.Validate;
 
@@ -23,17 +24,46 @@ import snw.jkook.util.Validate;
  * Represents the module that contains a file. Only normal files are supported.
  */
 public class FileModule extends BaseModule {
-    private final FileComponent component;
+    private final FileComponent.Type type;
+    private final String src;
+    private final String title;
+    private final String cover;
 
-    public FileModule(FileComponent component) {
-        Validate.isTrue((component.getType() == FileComponent.Type.FILE), "File module only support files. (not video or audio, use VideoModule or AudioModule instead.)");
-        this.component = component;
+    public FileModule(FileComponent.Type type, String src, String title, String cover) {
+        Validate.isFalse(type == FileComponent.Type.IMAGE, "Image files does not supported by FileModule.");
+        this.type = type;
+        this.src = src;
+        this.title = title;
+        this.cover = cover;
     }
 
     /**
-     * Get the component that stored by this module.
+     * Get the type of the file that represented by this module.
      */
-    public FileComponent getComponent() {
-        return component;
+    public FileComponent.Type getType() {
+        return type;
+    }
+
+    /**
+     * Get the source URL of the file that represented by this module.
+     */
+    public String getSource() {
+        return src;
+    }
+
+    /**
+     * Get the title of the file.
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Get the cover of the file that represented by this module. <p>
+     * Null is returned if this module does not represent an audio file.
+     */
+    @Nullable
+    public String getCover() {
+        return cover;
     }
 }
