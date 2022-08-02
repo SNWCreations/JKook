@@ -65,7 +65,7 @@ public interface PluginManager {
      * Loads the plugin in the specified file.
      * <p>
      * Tips: this method just <b>load</b> the plugin,
-     *  won't call {@link Plugin#onLoad()}, {@link Plugin#reloadConfig()} and {@link Plugin#onEnable()}.
+     *  won't call {@link Plugin#onLoad()}, {@link Plugin#reloadConfig()} and {@link Plugin#onEnable()}, won't save the reference of the loaded plugin.
      *
      * @param file The file that represents a plugin
      * @return The loaded plugin
