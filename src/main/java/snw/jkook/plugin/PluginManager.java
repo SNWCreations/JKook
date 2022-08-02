@@ -80,7 +80,7 @@ public interface PluginManager {
      * @return A list of all plugins loaded
      * @see #enablePlugin(Plugin)
      */
-    @NotNull Plugin[] loadPlugins(File directory);
+    Plugin[] loadPlugins(File directory);
 
     /**
      * Disables all the loaded plugins.
