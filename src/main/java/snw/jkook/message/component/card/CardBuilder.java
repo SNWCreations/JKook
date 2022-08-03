@@ -28,7 +28,7 @@ import java.util.List;
 public class CardBuilder {
     private Theme theme;
     private Size size;
-    private List<CardScopeElement> modules = new LinkedList<>();
+    private List<BaseModule> modules = new LinkedList<>();
     private final List<CardComponent> cards = new LinkedList<>();
 
     /**

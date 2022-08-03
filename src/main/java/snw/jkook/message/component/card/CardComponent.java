@@ -17,6 +17,7 @@
 package snw.jkook.message.component.card;
 
 import snw.jkook.message.component.BaseComponent;
+import snw.jkook.message.component.card.module.BaseModule;
 import snw.jkook.util.Validate;
 
 import java.util.Collections;
@@ -27,11 +28,11 @@ import java.util.List;
  * Represents a card component.
  */
 public class CardComponent extends BaseComponent {
-    private final List<CardScopeElement> modules;
+    private final List<BaseModule> modules;
     private final Size size;
     private final Theme theme;
 
-    public CardComponent(List<CardScopeElement> modules, Size size, Theme theme) {
+    public CardComponent(List<BaseModule> modules, Size size, Theme theme) {
         Validate.isTrue(
                 size == Size.LG || size == Size.SM,
                 "Card object only accepts LG and SM size."
@@ -51,7 +52,7 @@ public class CardComponent extends BaseComponent {
     /**
      * Get the modules that stored in this component.
      */
-    public List<CardScopeElement> getModules() {
+    public List<BaseModule> getModules() {
         return modules;
     }
 
