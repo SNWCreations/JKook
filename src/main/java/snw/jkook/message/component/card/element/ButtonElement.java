@@ -19,6 +19,7 @@ package snw.jkook.message.component.card.element;
 import snw.jkook.entity.abilities.Accessory;
 import snw.jkook.event.user.UserClickButtonEvent;
 import snw.jkook.message.component.card.Theme;
+import snw.jkook.util.Validate;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,17 +31,22 @@ public class ButtonElement extends InteractElement implements Accessory {
     private final Theme theme;
     private final String value;
     private final EventType type;
-    private final String text;
+    private final BaseElement element;
 
-    public ButtonElement(Theme theme, String value, String text) {
-        this(theme, value, EventType.NO_ACTION, text);
+    public ButtonElement(Theme theme, String value, BaseElement element) {
+        this(theme, value, EventType.NO_ACTION, element);
     }
 
-    public ButtonElement(Theme theme, String value, EventType type, String text) {
+    public ButtonElement(Theme theme, String value, EventType type, BaseElement element) {
+        Validate.isTrue(
+                element instanceof PlainTextElement ||
+                element instanceof MarkdownElement,
+                "Button only accepts plain-text and kmarkdown as the text."
+        );
         this.theme = theme;
         this.value = value;
         this.type = type;
-        this.text = text;
+        this.element = element;
     }
 
     /**
@@ -67,8 +73,8 @@ public class ButtonElement extends InteractElement implements Accessory {
     /**
      * Get the shown text of this button.
      */
-    public String getText() {
-        return text;
+    public BaseElement getText() {
+        return element;
     }
 
     /**
