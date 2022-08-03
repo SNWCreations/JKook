@@ -17,6 +17,7 @@
 package snw.jkook.message.component.card;
 
 import snw.jkook.message.component.BaseComponent;
+import snw.jkook.util.Validate;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -31,6 +32,10 @@ public class CardComponent extends BaseComponent {
     private final Theme theme;
 
     public CardComponent(List<CardScopeElement> modules, Size size, Theme theme) {
+        Validate.isTrue(
+                size == Size.LG || size == Size.SM,
+                "Card object only accepts LG and SM size."
+        );
         this.modules = Collections.unmodifiableList(new LinkedList<>(modules));
         this.size = size;
         this.theme = theme;
