@@ -18,6 +18,7 @@ package snw.jkook.message.component.card.module;
 
 import snw.jkook.entity.abilities.Accessory;
 import snw.jkook.entity.abilities.AccessoryHolder;
+import snw.jkook.message.component.card.CardScopeElement;
 import snw.jkook.message.component.card.element.MarkdownElement;
 import snw.jkook.message.component.card.element.PlainTextElement;
 import snw.jkook.message.component.card.structure.Paragraph;
@@ -27,11 +28,11 @@ import snw.jkook.util.Validate;
  * Represents a section module.
  */
 public class SectionModule extends BaseModule implements AccessoryHolder {
-    private final Object text;
+    private final CardScopeElement text;
     private final Accessory accessory;
     private final Accessory.Mode mode;
 
-    public SectionModule(Object text, Accessory accessory, Accessory.Mode mode) {
+    public SectionModule(CardScopeElement text, Accessory accessory, Accessory.Mode mode) {
         Validate.isTrue(
                 text instanceof PlainTextElement ||
                text instanceof MarkdownElement ||
@@ -46,7 +47,7 @@ public class SectionModule extends BaseModule implements AccessoryHolder {
     /**
      * Get the text that stored by this module.
      */
-    public Object getText() {
+    public CardScopeElement getText() {
         return text;
     }
 
