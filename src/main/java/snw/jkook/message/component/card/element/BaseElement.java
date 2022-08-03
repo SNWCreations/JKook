@@ -16,9 +16,10 @@
 
 package snw.jkook.message.component.card.element;
 
+import snw.jkook.message.component.card.CardScopeElement;
+
 /**
  * Represents a base element of a card message.
  */
-public abstract class BaseElement {
-     BaseElement() {}
+public abstract class BaseElement extends CardScopeElement {
 }

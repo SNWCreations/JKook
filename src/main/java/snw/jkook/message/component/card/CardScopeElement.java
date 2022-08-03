@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package snw.jkook.message.component.card.module;
-
-import snw.jkook.message.component.card.CardScopeElement;
+package snw.jkook.message.component.card;
 
 /**
- * Represents a card module.
+ * Represents a thing that can be included in a Card.
  */
-public abstract class BaseModule extends CardScopeElement {
+public abstract class CardScopeElement {
+    protected CardScopeElement() {}
 }
