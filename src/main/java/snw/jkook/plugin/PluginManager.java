@@ -110,4 +110,17 @@ public interface PluginManager {
      */
     void disablePlugin(Plugin plugin);
 
+    /**
+     * Add the plugin reference to this manager. This should fail silently.
+     *
+     * @param plugin The plugin reference
+     */
+    void addPlugin(Plugin plugin);
+
+    /**
+     * Remove the plugin reference from this manager. This should fail silently.
+     *
+     * @param plugin The plugin reference
+     */
+    void removePlugin(Plugin plugin);
 }
