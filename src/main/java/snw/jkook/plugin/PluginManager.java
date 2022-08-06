@@ -83,12 +83,12 @@ public interface PluginManager {
     Plugin[] loadPlugins(File directory);
 
     /**
-     * Disables all the loaded plugins.
+     * Disables all the loaded plugins that stored in this manager.
      */
     void disablePlugins();
 
     /**
-     * Disables and removes all plugins.
+     * Disables and removes all plugins that stored in this manager.
      */
     void clearPlugins();
 
