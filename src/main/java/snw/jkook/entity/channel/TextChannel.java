@@ -33,8 +33,8 @@ public interface TextChannel extends Channel {
     /**
      * Get the messages in this channel by given information.
      *
-     * @param refer The reference message, remote will query the data around this. <p> Null to get the latest message
-     * @param isPin True if query pinned message. If you provide true, then you must provide null to "refer" argument, and only the pinned messages will be returned
+     * @param refer     The reference message, remote will query the data around this. <p> Null to get the latest message
+     * @param isPin     True if query pinned message. If you provide true, then you must provide null to "refer" argument, and only the pinned messages will be returned
      * @param queryMode The query mode. Only accepts "before", "around" and "after". Case Sensitive!
      */
     PageIterator<Collection<TextChannelMessage>> getMessages(
@@ -51,8 +51,9 @@ public interface TextChannel extends Channel {
      *                   will be considered a reply to the message corresponding to this parameter
      * @param tempTarget If you pass this parameter,
      *                   only the user to whom it corresponds can see the incoming message
+     * @return           Message ID
      */
-    void sendComponent(BaseComponent component, @Nullable Message quote, @Nullable User tempTarget);
+    String sendComponent(BaseComponent component, @Nullable Message quote, @Nullable User tempTarget);
 
     /**
      * Get the limit of minimum speaking time between two statements. (in seconds)
