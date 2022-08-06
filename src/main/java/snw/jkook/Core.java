@@ -96,6 +96,13 @@ public interface Core {
     void setUser(User user) throws IllegalStateException;
 
     /**
+     * Get the unsafe object. It can provide some <i>insecure</i> operations.
+     *
+     * @see Unsafe
+     */
+    Unsafe getUnsafe();
+
+    /**
      * Shutdown the client. Stops everything.
      */
     void shutdown();
