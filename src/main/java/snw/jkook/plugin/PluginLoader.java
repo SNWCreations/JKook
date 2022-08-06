@@ -24,7 +24,9 @@ import java.io.File;
 public interface PluginLoader {
 
     /**
-     * Load a Plugin (its main class) and return its instance.
+     * Load a Plugin (its main class) and return its instance. <p>
+     * You don't need to call any methods in the plugin instance,
+     *  just load it into the memory and return it.
      *
      * @param file The Plugin data source
      * @return The Plugin instance
