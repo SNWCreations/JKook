@@ -21,6 +21,9 @@ import snw.jkook.Permission;
 import snw.jkook.entity.abilities.ReactionHolder;
 import snw.jkook.entity.abilities.Receivable;
 import snw.jkook.message.component.BaseComponent;
+import snw.jkook.message.component.MarkdownComponent;
+import snw.jkook.message.component.card.CardComponent;
+import snw.jkook.message.component.card.MultipleCardComponent;
 import snw.jkook.util.RequirePermission;
 
 /**
@@ -32,6 +35,14 @@ public interface Message extends Receivable, ReactionHolder {
      * Get the component in this message.
      */
     BaseComponent getComponent();
+
+    /**
+     * Set the component that stored by this message. <p>
+     * Only support messages that contains {@link MarkdownComponent} or Card (both {@link CardComponent} and {@link MultipleCardComponent}) <b>now</b>.
+     *
+     * @param component The component
+     */
+    void setComponent(BaseComponent component);
 
     /**
      * Get the ID of this message.
