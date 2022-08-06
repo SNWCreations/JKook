@@ -61,6 +61,13 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     Category getParent();
 
     /**
+     * Set the category that holds this channel.
+     *
+     * @param parent The parent of this channel, provide null if you don't want this channel belongs to any category
+     */
+    void setParent(@Nullable Category parent);
+
+    /**
      * Delete this channel .
      */
     void delete();
