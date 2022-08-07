@@ -22,8 +22,9 @@ import snw.jkook.message.PrivateMessage;
 /**
  * A simple class that provide some <b>insecure</b> operations. <p>
  * The methods under this class <b>won't</b> check the arguments they have received. <p>
- * <b>DO NOT</b> provide wrong arguments! Or you should solve the problems that caused by this class by yourself.
- * Many methods in the result from this class <b>may be</b> not available or can't work correctly! Beware.
+ * <b>DO NOT</b> provide wrong arguments if possible! <p>
+ * Or you should solve the problems that caused by this class by yourself. <p>
+ * <b>Many methods in the result from this class <b>may be</b> not available or can't work correctly! Beware.</b>
  */
 public interface Unsafe {
 
