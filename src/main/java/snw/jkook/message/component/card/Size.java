@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents the available sizes of the cards.
+ * Represents the available sizes of the cards and modules.
  */
 public enum Size {
 
