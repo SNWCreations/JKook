@@ -43,6 +43,7 @@ public class ButtonElement extends InteractElement implements Accessory {
                 element instanceof MarkdownElement,
                 "Button only accepts plain-text and kmarkdown as the text."
         );
+        Validate.isFalse(theme == Theme.NONE, "Theme.NONE is unsupported for buttons!");
         this.theme = theme;
         this.value = value;
         this.type = type;
