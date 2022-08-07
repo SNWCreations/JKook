@@ -57,8 +57,6 @@ public abstract class BasePlugin implements Plugin {
         this.description = Objects.requireNonNull(description);
         this.file = Objects.requireNonNull(file);
         this.logger = Objects.requireNonNull(logger);
-        // after this plugin was constructed, the implementations should get the user information
-        //  about this plugin and call its setUser(User) method.
     }
 
     @Override
