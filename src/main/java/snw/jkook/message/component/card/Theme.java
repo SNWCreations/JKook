@@ -20,8 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents themes for the cards. <p>
- * Affects the sidebar color.
+ * Represents themes for the cards and buttons. <p>
+ * Affects the card sidebar color and button color.
  */
 public enum Theme {
 
@@ -37,6 +37,7 @@ public enum Theme {
 
     SECONDARY("secondary"),
 
+    // This is unsupported for buttons!
     NONE("none");
 
     private static final Map<String, Theme> values = new HashMap<>();
