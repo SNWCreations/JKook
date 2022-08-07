@@ -31,6 +31,18 @@ import java.util.Collection;
 public interface TextChannel extends Channel {
 
     /**
+     * Get the "topic" of this channel. (I think it should be called as "description")
+     */
+    String getTopic();
+
+    /**
+     * Set the "topic" of this channel. (I think it should be called as "description")
+     *
+     * @param topic The "topic" content, length up to 500 is allowed
+     */
+    void setTopic(String topic);
+
+    /**
      * Get the messages in this channel by given information.
      *
      * @param refer     The reference message, remote will query the data around this. <p> Null to get the latest message
