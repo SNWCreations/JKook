@@ -59,4 +59,29 @@ public interface TextChannel extends Channel {
      * Get the limit of minimum speaking time between two statements. (in seconds)
      */
     int getChatLimitTime();
+
+    /**
+     * Set the limit of minimum speaking time between two statements.
+     *  (in <b>milliseconds</b>, it is different from {@link #getChatLimitTime()}) <p>
+     * Only the following values are supported now:
+     * <ul>
+     *     <li>0</li>
+     *     <li>5000</li>
+     *     <li>10000</li>
+     *     <li>15000</li>
+     *     <li>30000</li>
+     *     <li>60000</li>
+     *     <li>120000</li>
+     *     <li>300000</li>
+     *     <li>600000</li>
+     *     <li>900000</li>
+     *     <li>1800000</li>
+     *     <li>3600000</li>
+     *     <li>7200000</li>
+     *     <li>21600000</li>
+     * </ul>
+     *
+     * @param ms The time in <b>milliseconds</b>
+     */
+    void setChatLimitTime(int ms);
 }
