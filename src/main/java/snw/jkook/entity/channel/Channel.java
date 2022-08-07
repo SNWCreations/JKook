@@ -68,6 +68,18 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     void setParent(@Nullable Category parent);
 
     /**
+     * Get the "level" of this channel. (I think it should be called as "sort order")
+     */
+    int getLevel();
+
+    /**
+     * Set the "level" of this channel. (I think it should be called as "sort order")
+     *
+     * @param level The "level"
+     */
+    void setLevel(int level);
+
+    /**
      * Delete this channel .
      */
     void delete();
