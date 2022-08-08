@@ -16,6 +16,8 @@
 
 package snw.jkook.event;
 
+import snw.jkook.plugin.Plugin;
+
 /**
  * Represents an event manager.
  */
@@ -32,7 +34,8 @@ public interface EventManager {
     /**
      * Register a handler that can process events.
      *
+     * @param plugin   The plugin as the listener's owner
      * @param listener The listener to register
      */
-    void registerHandlers(Listener listener);
+    void registerHandlers(Plugin plugin, Listener listener);
 }
