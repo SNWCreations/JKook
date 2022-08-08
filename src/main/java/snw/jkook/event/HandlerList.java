@@ -16,34 +16,32 @@
 
 package snw.jkook.event;
 
-import org.jetbrains.annotations.Contract;
 import snw.jkook.JKook;
+import snw.jkook.plugin.Plugin;
 import snw.jkook.util.Validate;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Represents a list that contains all the handlers related to an event type.
  */
-public final class HandlerList extends HashMap<Method, Object> {
+public final class HandlerList {
+    private final Set<RegisteredListener> listeners = new HashSet<>();
 
     /**
      * Add a method to this list.
      *
+     * @param plugin The plugin instance
      * @param object The instance of the class that contains the provided method
      * @param method The method instance.
      * @throws IllegalArgumentException Thrown if this operation is invalid (e.g. Static method with a valid object)
      */
-    @Contract("_, _ -> null")
-    public Object put(Method method, Object object) throws IllegalArgumentException {
+    public void add(Plugin plugin, Method method, Listener object) throws IllegalArgumentException {
         // region Verification
-        Validate.isTrue(!containsKey(method), "The method has already registered.");
+        Validate.isFalse(listeners.stream().anyMatch(IT -> IT.getMethod() == method), "The method has already registered.");
         if (Modifier.isStatic(method.getModifiers())) {
             Validate.isTrue(object == null, "We cannot invoke the static method with a object. Call this method with the target method and null instead.");
         }
@@ -64,9 +62,7 @@ public final class HandlerList extends HashMap<Method, Object> {
         Validate.isTrue(method.isAnnotationPresent(EventHandler.class), "We cannot find the " + EventHandler.class.getSimpleName() + " annotation from the provided method.");
 
         // endregion
-
-        super.put(method, object);
-        return null;
+        listeners.add(new RegisteredListener(plugin, object, method));
     }
 
     /**
@@ -76,13 +72,13 @@ public final class HandlerList extends HashMap<Method, Object> {
      */
     public void callAll(Event event) {
         synchronized (this) {
-            final List<Entry<Method, Object>> internals = new ArrayList<>();
-            final List<Entry<Method, Object>> nonInternals = new ArrayList<>();
-            for (Entry<Method, Object> entry : entrySet()) {
-                if (entry.getKey().getAnnotation(EventHandler.class).internal()) {
-                    internals.add(entry);
+            final List<RegisteredListener> internals = new ArrayList<>();
+            final List<RegisteredListener> nonInternals = new ArrayList<>();
+            for (RegisteredListener listener : listeners) {
+                if (listener.getMethod().getAnnotation(EventHandler.class).internal()) {
+                    internals.add(listener);
                 } else {
-                    nonInternals.add(entry);
+                    nonInternals.add(listener);
                 }
             }
             callAll0(internals, event);
@@ -90,15 +86,43 @@ public final class HandlerList extends HashMap<Method, Object> {
         }
     }
 
-    private void callAll0(Collection<Entry<Method, Object>> listeners, Event event) {
-        for (Entry<Method, Object> entry : listeners) {
+    private void callAll0(Collection<RegisteredListener> listeners, Event event) {
+        for (RegisteredListener listener : listeners) {
+            if (listener.getPlugin() != null && !listener.getPlugin().isEnabled()) continue;
             try {
-                entry.getKey().invoke(entry.getValue(), event);
+                listener.getMethod().invoke(listener.getListener(), event);
             } catch (InvocationTargetException | IllegalAccessException e) {
                 JKook.getLogger().error("Unexpected situation happened. :(", e);
             } catch (Throwable e) {
                 JKook.getLogger().error("Something went wrong when we attempting to call a handler.", e);
             }
+        }
+    }
+
+    /**
+     * Represents a registered listener. Included some useful information.
+     */
+    private static class RegisteredListener {
+        private final Plugin plugin;
+        private final Object listenerObj;
+        private final Method method;
+
+        private RegisteredListener(Plugin plugin, Object listenerObj, Method method) {
+            this.plugin = plugin;
+            this.listenerObj = listenerObj;
+            this.method = method;
+        }
+
+        public Plugin getPlugin() {
+            return plugin;
+        }
+
+        public Object getListener() {
+            return listenerObj;
+        }
+
+        public Method getMethod() {
+            return method;
         }
     }
 }
