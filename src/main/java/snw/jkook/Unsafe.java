@@ -17,6 +17,7 @@
 package snw.jkook;
 
 import snw.jkook.entity.CustomEmoji;
+import snw.jkook.entity.Game;
 import snw.jkook.message.PrivateMessage;
 
 /**
@@ -42,4 +43,10 @@ public interface Unsafe {
      */
     CustomEmoji getEmoji(String id);
 
+    /**
+     * Just simple constructs the Game data record representation with the provided ID and return it.
+     *
+     * @param id The Game ID
+     */
+    Game getGame(int id);
 }

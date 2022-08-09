@@ -16,6 +16,9 @@
 
 package snw.jkook;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import snw.jkook.entity.Game;
 import snw.jkook.entity.Guild;
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Category;
@@ -86,4 +89,49 @@ public interface HttpAPI {
      * @param urlCode The target
      */
     void removeInvite(String urlCode);
+
+    /**
+     * Get the game data that stored in the Kook's database.
+     */
+    PageIterator<Collection<Game>> getGames();
+
+    /**
+     * Create a new game data record at the Kook's database.
+     * This method can be called only five times a day.
+     *
+     * @param name The name of the game
+     * @param icon The icon url of the game
+     * @return The game data record representation
+     */
+    Game createGame(String name, @Nullable String icon);
+
+    /**
+     * Set the game which the Bot is playing.
+     *
+     * @param game The game representation, null if you want to clear the playing status of the Bot
+     */
+    void setPlaying(@Nullable Game game);
+
+    /**
+     * Set the music which the Bot is listening.
+     *
+     * @param softwareName The music software name. Currently supports: cloudmusic, qqmusic, kugou
+     * @param singerName The singer name
+     * @param musicName The music name
+     */
+    void setListening(
+            @NotNull String softwareName,
+            @NotNull String singerName,
+            @NotNull String musicName
+    );
+
+    /**
+     * Clear the playing status. This should fail silently.
+     */
+    void stopPlaying();
+
+    /**
+     * Clear the listening status. This should fail silently.
+     */
+    void stopListening();
 }
