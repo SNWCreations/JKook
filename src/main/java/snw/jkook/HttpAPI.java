@@ -126,11 +126,6 @@ public interface HttpAPI {
     );
 
     /**
-     * Clear the playing status. This should fail silently.
-     */
-    void stopPlaying();
-
-    /**
      * Clear the listening status. This should fail silently.
      */
     void stopListening();
