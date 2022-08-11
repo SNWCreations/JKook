@@ -22,6 +22,7 @@ import snw.jkook.command.CommandSender;
 import snw.jkook.entity.abilities.AvatarHolder;
 import snw.jkook.entity.abilities.Nameable;
 import snw.jkook.entity.channel.VoiceChannel;
+import snw.jkook.message.PrivateMessage;
 import snw.jkook.message.component.BaseComponent;
 import snw.jkook.util.RequirePermission;
 
@@ -49,7 +50,7 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
      * If this object represents the Bot in this VM, then you won't need {@link Permission#CHANGE_OTHERS_NICKNAME}, but you will need {@link Permission#CHANGE_NICKNAME}.
      *
      * @param guild The guild that contains this user
-     * @param name The new nickname of this user
+     * @param name  The new nickname of this user
      */
     @RequirePermission({Permission.CHANGE_NICKNAME, Permission.CHANGE_OTHERS_NICKNAME})
     void setNickName(Guild guild, String name);
@@ -93,6 +94,16 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
      * @return The Message ID
      */
     String sendPrivateMessage(BaseComponent component);
+
+    /**
+     * Send a component to this user.
+     *
+     * @param component The component to send
+     * @param quote     If this parameter is passed in, the incoming message
+     *                  will be considered a reply to the message corresponding to this parameter
+     * @return The Message ID
+     */
+    String sendPrivateMessage(BaseComponent component, PrivateMessage quote);
 
     /**
      * Get the voice channel that this user joined.
