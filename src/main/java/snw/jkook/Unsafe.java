@@ -19,6 +19,7 @@ package snw.jkook;
 import snw.jkook.entity.CustomEmoji;
 import snw.jkook.entity.Game;
 import snw.jkook.message.PrivateMessage;
+import snw.jkook.message.TextChannelMessage;
 
 /**
  * A simple class that provide some <b>insecure</b> operations. <p>
@@ -28,6 +29,13 @@ import snw.jkook.message.PrivateMessage;
  * <b>Many methods in the result from this class <b>may be</b> not available or can't work correctly! Beware.</b>
  */
 public interface Unsafe {
+
+    /**
+     * Just simply constructs the text channel message with the provided ID and return it.
+     *
+     * @param id Message ID
+     */
+    TextChannelMessage getTextChannelMessage(String id);
 
     /**
      * Just simply constructs the private message with the provided ID and return it.
