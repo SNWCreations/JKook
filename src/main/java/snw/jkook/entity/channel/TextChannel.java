@@ -18,7 +18,6 @@ package snw.jkook.entity.channel;
 
 import org.jetbrains.annotations.Nullable;
 import snw.jkook.entity.User;
-import snw.jkook.message.Message;
 import snw.jkook.message.TextChannelMessage;
 import snw.jkook.message.component.BaseComponent;
 import snw.jkook.util.PageIterator;
@@ -65,7 +64,7 @@ public interface TextChannel extends Channel {
      *                   only the user to whom it corresponds can see the incoming message
      * @return           Message ID
      */
-    String sendComponent(BaseComponent component, @Nullable Message quote, @Nullable User tempTarget);
+    String sendComponent(BaseComponent component, @Nullable TextChannelMessage quote, @Nullable User tempTarget);
 
     /**
      * Get the limit of minimum speaking time between two statements. (in seconds)
