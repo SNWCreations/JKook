@@ -109,7 +109,8 @@ public interface Plugin {
     InputStream getResource(String path);
 
     /**
-     * Get the data folder of this Plugin.
+     * Get the data folder of this Plugin. <p>
+     * This folder always exists, unless somebody deleted it manually.
      */
     File getDataFolder();
 
