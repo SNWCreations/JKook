@@ -90,8 +90,9 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
      * Send a component to this user.
      *
      * @param component The component to send
+     * @return The Message ID
      */
-    void sendPrivateMessage(BaseComponent component);
+    String sendPrivateMessage(BaseComponent component);
 
     /**
      * Get the voice channel that this user joined.
