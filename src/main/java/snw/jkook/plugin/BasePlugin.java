@@ -67,12 +67,12 @@ public abstract class BasePlugin implements Plugin {
     @Override
     public final void setEnabled(boolean enabled) {
         if (!this.enabled == enabled) {
-            this.enabled = enabled;
             if (enabled) {
                 onEnable();
             } else {
                 onDisable();
             }
+            this.enabled = enabled; // make sure the plugin "really" enabled, no exception occurred
         }
     }
 
