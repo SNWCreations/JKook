@@ -64,24 +64,21 @@ public interface Message extends Receivable, ReactionHolder {
     Message getQuote();
 
     /**
-     * Send a component as the reply of this message.
+     * Send a component <b>as the reply</b> of this message.
      *
      * @param component   The component
-     * @param isTemporary True if you want to mark this message as the temporary message
      * @return            The Message ID
      */
-    String reply(BaseComponent component, boolean isTemporary);
+    String reply(BaseComponent component);
 
     /**
-     * Send a component as the reply of this message.
+     * Send a component to the source of this message (e.g. a user, a text channel),
+     * <b>IT IS DIFFERENT FROM {@link #reply}</b>.
      *
      * @param component   The component
-     * @param isTemporary True if you want to mark this message as the temporary message
-     * @param isReply     True if you really want to "reply" this message,
-     *                    false if you just want to send the component to the location where the sender in.
      * @return            The Message ID
      */
-    String reply(BaseComponent component, boolean isReply, boolean isTemporary);
+    String sendToSource(BaseComponent component);
 
     /**
      * Delete this message .

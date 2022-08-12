@@ -17,6 +17,7 @@
 package snw.jkook.message;
 
 import snw.jkook.entity.channel.TextChannel;
+import snw.jkook.message.component.BaseComponent;
 
 /**
  * Represents a message from a text channel.
@@ -27,5 +28,25 @@ public interface TextChannelMessage extends Message {
      * Get the channel that contains this message.
      */
     TextChannel getChannel();
+
+
+    /**
+     * Send a component <b>as the reply</b> of this message,
+     * but it will be marked as the temporary message, and it won't be saved in Kook's database.
+     *
+     * @param component   The component
+     * @return            The Message ID
+     */
+    String replyTemp(BaseComponent component);
+
+    /**
+     * Send a component to the source of this message (e.g. a user, a text channel),
+     * <b>IT IS DIFFERENT FROM {@link #replyTemp}</b>.
+     * but it will be marked as the temporary message, and it won't be saved in Kook's database.
+     *
+     * @param component   The component
+     * @return            The Message ID
+     */
+    String sendToSourceTemp(BaseComponent component);
 
 }
