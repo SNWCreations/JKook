@@ -31,32 +31,51 @@ import java.util.Objects;
  * Plugin developers should extend this class to make their own Plugin program.
  */
 public abstract class BasePlugin implements Plugin {
-    private final Logger logger;
-    private final File configFile;
+    private Logger logger;
+    private File configFile;
     private FileConfiguration configuration;
-    private final File dataFolder;
-    private final File file;
-    private final PluginDescription description;
+    private File dataFolder;
+    private File file;
+    private PluginDescription description;
     private volatile boolean enabled = false;
+    private volatile boolean init = false;
 
     // Plugin developers should NEVER use this constructor.
     // And they should NEVER define new constructor.
     // This constructor should be called by Plugin loaders (provided by API implementations).
-    protected BasePlugin(
+    public BasePlugin() {
+        if (!(getClass().getClassLoader() instanceof PluginLoader)) {
+            throw new InvalidPluginException("This class should be loaded by using PluginLoader.");
+        }
+    }
+
+    /**
+     * Initialize this plugin. This should be called by API implementations ONLY.
+     *
+     * @param configFile  The configuration file so that can be loaded as the default configuration
+     *                    using {@link #reloadConfig()}
+     * @param dataFolder  The data folder
+     * @param description The description object
+     * @param file        The file that contains this plugin
+     * @param logger      The logger object
+     * @throws IllegalStateException Thrown if this plugin has already initialized
+     */
+    public void init(
             final File configFile,
             final File dataFolder,
             final PluginDescription description,
             final File file,
             final Logger logger
-    ) {
-        if (!(getClass().getClassLoader() instanceof PluginLoader)) {
-            throw new InvalidPluginException("This class should be loaded by using PluginLoader.");
+    ) throws IllegalStateException {
+        if (init) {
+            throw new IllegalStateException();
         }
         this.configFile = Objects.requireNonNull(configFile);
         this.dataFolder = Objects.requireNonNull(dataFolder);
         this.description = Objects.requireNonNull(description);
         this.file = Objects.requireNonNull(file);
         this.logger = Objects.requireNonNull(logger);
+        init = true;
     }
 
     @Override

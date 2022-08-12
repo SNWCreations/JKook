@@ -33,7 +33,7 @@ public interface Plugin {
     // If you want to implement this interface, I suggest you to use BasePlugin instead.
     // Still want to implement this? Alright, you won.
     // But I have something to tell you.
-    // You should define the constructor with the same parameter from BasePlugin. It's easy, isn't it?
+    // You should provide the things that BasePlugin#init requires.
     // Warning is here, if you don't do that and your implementation does not work, don't say anything!
 
     /**
