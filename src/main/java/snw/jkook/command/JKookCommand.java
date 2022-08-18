@@ -120,6 +120,7 @@ public final class JKookCommand {
      */
     public JKookCommand addSubcommand(JKookCommand command) {
         ensureNotRegistered();
+        Validate.isFalse(this.subcommands.stream().anyMatch(IT -> Objects.equals(IT.getRootName(), command.getRootName())), "A subcommand with the same root name has already registered to this command.");
         this.subcommands.add(command);
         return this;
     }
