@@ -21,6 +21,7 @@ import snw.jkook.command.CommandManager;
 import snw.jkook.command.ConsoleCommandSender;
 import snw.jkook.event.EventManager;
 import snw.jkook.plugin.Plugin;
+import snw.jkook.plugin.PluginManager;
 import snw.jkook.scheduler.Scheduler;
 
 import java.util.Objects;
@@ -112,6 +113,13 @@ public final class JKook {
      */
     public static CommandManager getCommandManager() {
         return core.getCommandManager();
+    }
+
+    /**
+     * Get the plugin manager.
+     */
+    public static PluginManager getPluginManager() {
+        return core.getPluginManager();
     }
 
     /**

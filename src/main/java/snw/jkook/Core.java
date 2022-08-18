@@ -22,6 +22,7 @@ import snw.jkook.command.ConsoleCommandSender;
 import snw.jkook.entity.User;
 import snw.jkook.event.EventManager;
 import snw.jkook.plugin.Plugin;
+import snw.jkook.plugin.PluginManager;
 import snw.jkook.scheduler.Scheduler;
 
 /**
@@ -80,6 +81,11 @@ public interface Core {
      * Get the command manager.
      */
     CommandManager getCommandManager();
+
+    /**
+     * Get the plugin manager.
+     */
+    PluginManager getPluginManager();
 
     /**
      * Get the user representation of the Bot in this VM.
