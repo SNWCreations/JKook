@@ -93,10 +93,10 @@ public interface Plugin {
     /**
      * Attempts to save a resource embedded in the Plugin archive file to the data folder of this Plugin.
      *
-     * @param path                The canonical path (e.g. "/lang/en_US.json")
+     * @param path                The canonical path (e.g. "lang/en_US.json")
      * @param replace             Decides the API implementation will overwrite the file on the disk.
      * @param ignorePathStructure True if you want to save the file at the root of data folder
-     * @throws IllegalArgumentException Thrown if the path is invalid
+     * @throws IllegalArgumentException Thrown if the plugin file does not contain the requested resource.
      */
     void saveResource(String path, boolean replace, boolean ignorePathStructure) throws IllegalArgumentException;
 
