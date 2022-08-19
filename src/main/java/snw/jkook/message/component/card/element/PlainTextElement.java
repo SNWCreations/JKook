@@ -25,6 +25,10 @@ public class PlainTextElement extends BaseElement {
     private final String content;
     private final boolean emoji;
 
+    public PlainTextElement(String content) {
+        this(content, false);
+    }
+
     public PlainTextElement(String content, boolean emoji) {
         Validate.isTrue(content.length() <= 2000, "Too long content is not allowed.");
         this.content = content;
