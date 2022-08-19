@@ -132,7 +132,9 @@ public abstract class BasePlugin implements Plugin {
 
     @Override
     public void saveDefaultConfig() {
-        saveResource("config.yml", false, false);
+        try {
+            saveResource("config.yml", false, false);
+        } catch (IllegalArgumentException ignored) {}
     }
 
     @Override
