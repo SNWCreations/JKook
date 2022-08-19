@@ -161,8 +161,12 @@ public abstract class BasePlugin implements Plugin {
                 //noinspection ResultOfMethodCallIgnored
                 local.delete();
             } else {
+                if (!local.getParentFile().exists()) {
+                    //noinspection ResultOfMethodCallIgnored
+                    local.getParentFile().mkdirs();
+                }
                 //noinspection ResultOfMethodCallIgnored
-                local.mkdirs();
+                local.createNewFile();
             }
 
             try (final FileOutputStream out = new FileOutputStream(local)) {
