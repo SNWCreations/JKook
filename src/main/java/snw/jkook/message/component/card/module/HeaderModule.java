@@ -25,6 +25,10 @@ import snw.jkook.util.Validate;
 public class HeaderModule extends BaseModule {
     private final PlainTextElement element;
 
+    public HeaderModule(String content) {
+        this(new PlainTextElement(content, false));
+    }
+
     public HeaderModule(PlainTextElement element) {
         Validate.isTrue(element.getContent().length() <= 100, "Too long content for header module is not allowed.");
         this.element = element;
