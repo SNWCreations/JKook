@@ -169,6 +169,11 @@ public enum Permission {
      */
     SPEAK_NOTHING(33554432),
 
+    /**
+     * Guild members that have this permission can share their screen in the voice channel.
+     */
+    SCREEN_SHARE(268435456),
+
     //// ----- Restrictions -----
 
     /**
