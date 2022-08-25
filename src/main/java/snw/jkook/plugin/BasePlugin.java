@@ -24,6 +24,7 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Objects;
 
 /**
@@ -138,46 +139,46 @@ public abstract class BasePlugin implements Plugin {
     }
 
     @Override
-    public void saveResource(final String path, final boolean replace, final boolean ignorePathStructure) throws IllegalArgumentException {
-        try (final InputStream stream = getResource(path)) {
-            if (stream == null) {
-                throw new IllegalArgumentException("The target resource does not embedded in the Plugin JAR file");
-            }
+    public void saveResource(String path, final boolean replace, final boolean ignorePathStructure) throws IllegalArgumentException {
+        if (path == null || path.equals("")) {
+            throw new IllegalArgumentException("Resource path cannot be null or empty");
+        }
 
-            final String targetPath;
-            if (ignorePathStructure) {
-                final String[] pathSplit = path.split("/");
-                targetPath = pathSplit[pathSplit.length - 1];
+        path = path.replace('\\', '/');
+        InputStream in = getResource(path);
+        if (in == null) {
+            throw new IllegalArgumentException("The embedded resource '" + path + "' cannot be found in " + file);
+        }
+
+        File outFile = new File(dataFolder, path);
+        int lastIndex = path.lastIndexOf('/');
+        File outDir;
+        if (!ignorePathStructure) {
+            outDir = new File(dataFolder, path.substring(0, Math.max(lastIndex, 0)));
+        } else {
+            outDir = dataFolder;
+        }
+
+        if (!outDir.exists()) {
+            //noinspection ResultOfMethodCallIgnored
+            outDir.mkdirs();
+        }
+
+        try {
+            if (!outFile.exists() || replace) {
+                OutputStream out = Files.newOutputStream(outFile.toPath());
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+                out.close();
+                in.close();
             } else {
-                targetPath = path;
+                logger.warn("Could not save " + outFile.getName() + " to " + outFile + " because " + outFile.getName() + " already exists.");
             }
-
-            final File local = new File(dataFolder, targetPath);
-            if (local.exists()) {
-                if (!replace) {
-                    getLogger().warn("Cannot save resource \"{}\" because it has already exists.", path);
-                    return;
-                }
-                //noinspection ResultOfMethodCallIgnored
-                local.delete();
-            } else {
-                if (!local.getParentFile().exists()) {
-                    //noinspection ResultOfMethodCallIgnored
-                    local.getParentFile().mkdirs();
-                }
-                //noinspection ResultOfMethodCallIgnored
-                local.createNewFile();
-            }
-
-            try (final FileOutputStream out = new FileOutputStream(local)) {
-                int index;
-                byte[] bytes = new byte[1024];
-                while ((index = stream.read(bytes)) != -1) {
-                    out.write(bytes, 0, index);
-                }
-            }
-        } catch (IOException e) {
-            getLogger().warn("Cannot save resource because an error occurred.", e);
+        } catch (IOException ex) {
+            logger.warn("Could not save " + outFile.getName() + " to " + outFile, ex);
         }
     }
 
