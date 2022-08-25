@@ -183,6 +183,15 @@ public abstract class BasePlugin implements Plugin {
     }
 
     @Override
+    public void saveConfig() {
+        try {
+            getConfig().save(configFile);
+        } catch (IOException ex) {
+            logger.error("Could not save config to " + configFile, ex);
+        }
+    }
+
+    @Override
     public InputStream getResource(String path) {
         if (path == null) {
             throw new IllegalArgumentException("Filename cannot be null");

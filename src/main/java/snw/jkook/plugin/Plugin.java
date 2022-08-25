@@ -91,6 +91,12 @@ public interface Plugin {
     void saveDefaultConfig();
 
     /**
+     * Save the default configuration that in the memory to the local file. <p>
+     * This should fail silently.
+     */
+    void saveConfig();
+
+    /**
      * Attempts to save a resource embedded in the Plugin archive file to the data folder of this Plugin.
      *
      * @param path                The canonical path (e.g. "lang/en_US.json")
