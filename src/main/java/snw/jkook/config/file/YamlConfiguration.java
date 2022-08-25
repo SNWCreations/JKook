@@ -17,6 +17,7 @@
 package snw.jkook.config.file;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
@@ -43,7 +44,17 @@ public class YamlConfiguration extends FileConfiguration {
     protected static final String BLANK_CONFIG = "{}\n";
     private final DumperOptions yamlOptions = new DumperOptions();
     private final LoaderOptions loaderOptions = new LoaderOptions();
-    private final Yaml yaml = new Yaml(new Constructor(), new Representer(), yamlOptions, loaderOptions);
+    private final Yaml yaml;
+    public YamlConfiguration() {
+        this(null);
+    }
+
+    public YamlConfiguration(@Nullable Configuration defaults) {
+        super(defaults);
+        Representer representer = new Representer();
+        representer.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+        yaml = new Yaml(new Constructor(), representer, yamlOptions, loaderOptions);
+    }
 
     @NotNull
     @Override
