@@ -84,8 +84,10 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
      * Get the roles that this user have. <p>
      * The result is a set of role ID.
      * The result is read-only.
+     *
+     * @param guild The guild as the search target
      */
-    Collection<Integer> getRoles();
+    Collection<Integer> getRoles(Guild guild);
 
     /**
      * Send a component to this user.
