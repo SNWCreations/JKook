@@ -18,6 +18,7 @@ package snw.jkook.plugin;
 
 import org.slf4j.Logger;
 import snw.jkook.Core;
+import snw.jkook.JKook;
 import snw.jkook.config.file.FileConfiguration;
 
 import java.io.File;
@@ -129,4 +130,10 @@ public interface Plugin {
      * Get the description of this Plugin.
      */
     PluginDescription getDescription();
+
+    /**
+     * Get the core that loads this Plugin. <p>
+     * This is more safer than {@link JKook#getCore()} in multi-instance environment.
+     */
+    Core getCore();
 }

@@ -17,6 +17,7 @@
 package snw.jkook.plugin;
 
 import org.slf4j.Logger;
+import snw.jkook.Core;
 import snw.jkook.config.file.FileConfiguration;
 import snw.jkook.config.file.YamlConfiguration;
 
@@ -38,6 +39,7 @@ public abstract class BasePlugin implements Plugin {
     private File dataFolder;
     private File file;
     private PluginDescription description;
+    private Core core;
     private volatile boolean enabled = false;
     private volatile boolean init = false;
 
@@ -66,7 +68,8 @@ public abstract class BasePlugin implements Plugin {
             final File dataFolder,
             final PluginDescription description,
             final File file,
-            final Logger logger
+            final Logger logger,
+            final Core core
     ) throws IllegalStateException {
         if (init) {
             throw new IllegalStateException();
@@ -76,6 +79,7 @@ public abstract class BasePlugin implements Plugin {
         this.description = Objects.requireNonNull(description);
         this.file = Objects.requireNonNull(file);
         this.logger = Objects.requireNonNull(logger);
+        this.core = Objects.requireNonNull(core);
         init = true;
     }
 
@@ -225,5 +229,10 @@ public abstract class BasePlugin implements Plugin {
     @Override
     public PluginDescription getDescription() {
         return description;
+    }
+
+    @Override
+    public Core getCore() {
+        return core;
     }
 }
