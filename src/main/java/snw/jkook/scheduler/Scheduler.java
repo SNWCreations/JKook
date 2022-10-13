@@ -27,8 +27,9 @@ public interface Scheduler {
      * Execute the provided runnable right now.
      *
      * @param runnable The runnable to execute
+     * @return The task object
      */
-    void runTask(Runnable runnable);
+    Task runTask(Runnable runnable);
 
     /**
      * Schedule the runnable to be executed after the delay.
