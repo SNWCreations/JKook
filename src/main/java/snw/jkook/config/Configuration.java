@@ -1,19 +1,3 @@
-/*
- * Copyright 2022 JKook contributors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package snw.jkook.config;
 
 import org.jetbrains.annotations.NotNull;
@@ -22,7 +6,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 
 /**
- * Represents a source of configurable options and settings.
+ * Represents a source of configurable options and settings
  */
 public interface Configuration extends ConfigurationSection {
     /**
@@ -49,7 +33,7 @@ public interface Configuration extends ConfigurationSection {
      * collection, then a new {@link MemoryConfiguration} will be created to
      * hold the new default values.
      *
-     * @param defaults A map of Path{@literal ->}Values to add to default.
+     * @param defaults A map of Path{@literal ->}Values to add to defaults.
      * @throws IllegalArgumentException Thrown if defaults is null.
      */
     void addDefaults(@NotNull Map<String, Object> defaults);
@@ -92,4 +76,13 @@ public interface Configuration extends ConfigurationSection {
      * @return Configuration source for default values, or null if none exist.
      */
     @Nullable Configuration getDefaults();
+
+    /**
+     * Gets the {@link ConfigurationOptions} for this {@link Configuration}.
+     * <p>
+     * All setters through this method are chainable.
+     *
+     * @return Options for this configuration
+     */
+    @NotNull ConfigurationOptions options();
 }

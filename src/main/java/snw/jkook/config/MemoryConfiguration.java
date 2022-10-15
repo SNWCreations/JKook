@@ -1,24 +1,7 @@
-/*
- * Copyright 2022 JKook contributors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package snw.jkook.config;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import snw.jkook.util.Validate;
 
 import java.util.Map;
 
@@ -29,6 +12,7 @@ import java.util.Map;
  */
 public class MemoryConfiguration extends MemorySection implements Configuration {
     protected Configuration defaults;
+    protected MemoryConfigurationOptions options;
 
     /**
      * Creates an empty {@link MemoryConfiguration} with no default values.
@@ -49,7 +33,6 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
 
     @Override
     public void addDefault(@NotNull String path, @Nullable Object value) {
-        Validate.notNull(path, "Path may not be null");
 
         if (defaults == null) {
             defaults = new MemoryConfiguration();
@@ -60,8 +43,6 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
 
     @Override
     public void addDefaults(@NotNull Map<String, Object> defaults) {
-        Validate.notNull(defaults, "Defaults may not be null");
-
         for (Map.Entry<String, Object> entry : defaults.entrySet()) {
             addDefault(entry.getKey(), entry.getValue());
         }
@@ -69,15 +50,15 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
 
     @Override
     public void addDefaults(@NotNull Configuration defaults) {
-        Validate.notNull(defaults, "Defaults may not be null");
-
-        addDefaults(defaults.getValues(true));
+        for (String key : defaults.getKeys(true)) {
+            if (!defaults.isConfigurationSection(key)) {
+                addDefault(key, defaults.get(key));
+            }
+        }
     }
 
     @Override
     public void setDefaults(@NotNull Configuration defaults) {
-        Validate.notNull(defaults, "Defaults may not be null");
-
         this.defaults = defaults;
     }
 
@@ -91,5 +72,15 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
     @Override
     public ConfigurationSection getParent() {
         return null;
+    }
+
+    @Override
+    @NotNull
+    public MemoryConfigurationOptions options() {
+        if (options == null) {
+            options = new MemoryConfigurationOptions(this);
+        }
+
+        return options;
     }
 }

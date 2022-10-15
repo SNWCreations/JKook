@@ -1,19 +1,3 @@
-/*
- * Copyright 2022 JKook contributors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package snw.jkook.config;
 
 import org.jetbrains.annotations.Contract;
@@ -39,7 +23,7 @@ public interface ConfigurationSection {
      * direct children, and not their own children.
      *
      * @param deep Whether or not to get a deep list, as opposed to a shallow
-     *             list.
+     *     list.
      * @return Set of keys contained within this ConfigurationSection.
      */
     @NotNull Set<String> getKeys(boolean deep);
@@ -55,7 +39,7 @@ public interface ConfigurationSection {
      * values of any direct children, and not their own children.
      *
      * @param deep Whether or not to get a deep list, as opposed to a shallow
-     *             list.
+     *     list.
      * @return Map of keys and values of this section.
      */
     @NotNull Map<String, Object> getValues(boolean deep);
@@ -68,7 +52,7 @@ public interface ConfigurationSection {
      *
      * @param path Path to check for existence.
      * @return True if this section contains the requested path, either via
-     * default or being set.
+     *     default or being set.
      * @throws IllegalArgumentException Thrown when path is null.
      */
     boolean contains(@NotNull String path);
@@ -101,7 +85,7 @@ public interface ConfigurationSection {
      *
      * @param path Path to check for existence.
      * @return True if this section contains the requested path, regardless of
-     * having a default.
+     *     having a default.
      * @throws IllegalArgumentException Thrown when path is null.
      */
     boolean isSet(@NotNull String path);
@@ -197,7 +181,7 @@ public interface ConfigurationSection {
      * Some implementations may have limitations on what you may store. See
      * their individual javadocs for details. No implementations should allow
      * you to store {@link Configuration}s or {@link ConfigurationSection}s,
-     * please use {@link #createSection(String)} for that.
+     * please use {@link #createSection(java.lang.String)} for that.
      *
      * @param path  Path of the object to set.
      * @param value New value to set the path to.
@@ -648,7 +632,7 @@ public interface ConfigurationSection {
      * appropriately.
      *
      * @param path Path of the ConfigurationSection to check.
-     * @return Whether the specified path is a ConfigurationSection.
+     * @return Whether or not the specified path is a ConfigurationSection.
      */
     boolean isConfigurationSection(@NotNull String path);
 
@@ -683,4 +667,64 @@ public interface ConfigurationSection {
      * @throws IllegalArgumentException Thrown if path is null.
      */
     void addDefault(@NotNull String path, @Nullable Object value);
+
+    /**
+     * Gets the requested comment list by path.
+     * <p>
+     * If no comments exist, an empty list will be returned. A null entry
+     * represents an empty line and an empty String represents an empty comment
+     * line.
+     *
+     * @param path Path of the comments to get.
+     * @return A unmodifiable list of the requested comments, every entry
+     * represents one line.
+     */
+    @NotNull List<String> getComments(@NotNull String path);
+
+    /**
+     * Gets the requested inline comment list by path.
+     * <p>
+     * If no comments exist, an empty list will be returned. A null entry
+     * represents an empty line and an empty String represents an empty comment
+     * line.
+     *
+     * @param path Path of the comments to get.
+     * @return A unmodifiable list of the requested comments, every entry
+     * represents one line.
+     */
+    @NotNull List<String> getInlineComments(@NotNull String path);
+
+    /**
+     * Sets the comment list at the specified path.
+     * <p>
+     * If value is null, the comments will be removed. A null entry is an empty
+     * line and an empty String entry is an empty comment line. If the path does
+     * not exist, no comments will be set. Any existing comments will be
+     * replaced, regardless of what the new comments are.
+     * <p>
+     * Some implementations may have limitations on what persists. See their
+     * individual javadocs for details.
+     *
+     * @param path     Path of the comments to set.
+     * @param comments New comments to set at the path, every entry represents
+     *                 one line.
+     */
+    void setComments(@NotNull String path, @Nullable List<String> comments);
+
+    /**
+     * Sets the inline comment list at the specified path.
+     * <p>
+     * If value is null, the comments will be removed. A null entry is an empty
+     * line and an empty String entry is an empty comment line. If the path does
+     * not exist, no comment will be set. Any existing comments will be
+     * replaced, regardless of what the new comments are.
+     * <p>
+     * Some implementations may have limitations on what persists. See their
+     * individual javadocs for details.
+     *
+     * @param path     Path of the comments to set.
+     * @param comments New comments to set at the path, every entry represents
+     *                 one line.
+     */
+    void setInlineComments(@NotNull String path, @Nullable List<String> comments);
 }

@@ -1,19 +1,3 @@
-/*
- * Copyright 2022 JKook contributors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package snw.jkook.config.file;
 
 import org.jetbrains.annotations.NotNull;
@@ -21,7 +5,6 @@ import org.jetbrains.annotations.Nullable;
 import snw.jkook.config.Configuration;
 import snw.jkook.config.InvalidConfigurationException;
 import snw.jkook.config.MemoryConfiguration;
-import snw.jkook.util.Validate;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -61,14 +44,12 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      * using UTF8.
      *
      * @param file File to save to.
-     * @throws IOException              Thrown when the given file cannot be written to for
-     *                                  any reason.
+     * @throws IOException Thrown when the given file cannot be written to for
+     *     any reason.
      * @throws IllegalArgumentException Thrown when file is null.
      */
     public void save(@NotNull File file) throws IOException {
-        Validate.notNull(file, "File cannot be null");
-
-        file.mkdirs();
+        file.getParentFile().mkdirs();
 
         String data = saveToString();
 
@@ -88,13 +69,11 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      * using UTF8.
      *
      * @param file File to save to.
-     * @throws IOException              Thrown when the given file cannot be written to for
-     *                                  any reason.
+     * @throws IOException Thrown when the given file cannot be written to for
+     *     any reason.
      * @throws IllegalArgumentException Thrown when file is null.
      */
     public void save(@NotNull String file) throws IOException {
-        Validate.notNull(file, "File cannot be null");
-
         save(new File(file));
     }
 
@@ -117,18 +96,15 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      * thrown.
      *
      * @param file File to load from.
-     * @throws FileNotFoundException         Thrown when the given file cannot be
-     *                                       opened.
-     * @throws IOException                   Thrown when the given file cannot be read.
+     * @throws FileNotFoundException Thrown when the given file cannot be
+     *     opened.
+     * @throws IOException Thrown when the given file cannot be read.
      * @throws InvalidConfigurationException Thrown when the given file is not
-     *                                       a valid Configuration.
-     * @throws IllegalArgumentException      Thrown when file is null.
+     *     a valid Configuration.
+     * @throws IllegalArgumentException Thrown when file is null.
      */
     public void load(@NotNull File file) throws FileNotFoundException, IOException, InvalidConfigurationException {
-        Validate.notNull(file, "File cannot be null");
-
         final FileInputStream stream = new FileInputStream(file);
-
         load(new InputStreamReader(stream, StandardCharsets.UTF_8));
     }
 
@@ -175,16 +151,14 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      * thrown.
      *
      * @param file File to load from.
-     * @throws FileNotFoundException         Thrown when the given file cannot be
-     *                                       opened.
-     * @throws IOException                   Thrown when the given file cannot be read.
+     * @throws FileNotFoundException Thrown when the given file cannot be
+     *     opened.
+     * @throws IOException Thrown when the given file cannot be read.
      * @throws InvalidConfigurationException Thrown when the given file is not
-     *                                       a valid Configuration.
-     * @throws IllegalArgumentException      Thrown when file is null.
+     *     a valid Configuration.
+     * @throws IllegalArgumentException Thrown when file is null.
      */
     public void load(@NotNull String file) throws FileNotFoundException, IOException, InvalidConfigurationException {
-        Validate.notNull(file, "File cannot be null");
-
         load(new File(file));
     }
 
@@ -200,8 +174,30 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      *
      * @param contents Contents of a Configuration to load.
      * @throws InvalidConfigurationException Thrown if the specified string is
-     *                                       invalid.
-     * @throws IllegalArgumentException      Thrown if contents is null.
+     *     invalid.
+     * @throws IllegalArgumentException Thrown if contents is null.
      */
     public abstract void loadFromString(@NotNull String contents) throws InvalidConfigurationException;
+
+    /**
+     * @return empty string
+     * @deprecated This method only exists for backwards compatibility. It will
+     * do nothing and should not be used! Please use
+     * {@link FileConfigurationOptions#getHeader()} instead.
+     */
+    @NotNull
+    @Deprecated
+    protected String buildHeader() {
+        return "";
+    }
+
+    @NotNull
+    @Override
+    public FileConfigurationOptions options() {
+        if (options == null) {
+            options = new FileConfigurationOptions(this);
+        }
+
+        return (FileConfigurationOptions) options;
+    }
 }
