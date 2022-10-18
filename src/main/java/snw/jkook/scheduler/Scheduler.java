@@ -26,10 +26,11 @@ public interface Scheduler {
     /**
      * Execute the provided runnable right now.
      *
+     * @param plugin The plugin as the task owner
      * @param runnable The runnable to execute
      * @return The task object
      */
-    Task runTask(Runnable runnable);
+    Task runTask(Plugin plugin, Runnable runnable);
 
     /**
      * Schedule the runnable to be executed after the delay.
