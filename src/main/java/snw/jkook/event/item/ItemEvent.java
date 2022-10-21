@@ -21,7 +21,7 @@ import snw.jkook.event.Event;
 /**
  * Represents an event that related to an item.
  */
-public class ItemEvent extends Event {
+public abstract class ItemEvent extends Event {
 
     ItemEvent(long timeStamp) {
         super(timeStamp);
