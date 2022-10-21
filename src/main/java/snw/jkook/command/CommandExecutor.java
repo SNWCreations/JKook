@@ -33,5 +33,5 @@ public interface CommandExecutor {
      * @param arguments The arguments
      * @param message The message related to this execution (Maybe null if the console executed this command)
      */
-    void onCommand(CommandSender sender, String[] arguments, @Nullable Message message);
+    void onCommand(CommandSender sender, Object[] arguments, @Nullable Message message);
 }

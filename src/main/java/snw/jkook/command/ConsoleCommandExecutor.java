@@ -29,5 +29,5 @@ public interface ConsoleCommandExecutor {
      * @param sender    The sender
      * @param arguments The arguments
      */
-    void onCommand(ConsoleCommandSender sender, String[] arguments);
+    void onCommand(ConsoleCommandSender sender, Object[] arguments);
 }

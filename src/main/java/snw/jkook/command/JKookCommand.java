@@ -16,7 +16,7 @@
 
 package snw.jkook.command;
 
-import snw.jkook.JKook;
+import snw.jkook.plugin.Plugin;
 import snw.jkook.util.Validate;
 
 import java.util.ArrayList;
@@ -35,6 +35,7 @@ public final class JKookCommand {
     private final Collection<JKookCommand> subcommands = new ArrayList<>();
     private final Collection<String> aliases = new ArrayList<>();
     private final Collection<String> prefixes = new ArrayList<>();
+    private final Collection<Class<?>> arguments = new ArrayList<>();
     private String description;
     private String helpContent;
 
@@ -170,13 +171,19 @@ public final class JKookCommand {
         return this;
     }
 
+    public JKookCommand addArgument(Class<?> clazz) {
+        ensureNotRegistered();
+        arguments.add(clazz);
+        return this;
+    }
+
     /**
      * Register this command. <p>
      * Also, you can register this command using {@link CommandManager#registerCommand(JKookCommand)}. <p>
      * But this is easier than that. Isn't it?
      */
-    public void register() {
-        JKook.getCommandManager().registerCommand(this);
+    public void register(Plugin plugin) {
+        plugin.getCore().getCommandManager().registerCommand(this);
         registerFlag = true;
     }
 
@@ -243,6 +250,13 @@ public final class JKookCommand {
      */
     public String getHelpContent() {
         return helpContent;
+    }
+
+    /**
+     * Get the argument classes of this command.
+     */
+    public Collection<Class<?>> getArguments() {
+        return arguments;
     }
 
     // specific-methods following:

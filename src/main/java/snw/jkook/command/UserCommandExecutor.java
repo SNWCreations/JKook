@@ -34,5 +34,5 @@ public interface UserCommandExecutor {
      * @param arguments The arguments
      * @param message   The message related to this execution (Maybe null if the console executed this command)
      */
-    void onCommand(User sender, String[] arguments, @Nullable Message message);
+    void onCommand(User sender, Object[] arguments, @Nullable Message message);
 }
