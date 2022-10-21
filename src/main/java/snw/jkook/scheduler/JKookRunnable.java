@@ -16,7 +16,6 @@
 
 package snw.jkook.scheduler;
 
-import snw.jkook.JKook;
 import snw.jkook.plugin.Plugin;
 import snw.jkook.util.Validate;
 
@@ -34,7 +33,7 @@ public abstract class JKookRunnable implements Runnable {
      */
     public synchronized Task runTaskLater(Plugin plugin, long delay) {
         Validate.isTrue(task == null, "This runnable has already scheduled.");
-        return ((task) = JKook.getScheduler().runTaskLater(plugin, this, delay));
+        return ((task) = plugin.getCore().getScheduler().runTaskLater(plugin, this, delay));
     }
 
     /**
@@ -46,7 +45,7 @@ public abstract class JKookRunnable implements Runnable {
      */
     public synchronized Task runTaskTimer(Plugin plugin, long delay, long period) {
         Validate.isTrue(task == null, "This runnable has already scheduled.");
-        return ((task) = JKook.getScheduler().runTaskTimer(plugin, this, delay, period));
+        return ((task) = plugin.getCore().getScheduler().runTaskTimer(plugin, this, delay, period));
     }
 
     /**
