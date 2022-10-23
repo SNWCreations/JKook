@@ -17,7 +17,10 @@
 package snw.jkook.message.component;
 
 /**
- * Represents a component that contains the text.
+ * Represents a component that contains the text. <p>
+ * 
+ * Tip: KOOK will convert TextComponents (Plain Text) into Markdown messages automatically now.
+ * Use {@link MarkdownComponent} is recommended.
  */
 public class TextComponent extends BaseComponent {
     private final String rawContent;
