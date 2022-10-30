@@ -38,4 +38,11 @@ public interface EventManager {
      * @param listener The listener to register
      */
     void registerHandlers(Plugin plugin, Listener listener);
+
+    /**
+     * Unregister the specified handler and it won't receive events.
+     *
+     * @param listener The listener to unregister
+     */
+    void unregisterHandlers(Listener listener);
 }
