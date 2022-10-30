@@ -287,7 +287,7 @@ public final class JKookCommand {
      * Get the optional argument classes and their default value of this command.
      */
     public Map<Class<?>, Object> getOptionalArguments() {
-        return optionalArguments;
+        return Collections.unmodifiableMap(optionalArguments);
     }
 
     // specific-methods following:
