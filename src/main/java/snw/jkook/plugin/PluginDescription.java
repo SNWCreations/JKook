@@ -32,8 +32,10 @@ public final class PluginDescription {
     private final String website;
     private final String mainClassName;
     private final List<String> authors; // UNMODIFIABLE
+    private final List<String> depend;
+    private final List<String> softDepend;
 
-    public PluginDescription(String name, String version, String apiVersion, String description, String website, String mainClassName, List<String> authors) {
+    public PluginDescription(String name, String version, String apiVersion, String description, String website, String mainClassName, List<String> authors, List<String> depend, List<String> softDepend) {
         this.name = Objects.requireNonNull(name);
         this.version = Objects.requireNonNull(version);
         this.apiVersion = Objects.requireNonNull(apiVersion);
@@ -41,6 +43,8 @@ public final class PluginDescription {
         this.website = Objects.requireNonNull(website);
         this.mainClassName = Objects.requireNonNull(mainClassName);
         this.authors = Collections.unmodifiableList(authors);
+        this.depend = Collections.unmodifiableList(depend);
+        this.softDepend = Collections.unmodifiableList(softDepend);
     }
 
     /**
@@ -91,5 +95,19 @@ public final class PluginDescription {
      */
     public String getMainClassName() {
         return mainClassName;
+    }
+
+    /**
+     * Get the dependency plugins of this Plugin.
+     */
+    public List<String> getDepend() {
+        return depend;
+    }
+
+    /**
+     * Get the soft dependency plugins of this Plugin.
+     */
+    public List<String> getSoftDepend() {
+        return softDepend;
     }
 }

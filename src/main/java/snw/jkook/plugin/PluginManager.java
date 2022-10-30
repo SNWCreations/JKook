@@ -98,8 +98,9 @@ public interface PluginManager {
      * Attempting to enable a plugin that is already enabled will have no effect.
      *
      * @param plugin Plugin to enable
+     * @throws UnknownDependencyException Thrown if this plugin has an unknown dependency.
      */
-    void enablePlugin(Plugin plugin);
+    void enablePlugin(Plugin plugin) throws UnknownDependencyException;
 
     /**
      * Disables the specified plugin.
