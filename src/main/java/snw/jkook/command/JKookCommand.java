@@ -256,7 +256,7 @@ public final class JKookCommand {
      * Get the argument classes of this command.
      */
     public Collection<Class<?>> getArguments() {
-        return arguments;
+        return Collections.unmodifiableCollection(arguments);
     }
 
     // specific-methods following:
