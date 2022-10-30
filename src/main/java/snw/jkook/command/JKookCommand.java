@@ -203,11 +203,11 @@ public final class JKookCommand {
 
     /**
      * Register this command. <p>
-     * Also, you can register this command using {@link CommandManager#registerCommand(JKookCommand)}. <p>
+     * Also, you can register this command using {@link CommandManager#registerCommand(Plugin, JKookCommand)}. <p>
      * But this is easier than that. Isn't it?
      */
     public void register(Plugin plugin) {
-        plugin.getCore().getCommandManager().registerCommand(this);
+        plugin.getCore().getCommandManager().registerCommand(plugin, this);
         registerFlag = true;
     }
 

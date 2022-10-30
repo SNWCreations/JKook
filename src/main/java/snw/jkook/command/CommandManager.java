@@ -16,6 +16,8 @@
 
 package snw.jkook.command;
 
+import snw.jkook.plugin.Plugin;
+
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -27,21 +29,23 @@ public interface CommandManager {
     /**
      * Register a command.
      *
+     * @param plugin The plugin as the command owner
      * @param command The command to register
      * @throws IllegalArgumentException Thrown if the command with the same root name was registered,
      *                                  or the argument inside the command is not supported.
      */
-    void registerCommand(JKookCommand command) throws IllegalArgumentException;
+    void registerCommand(Plugin plugin, JKookCommand command) throws IllegalArgumentException;
 
     /**
      * Register a command.
      *
+     * @param plugin The plugin as the command owner
      * @param command The supplier that provides the real command.
      * @throws NullPointerException     Thrown if the supplier returned null.
      * @throws IllegalArgumentException Thrown if the command with the same root name was registered,
      *                                  or the argument inside the command is not supported.
      */
-    void registerCommand(Supplier<JKookCommand> command) throws NullPointerException, IllegalArgumentException;
+    void registerCommand(Plugin plugin, Supplier<JKookCommand> command) throws NullPointerException, IllegalArgumentException;
 
     /**
      * Execute a command with given command line.
