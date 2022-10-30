@@ -1,4 +1,6 @@
 # JKook
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSNWCreations%2FJKook.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSNWCreations%2FJKook?ref=badge_shield)
+
 
 The [Kook](https://kookapp.cn) API standard & Bot framework for Java.
 
@@ -69,3 +71,7 @@ We hope you can create your own Kook Bot, and then use the Bot to bring happines
 The Bukkit Project: The design of the framework is greatly influenced by this project.
 
 Jetbrains: They provide such a great [IntelliJ IDEA](https://www.jetbrains.com/idea)!
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSNWCreations%2FJKook.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSNWCreations%2FJKook?ref=badge_large)
