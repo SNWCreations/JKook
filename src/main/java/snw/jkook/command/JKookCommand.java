@@ -19,10 +19,7 @@ package snw.jkook.command;
 import snw.jkook.plugin.Plugin;
 import snw.jkook.util.Validate;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Represents a command in JKook framework.
@@ -36,6 +33,7 @@ public final class JKookCommand {
     private final Collection<String> aliases = new ArrayList<>();
     private final Collection<String> prefixes = new ArrayList<>();
     private final Collection<Class<?>> arguments = new ArrayList<>();
+    private final Map<Class<?>, Object> optionalArguments = new LinkedHashMap<>();
     private String description;
     private String helpContent;
 
@@ -183,7 +181,23 @@ public final class JKookCommand {
     public JKookCommand addArgument(Class<?> clazz) {
         ensureNotRegistered();
         Validate.isFalse(clazz == Object.class, "Object.class is not allowed to be an argument.");
+        Validate.isTrue(optionalArguments.isEmpty(), "You cannot add more arguments after optional arguments got added.");
         arguments.add(clazz);
+        return this;
+    }
+
+    /**
+     * Add an optional argument to this command. <p>
+     * The default value will be used if the command line does not contains a string as the argument value.
+     *
+     * @param clazz The type of the argument
+     * @param defaultValue The default value
+     * @param <T> The type of the argument
+     */
+    public <T> JKookCommand addOptionalArgument(Class<T> clazz, T defaultValue) {
+        ensureNotRegistered();
+        Validate.notNull(defaultValue);
+        optionalArguments.put(clazz, defaultValue);
         return this;
     }
 
@@ -267,6 +281,13 @@ public final class JKookCommand {
      */
     public Collection<Class<?>> getArguments() {
         return Collections.unmodifiableCollection(arguments);
+    }
+
+    /**
+     * Get the optional argument classes and their default value of this command.
+     */
+    public Map<Class<?>, Object> getOptionalArguments() {
+        return optionalArguments;
     }
 
     // specific-methods following:
