@@ -18,7 +18,6 @@ package snw.jkook.event.channel;
 
 import org.jetbrains.annotations.Contract;
 import snw.jkook.entity.channel.Channel;
-import snw.jkook.event.HandlerList;
 
 import java.util.Objects;
 
@@ -26,7 +25,6 @@ import java.util.Objects;
  * Represents an event that means an operator deleted a channel.
  */
 public class ChannelDeleteEvent extends ChannelEvent {
-    private static final HandlerList handlers = new HandlerList();
     private final String channelId;
 
     public ChannelDeleteEvent(final long timeStamp, final String channelId) {
@@ -51,10 +49,6 @@ public class ChannelDeleteEvent extends ChannelEvent {
     @Contract("-> fail")
     public Channel getChannel() {
         throw new UnsupportedOperationException("No channel available for ChannelDeleteEvent!");
-    }
-
-    public static HandlerList getHandlers() {
-        return handlers;
     }
 
 }

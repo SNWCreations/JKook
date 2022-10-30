@@ -16,13 +16,10 @@
 
 package snw.jkook.event.pm;
 
-import snw.jkook.event.HandlerList;
-
 /**
  * Represents the event that means the content of a private message got updated.
  */
 public class PrivateMessageUpdateEvent extends PrivateMessageEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     private final String messageId;
     private final String content;
@@ -47,7 +44,4 @@ public class PrivateMessageUpdateEvent extends PrivateMessageEvent {
         return content;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

@@ -19,7 +19,6 @@ package snw.jkook.event.user;
 import org.jetbrains.annotations.Nullable;
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Channel;
-import snw.jkook.event.HandlerList;
 
 import java.util.Objects;
 
@@ -27,7 +26,6 @@ import java.util.Objects;
  * Represents the event that means a user clicked a button in a message.
  */
 public class UserClickButtonEvent extends UserEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     private final String messageId;
     private final String value;
@@ -63,7 +61,4 @@ public class UserClickButtonEvent extends UserEvent {
         return channel;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

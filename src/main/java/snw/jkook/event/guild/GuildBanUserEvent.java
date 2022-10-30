@@ -18,7 +18,6 @@ package snw.jkook.event.guild;
 
 import snw.jkook.entity.Guild;
 import snw.jkook.entity.User;
-import snw.jkook.event.HandlerList;
 
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +27,6 @@ import java.util.Objects;
  * Represents an event that a guild banned some users.
  */
 public class GuildBanUserEvent extends GuildEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     private final List<User> banned;
     private final User operator;
@@ -62,7 +60,4 @@ public class GuildBanUserEvent extends GuildEvent {
         return reason;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

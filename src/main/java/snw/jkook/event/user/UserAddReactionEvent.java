@@ -18,7 +18,6 @@ package snw.jkook.event.user;
 
 import snw.jkook.entity.CustomEmoji;
 import snw.jkook.entity.User;
-import snw.jkook.event.HandlerList;
 
 import java.util.Objects;
 
@@ -26,7 +25,6 @@ import java.util.Objects;
  * Represents an event that means a user added a reaction to a message.
  */
 public class UserAddReactionEvent extends UserEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     private final String messageId;
     private final CustomEmoji emoji;
@@ -51,7 +49,4 @@ public class UserAddReactionEvent extends UserEvent {
         return emoji;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

@@ -17,20 +17,15 @@
 package snw.jkook.event.role;
 
 import snw.jkook.entity.Role;
-import snw.jkook.event.HandlerList;
 
 /**
  * Represents an event that means a role was deleted. <p>
  * <b>WARNING: Do not call {@link Role#delete()} using the deleted role that provided by this event. Or unexpected bad thing will happen.</b>
  */
 public class RoleDeleteEvent extends RoleEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     public RoleDeleteEvent(final long timeStamp, final Role role) {
         super(timeStamp, role);
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

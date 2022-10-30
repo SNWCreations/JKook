@@ -18,7 +18,6 @@ package snw.jkook.event.user;
 
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.VoiceChannel;
-import snw.jkook.event.HandlerList;
 
 import java.util.Objects;
 
@@ -26,7 +25,6 @@ import java.util.Objects;
  * Represents an event that means a user joined a voice channel.
  */
 public class UserLeaveVoiceChannelEvent extends UserEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     private final VoiceChannel channel;
 
@@ -42,7 +40,4 @@ public class UserLeaveVoiceChannelEvent extends UserEvent {
         return channel;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

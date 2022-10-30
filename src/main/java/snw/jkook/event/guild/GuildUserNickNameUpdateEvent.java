@@ -18,13 +18,11 @@ package snw.jkook.event.guild;
 
 import snw.jkook.entity.Guild;
 import snw.jkook.entity.User;
-import snw.jkook.event.HandlerList;
 
 /**
  * Represents an event that means a user's nickname was updated.
  */
 public class GuildUserNickNameUpdateEvent extends GuildEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     private final User user;
     private final String newNickName;
@@ -49,7 +47,4 @@ public class GuildUserNickNameUpdateEvent extends GuildEvent {
         return newNickName;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

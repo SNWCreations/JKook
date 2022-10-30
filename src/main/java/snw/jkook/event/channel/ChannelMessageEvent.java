@@ -17,7 +17,6 @@
 package snw.jkook.event.channel;
 
 import snw.jkook.entity.channel.TextChannel;
-import snw.jkook.event.HandlerList;
 import snw.jkook.message.TextChannelMessage;
 
 import java.util.Objects;
@@ -26,7 +25,7 @@ import java.util.Objects;
  * Represents an event that a user sends a message in a text channel.
  */
 public class ChannelMessageEvent extends ChannelEvent {
-    private static final HandlerList handlers = new HandlerList();
+
 
     private final TextChannelMessage message;
 
@@ -47,7 +46,4 @@ public class ChannelMessageEvent extends ChannelEvent {
         return (TextChannel) super.getChannel();
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

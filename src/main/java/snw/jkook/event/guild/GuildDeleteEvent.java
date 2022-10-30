@@ -17,13 +17,11 @@
 package snw.jkook.event.guild;
 
 import snw.jkook.entity.Guild;
-import snw.jkook.event.HandlerList;
 
 /**
  * Represents an event that means a guild was deleted.
  */
 public class GuildDeleteEvent extends GuildEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     private final String guildId;
 
@@ -48,9 +46,5 @@ public class GuildDeleteEvent extends GuildEvent {
      */
     public String getGuildId() {
         return guildId;
-    }
-
-    public static HandlerList getHandlers() {
-        return handlers;
     }
 }

@@ -18,7 +18,6 @@ package snw.jkook.event.user;
 
 import snw.jkook.entity.Guild;
 import snw.jkook.entity.User;
-import snw.jkook.event.HandlerList;
 
 import java.util.Objects;
 
@@ -26,7 +25,6 @@ import java.util.Objects;
  * Represents an event that means a user joined the guild.
  */
 public class UserJoinGuildEvent extends UserEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     private final Guild guild;
 
@@ -42,7 +40,4 @@ public class UserJoinGuildEvent extends UserEvent {
         return guild;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

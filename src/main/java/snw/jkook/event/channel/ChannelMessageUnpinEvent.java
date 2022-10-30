@@ -18,13 +18,12 @@ package snw.jkook.event.channel;
 
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Channel;
-import snw.jkook.event.HandlerList;
 
 /**
  * Represents an event that means a message was unpinned.
  */
 public class ChannelMessageUnpinEvent extends ChannelEvent {
-    private static final HandlerList handlers = new HandlerList();
+
 
     private final String messageId;
     private final User operator;
@@ -49,7 +48,4 @@ public class ChannelMessageUnpinEvent extends ChannelEvent {
         return operator;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

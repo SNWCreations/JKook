@@ -17,13 +17,12 @@
 package snw.jkook.event.channel;
 
 import snw.jkook.entity.channel.Channel;
-import snw.jkook.event.HandlerList;
 
 /**
  * Represents an event that means a user modified a message.
  */
 public class ChannelMessageUpdateEvent extends ChannelEvent {
-    private static final HandlerList handlers = new HandlerList();
+
 
     private final String messageId;
     private final String content;
@@ -48,7 +47,4 @@ public class ChannelMessageUpdateEvent extends ChannelEvent {
         return content;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

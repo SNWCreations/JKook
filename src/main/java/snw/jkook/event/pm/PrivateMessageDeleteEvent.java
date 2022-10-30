@@ -16,13 +16,10 @@
 
 package snw.jkook.event.pm;
 
-import snw.jkook.event.HandlerList;
-
 /**
  * Represents the event that means a private message was deleted.
  */
 public class PrivateMessageDeleteEvent extends PrivateMessageEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     private final String messageId;
 
@@ -38,7 +35,4 @@ public class PrivateMessageDeleteEvent extends PrivateMessageEvent {
         return messageId;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

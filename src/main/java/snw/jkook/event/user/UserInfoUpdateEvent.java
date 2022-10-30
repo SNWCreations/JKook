@@ -17,25 +17,20 @@
 package snw.jkook.event.user;
 
 import snw.jkook.entity.User;
-import snw.jkook.event.HandlerList;
 
 /**
  * Represents an event that means a user's information (nickname, avatar) was updated. <p>
  * To get new information, use methods in {@link User} interface. <p>
  * <b>This event will be fired only the one of the following condition is true:</b>
  * <ul>
- *     <li>The user have chat sessions with the Bot.</li>
- *     <li>The user is the friend of the Bot.</li>
+ * <li>The user have chat sessions with the Bot.</li>
+ * <li>The user is the friend of the Bot.</li>
  * </ul>
  */
 public class UserInfoUpdateEvent extends UserEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     public UserInfoUpdateEvent(final long timeStamp, final User user) {
         super(timeStamp, user);
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

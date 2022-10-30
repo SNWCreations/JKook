@@ -17,13 +17,11 @@
 package snw.jkook.event.channel;
 
 import snw.jkook.entity.channel.TextChannel;
-import snw.jkook.event.HandlerList;
 
 /**
  * Represents the event that means a message in a channel was deleted.
  */
 public class ChannelMessageDeleteEvent extends ChannelEvent {
-    private static final HandlerList handlers = new HandlerList();
 
     private final String messageId;
 
@@ -39,7 +37,4 @@ public class ChannelMessageDeleteEvent extends ChannelEvent {
         return messageId;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }

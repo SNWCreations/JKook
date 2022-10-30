@@ -17,13 +17,11 @@
 package snw.jkook.event.item;
 
 import snw.jkook.entity.User;
-import snw.jkook.event.HandlerList;
 
 /**
  * Represents an event that means an item was consumed by somebody, and it affects someone else.
  */
 public class ItemConsumedEvent extends ItemEvent {
-    private static final HandlerList handlers = new HandlerList();
     private final User consumer;
     private final User affected;
     private final int itemId;
@@ -47,7 +45,4 @@ public class ItemConsumedEvent extends ItemEvent {
         return itemId;
     }
 
-    public static HandlerList getHandlers() {
-        return handlers;
-    }
 }
