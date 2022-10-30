@@ -68,6 +68,8 @@ public final class JKookCommand {
      * @param prefixes   The prefixes (default only add '/', e.g. '.')
      */
     public JKookCommand(String rootName, Collection<String> prefixes) {
+        Validate.isTrue(rootName.split(" ").length == 1, "Space characters are not allowed in the root name of a command.");
+        Validate.isTrue(prefixes.stream().allMatch(IT -> IT.split(" ").length == 1), "Space characters are not allowed in the prefix of a command.");
         this.rootName = Objects.requireNonNull(rootName);
         this.prefixes.addAll(prefixes);
     }
@@ -156,6 +158,7 @@ public final class JKookCommand {
      */
     public JKookCommand addPrefix(String prefix) {
         ensureNotRegistered();
+        Validate.isTrue(prefix.split(" ").length == 1, "Space characters are not allowed in the prefix of a command.");
         prefixes.add(prefix);
         return this;
     }
@@ -167,12 +170,14 @@ public final class JKookCommand {
      */
     public JKookCommand addAlias(String alias) {
         ensureNotRegistered();
+        Validate.isTrue(alias.split(" ").length == 1, "Space characters are not allowed in the alias of a command.");
         aliases.add(alias);
         return this;
     }
 
     public JKookCommand addArgument(Class<?> clazz) {
         ensureNotRegistered();
+        Validate.isFalse(clazz == Object.class, "Object.class is not allowed to be an argument.");
         arguments.add(clazz);
         return this;
     }
