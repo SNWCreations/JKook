@@ -175,6 +175,11 @@ public final class JKookCommand {
         return this;
     }
 
+    /**
+     * Add an argument to this command.
+     *
+     * @param clazz The type of the argument
+     */
     public JKookCommand addArgument(Class<?> clazz) {
         ensureNotRegistered();
         Validate.isFalse(clazz == Object.class, "Object.class is not allowed to be an argument.");
