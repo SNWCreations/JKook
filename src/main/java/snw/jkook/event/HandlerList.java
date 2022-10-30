@@ -27,7 +27,11 @@ import java.util.*;
 
 /**
  * Represents a list that contains all the handlers related to an event type.
+ *
+ * @deprecated This class is deprecated because it can't provide ability to unregister listeners.
+ *               It will be removed in JKook 0.41
  */
+@Deprecated
 public final class HandlerList {
     private final Set<RegisteredListener> listeners = new HashSet<>();
 
