@@ -74,4 +74,7 @@ Jetbrains: They provide such a great [IntelliJ IDEA](https://www.jetbrains.com/i
 
 
 ## License
+
+This project is licensed under Apache-2.0 License.
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSNWCreations%2FJKook.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSNWCreations%2FJKook?ref=badge_large)
