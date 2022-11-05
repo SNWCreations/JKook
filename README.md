@@ -2,6 +2,8 @@
 
 The [Kook](https://kookapp.cn) API standard & Bot framework for Java.
 
+JKook Official Kook Server: [Link](https://kook.top/aecCr6)
+
 ## Features
 
 * A complete representation of almost everything in Kook
