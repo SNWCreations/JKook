@@ -1,5 +1,9 @@
 # JKook
 
+---
+
+Select Other Language README: [简体中文](README_CN.md)
+
 The [Kook](https://kookapp.cn) API standard & Bot framework for Java.
 
 JKook Official Kook Server: [Link](https://kook.top/aecCr6)
@@ -23,12 +27,30 @@ You just need to add the JitPack repository as the one of the repositories in yo
 
 ### Compile by yourself
 
+#### Uses Maven 3
+
 JKook is a Java "program" and it uses [Maven 3](https://maven.apache.org) for compilation.
 
 To compile and install it, you should perform the following steps:
 * Install Maven and Git
 * Clone this repository (`git clone https://github.com/SNWCreations/JKook.git`)
 * `mvn clean install`
+
+#### Uses Gradle
+
+Create a Gradle project and import dependencies in `build.gradle`
+
+```
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    implementation 'com.github.SNWCreations:JKook:{version}'
+}
+```
+
+* `{version}` should be replaced with the version of the JKook API you need to use
 
 ---
 
