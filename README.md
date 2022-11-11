@@ -4,7 +4,7 @@
 
 Select Other Language README: [简体中文](README_CN.md)
 
-The [Kook](https://kookapp.cn) API standard & Bot framework for Java.
+The [Kook](https://kookapp.cn) API standard & Plugin framework for Java.
 
 JKook Official Kook Server: [Link](https://kook.top/aecCr6)
 
@@ -12,7 +12,7 @@ JKook Official Kook Server: [Link](https://kook.top/aecCr6)
 
 * A complete representation of almost everything in Kook
 * Powerful design
-* Basic Bot representation
+* Basic Plugin representation
 * Very detailed documentation
 
 ## Installation
