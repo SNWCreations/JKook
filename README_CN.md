@@ -1,7 +1,5 @@
 # JKook
 
----
-
 选择其他语言的README: [English](README.md)
 
 Java 平台的 [Kook](https://kookapp.cn) API 标准 & 插件框架.

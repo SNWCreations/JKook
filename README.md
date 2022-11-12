@@ -1,7 +1,5 @@
 # JKook
 
----
-
 Select Other Language README: [简体中文](README_CN.md)
 
 The [Kook](https://kookapp.cn) API standard & Plugin framework for Java.
