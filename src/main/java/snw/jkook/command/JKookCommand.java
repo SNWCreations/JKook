@@ -33,7 +33,7 @@ public final class JKookCommand {
     private final Collection<String> aliases = new ArrayList<>();
     private final Collection<String> prefixes = new ArrayList<>();
     private final Collection<Class<?>> arguments = new ArrayList<>();
-    private final Map<Class<?>, Object> optionalArguments = new LinkedHashMap<>();
+    private final OptionalArgumentContainer optionalArguments = new OptionalArgumentContainer();
     private String description;
     private String helpContent;
 
@@ -197,7 +197,7 @@ public final class JKookCommand {
     public <T> JKookCommand addOptionalArgument(Class<T> clazz, T defaultValue) {
         ensureNotRegistered();
         Validate.notNull(defaultValue);
-        optionalArguments.put(clazz, defaultValue);
+        optionalArguments.add(clazz, defaultValue);
         return this;
     }
 
@@ -286,8 +286,8 @@ public final class JKookCommand {
     /**
      * Get the optional argument classes and their default value of this command.
      */
-    public Map<Class<?>, Object> getOptionalArguments() {
-        return Collections.unmodifiableMap(optionalArguments);
+    public OptionalArgumentContainer getOptionalArguments() {
+        return optionalArguments;
     }
 
     // specific-methods following:
