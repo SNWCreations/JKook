@@ -24,6 +24,7 @@ import snw.jkook.entity.User;
 import snw.jkook.entity.abilities.InviteHolder;
 import snw.jkook.entity.abilities.MasterHolder;
 import snw.jkook.entity.abilities.Nameable;
+import snw.jkook.util.RequirePermission;
 
 import java.util.Collection;
 
@@ -80,8 +81,9 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     void setLevel(int level);
 
     /**
-     * Delete this channel .
+     * Delete this channel.
      */
+    @RequirePermission(Permission.CHANNEL_MANAGE)
     void delete();
 
     /**
