@@ -2,7 +2,7 @@
 
 选择其他语言的README: [English](README.md)
 
-Java 平台的 [Kook](https://kookapp.cn) API 标准 & 插件框架.
+Java 平台的 [Kook](https://kookapp.cn) 机器人插件框架。
 
 JKook 的官方 Kook 服务器: [点我加入](https://kook.top/aecCr6)
 
