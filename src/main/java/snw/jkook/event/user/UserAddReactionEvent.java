@@ -16,7 +16,7 @@
 
 package snw.jkook.event.user;
 
-import snw.jkook.entity.CustomEmoji;
+import snw.jkook.entity.Reaction;
 import snw.jkook.entity.User;
 
 import java.util.Objects;
@@ -27,12 +27,12 @@ import java.util.Objects;
 public class UserAddReactionEvent extends UserEvent {
 
     private final String messageId;
-    private final CustomEmoji emoji;
+    private final Reaction reaction;
 
-    public UserAddReactionEvent(final long timeStamp, final User user, final String messageId, final CustomEmoji emoji) {
+    public UserAddReactionEvent(final long timeStamp, final User user, final String messageId, final Reaction reaction) {
         super(timeStamp, user);
         this.messageId = Objects.requireNonNull(messageId);
-        this.emoji = Objects.requireNonNull(emoji);
+        this.reaction = Objects.requireNonNull(reaction);
     }
 
     /**
@@ -43,10 +43,10 @@ public class UserAddReactionEvent extends UserEvent {
     }
 
     /**
-     * Get the emoji that the user added.
+     * Get the reaction object that the user added.
      */
-    public CustomEmoji getEmoji() {
-        return emoji;
+    public Reaction getReaction() {
+        return reaction;
     }
 
 }
