@@ -18,14 +18,13 @@ package snw.jkook.entity.channel;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.Nullable;
-import snw.jkook.entity.abilities.Nameable;
 
 import java.util.Collection;
 
 /**
  * Represents a group of channel.
  */
-public interface Category extends Channel, Nameable {
+public interface Category extends Channel {
 
     @Contract("_, _-> fail")
     @Override
