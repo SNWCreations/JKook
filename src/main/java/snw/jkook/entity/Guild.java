@@ -63,10 +63,10 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
      */
     PageIterator<Set<User>> getUsers(
             String keyword,
-            int roleId,
-            boolean isMobileVerified,
-            boolean isActiveTimeFirst,
-            boolean isJoinedTimeFirst
+            @Nullable Integer roleId,
+            @Nullable Boolean isMobileVerified,
+            @Nullable Boolean isActiveTimeFirst,
+            @Nullable Boolean isJoinedTimeFirst
     );
 
     /**
