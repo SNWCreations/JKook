@@ -109,9 +109,29 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
 
     /**
      * Get the voice channel that this user joined.
+     * 
+     * @deprecated This method can only provide one result.
+     *             For Bot users, this method cannot provide all the channels that Bot joined.
+     *             Use {@link #getJoinedVoiceChannel(Guild)} instead.
      */
     @Nullable
+    @Deprecated
     VoiceChannel getJoinedVoiceChannel();
+
+    /**
+     * Get the voice channel which this user joined.
+     * 
+     * 
+     * 
+     * Why this method return a collection?
+     * 
+     * Kook will support Bots join multiple voice channels,
+     * and current API returns array, so this method returns Collection.
+     * 
+     * @param guild The guild as the search condition
+     * @return The collection of the joined voice channels
+     */
+    Collection<VoiceChannel> getJoinedVoiceChannel(Guild guild);
 
     /**
      * Get the intimacy score of this user.
