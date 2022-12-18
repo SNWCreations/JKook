@@ -45,4 +45,10 @@ public interface EventManager {
      * @param listener The listener to unregister
      */
     void unregisterHandlers(Listener listener);
+
+    /**
+     * Unregister all handlers that is registered by provided plugin.
+     * @param plugin The plugjn as the owner of Listeners
+     */
+    void unregisterAllHandlers(Plugin plugin);
 }
