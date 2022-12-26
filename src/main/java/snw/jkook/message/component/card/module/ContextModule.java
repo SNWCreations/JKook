@@ -18,6 +18,7 @@ package snw.jkook.message.component.card.module;
 
 import snw.jkook.message.component.card.element.BaseElement;
 import snw.jkook.message.component.card.element.ImageElement;
+import snw.jkook.message.component.card.element.MarkdownElement;
 import snw.jkook.message.component.card.element.PlainTextElement;
 import snw.jkook.util.Validate;
 
@@ -29,7 +30,7 @@ public class ContextModule extends BaseModule {
     private final List<BaseElement> modules;
 
     public ContextModule(List<BaseElement> modules) {
-        Validate.isTrue(modules.stream().allMatch(IT -> ((IT instanceof PlainTextElement) || (IT instanceof ImageElement))), "Context module only accepts plain-text, kmarkdown or image modules.");
+        Validate.isTrue(modules.stream().allMatch(IT -> ((IT instanceof PlainTextElement) || (IT instanceof MarkdownElement) || (IT instanceof ImageElement))), "Context module only accepts plain-text, kmarkdown or image modules.");
         this.modules = Collections.unmodifiableList(modules);
     }
 
