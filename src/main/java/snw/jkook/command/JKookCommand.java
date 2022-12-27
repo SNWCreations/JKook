@@ -22,6 +22,7 @@ import snw.jkook.util.Validate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Objects;
 
 /**
@@ -33,8 +34,8 @@ public final class JKookCommand {
     private UserCommandExecutor userCommandExecutor;
     private ConsoleCommandExecutor consoleCommandExecutor;
     private final Collection<JKookCommand> subcommands = new ArrayList<>();
-    private final Collection<String> aliases = new ArrayList<>();
-    private final Collection<String> prefixes = new ArrayList<>();
+    private final Collection<String> aliases = new HashSet<>();
+    private final Collection<String> prefixes = new HashSet<>();
     private String description;
     private String helpContent;
 
