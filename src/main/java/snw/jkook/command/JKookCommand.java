@@ -30,8 +30,8 @@ public final class JKookCommand {
     private UserCommandExecutor userCommandExecutor;
     private ConsoleCommandExecutor consoleCommandExecutor;
     private final Collection<JKookCommand> subcommands = new ArrayList<>();
-    private final Collection<String> aliases = new ArrayList<>();
-    private final Collection<String> prefixes = new ArrayList<>();
+    private final Collection<String> aliases = new HashSet<>();
+    private final Collection<String> prefixes = new HashSet<>();
     private final Collection<Class<?>> arguments = new ArrayList<>();
     private final OptionalArgumentContainer optionalArguments = new OptionalArgumentContainer();
     private String description;
