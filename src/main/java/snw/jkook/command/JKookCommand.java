@@ -66,10 +66,13 @@ public final class JKookCommand {
      * @param prefixes   The prefixes (default only add '/', e.g. '.')
      */
     public JKookCommand(String rootName, Collection<String> prefixes) {
-        Validate.isTrue(rootName.split(" ").length == 1, "Space characters are not allowed in the root name of a command.");
-        Validate.isTrue(prefixes.stream().allMatch(IT -> IT.split(" ").length == 1), "Space characters are not allowed in the prefix of a command.");
-        this.rootName = Objects.requireNonNull(rootName);
-        this.prefixes.addAll(prefixes);
+        Validate.notNull(rootName);
+        Validate.notNull(prefixes);
+        Validate.isFalse(prefixes.isEmpty(), "You must provide at least one prefix.");
+        Validate.isFalse(rootName.contains(" "), "Space characters are not allowed in the root name of a command.");
+        Validate.isFalse(prefixes.stream().anyMatch(IT -> IT.contains(" ")), "Space characters are not allowed in the prefix of a command.");
+        this.rootName = rootName;
+        prefixes.forEach(this::addPrefix);
     }
 
     /**
@@ -156,7 +159,7 @@ public final class JKookCommand {
      */
     public JKookCommand addPrefix(String prefix) {
         ensureNotRegistered();
-        Validate.isTrue(prefix.split(" ").length == 1, "Space characters are not allowed in the prefix of a command.");
+        Validate.isFalse(prefix.contains(" "), "Space characters are not allowed in the prefix of a command.");
         prefixes.add(prefix);
         return this;
     }
@@ -168,7 +171,7 @@ public final class JKookCommand {
      */
     public JKookCommand addAlias(String alias) {
         ensureNotRegistered();
-        Validate.isTrue(alias.split(" ").length == 1, "Space characters are not allowed in the alias of a command.");
+        Validate.isFalse(alias.contains(" "), "Space characters are not allowed in the alias of a command.");
         aliases.add(alias);
         return this;
     }
