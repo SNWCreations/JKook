@@ -31,6 +31,7 @@ import snw.jkook.entity.mute.MuteResult;
 import snw.jkook.util.PageIterator;
 import snw.jkook.util.RequirePermission;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -216,6 +217,17 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     String getAvatarUrl(boolean vip) throws IllegalArgumentException;
 
     /**
+     * Get the boost informations in the provided time range. <br>
+     * The timestamp is in <b>seconds</b>.
+     * 
+     * @param start The start of the range
+     * @param end The end of the range
+     * @throws IllegalArgumentException Thrown if the "start" timestamp is greater than the "end" timestamp, or one of them is negative.
+     */
+    @RequirePermission(Permission.OPERATOR)
+    Collection<BoostInfo> getBoostInfo(int start, int end) throws IllegalArgumentException;
+
+    /**
      * Represents notify type.
      */
     enum NotifyType {
@@ -266,5 +278,28 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
         public static NotifyType value(int value) {
             return values.get(value);
         }
+    }
+
+    /**
+     * Represents the boost info.
+     */
+    interface BoostInfo {
+
+        /**
+         * Get the user as the booster.
+         */
+        User getBooster();
+
+        /**
+         * Get the start timestamp of this boost. <br>
+         * The timestamp is in seconds.
+         */
+        int getStartTime();
+
+        /**
+         * Get the end timestamp of this boost. <br>
+         * The timestamp is in seconds.
+         */
+        int getEndTime();
     }
 }
