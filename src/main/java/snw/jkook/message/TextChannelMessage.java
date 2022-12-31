@@ -16,8 +16,12 @@
 
 package snw.jkook.message;
 
+import snw.jkook.entity.User;
 import snw.jkook.entity.channel.TextChannel;
 import snw.jkook.message.component.BaseComponent;
+import snw.jkook.message.component.MarkdownComponent;
+import snw.jkook.message.component.card.CardComponent;
+import snw.jkook.message.component.card.MultipleCardComponent;
 
 /**
  * Represents a message from a text channel.
@@ -48,5 +52,16 @@ public interface TextChannelMessage extends Message {
      * @return            The Message ID
      */
     String sendToSourceTemp(BaseComponent component);
+
+    /**
+     * Temporary set the component that stored by this message. <p>
+     * Only the user that specified by the user parameter will see the new component. <p>
+     * Only support messages that contains {@link MarkdownComponent} or Card (both {@link CardComponent} and {@link MultipleCardComponent}) <b>now</b>.
+     * It is similar to {@link #replyTemp(BaseComponent)}.
+     *
+     * @param user The user as the receiver of the new component
+     * @param component The component
+     */
+    void setComponentTemp(User user, BaseComponent component);
 
 }
