@@ -19,7 +19,7 @@ package snw.jkook.entity.abilities;
 import snw.jkook.entity.User;
 
 /**
- * Represents a object that can hold an owner.
+ * Represents an object that can hold an owner.
  */
 public interface MasterHolder {
 

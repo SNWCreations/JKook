@@ -17,7 +17,7 @@
 package snw.jkook.entity.abilities;
 
 /**
- * Represents a object that can have a name.
+ * Represents an object that can have a name.
  */
 public interface Nameable {
 

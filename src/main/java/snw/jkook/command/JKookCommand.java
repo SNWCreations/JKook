@@ -191,7 +191,7 @@ public final class JKookCommand {
 
     /**
      * Add an optional argument to this command. <p>
-     * The default value will be used if the command line does not contains a string as the argument value.
+     * The default value will be used if the command line does not contain a string as the argument value.
      *
      * @param clazz The type of the argument
      * @param defaultValue The default value
@@ -214,7 +214,7 @@ public final class JKookCommand {
         registerFlag = true;
     }
 
-    // Getters is following:
+    // Getters are following:
 
     /**
      * Get the root name of this command.

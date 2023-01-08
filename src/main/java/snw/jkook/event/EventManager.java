@@ -40,7 +40,7 @@ public interface EventManager {
     void registerHandlers(Plugin plugin, Listener listener);
 
     /**
-     * Unregister the specified handler and it won't receive events.
+     * Unregister the specified handler, and it won't receive events.
      *
      * @param listener The listener to unregister
      */
@@ -48,7 +48,7 @@ public interface EventManager {
 
     /**
      * Unregister all handlers that is registered by provided plugin.
-     * @param plugin The plugjn as the owner of Listeners
+     * @param plugin The plugin as the owner of Listeners
      */
     void unregisterAllHandlers(Plugin plugin);
 }

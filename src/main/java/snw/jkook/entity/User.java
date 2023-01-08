@@ -61,7 +61,7 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     int getIdentifyNumber();
 
     /**
-     * Return true if this user have "Kook BUFF".
+     * Return true if this user has "Kook BUFF".
      */
     boolean isVip();
 

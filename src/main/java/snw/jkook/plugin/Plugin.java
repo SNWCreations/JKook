@@ -133,7 +133,7 @@ public interface Plugin {
 
     /**
      * Get the core that loads this Plugin. <p>
-     * This is more safer than {@link JKook#getCore()} in multi-instance environment.
+     * This is safer than {@link JKook#getCore()} in multi-instance environment.
      */
     Core getCore();
 }

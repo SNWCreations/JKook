@@ -178,7 +178,7 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     Category createCategory(String name);
 
     /**
-     * Create an role with given information.
+     * Create a role with given information.
      *
      * @param name The name of new role
      * @return The new role representation
@@ -217,7 +217,7 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     String getAvatarUrl(boolean vip) throws IllegalArgumentException;
 
     /**
-     * Get the boost informations in the provided time range. <br>
+     * Get the boost information in the provided time range. <br>
      * The timestamp is in <b>seconds</b>.
      * 
      * @param start The start of the range

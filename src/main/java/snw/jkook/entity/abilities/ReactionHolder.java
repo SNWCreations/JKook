@@ -36,7 +36,7 @@ public interface ReactionHolder {
     Collection<User> getUserByReaction(CustomEmoji emoji) throws IllegalStateException;
 
     /**
-     * Add a emoji as the reaction to this object.
+     * Add an emoji as the reaction to this object.
      *
      * @param emoji The target emoji
      */
