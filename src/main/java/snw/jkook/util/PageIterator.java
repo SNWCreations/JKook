@@ -22,23 +22,25 @@ import java.util.Iterator;
 import java.util.function.Consumer;
 
 /**
- * Represents the iterator of something can have pages. <p>
- * Requests won't be started until {@link #hasNext()} got call.
- * Default page size is <code>50</code>, you can change it by using {@link #setPageSize(int)}. <p>
- * But <b>DO NOT</b> use {@link #setPageSize(int)} after you called {@link #hasNext()}, or unexpected thing may be happened. (e.g. Throwing an exception)
+ * 表示一个分页遍历器。<br>
+ * 此遍历器是基于 KOOK HTTP API 中的标准分页格式设计的。<br>
+ * 具体的信息在调用 {@link #hasNext()} 之前不会请求。<br>
+ * 默认的分页大小 {@code 50} ，你可以使用 {@link #setPageSize(int)} 方法修改。<br>
+ * <b>但必须在第一次调用 {@link #hasNext()} 方法前调用。</b>
  *
- * @param <E> The type of thing that will be provided
+ * @param <E> 具体的数据类型
  */
 public interface PageIterator<E> extends Iterator<E> {
 
     /**
-     * Get current size of the pages that iterator provides.
+     * 获取当前遍历器的分页大小。
      */
     int getPageSize();
 
     /**
-     * Set the size of the pages that this iterator provides.
-     * @param size The size to set
+     * 设置当前遍历器的分页大小。
+     *
+     * @param size 新的分页大小
      */
     void setPageSize(@Range(from = 50, to = 100) int size);
 

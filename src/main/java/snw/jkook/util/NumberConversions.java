@@ -19,7 +19,7 @@ package snw.jkook.util;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * The methods under this class can cast the numbers into different types.
+ * 此类中的方法可以将对象转换为不同类型的数字。
  */
 public final class NumberConversions {
 
@@ -27,6 +27,13 @@ public final class NumberConversions {
     private NumberConversions() {
     }
 
+    /**
+     * 将 {@code object} 转为 {@code int} 型。<br>
+     * 无法转换时返回 {@code 0} 。
+     *
+     * @param object 待转换的对象
+     * @return 转换结果。
+     */
     public static int toInt(@Nullable Object object) {
         if (object instanceof Number) {
             return ((Number) object).intValue();
@@ -44,6 +51,13 @@ public final class NumberConversions {
         return 0;
     }
 
+    /**
+     * 将 {@code object} 转为 {@code double} 型。<br>
+     * 无法转换时返回 {@code 0} 。
+     *
+     * @param object 待转换的对象
+     * @return 转换结果。
+     */
     public static double toDouble(@Nullable Object object) {
         if (object instanceof Number) {
             return ((Number) object).doubleValue();
@@ -60,6 +74,13 @@ public final class NumberConversions {
         return 0;
     }
 
+    /**
+     * 将 {@code object} 转为 {@code long} 型。<br>
+     * 无法转换时返回 {@code 0} 。
+     *
+     * @param object 待转换的对象
+     * @return 转换结果。
+     */
     public static long toLong(@Nullable Object object) {
         if (object instanceof Number) {
             return ((Number) object).longValue();

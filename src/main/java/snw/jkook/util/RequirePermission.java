@@ -24,7 +24,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * A simple annotation for marking the permission-required methods. It does NOTHING.
+ * 一个用于标记需要特定权限的方法的注解。其本身不做任何事情，仅仅是个标记。
  */
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.METHOD)
