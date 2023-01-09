@@ -68,7 +68,9 @@ public abstract class FileConfiguration extends MemoryConfiguration {
     public void save(@NotNull File file) throws IOException {
         Validate.notNull(file, "File cannot be null");
 
-        file.mkdirs();
+        if (file.getParentFile() != null) {
+            file.getParentFile().mkdirs();
+        }
 
         String data = saveToString();
 
