@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 JKook contributors
+ * Copyright 2022 - 2023 JKook contributors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,7 @@ package snw.jkook.command;
 import snw.jkook.JKook;
 import snw.jkook.util.Validate;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Represents a command in JKook framework.
