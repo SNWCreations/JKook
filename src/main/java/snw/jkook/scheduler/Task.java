@@ -19,34 +19,34 @@ package snw.jkook.scheduler;
 import snw.jkook.plugin.Plugin;
 
 /**
- * Represents a scheduled task.
+ * 表示一个已计划的任务。
  */
 public interface Task {
 
     /**
-     * Get the owner of this task.
+     * 获取拥有此计划任务的插件对象。
      */
     Plugin getPlugin();
 
     /**
-     * Attempts to cancel this task.
+     * 尝试取消此计划任务。
      *
-     * @throws IllegalStateException Thrown if this task has already cancelled
+     * @throws IllegalStateException 当此任务已被取消时抛出
      */
     void cancel() throws IllegalStateException;
 
     /**
-     * Return true if this task has already cancelled.
+     * 当此任务已被取消时返回 {@code true} 。
      */
     boolean isCancelled();
 
     /**
-     * Return true if this task has been executed (whether success or fail).
+     * 当此任务已被执行时返回 {@code true} 。无论此任务是否被成功执行。
      */
     boolean isExecuted();
 
     /**
-     * Get the ID of this task.
+     * 获取此任务的 ID 。
      */
     int getTaskId();
 }

@@ -15,7 +15,7 @@
  */
 
 /**
- * The things related to task scheduling in JKook framework.
+ * 此包存放了 JKook 框架中与计划任务有关的类。
  *
  * @see snw.jkook.scheduler.Scheduler
  */

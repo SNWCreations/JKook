@@ -20,16 +20,26 @@ import snw.jkook.plugin.Plugin;
 import snw.jkook.util.Validate;
 
 /**
- * This class provides an easy way to schedule tasks to JKook scheduler.
+ * 此类提供了一种更方便的 JKook 计划任务的抽象实现。基于 {@link Runnable} 。<br>
+ * 一个示例:
+ * <blockquote><pre>
+ * {@code
+ *     new JKookRunnable() {
+ *         public void run() {
+ *             // Your task code here
+ *         }
+ *     }.runTaskLater(plugin, 2000L); // Run the task after 2000 milliseconds
+ * }
+ * </pre></blockquote>
  */
 public abstract class JKookRunnable implements Runnable {
     private Task task = null;
 
     /**
-     * Schedule the runnable to be executed after the delay.
+     * 在指定的毫秒后执行此任务。
      *
-     * @param delay    The delay time
-     * @return The task object
+     * @param delay    执行目标任务之前等待的毫秒数
+     * @return 计划任务对象
      */
     public synchronized Task runTaskLater(Plugin plugin, long delay) {
         Validate.isTrue(task == null, "This runnable has already scheduled.");
@@ -37,11 +47,11 @@ public abstract class JKookRunnable implements Runnable {
     }
 
     /**
-     * Execute the runnable again and again.
+     * 反复执行此任务。
      *
-     * @param delay    The time before first run
-     * @param period   The time between two execution
-     * @return The task object
+     * @param delay    第一次执行此任务之前等待的毫秒数
+     * @param period   两次执行之间间隔的毫秒数
+     * @return 计划任务对象
      */
     public synchronized Task runTaskTimer(Plugin plugin, long delay, long period) {
         Validate.isTrue(task == null, "This runnable has already scheduled.");
@@ -49,9 +59,9 @@ public abstract class JKookRunnable implements Runnable {
     }
 
     /**
-     * Attempts to cancel this task.
+     * 尝试取消此计划任务。
      *
-     * @throws IllegalStateException Thrown if this task has already cancelled
+     * @throws IllegalStateException 当此任务已被取消时抛出
      */
     public synchronized void cancel() {
         Validate.notNull(task, "This runnable is not scheduled yet.");
@@ -60,7 +70,9 @@ public abstract class JKookRunnable implements Runnable {
     }
 
     /**
-     * Return true if this task has already cancelled.
+     * 当此计划任务已被取消时返回 {@code true} 。
+     *
+     * @throws IllegalStateException 当此任务已被取消时抛出
      */
     public synchronized boolean isCancelled() {
         Validate.notNull(task, "This runnable is not scheduled yet.");
@@ -68,14 +80,16 @@ public abstract class JKookRunnable implements Runnable {
     }
 
     /**
-     * Return true if this runnable is scheduled.
+     * 当此计划任务将被计划执行时返回 {@code true} 。
      */
     public synchronized boolean isScheduled() {
         return task != null;
     }
 
     /**
-     * Return the task ID of this runnable.
+     * 返回此计划任务的任务 ID 。
+     *
+     * @throws IllegalStateException 当此任务已被取消时抛出
      */
     public synchronized int getTaskId() {
         Validate.notNull(task, "This runnable is not scheduled yet.");
