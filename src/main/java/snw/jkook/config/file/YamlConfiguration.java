@@ -17,12 +17,15 @@
 package snw.jkook.config.file;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.error.YAMLException;
+import org.yaml.snakeyaml.nodes.MappingNode;
+import org.yaml.snakeyaml.nodes.Node;
+import org.yaml.snakeyaml.nodes.NodeTuple;
+import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Representer;
 import snw.jkook.JKook;
 import snw.jkook.config.Configuration;
@@ -30,10 +33,9 @@ import snw.jkook.config.ConfigurationSection;
 import snw.jkook.config.InvalidConfigurationException;
 import snw.jkook.util.Validate;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -41,34 +43,39 @@ import java.util.Map;
  * Note that this implementation is not synchronized.
  */
 public class YamlConfiguration extends FileConfiguration {
-    protected static final String BLANK_CONFIG = "{}\n";
-    private final DumperOptions yamlOptions = new DumperOptions();
-    private final LoaderOptions loaderOptions = new LoaderOptions();
+    private final Representer representer;
     private final Yaml yaml;
-    public YamlConfiguration() {
-        this(null);
-    }
 
-    public YamlConfiguration(@Nullable Configuration defaults) {
-        super(defaults);
-        Representer representer = new Representer();
+    public YamlConfiguration() {
+        //noinspection deprecation
+        Constructor constructor = new Constructor();
+        //noinspection deprecation
+        representer = new Representer();
         representer.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
-        yaml = new Yaml(new Constructor(), representer, yamlOptions, loaderOptions);
+
+        DumperOptions yamlDumperOptions = new DumperOptions();
+        yamlDumperOptions.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+        yamlDumperOptions.setIndent(4);
+        LoaderOptions yamlLoaderOptions = new LoaderOptions();
+        yamlLoaderOptions.setMaxAliasesForCollections(Integer.MAX_VALUE);
+        yamlLoaderOptions.setCodePointLimit(Integer.MAX_VALUE);
+        yamlLoaderOptions.setMaxAliasesForCollections(Integer.MAX_VALUE);
+
+        yaml = new Yaml(constructor, representer, yamlDumperOptions, yamlLoaderOptions);
     }
 
     @NotNull
     @Override
     public String saveToString() {
-        yamlOptions.setIndent(4);
-        yamlOptions.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+        MappingNode node = toNodeTree(this);
 
-        String dump = yaml.dump(getValues(false));
-
-        if (dump.equals(BLANK_CONFIG)) {
-            dump = "";
+        StringWriter writer = new StringWriter();
+        if (node.getValue().isEmpty()) {
+            writer.write("");
+        } else {
+            yaml.serialize(node, writer);
         }
-
-        return dump;
+        return writer.toString();
     }
 
     @Override
@@ -77,7 +84,6 @@ public class YamlConfiguration extends FileConfiguration {
 
         Map<?, ?> input;
         try {
-            loaderOptions.setMaxAliasesForCollections(Integer.MAX_VALUE);
             input = yaml.load(contents);
         } catch (YAMLException e) {
             throw new InvalidConfigurationException(e);
@@ -103,6 +109,23 @@ public class YamlConfiguration extends FileConfiguration {
                 section.set(key, value);
             }
         }
+    }
+
+    private MappingNode toNodeTree(@NotNull ConfigurationSection section) {
+        List<NodeTuple> nodeTuples = new ArrayList<>();
+        for (Map.Entry<String, Object> entry : section.getValues(false).entrySet()) {
+            Node key = representer.represent(entry.getKey());
+            Node value;
+            if (entry.getValue() instanceof ConfigurationSection) {
+                value = toNodeTree((ConfigurationSection) entry.getValue());
+            } else {
+                value = representer.represent(entry.getValue());
+            }
+
+            nodeTuples.add(new NodeTuple(key, value));
+        }
+
+        return new MappingNode(Tag.MAP, nodeTuples, DumperOptions.FlowStyle.BLOCK);
     }
 
     /**
