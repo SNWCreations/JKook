@@ -22,106 +22,103 @@ import org.jetbrains.annotations.Nullable;
 import java.io.File;
 
 /**
- * Represents the plugin manager. Handles the management of the plugins.
+ * 表示一个插件管理器。
  */
 public interface PluginManager {
 
     /**
-     * Checks if the given plugin is loaded and returns it.
-     * <p>
-     * Tips: Name of the plugin is case-sensitive!
+     * 检查一个插件是否存储在此管理器中，若有，则返回其实例。<br>
+     * 注意: 插件名区分大小写！
      *
-     * @param name Name of the plugin to check
-     * @return Plugin if it exists, otherwise null
+     * @param name 插件名称
+     * @return 插件实例，找不到时返回 {@code null}
      */
     @Nullable Plugin getPlugin(String name);
 
     /**
-     * Gets a list of all currently loaded plugins.
+     * 获取此管理器当前储存的所有插件实例。
      *
-     * @return Array of Plugins
+     * @return 插件实例的数组
      */
     Plugin[] getPlugins();
 
     /**
-     * Checks if the given plugin is enabled or not.
-     * <p>
-     * Tips: Name of the plugin is case-sensitive.
+     * 检查一个插件是否存储在此管理器中并启用。<br>
+     * 注意: 插件名区分大小写！
      *
-     * @param name Name of the plugin to check
-     * @return true if the plugin is enabled, otherwise false
+     * @param name 插件名称
+     * @return 当目标插件已被启用时返回 {@code true}
      */
     boolean isPluginEnabled(String name);
 
     /**
-     * Checks if the given plugin is enabled or not.
+     * 检查一个插件是否已启用。<br>
+     * 注意: 插件名区分大小写！
      *
-     * @param plugin Plugin to check
-     * @return true if the plugin is enabled, otherwise false
+     * @param plugin 插件对象
+     * @return 当目标插件已被启用时返回 {@code true}
      */
     boolean isPluginEnabled(Plugin plugin);
 
     /**
-     * Loads the plugin in the specified file.
-     * <p>
-     * Tips: this method just <b>load</b> the plugin,
-     *  won't call {@link Plugin#onLoad()}, {@link Plugin#reloadConfig()} and {@link Plugin#onEnable()}, won't save the reference of the loaded plugin.
+     * 尝试加载一个插件并返回其实例。<br>
+     * 注意: 此方法真的仅仅只是<b>加载</b>插件，
+     * 不会调用 {@link Plugin#onLoad()}，{@link Plugin#reloadConfig()} 和 {@link Plugin#onEnable()}，
+     * 不会将加载后的插件实例传递到 {@link #addPlugin(Plugin)} 以保存其引用。
      *
-     * @param file The file that represents a plugin
-     * @return The loaded plugin
-     * @throws InvalidPluginException Thrown when the specified file is not a valid plugin
+     * @param file 插件的 {@link File} 对象
+     * @return 插件对象
+     * @throws InvalidPluginException 当目标文件不是一个有效的插件时抛出
      */
     @NotNull Plugin loadPlugin(File file) throws InvalidPluginException;
 
     /**
-     * Loads the plugins contained within the specified directory.
+     * 尝试从目标目录中加载插件。
      *
-     * @param directory Directory to check for plugins
-     * @return A list of all plugins loaded
+     * @param directory 将用于寻找插件文件的目录
+     * @return 由所有成功加载的插件对象组成的数组
      * @see #enablePlugin(Plugin)
      */
     Plugin[] loadPlugins(File directory);
 
     /**
-     * Disables all the loaded plugins that stored in this manager.
+     * 禁用此管理器中存储的所有插件。
      */
     void disablePlugins();
 
     /**
-     * Disables and removes all plugins that stored in this manager.
+     * 禁用并移出此管理器中存储的所有插件。
      */
     void clearPlugins();
 
     /**
-     * Enables the specified plugin.
-     * <p>
-     * Attempting to enable a plugin that is already enabled will have no effect.
+     * 启用指定的插件。<br>
+     * 尝试启用一个已经被启用的插件没有任何作用。
      *
-     * @param plugin Plugin to enable
-     * @throws UnknownDependencyException Thrown if this plugin has an unknown dependency.
+     * @param plugin 插件对象
+     * @throws UnknownDependencyException 当此插件指定的硬依赖找不到时抛出
      */
     void enablePlugin(Plugin plugin) throws UnknownDependencyException;
 
     /**
-     * Disables the specified plugin.
-     * <p>
-     * Attempting to disable a plugin that is not enabled will have no effect.
+     * 禁用指定的插件。<br>
+     * 尝试启用一个已经被禁用的插件没有任何作用。
      *
-     * @param plugin Plugin to disable
+     * @param plugin 插件对象
      */
     void disablePlugin(Plugin plugin);
 
     /**
-     * Add the plugin reference to this manager. This should fail silently.
+     * 将指定的插件存入此管理器。
      *
-     * @param plugin The plugin reference
+     * @param plugin 插件对象
      */
     void addPlugin(Plugin plugin);
 
     /**
-     * Remove the plugin reference from this manager. This should fail silently.
+     * 将指定的插件移出此管理器。
      *
-     * @param plugin The plugin reference
+     * @param plugin 插件对象
      */
     void removePlugin(Plugin plugin);
 }

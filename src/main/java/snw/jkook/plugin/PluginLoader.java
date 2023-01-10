@@ -19,18 +19,17 @@ package snw.jkook.plugin;
 import java.io.File;
 
 /**
- * Represents a Plugin loader.
+ * 表示一个插件加载器。
  */
 public interface PluginLoader extends MarkedClassLoader {
 
     /**
-     * Load a Plugin (its main class) and return its instance. <p>
-     * You don't need to call any methods in the plugin instance,
-     * just load it into the memory and return it.
+     * 尝试加载一个插件并返回其实例。
      *
-     * @param file The Plugin data source
-     * @return The Plugin instance
-     * @throws InvalidPluginException Thrown if an error occurred while the loader attempting to load the Plugin
+     * @param file 插件的 JAR 存档文件
+     * @return 插件实例
+     * @throws InvalidPluginException 当加载器无法加载目标文件时，或目标插件不是一个有效的插件时抛出
+     * @implNote 只需要构造出实例即可，不需要调用诸如 {@link Plugin#onLoad()} 之类的方法。
      */
     Plugin loadPlugin(final File file) throws InvalidPluginException;
 }

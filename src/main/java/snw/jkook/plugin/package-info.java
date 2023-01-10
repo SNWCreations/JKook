@@ -15,7 +15,7 @@
  */
 
 /**
- * The package related to plugin in JKook framework.
+ * 此包存放了 JKook 框架中的有关插件的类。
  *
  * @see snw.jkook.plugin.Plugin
  * @see snw.jkook.plugin.BasePlugin

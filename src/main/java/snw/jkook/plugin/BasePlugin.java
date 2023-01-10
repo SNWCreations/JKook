@@ -30,8 +30,8 @@ import java.nio.file.Files;
 import java.util.Objects;
 
 /**
- * Represents a basic Kook Plugin implementation. Use YAML as configuration. <p>
- * Plugin developers should extend this class to make their own Plugin program.
+ * 表示一个 JKook 插件的基类。使用 YAML 作为配置文件的格式。<br>
+ * 插件开发者可以直接继承本类作为插件的主类。
  */
 public abstract class BasePlugin implements Plugin {
     private Logger logger;
@@ -54,15 +54,16 @@ public abstract class BasePlugin implements Plugin {
     }
 
     /**
-     * Initialize this plugin. This should be called by API implementations ONLY.
+     * 初始化此插件。<br>
+     * 此方法只应该由 JKook API 的实现调用。
      *
-     * @param configFile  The configuration file so that can be loaded as the default configuration
-     *                    using {@link #reloadConfig()}
-     * @param dataFolder  The data folder
-     * @param description The description object
-     * @param file        The file that contains this plugin
-     * @param logger      The logger object
-     * @throws IllegalStateException Thrown if this plugin has already initialized
+     * @param configFile  此插件的默认配置文件 (config.yml) 的 {@link File} 对象
+     *                    将被用在 {@link #reloadConfig()} 中作为配置项的数据来源
+     * @param dataFolder  存放此插件数据的文件夹的 {@link File} 对象
+     * @param description 此插件的描述信息对象
+     * @param file        此插件本身的 {@link File} 对象
+     * @param logger      此插件将使用的日志记录器
+     * @throws IllegalStateException 当此插件已被初始化时抛出
      */
     public void init(
             final File configFile,

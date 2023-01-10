@@ -31,7 +31,8 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
- * Represents a basic Plugin loader implementation.
+ * 表示一个 {@link PluginLoader} 的基本实现。<br>
+ * 此实现基于 <a href="https://github.com/SNWCreations/JKook/wiki/Plugin-Format">JKook 插件格式规范</a> 编写。
  */
 public abstract class PluginClassLoader extends URLClassLoader implements PluginLoader {
 
@@ -115,11 +116,11 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
     }
 
     /**
-     * Construct the Plugin instance with given information and return it.
+     * 通过提供的信息构造插件实例。
      *
-     * @param cls         The Plugin main class
-     * @param description The description object
-     * @throws Exception Thrown if something went really wrong
+     * @param cls         插件主类的 {@link Class} 对象
+     * @param description 插件的描述信息对象
+     * @throws Exception 当发生意外时抛出
      */
     protected abstract <T extends Plugin> T construct(final Class<T> cls, final PluginDescription description) throws Exception;
 }

@@ -17,7 +17,7 @@
 package snw.jkook.plugin;
 
 /**
- * Represents a object that can load plugins.
+ * 表示一个可以加载插件的对象。
  *
  * @author huanmeng_qwq
  */

@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Represents the description of a Kook Plugin. <p>
- * It is not visible for Kook users. This is just designed for store the data of "plugin.yml" file.
+ * 表示一个 JKook 插件的描述信息。<br>
+ * 这只是为了存储插件的 plugin.yml 中的数据而设计的。
  */
 public final class PluginDescription {
     private final String name;
@@ -48,64 +48,66 @@ public final class PluginDescription {
     }
 
     /**
-     * Get the name of this Plugin.
+     * 获取此插件的名字。
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Get the version of this Plugin.
+     * 获取此插件的版本，
      */
     public String getVersion() {
         return version;
     }
 
     /**
-     * Get the API version that the Plugin used.
+     * 获取此插件使用的 JKook API 的版本。
      */
     public String getApiVersion() {
         return apiVersion;
     }
 
     /**
-     * Get the full description.
+     * 获取此插件的完整简介。
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Get the website of this Plugin. <p>
-     * Empty string is returned if the description is not provided in the description file.
+     * 获取此插件的官方网站的链接。<br>
+     * 当 plugin.yml 中未提供时，返回空字符串。
      */
     public String getWebsite() {
         return website;
     }
 
     /**
-     * Get the authors of this Plugin.
+     * 获取此插件的作者列表。
      */
     public List<String> getAuthors() {
         return authors;
     }
 
     /**
-     * Get the main class name of this Plugin.
+     * 获取此插件的主类名称。
      */
     public String getMainClassName() {
         return mainClassName;
     }
 
     /**
-     * Get the dependency plugins of this Plugin.
+     * 获取此插件的硬依赖列表。<br>
+     * 当无法找到此插件的某项硬依赖时，此插件将不会运行。
      */
     public List<String> getDepend() {
         return depend;
     }
 
     /**
-     * Get the soft dependency plugins of this Plugin.
+     * 获取此插件的软依赖列表。<br>
+     * 当无法找到此插件的某项硬依赖时，仅给出警告，插件仍然会正常地启用。
      */
     public List<String> getSoftDepend() {
         return softDepend;
