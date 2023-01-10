@@ -17,8 +17,8 @@
 package snw.jkook.message.component;
 
 /**
- * Represents the text component using Markdown syntax. <p>
- * <b>If you want to send the message using Markdown, use this instead of {@link TextComponent}.</b>
+ * 表示一个 Markdown 消息组件。<br>
+ * <b>如果你想要发送一条遵循 Markdown 语法的消息，使用这个，而不是 {@link TextComponent} 。</b>
  */
 public class MarkdownComponent extends TextComponent {
     public MarkdownComponent(String rawContent) {

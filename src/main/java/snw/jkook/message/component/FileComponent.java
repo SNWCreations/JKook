@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents the component with a file.
+ * 表示一个文件消息组件。
  */
 public class FileComponent extends BaseComponent {
     private final String url;
@@ -28,6 +28,12 @@ public class FileComponent extends BaseComponent {
     private final int size;
     private final Type type;
 
+    /**
+     * @param url 文件的链接
+     * @param title 文件名称（包括扩展名）
+     * @param size 文件大小（以字节为单位，这个一般由 KOOK 服务端提供，你可以随便填）
+     * @param type 文件类型（这决定了文件的展示形式）
+     */
     public FileComponent(String url, String title, int size, Type type) {
         this.url = url;
         this.title = title;
@@ -36,55 +42,55 @@ public class FileComponent extends BaseComponent {
     }
 
     /**
-     * Get the targeted image url of this module.
+     * 获取文件的链接。
      */
     public String getUrl() {
         return url;
     }
 
     /**
-     * Return the title of this file.
+     * 获取文件名称。（包括扩展名）
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * Return the size of this file. Unit is byte.
+     * 获取文件的大小。以字节为单位。
      */
     public int getSize() {
         return size;
     }
 
     /**
-     * Return the type of this file.
+     * 获取文件类型。（这决定了文件的展示形式）
      */
     public Type getType() {
         return type;
     }
 
     /**
-     * Represents the types allowed by this module.
+     * 表示文件消息组件的展示形式。
      */
     public enum Type {
 
         /**
-         * Represents the normal file.
+         * 表示一个普通的文件。
          */
         FILE("file"),
 
         /**
-         * Represents the audio file.
+         * 表示音乐文件。
          */
         AUDIO("audio"),
 
         /**
-         * Represents the video file.
+         * 表示视频文件。
          */
         VIDEO("video"),
 
         /**
-         * Represents the image file.
+         * 表示图像文件。
          */
         IMAGE("image");
 
@@ -107,9 +113,9 @@ public class FileComponent extends BaseComponent {
         }
 
         /**
-         * Return the enum instance that represented the provided value.
+         * 获取提供的值对应的枚举对象。
          *
-         * @param value The value
+         * @param value 值
          */
         public static Type value(String value) {
             return values.get(value);

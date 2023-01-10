@@ -15,9 +15,8 @@
  */
 
 /**
- * The various component for text chatting in Kook. <p>
- * If you want to send card messages, see {@link snw.jkook.message.component.card}. <p>
- * If you want to send single components, see this package.
+ * 此包存放了 KOOK 中的各种消息组件。<br>
+ * 如果你想要发送卡片消息，看看 {@link snw.jkook.message.component.card} 。
  */
 
 package snw.jkook.message.component;

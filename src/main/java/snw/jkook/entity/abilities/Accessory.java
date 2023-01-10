@@ -41,7 +41,7 @@ public interface Accessory {
         }
 
         /**
-         * Return the enum instance that represented the provided value.
+         * 获取提供的值对应的枚举对象。
          *
          * @param name The value
          */

@@ -17,10 +17,10 @@
 package snw.jkook.message.component;
 
 /**
- * Represents a component that contains the text. <p>
+ * 表示一个纯文本消息组件。<br>
  * 
- * Tip: KOOK will convert TextComponents (Plain Text) into Markdown messages automatically now.
- * Use {@link MarkdownComponent} is recommended.
+ * <b>注意: KOOK 已弃用纯文本消息组件。</b>KOOK 会将所有的纯文本消息组件自动转换为 Markdown 消息组件。<br>
+ * 所以严格意义上，此类和 {@link MarkdownComponent} 在使用上已经没有区别了，并且更推荐使用后者。
  */
 public class TextComponent extends BaseComponent {
     private final String rawContent;
@@ -30,7 +30,7 @@ public class TextComponent extends BaseComponent {
     }
 
     /**
-     * Return the content of this component.
+     * 获取此消息组件的内容。
      */
     public String toString() {
         return rawContent;

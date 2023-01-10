@@ -17,8 +17,7 @@
 package snw.jkook.message.component;
 
 /**
- * Represents a basic component in Kook. <p>
- * This interface should <b>NOT</b> be implemented. Implement its sub-interface instead.
+ * 表示一个基本的消息组件。
  */
 public abstract class BaseComponent implements Cloneable {
 
