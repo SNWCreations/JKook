@@ -15,7 +15,7 @@
  */
 
 /**
- * The classes under this package represents various messages in Kook.
+ * 此包存放了 JKook 框架中描述组成 KOOK 消息的各种元素的类。
  */
 
 package snw.jkook.message;

@@ -17,7 +17,7 @@
 package snw.jkook.message;
 
 /**
- * Represents a private message.
+ * 表示一条私信。
  */
 public interface PrivateMessage extends Message {
 }

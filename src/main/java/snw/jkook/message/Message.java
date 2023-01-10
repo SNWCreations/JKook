@@ -27,78 +27,90 @@ import snw.jkook.message.component.card.MultipleCardComponent;
 import snw.jkook.util.RequirePermission;
 
 /**
- * Represents a message.
+ * 表示一条消息。
  */
 public interface Message extends Receivable, ReactionHolder {
 
     /**
-     * Get the component in this message.
+     * 获取此消息中包含的消息组件。
      */
     BaseComponent getComponent();
 
     /**
-     * Set the component that stored by this message. <p>
-     * Only support messages that contains {@link MarkdownComponent} or Card (both {@link CardComponent} and {@link MultipleCardComponent}) <b>now</b>.
+     * 更新此消息中包含的消息组件。<br>
+     * 目前仅支持包含了 {@link MarkdownComponent} 或卡片（{@link CardComponent} 和 {@link MultipleCardComponent}）的消息。
      *
-     * @param component The component
+     * @param component 新的消息组件
      */
     void setComponent(BaseComponent component);
 
     /**
-     * Get the ID of this message.
+     * 获取此消息的 ID 。
      */
     String getId();
 
     /**
-     * Get the message that quoted by this message. <p>
-     * <b>WARNING!</b> In the result of this method, only the following methods are safe:
+     * 获取被此消息回复的消息。<br>
+     * <b>注意！</b>在此方法的返回值中，只有下列方法是安全的：
      * <ul>
      *     <li>{@link #getComponent()}</li>
      *     <li>{@link #getId()}</li>
      *     <li>{@link #getSender()}</li>
      *     <li>{@link #getTimeStamp()}</li>
      * </ul>
-     * The result of the other methods are <b>undefined</b>. Maybe throwing exceptions? Or providing incorrect result?
+     * 其他方法的行为是<b>不确定</b>的。也许它们会抛出异常？或者提供不正确的结果？
      */
     @Nullable
     Message getQuote();
 
     /**
-     * Send a component <b>as the reply</b> of this message.
+     * 发送一个消息组件作为此消息的回复。<br>
+     * 当消息来源是用户时，调用此方法等同于 {@code this.getSender().sendPrivateMessage(component, this)} 。<br>
+     * 当消息来源是文字频道时（即此对象是 {@link TextChannelMessage} 的实例时），
+     * 调用此方法等同于 {@code ((TextChannelMessage) this).getChannel().sendComponent(component, this, null)} 。
      *
-     * @param message     The message content
-     * @return            The Message ID
+     * @param message 消息组件
+     * @return        新消息的 ID
      */
     String reply(String message);
 
     /**
-     * Send a component to the source of this message (e.g. a user, a text channel),
-     * <b>IT IS DIFFERENT FROM {@link #reply}</b>.
+     * 发送一个消息组件到此消息的来源。<br>
+     * <b>它不同于 {@link #reply}</b>。<br>
+     * 当消息来源是用户时，调用此方法等同于 {@code this.getSender().sendPrivateMessage(component)} 。<br>
+     * 当消息来源是文字频道时（即此对象是 {@link TextChannelMessage} 的实例时），
+     * 调用此方法等同于 {@code ((TextChannelMessage) this).getChannel().sendComponent(component, null, null)} 。
      *
-     * @param message     The message content
-     * @return            The Message ID
+     * @param message 消息组件
+     * @return        新消息的 ID
      */
     String sendToSource(String message);
 
     /**
-     * Send a component <b>as the reply</b> of this message.
+     * 发送一个消息组件作为此消息的回复。<br>
+     * 当消息来源是用户时，调用此方法等同于 {@code this.getSender().sendPrivateMessage(component, this)} 。<br>
+     * 当消息来源是文字频道时（即此对象是 {@link TextChannelMessage} 的实例时），
+     * 调用此方法等同于 {@code ((TextChannelMessage) this).getChannel().sendComponent(component, this, null)} 。
      *
-     * @param component   The component
-     * @return            The Message ID
+     * @param component   消息组件
+     * @return            新消息的 ID
      */
     String reply(BaseComponent component);
 
     /**
-     * Send a component to the source of this message (e.g. a user, a text channel),
-     * <b>IT IS DIFFERENT FROM {@link #reply}</b>.
+     * 发送一个消息组件到此消息的来源。<br>
+     * <b>它不同于 {@link #reply}</b>。<br>
+     * 当消息来源是用户时，调用此方法等同于 {@code this.getSender().sendPrivateMessage(component)} 。<br>
+     * 当消息来源是文字频道时（即此对象是 {@link TextChannelMessage} 的实例时），
+     * 调用此方法等同于 {@code ((TextChannelMessage) this).getChannel().sendComponent(component, null, null)} 。
      *
-     * @param component   The component
-     * @return            The Message ID
+     * @param component   消息组件
+     * @return            新消息的 ID
      */
     String sendToSource(BaseComponent component);
 
     /**
-     * Delete this message .
+     * 删除此消息。
      */
     @RequirePermission(Permission.MESSAGE_MANAGE)
     void delete();
