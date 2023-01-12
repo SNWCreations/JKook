@@ -32,12 +32,14 @@ public class UserClickButtonEvent extends UserEvent {
     private final String messageId;
     private final String value;
     private final Channel channel;
+    private final String channel_type;
 
-    public UserClickButtonEvent(final long timeStamp, final User user, final String messageId, final String value, Channel channel) {
+    public UserClickButtonEvent(final long timeStamp, final User user, final String messageId, final String value, Channel channel,String channel_type) {
         super(timeStamp, user);
         this.messageId = Objects.requireNonNull(messageId);
         this.value = Objects.requireNonNull(value);
         this.channel = channel;
+        this.channel_type = channel_type;
     }
 
     /**
@@ -61,6 +63,13 @@ public class UserClickButtonEvent extends UserEvent {
     @Nullable
     public Channel getChannel() {
         return channel;
+    }
+
+    /**
+     * Get the channel_type on which the button is clicked.
+     */
+    public String getChannel_type(){
+        return channel_type;
     }
 
     public static HandlerList getHandlers() {
