@@ -77,16 +77,6 @@ public interface HttpAPI {
 
     /**
      * Upload a file to Kook server.
-     *
-     * @param binary The binary data to upload
-     * @return The URL string of the remote file
-     * @deprecated This method cannot provide file name
-     */
-    @Deprecated
-    String uploadFile(String binary);
-
-    /**
-     * Upload a file to Kook server.
      * 
      * @param filename The name of the file (with the extension name)
      * @param content The content byte array of the file

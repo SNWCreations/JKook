@@ -197,18 +197,6 @@ public abstract class FileConfiguration extends MemoryConfiguration {
      */
     public abstract void loadFromString(@NotNull String contents) throws InvalidConfigurationException;
 
-    /**
-     * @return empty string
-     * @deprecated This method only exists for backwards compatibility. It will
-     * do nothing and should not be used! Please use
-     * {@link FileConfigurationOptions#getHeader()} instead.
-     */
-    @NotNull
-    @Deprecated
-    protected String buildHeader() {
-        return "";
-    }
-
     @NotNull
     @Override
     public FileConfigurationOptions options() {

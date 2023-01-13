@@ -16,7 +16,6 @@
 
 package snw.jkook.entity;
 
-import org.jetbrains.annotations.Nullable;
 import snw.jkook.Permission;
 import snw.jkook.command.CommandSender;
 import snw.jkook.entity.abilities.AvatarHolder;
@@ -107,17 +106,6 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
      * @return The Message ID
      */
     String sendPrivateMessage(BaseComponent component, PrivateMessage quote);
-
-    /**
-     * Get the voice channel that this user joined.
-     * 
-     * @deprecated This method can only provide one result.
-     *             For Bot users, this method cannot provide all the channels that Bot joined.
-     *             Use {@link #getJoinedVoiceChannel(Guild)} instead.
-     */
-    @Nullable
-    @Deprecated
-    VoiceChannel getJoinedVoiceChannel();
 
     /**
      * Get the voice channel which this user joined.<br>

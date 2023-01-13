@@ -21,7 +21,6 @@ import org.jetbrains.annotations.Nullable;
 import snw.jkook.config.MemoryConfiguration;
 import snw.jkook.config.MemoryConfigurationOptions;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -79,20 +78,6 @@ public class FileConfigurationOptions extends MemoryConfigurationOptions {
     }
 
     /**
-     * @return The string header.
-     * @deprecated use getHeader() instead.
-     */
-    @NotNull
-    @Deprecated
-    public String header() {
-        StringBuilder stringHeader = new StringBuilder();
-        for (String line : header) {
-            stringHeader.append(line == null ? "\n" : line + "\n");
-        }
-        return stringHeader.toString();
-    }
-
-    /**
      * Sets the header that will be applied to the top of the saved output.
      * <p>
      * This header will be commented out and applied directly at the top of
@@ -111,18 +96,6 @@ public class FileConfigurationOptions extends MemoryConfigurationOptions {
     @NotNull
     public FileConfigurationOptions setHeader(@Nullable List<String> value) {
         this.header = (value == null) ? Collections.emptyList() : Collections.unmodifiableList(value);
-        return this;
-    }
-
-    /**
-     * @param value The string header.
-     * @return This object, for chaining.
-     * @deprecated use setHeader() instead
-     */
-    @NotNull
-    @Deprecated
-    public FileConfigurationOptions header(@Nullable String value) {
-        this.header = (value == null) ? Collections.emptyList() : Collections.unmodifiableList(Arrays.asList(value.split("\\n")));
         return this;
     }
 
@@ -189,27 +162,6 @@ public class FileConfigurationOptions extends MemoryConfigurationOptions {
      */
     @NotNull
     public MemoryConfigurationOptions parseComments(boolean value) {
-        parseComments = value;
-        return this;
-    }
-
-    /**
-     * @return Whether or not comments are parsed.
-     * @deprecated Call {@link #parseComments()} instead.
-     */
-    @Deprecated
-    public boolean copyHeader() {
-        return parseComments;
-    }
-
-    /**
-     * @param value Should comments be parsed.
-     * @return This object, for chaining
-     * @deprecated Call {@link #parseComments(boolean)} instead.
-     */
-    @NotNull
-    @Deprecated
-    public FileConfigurationOptions copyHeader(boolean value) {
         parseComments = value;
         return this;
     }
