@@ -24,6 +24,7 @@ import snw.jkook.entity.abilities.Nameable;
 import snw.jkook.entity.channel.VoiceChannel;
 import snw.jkook.message.PrivateMessage;
 import snw.jkook.message.component.BaseComponent;
+import snw.jkook.util.PageIterator;
 import snw.jkook.util.RequirePermission;
 
 import java.util.Collection;
@@ -119,19 +120,16 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     VoiceChannel getJoinedVoiceChannel();
 
     /**
-     * Get the voice channel which this user joined.
+     * Get the voice channel which this user joined.<br>
+     *
+     * Why this method return a {@code PageIterator<Collection<VoiceChannel>>}?<br>
      * 
-     * 
-     * 
-     * Why this method return a collection?
-     * 
-     * Kook will support Bots join multiple voice channels,
-     * and current API returns array, so this method returns Collection.
+     * Kook will support Bots join multiple voice channels, and current API returns array (based on iterable page).
      * 
      * @param guild The guild as the search condition
      * @return The collection of the joined voice channels
      */
-    Collection<VoiceChannel> getJoinedVoiceChannel(Guild guild);
+    PageIterator<Collection<VoiceChannel>> getJoinedVoiceChannel(Guild guild);
 
     /**
      * Get the intimacy score of this user.
