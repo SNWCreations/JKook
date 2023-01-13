@@ -28,7 +28,8 @@ import java.util.Objects;
 
 
 /**
- * Represents the JKook core. Handles the singleton call.
+ * 表示一个 JKook 核心。处理单例调用。<br>
+ * 但推荐使用 {@link Plugin#getCore()} 。
  */
 public final class JKook {
 
@@ -53,7 +54,7 @@ public final class JKook {
     }
 
     /**
-     * Get the HTTP API entry.
+     * 获得 {@link HttpAPI} 的实例。
      *
      * @see HttpAPI
      */
@@ -62,28 +63,28 @@ public final class JKook {
     }
 
     /**
-     * Get the JKook API version.
+     * 获取当前使用的 JKook API 版本。
      */
     public static String getAPIVersion() {
         return getCore().getAPIVersion();
     }
 
     /**
-     * Get the JKook implementation brand.
+     * 获取当前的 JKook API 实现 的名称。
      */
     public static String getImplementationName() {
         return getCore().getImplementationName();
     }
 
     /**
-     * Get the version of the JKook implementation.
+     * 获取当前的 JKook API 实现 的版本。
      */
     public static String getImplementationVersion() {
         return getCore().getImplementationVersion();
     }
 
     /**
-     * Get the scheduler.
+     * 获取任务调度器。
      *
      * @see Scheduler
      */
@@ -92,7 +93,7 @@ public final class JKook {
     }
 
     /**
-     * Get the event manager.
+     * 获取事件管理器。
      *
      * @see EventManager
      */
@@ -101,29 +102,29 @@ public final class JKook {
     }
 
     /**
-     * Get the root logger. Provided by JKook API implementation. <p>
-     * <b>But it's recommended to use {@link Plugin#getLogger()} instead.</b>
+     * 获取根日志记录器。使用此方法返回的记录器记录的日志内容不会有插件名称作为前缀。 <p>
+     * <b>但是更推荐使用 {@link Plugin#getLogger()} 。</b>
      */
     public static Logger getLogger() {
         return getCore().getLogger();
     }
 
     /**
-     * Get the command manager.
+     * 获取命令管理器。
      */
     public static CommandManager getCommandManager() {
         return core.getCommandManager();
     }
 
     /**
-     * Get the plugin manager.
+     * 获取插件管理器。
      */
     public static PluginManager getPluginManager() {
         return core.getPluginManager();
     }
 
     /**
-     * Get the console command sender.
+     * 获取控制台命令发送者的实例。
      */
     public static ConsoleCommandSender getConsoleCommandSender() {
         return core.getConsoleCommandSender();

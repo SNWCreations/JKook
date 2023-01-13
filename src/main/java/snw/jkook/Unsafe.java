@@ -22,39 +22,38 @@ import snw.jkook.message.PrivateMessage;
 import snw.jkook.message.TextChannelMessage;
 
 /**
- * A simple class that provide some <b>insecure</b> operations. <p>
- * The methods under this class <b>won't</b> check the arguments they have received. <p>
- * <b>DO NOT</b> provide wrong arguments if possible! <p>
- * Or you should solve the problems that caused by this class by yourself. <p>
- * <b>Many methods in the result from this class <b>may be</b> not available or can't work correctly! Beware.</b>
+ * 一个可以提供部分<b>不安全</b>操作的接口。<br>
+ * 此接口下的所有方法不会检查它们所得到的参数。<br>
+ * 你需要自行处理因为不恰当地使用此接口导致的异常。<br>
+ * 由此接口下的方法返回的对象中的部分方法可能不会按设计预期工作。
  */
 public interface Unsafe {
 
     /**
-     * Just simply constructs the text channel message with the provided ID and return it.
+     * 使用 {@code id} 构造 {@link TextChannelMessage} 。返回的结果中只有 {@code id} 可用。
      *
-     * @param id Message ID
+     * @param id 消息 ID
      */
     TextChannelMessage getTextChannelMessage(String id);
 
     /**
-     * Just simply constructs the private message with the provided ID and return it.
+     * 使用 {@code id} 构造 {@link PrivateMessage} 。返回的结果中只有 {@code id} 可用。
      *
-     * @param id Message ID
+     * @param id 消息 ID
      */
     PrivateMessage getPrivateMessage(String id);
 
     /**
-     * Just simply constructs the emoji with the provided ID and return it.
+     * 使用 {@code id} 构造 {@link CustomEmoji} 。返回的结果中只有 {@code id} 可用。
      *
      * @param id Emoji ID
      */
     CustomEmoji getEmoji(String id);
 
     /**
-     * Just simple constructs the Game data record representation with the provided ID and return it.
+     * 使用 {@code id} 构造 {@link Game} 。返回的结果中只有 {@code id} 可用。
      *
-     * @param id The Game ID
+     * @param id 游戏 ID
      */
     Game getGame(int id);
 }

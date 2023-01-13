@@ -22,167 +22,162 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents the permission in Kook.
+ * 此枚举存放了所有的 KOOK 权限值。
+ *
+ * @see snw.jkook.entity.Role
  */
 public enum Permission {
 
-    // ------ Abilities ------
+    //// ------ Abilities - 能力 ------ ////
 
     /**
-     * Represents the administrator of a guild. <p>
-     * Having this permission gives the guild members full administrative rights,
-     * including the ability to circumvent all other permissions (including channel permissions).
-     * So it is <b>DANGEROUS</b>.
+     * 拥有此权限的成员对服务器有完整的管理权限，包括规避所有其他权限限制（包括通道权限）的能力。<br>
+     * 除了不能删服务器，什么都能干。<br>
+     * <b>所以它是很危险的。</b>
      */
     ADMIN(1),
 
     /**
-     * Guild members who have this permission can modify the guild name
-     * and change the zone of the guild's voice channel.
+     * 拥有此权限的服务器成员可以修改服务器的名称，更改服务器的语音频道。
      */
     OPERATOR(2),
 
     /**
-     * Guild members that have this permission can view the administrative log for the server.
+     * 拥有此权限的成员可以查看服务器的管理日志。
      */
     ADMIN_LOG(4),
 
     /**
-     * Guild members that have this permission can create invitations.
+     * 拥有此权限的成员可以邀请其他人。
      */
     INVITE(8),
 
     /**
-     * Guild members that have this permission can manage invitations.
+     * 拥有此权限的成员可以管理服务器的现有邀请。
      */
     INVITE_MANAGE(16),
 
     /**
-     * Guild members that have this permission can create new channels and edit or delete existing channels.
+     * 拥有此权限的成员可以创建、编辑或者删除现有的频道。
      */
     CHANNEL_MANAGE(32),
 
     /**
-     * Guild members that have this permission can kick other guild members.
+     * 拥有此权限的成员可以踢出其他的普通成员。
      */
     KICK(64),
 
     /**
-     * Guild members that have this permission can ban other guild members from the guild. <p>
-     * This permission does <b>NOT</b> prevent members from logging into the Kook,
-     * but only deprives members of all privileges in the guild.
+     * 拥有此权限的成员可以禁止当前服务器中的其他普通成员在当前服务器中活动。
      */
     BAN(128),
 
     /**
-     * Guild members that have this permission can manage the uploaded custom emojis in the guild.
+     * 拥有此权限的成员可以管理服务器中上传的自定义表情。
      */
     EMOJI_MANAGE(256),
 
     /**
-     * Guild members that have this permission can change their nickname. <p>
-     * (Nickname is not user name!)
+     * 拥有此权限的成员可以更改普通成员的昵称。（注：昵称不是用户的名称！用户可以在不同的服务器拥有不同的昵称）
      */
     CHANGE_NICKNAME(512),
 
     /**
-     * Guild members that have this permission can change other guild member's nickname. <p>
-     * (Nickname is not user name!)
+     * 拥有此权限的成员可以更改和他们同等权限成员的昵称。（注：昵称不是用户的名称！用户可以在不同的服务器拥有不同的昵称）
      */
     CHANGE_OTHERS_NICKNAME(67108864),
 
     /**
-     * Guild members that have this permission can manage the roles in the guild.
+     * 拥有此权限的成员可以管理服务器中的角色。
      */
     ROLE_MANAGE(1024),
 
     /**
-     * Guild members that have this permission can see the channels in the guild.
+     * 拥有此权限的成员可以看到服务器中的频道。
      */
     SEE_CHANNELS(2048),
 
     /**
-     * Guild members that have this permission can send the messages in the {@link TextChannel}.
+     * 拥有此权限的成员可以通过 {@link TextChannel} 发送消息。
      */
     SEND_MESSAGE(4096),
 
     /**
-     * Guild members that have this permission can manage the messages in the {@link TextChannel}.
+     * 拥有此权限的成员可以通过 {@link TextChannel} 管理消息。
      */
     MESSAGE_MANAGE(8192),
 
     /**
-     * Guild members that have this permission can upload the files.
+     * 拥有此权限的成员可以上传文件。
      */
     UPLOAD_FILE(16384),
 
     /**
-     * Guild members that have this permission can create the links of voice channels.
+     * 拥有此权限的成员可以连接到语音频道。
      */
     VOICE_LINK(32768),
 
     /**
-     * Guild members that have this permission can move and kick other members off the channel; however, such movement is limited to channel where both the member and the moved member have permission.
+     * 拥有此权限的成员可修改频道发言模式，管理频道成员上麦，将频道成员转移至其他频道和提出频道。
      */
     VOICE_MANAGE(65536),
 
     /**
-     * Guild members that have this permission can use the @all in the text chat to refer to all members of the channel.
-     */
-    MENTION_ALL(131072),
-
-    /**
-     * Guild members that have this permission can add the reaction to a message.
-     */
-    ADD_REACTION(262144),
-
-    /**
-     * Guild members that have this permission can add the reaction that has been added to a message.
-     */
-    FOLLOW_ADD_REACTION(524288),
-
-    //// ----- Permissions related to voice channels -----
-
-    /**
-     * Guild members who do not have this permission can't talk in the voice channels.
-     */
-    TALK(8388608),
-
-    /**
-     * Guild members that have this permission can play musics in the voice channels.
-     */
-    PLAY_MUSIC(134217728),
-
-    /**
-     * Guild members who do not have this permission must speak on the channel by pressing the specified key.
-     * (The key is configured by users.)
-     */
-    FREE_TALK(4194304),
-
-    /**
-     * Guild members that have this permission can determine whether they can refuse to hear other member's voices on the voice channel.
-     */
-    HEAR_NOTHING(16777216),
-
-    /**
-     * Guild members that have this permission can decide if they can turn off their microphone while on the voice channel.
-     */
-    SPEAK_NOTHING(33554432),
-
-    /**
-     * Guild members that have this permission can share their screen in the voice channel.
-     */
-    SCREEN_SHARE(268435456),
-
-    //// ----- Restrictions -----
-
-    /**
-     * Guild members with this restriction can not actively connect to voice channels and can only access voice channels when passively invited or moved.
+     * 拥有此权限的成员在没有语音连接权限时，可以被动邀请或被人移动进语音频道。
      */
     PASSIVE_CONNECT_TO_VOICE_CHANNEL(1048576),
 
     /**
-     * Guild members with this restriction can talk using the specified key in the voice channels only.
+     * 拥有此权限的成员可以在文字频道 @全体成员。
+     */
+    MENTION_ALL(131072),
+
+    /**
+     * 拥有此权限的成员可以给消息添加回应。
+     */
+    ADD_REACTION(262144),
+
+    /**
+     * 拥有此权限的成员可以在其他用户已添加的回应中跟着 +1
+     */
+    FOLLOW_ADD_REACTION(524288),
+
+    //// ----- Permissions related to voice channels - 与语音频道相关的权限 ----- ////
+
+    /**
+     * 没有此权限的成员不能在语音频道中说话。
+     */
+    TALK(8388608),
+
+    /**
+     * 拥有此权限的成员可以在语音频道中播放伴奏。
+     */
+    PLAY_MUSIC(134217728),
+
+    /**
+     * 没有此权限的成员必须通过按指定键在频道上发言（按键由此用户自己配置，默认为 F2）
+     */
+    FREE_TALK(4194304),
+
+    /**
+     * 拥有此权限的成员可以使其他成员在语音频道中听不见其他用户的声音。
+     */
+    HEAR_NOTHING(16777216),
+
+    /**
+     * 拥有此权限的成员可以使其他成员在语音频道中不能说话。
+     */
+    SPEAK_NOTHING(33554432),
+
+    /**
+     * 拥有此权限的成员可以在语音频道中使用屏幕分享。
+     */
+    SCREEN_SHARE(268435456),
+
+    //// ----- Restrictions - 限制 ----- ////
+
+    /**
+     * 没有此权限的成员必须在语音频道中使用按键说话。
      */
     KEY_TALK_ONLY(2097152);
 
@@ -205,10 +200,10 @@ public enum Permission {
     }
 
     /**
-     * Return true if the targeted permission is included in <code>rawPermissionSum</code>.
+     * 当 {@code permission} 参数所代表的权限在 {@code rawPermissionSum} 参数的值中被包含时，返回 {@code true} 。
      *
-     * @param permission The permission to check
-     * @param rawPermissionSum The sum of a set of permissions
+     * @param permission 待检查的权限
+     * @param rawPermissionSum 一些权限值的和
      */
     public static boolean hasPermission(Permission permission, int rawPermissionSum) {
         if ((rawPermissionSum & 1) == 1) {
@@ -218,10 +213,10 @@ public enum Permission {
     }
 
     /**
-     * Return the permission that represented by <code>permVal</code>. <p>
-     * If you want to know whether <code>permVal</code> contains a certain permission <b>(not equal to)</b>, use {@link #hasPermission} instead.
+     * 返回 {@code permVal} 参数的值所对应的权限枚举对象。
+     * 如果你想知道 {@code permVal} 的值是否包含一种权限（不是等于），使用 {@link #hasPermission} 方法。
      *
-     * @param permVal The value
+     * @param permVal 权限值
      */
     public static Permission value(int permVal) {
         return values.get(permVal);

@@ -15,7 +15,7 @@
  */
 
 /**
- * The root package of JKook framework. <p>
+ * JKook 框架的根包。
  */
 
 package snw.jkook;

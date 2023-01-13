@@ -26,90 +26,93 @@ import snw.jkook.plugin.PluginManager;
 import snw.jkook.scheduler.Scheduler;
 
 /**
- * Represents the JKook core implementation.
+ * 表示一个 JKook 核心。提供了很多重要的方法。
  */
 public interface Core {
 
     /**
-     * Get the HTTP API entry.
+     * 获得 {@link HttpAPI} 的实例。
      *
      * @see HttpAPI
      */
     HttpAPI getHttpAPI();
 
     /**
-     * Get the JKook API version.
+     * 获取当前使用的 JKook API 版本。
      */
     String getAPIVersion();
 
     /**
-     * Get the JKook implementation brand.
+     * 获取当前的 JKook API 实现 的名称。
      */
     String getImplementationName();
 
     /**
-     * Get the version of the JKook implementation.
+     * 获取当前的 JKook API 实现 的版本。
      */
     String getImplementationVersion();
 
     /**
-     * Get the scheduler.
+     * 获取任务调度器。
      *
      * @see Scheduler
      */
     Scheduler getScheduler();
 
     /**
-     * Get the event manager.
+     * 获取事件管理器。
      *
      * @see EventManager
      */
     EventManager getEventManager();
 
     /**
-     * Get the root logger. Provided by JKook API implementation. <p>
-     * <b>But it's recommended to use {@link Plugin#getLogger()} instead.</b>
+     * 获取根日志记录器。<br>
+     * 使用此方法返回的记录器记录的日志内容不会有插件名称作为前缀。<br>
+     * <b>但是更推荐使用 {@link Plugin#getLogger()} 。</b>
      */
     Logger getLogger();
 
     /**
-     * Get the console command sender.
+     * 获取控制台命令发送者的实例。
+     *
+     * @see ConsoleCommandSender
      */
     ConsoleCommandSender getConsoleCommandSender();
 
     /**
-     * Get the command manager.
+     * 获取命令管理器。
      */
     CommandManager getCommandManager();
 
     /**
-     * Get the plugin manager.
+     * 获取插件管理器。
      */
     PluginManager getPluginManager();
 
     /**
-     * Get the user representation of the Bot in this VM.
+     * 获取此 JVM 中运行的机器人的用户实例。
      */
     User getUser();
 
     /**
-     * Set the user that bound to this client. <p>
-     * This method should be called by API implementations, <b>NOT Plugin</b>.
+     * 设置此 JVM 中运行的机器人的用户实例。<br>
+     * <b>这个方法只应该被 JKook API 的实现 调用，不应该由插件调用。</b>
      *
-     * @param user The user object
-     * @throws IllegalStateException Thrown if the client has already bound to a user
+     * @param user 用户实例
+     * @throws IllegalStateException 当机器人的用户实例已被设置时抛出
      */
     void setUser(User user) throws IllegalStateException;
 
     /**
-     * Get the unsafe object. It can provide some <i>insecure</i> operations.
+     * 获取 {@link Unsafe} 的实例。它可以提供一些<b>不安全</b>的操作。
      *
      * @see Unsafe
      */
     Unsafe getUnsafe();
 
     /**
-     * Shutdown the client. Stops everything.
+     * 使当前的 JKook API 的实现停止运行。此方法在关闭一切内容 (如 {@link Scheduler}) 后返回。
      */
     void shutdown();
 }

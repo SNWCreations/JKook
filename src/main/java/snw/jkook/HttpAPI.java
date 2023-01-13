@@ -29,96 +29,99 @@ import java.io.File;
 import java.util.Collection;
 
 /**
- * Represents the entry of Kook HTTP API.
+ * 表示一部分 HTTP API 的方法。这些方法因为没有合适的安置地点而统一聚集在此。
  */
 public interface HttpAPI {
 
     /**
-     * Get the joined guilds.
+     * 获取当前机器人加入的所有服务器。
      */
     PageIterator<Collection<Guild>> getJoinedGuilds();
 
     /**
-     * Get a user by user id.
+     * 通过用户的 ID 获取用户。
      *
-     * @param id The ID of a user
+     * @param id 用户的 ID
      */
     User getUser(String id);
 
     /**
-     * Get a guild by guild ID. <p>
-     * <b>Null is returned if you don't have permission to access it.</b>
+     * 通过服务器 ID 获取服务器<br>
+     * 如果你没有权限访问它，则会返回 {@code null} 值。
      *
-     * @param id The ID of a guild
+     * @param id 服务器 ID
      */
     Guild getGuild(String id);
 
     /**
-     * Get a channel by ID.
+     * 通过频道的 ID 获取频道。
      *
-     * @param id The channel ID
+     * @param id 频道的 ID
      */
     Channel getChannel(String id);
 
     /**
-     * Get a category by ID.
+     * 通过分组的 ID 获取分组。
      *
-     * @param id The ID
+     * @param id 分组的 ID
      */
     Category getCategory(String id);
 
     /**
-     * Upload a file to Kook server.
+     * 将一个文件上传至 KOOK 的服务器。
      *
-     * @param file The file to upload
-     * @return The URL string of the remote file
+     * @param file 需要上传的本地文件对象
+     * @return 文件在 KOOK 服务器的链接
      */
     String uploadFile(File file);
 
     /**
-     * Upload a file to Kook server.
+     * 将一个文件上传至 KOOK 的服务器。
      * 
-     * @param filename The name of the file (with the extension name)
-     * @param content The content byte array of the file
-     * @return The URL string of the remote file
+     * @param filename 文件名称（包括扩展名）
+     * @param content 文件的二进制数据
+     * @return 文件在 KOOK 服务器的链接
      */
     String uploadFile(String filename, byte[] content);
 
     /**
-     * Mark the invitation that represented by the provided url code as invalid.
+     * 使 {@code urlCode} 所表示的邀请链接 ID 无效。
      *
-     * @param urlCode The target
+     * @param urlCode 邀请链接 ID
      */
     void removeInvite(String urlCode);
 
     /**
-     * Get the game data that stored in the Kook's database.
+     * 获取 KOOK 服务器上保存的所有游戏。
+     *
+     * @see Game
      */
     PageIterator<Collection<Game>> getGames();
 
     /**
-     * Create a new game data record at the Kook's database.
-     * This method can be called only five times a day.
+     * 在 KOOK 服务器上新建一个游戏。
+     * 此方法一天可以调用五次。
      *
-     * @param name The name of the game
-     * @param icon The icon url of the game
-     * @return The game data record representation
+     * @param name 游戏名称
+     * @param icon 游戏图标的 URL
+     * @return 游戏对象
+     * @see Game
      */
     Game createGame(String name, @Nullable String icon);
 
     /**
-     * Set the game which the Bot is playing.
+     * 设置当前机器人正在玩的游戏。
      *
-     * @param game The game representation, null if you want to clear the playing status of the Bot
+     * @param game 游戏对象，传入 {@code null} 以清除在玩状态。
      */
     void setPlaying(@Nullable Game game);
 
     /**
-     * Set the music which the Bot is listening.
+     * 设置当前机器人正在听的音乐。
      *
-     * @param softwareName The music software name. Currently supports: cloudmusic, qqmusic, kugou
-     * @param singerName The singer name
-     * @param musicName The music name
+     * @param softwareName 音乐软件的名称，目前支持：cloudmusic, qqmusic, kugou
+     * @param singerName 歌手名称
+     * @param musicName 歌曲名称
      */
     void setListening(
             @NotNull String softwareName,
@@ -127,7 +130,7 @@ public interface HttpAPI {
     );
 
     /**
-     * Clear the listening status. This should fail silently.
+     * 清除在听状态。
      */
     void stopListening();
 }
