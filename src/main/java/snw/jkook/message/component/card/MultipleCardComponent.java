@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Represents the component with multiple cards.
+ * 表示包含了多个卡片的消息组件，又称复合卡片组件。
  */
 public class MultipleCardComponent extends BaseComponent {
     private final List<CardComponent> components;
@@ -44,7 +44,7 @@ public class MultipleCardComponent extends BaseComponent {
     }
 
     /**
-     * Get the components stored by this component.
+     * 获取此组件中存储的所有卡片组件。
      */
     public List<CardComponent> getComponents() {
         return components;

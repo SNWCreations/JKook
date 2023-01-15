@@ -26,7 +26,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Represents a card component.
+ * 表示一个卡片组件。可以被 {@link MultipleCardComponent} 包含。
  */
 public class CardComponent extends BaseComponent {
     private final List<BaseModule> modules;
@@ -51,28 +51,30 @@ public class CardComponent extends BaseComponent {
     }
 
     /**
-     * Get the "size" of this component.
+     * 获取此卡片的渲染大小。
      */
     public Size getSize() {
         return size;
     }
 
     /**
-     * Get the modules that stored in this component.
+     * 获取此卡片存储的模块列表。
      */
     public List<BaseModule> getModules() {
         return modules;
     }
 
     /**
-     * Get the total module count of this component.
+     * 获取此卡片存储的模块的数量。
      */
     public int moduleCount() {
         return modules.size();
     }
 
     /**
-     * Get theme of this component.
+     * 获取此卡片的主题。
+     *
+     * @see Theme
      */
     public Theme getTheme() {
         return theme;

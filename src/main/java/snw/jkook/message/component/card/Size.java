@@ -20,13 +20,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents the available sizes of the cards and modules.
+ * 表示 Bootstrap 栅格布局的四种大小。
  */
 public enum Size {
 
     /**
-     * The default card size. <p>
-     * This parameter is valid only on the PC. (Mobile will render the LG cards using SM size.)
+     * 推荐。<br>
+     * 但是对于卡片，手机端 KOOK 将用 SM 大小渲染卡片。
      */
     LG("lg"),
 

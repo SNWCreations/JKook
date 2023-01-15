@@ -15,7 +15,7 @@
  */
 
 /**
- * This package provides basic CardMessage.
+ * 此包提供对 <a href="https://developer.kookapp.cn/doc/cardmessage">KOOK CardMessage</a> 的抽象。
  */
 
 package snw.jkook.message.component.card;

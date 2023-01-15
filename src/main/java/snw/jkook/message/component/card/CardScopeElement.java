@@ -17,7 +17,7 @@
 package snw.jkook.message.component.card;
 
 /**
- * Represents a thing that can be included in a Card.
+ * 表示一个卡片中的元素。
  */
 public abstract class CardScopeElement {
     protected CardScopeElement() {}
