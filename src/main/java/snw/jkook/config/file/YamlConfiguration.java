@@ -89,6 +89,7 @@ public class YamlConfiguration extends FileConfiguration {
 
     @Override
     public void loadFromString(@NotNull String contents) throws InvalidConfigurationException {
+        if (contents.isEmpty()) return; // do not process empty string
         yamlLoaderOptions.setProcessComments(options().parseComments());
 
         MappingNode node;
