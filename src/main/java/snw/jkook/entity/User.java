@@ -16,6 +16,7 @@
 
 package snw.jkook.entity;
 
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.Permission;
 import snw.jkook.command.CommandSender;
 import snw.jkook.entity.abilities.AvatarHolder;
@@ -125,11 +126,25 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     int getIntimacy();
 
     /**
+     * Get the intimacy info of this user.
+     */
+    IntimacyInfo getIntimacyInfo();
+
+    /**
      * Set the intimacy score of this user.
      *
      * @param intimacy The intimacy value
      */
     void setIntimacy(int intimacy);
+
+    /**
+     * Set the intimacy data of this user.
+     *
+     * @param intimacy The intimacy value
+     * @param socialInfo See {@link User.IntimacyInfo#getSocialInfo()}
+     * @param socialImageID See {@link User.IntimacyInfo.SocialImage#getId()}
+     */
+    void setIntimacy(int intimacy, String socialInfo, @Nullable Integer socialImageID);
 
     /**
      * Grant the specified role to this user. <p>
@@ -166,4 +181,54 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
      */
     @RequirePermission(Permission.ROLE_MANAGE)
     void revokeRole(Guild guild, int roleId);
+
+    /**
+     * Represents the Bots' intimacy information of the user. <br>
+     * It is a snapshot. Don't save it.
+     */
+    interface IntimacyInfo {
+
+        /**
+         * Get the url of the current social image that shown to the user.
+         */
+        String getSocialImage();
+
+        /**
+         * Get the social info that shown to the user.
+         */
+        String getSocialInfo();
+
+        /**
+         * Get the timestamp of the user last read the social info.
+         */
+        int getLastRead();
+
+        /**
+         * Get the intimacy score of this user. <br>
+         * It is the same as {@link User#getIntimacy()}.
+         */
+        int getScore();
+
+        /**
+         * Get the collection of available social image data. <br>
+         * The result is read-only.
+         */
+        Collection<SocialImage> getSocialImages();
+
+        /**
+         * Represents the social image.
+         */
+        interface SocialImage {
+
+            /**
+             * Get the ID of this social image.
+             */
+            String getId();
+
+            /**
+             * Get the url of this social image.
+             */
+            String getUrl();
+        }
+    }
 }
