@@ -23,7 +23,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -80,7 +80,7 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
                         ymlContent.getOrDefault("description", "").toString(),
                         ymlContent.getOrDefault("website", "").toString(),
                         Objects.requireNonNull(ymlContent.get("main"), "main is missing").toString(),
-                        (List<String>) ymlContent.getOrDefault("authors", new ArrayList<String>())
+                        (List<String>) ymlContent.getOrDefault("authors", Collections.emptyList())
                 );
             } catch (ClassCastException e) {
                 throw new IllegalArgumentException("Invalid plugin.yml", e);
