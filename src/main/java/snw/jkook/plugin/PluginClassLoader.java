@@ -26,6 +26,7 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -73,12 +74,12 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
                 final Map<String, Object> ymlContent = parser.load(plugin);
                 // noinspection unchecked
                 description = new PluginDescription(
-                        (String) ymlContent.get("name"),
-                        (String) ymlContent.get("version"),
-                        (String) ymlContent.get("api-version"),
-                        (String) ymlContent.getOrDefault("description", ""),
-                        (String) ymlContent.getOrDefault("website", ""),
-                        (String) ymlContent.get("main"),
+                        Objects.requireNonNull(ymlContent.get("name"), "name is missing").toString(),
+                        Objects.requireNonNull(ymlContent.get("version"), "version is missing").toString(),
+                        Objects.requireNonNull(ymlContent.get("api-version"), "api-version is missing").toString(),
+                        ymlContent.getOrDefault("description", "").toString(),
+                        ymlContent.getOrDefault("website", "").toString(),
+                        Objects.requireNonNull(ymlContent.get("main"), "main is missing").toString(),
                         (List<String>) ymlContent.getOrDefault("authors", new ArrayList<String>())
                 );
             } catch (ClassCastException e) {
