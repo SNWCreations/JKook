@@ -20,5 +20,4 @@ package snw.jkook.message.component.card.element;
  * Represents the element that can cause some interaction.
  */
 public abstract class InteractElement extends BaseElement {
-    InteractElement() {}
 }

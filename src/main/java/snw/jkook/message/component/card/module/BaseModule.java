@@ -22,4 +22,5 @@ import snw.jkook.message.component.card.CardScopeElement;
  * Represents a card module.
  */
 public abstract class BaseModule extends CardScopeElement {
+    BaseModule() {}
 }
