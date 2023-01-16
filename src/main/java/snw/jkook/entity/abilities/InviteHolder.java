@@ -16,8 +16,10 @@
 
 package snw.jkook.entity.abilities;
 
+import snw.jkook.Permission;
 import snw.jkook.entity.Invitation;
 import snw.jkook.util.PageIterator;
+import snw.jkook.util.RequirePermission;
 
 import java.util.Set;
 
@@ -40,6 +42,7 @@ public interface InviteHolder {
      * @param validTimes   Number of times the link is valid.
      * @return The invite link URL string
      */
+    @RequirePermission(Permission.INVITE)
     String createInvite(int validSeconds, int validTimes);
 
 }
