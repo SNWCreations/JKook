@@ -20,7 +20,7 @@ package snw.jkook.message.component;
  * Represents a basic component in Kook. <p>
  * This interface should <b>NOT</b> be implemented. Implement its sub-interface instead.
  */
-public class BaseComponent implements Cloneable {
+public abstract class BaseComponent implements Cloneable {
 
     protected BaseComponent() {
     }
