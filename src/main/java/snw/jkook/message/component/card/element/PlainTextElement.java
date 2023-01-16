@@ -19,7 +19,7 @@ package snw.jkook.message.component.card.element;
 import snw.jkook.util.Validate;
 
 /**
- * Represents the plain text element.
+ * 表示一个不使用 KMarkdown 语法的纯文本元素。
  */
 public class PlainTextElement extends BaseElement {
     private final String content;
@@ -36,14 +36,14 @@ public class PlainTextElement extends BaseElement {
     }
 
     /**
-     * Get the content that stored by this element.
+     * 获取此元素的文本内容。
      */
     public String getContent() {
         return content;
     }
 
     /**
-     * Return true if Kook client will convert emoji shortcuts into emoji.
+     * 若 KOOK 客户端在渲染此元素时会将文本中的 Emoji Shortcut（如 ":smile:"）渲染为对应 Emoji ，返回 {@code true}。
      */
     public boolean willConvertEmoji() {
         return emoji;

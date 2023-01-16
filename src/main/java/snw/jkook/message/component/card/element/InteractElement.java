@@ -17,7 +17,7 @@
 package snw.jkook.message.component.card.element;
 
 /**
- * Represents the element that can cause some interaction.
+ * 表示一个可以产生交互的元素。
  */
 public abstract class InteractElement extends BaseElement {
 }

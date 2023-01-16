@@ -20,7 +20,7 @@ import snw.jkook.entity.abilities.Accessory;
 import snw.jkook.message.component.card.Size;
 
 /**
- * Represents the image element.
+ * 表示一个图片元素。
  */
 public class ImageElement extends BaseElement implements Accessory {
     private final String src;
@@ -40,28 +40,31 @@ public class ImageElement extends BaseElement implements Accessory {
     }
 
     /**
-     * Get the source URL of the image that represented by this element.
+     * 获取此图片元素的图片链接。
      */
     public String getSource() {
         return src;
     }
 
     /**
-     * Get the "alt" value of this element, it will be shown if Kook client cannot load the image from the source.
+     * 获取此图片元素的 "alt" 值，其值在用户的 KOOK 客户端无法获取到图片时显示。<br>
+     * Tips: 这个属性的名称取自 HTML 规范。
      */
     public String getAlt() {
         return alt;
     }
 
     /**
-     * Get the size type of this image.
+     * 获取此图片元素的渲染大小（注：不是图像大小）。
+     *
+     * @see Size
      */
     public Size getSize() {
         return size;
     }
 
     /**
-     * Return true if this image element was marked as circled.
+     * 若此图片元素在 KOOK 客户端渲染时使用圆形蒙版，返回 {@code true}。
      */
     public boolean isCircled() {
         return circle;

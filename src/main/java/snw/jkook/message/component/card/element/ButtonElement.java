@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents a button. It can cause a {@link UserClickButtonEvent}.
+ * 表示一个按钮。这与 {@link UserClickButtonEvent} 有关。
  */
 public class ButtonElement extends InteractElement implements Accessory {
     private final Theme theme;
@@ -51,50 +51,52 @@ public class ButtonElement extends InteractElement implements Accessory {
     }
 
     /**
-     * Get theme of this button.
+     * 获取此按钮的主题。
      */
     public Theme getTheme() {
         return theme;
     }
 
     /**
-     * Get the value that stored by this button.
+     * 获取此按钮存储的"值"。
+     *
+     * @see UserClickButtonEvent#getValue()
      */
     public String getValue() {
         return value;
     }
 
     /**
-     * Get the type of the event that can be caused by this button.
+     * 获取此按钮被点击时发生的事件类型。
      */
     public EventType getEventType() {
         return type;
     }
 
     /**
-     * Get the shown text of this button.
+     * 获取此按钮的显示文本。
      */
     public BaseElement getText() {
         return element;
     }
 
     /**
-     * Represents the event types of button modules.
+     * 表示按钮被点击时可以产生的事件类型。
      */
     public enum EventType {
 
         /**
-         * This event type makes the button do nothing. And it is default value.
+         * 表示按钮在被点击后，什么都不会发生。
          */
         NO_ACTION(""),
 
         /**
-         * This event type makes the users that clicked this button jump to the URL represented by "value" field.
+         * 使用此类型意味着按钮的"值"将被看作一个链接，用户在点击按钮后，TA 的设备会打开"值"所代表的链接。
          */
         LINK("link"),
 
         /**
-         * This event type makes the users that clicked this button will fire a {@link UserClickButtonEvent}.
+         * 使用此类型意味着按钮被点击后，其"值"将被 {@link UserClickButtonEvent} 包装后传回给机器人。
          */
         RETURN_VAL("return-val");
 

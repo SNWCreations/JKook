@@ -19,7 +19,7 @@ package snw.jkook.message.component.card.element;
 import snw.jkook.util.Validate;
 
 /**
- * Represents the KMarkdown element.
+ * 表示一个 KMarkdown 文本元素。
  */
 public class MarkdownElement extends BaseElement {
     private final String content;
@@ -30,7 +30,7 @@ public class MarkdownElement extends BaseElement {
     }
 
     /**
-     * Get the content that stored by this element.
+     * 获取此元素的文本内容。
      */
     public String getContent() {
         return content;

@@ -15,6 +15,6 @@
  */
 
 /**
- * This package provides the elements of the CardMessage in Kook.
+ * 此包提供对 KOOK CardMessage 中元素的抽象。
  */
 package snw.jkook.message.component.card.element;

@@ -19,7 +19,7 @@ package snw.jkook.message.component.card.element;
 import snw.jkook.message.component.card.CardScopeElement;
 
 /**
- * Represents a base element of a card message.
+ * 表示一个卡片中的元素，但不同于 {@link CardScopeElement}，此类是具体的，其子类一般用于被其他模块包含。
  */
 public abstract class BaseElement extends CardScopeElement {
     BaseElement() {}
