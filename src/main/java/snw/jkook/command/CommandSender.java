@@ -17,7 +17,7 @@
 package snw.jkook.command;
 
 /**
- * Represents an object that can execute a command.
+ * 表示一个可以执行命令的对象。
  */
 public interface CommandSender {
 }

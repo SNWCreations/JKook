@@ -23,19 +23,21 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The container for optional arguments.
+ * 一个可选参数容器。<br>
+ * 此类的实例用于为 {@link JKookCommand} 存放可选参数的 {@link Class} 对象以及默认值。
  */
 public final class OptionalArgumentContainer {
     private final List<Class<?>> keys = new ArrayList<>();
     private final List<Object> values = new ArrayList<>();
 
-    OptionalArgumentContainer() {}
+    OptionalArgumentContainer() {
+    }
 
     /**
-     * Add an optional argument with its default value.
-     * 
-     * @param cls The type of the optional argument
-     * @param value The default value of this argument
+     * 向此容器添加一个可选参数。
+     *
+     * @param cls   可选参数的 {@link Class} 对象
+     * @param value 可选参数的默认值
      */
     <T> void add(Class<T> cls, T value) {
         Validate.notNull(cls);
@@ -46,46 +48,46 @@ public final class OptionalArgumentContainer {
     }
 
     /**
-     * Get the type of the argument with index.
-     * 
-     * @param index The index
+     * 使用给定的索引获取参数 {@link Class} 对象。
+     *
+     * @param index 索引
      */
     public Class<?> getKey(int index) {
         return keys.get(index);
     }
 
     /**
-     * Get the default value of an argument with index.
-     * 
-     * @param index The index
+     * 使用给定的索引获取参数的默认值。
+     *
+     * @param index 索引
      */
     public Object getValue(int index) {
         return values.get(index);
     }
 
     /**
-     * Get the keys.
+     * 获取此容器中所有参数的 {@link Class} 对象。
      */
     public List<Class<?>> getKeys() {
         return Collections.unmodifiableList(keys);
     }
 
     /**
-     * Get the values.
+     * 获取此容器中所有参数的默认值。
      */
     public List<Object> getValues() {
         return Collections.unmodifiableList(values);
     }
 
     /**
-     * Get the size of this container.
+     * 获取此容器的大小。
      */
     public int size() {
         return keys.size();
     }
 
     /**
-     * Return true if this container is empty.
+     * 当此容器为空时，返回 {@code true}。
      */
     public boolean isEmpty() {
         return keys.isEmpty();

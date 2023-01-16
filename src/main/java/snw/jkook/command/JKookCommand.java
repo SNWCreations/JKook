@@ -22,7 +22,7 @@ import snw.jkook.util.Validate;
 import java.util.*;
 
 /**
- * Represents a command in JKook framework.
+ * 表示 JKook 框架中的命令。
  */
 public final class JKookCommand {
     private final String rootName;
@@ -40,30 +40,30 @@ public final class JKookCommand {
     private boolean registerFlag = false; // just a flag!
 
     /**
-     * The constructor with only one prefix.
+     * 只向命令提供一个前缀的构造器。
      *
-     * @param rootName The name of this command (e.g. "example")
-     * @param prefix   The prefix (default '/', e.g. '.')
+     * @param rootName 命令名称（比如 "example"）
+     * @param prefix   命令前缀的 {@code char} 对象（比如 '.'）
      */
     public JKookCommand(String rootName, char prefix) {
         this(rootName, Collections.singletonList(String.valueOf(prefix)));
     }
 
     /**
-     * The constructor with only one prefix.
+     * 只向命令提供一个前缀的构造器。
      *
-     * @param rootName The name of this command (e.g. "example")
-     * @param prefix   The prefix (default '/', e.g. '.')
+     * @param rootName 命令名称（比如 "example"）
+     * @param prefix   命令前缀的 {@link String} 对象（比如 '.'）
      */
     public JKookCommand(String rootName, String prefix) {
         this(rootName, Collections.singletonList(prefix));
     }
 
     /**
-     * The main constructor.
+     * 主构造方法。
      *
-     * @param rootName The name of this command (e.g. "example")
-     * @param prefixes   The prefixes (default only add '/', e.g. '.')
+     * @param rootName 命令名称（比如 "example"）
+     * @param prefixes 别称的列表
      */
     public JKookCommand(String rootName, Collection<String> prefixes) {
         Validate.notNull(rootName);
@@ -76,18 +76,19 @@ public final class JKookCommand {
     }
 
     /**
-     * The constructor with default prefix '/'.
+     * 使用默认前缀 "/" 的构造器。
      *
-     * @param rootName The name of this command (e.g. "example")
+     * @param rootName 命令名称（比如 "example"）
      */
     public JKookCommand(String rootName) {
         this(rootName, '/');
     }
 
     /**
-     * Set the executor of this command.
+     * 设置此命令的执行器。<br>
+     * 实际上我们不再推荐 {@link CommandExecutor}，因为杂糅控制台和用户的命令对开发者很不友好。
      *
-     * @param executor The executor of this command
+     * @param executor 执行器对象
      */
     public JKookCommand setExecutor(CommandExecutor executor) {
         ensureNotRegistered();
@@ -96,9 +97,9 @@ public final class JKookCommand {
     }
 
     /**
-     * Set the executor for Kook users of this command.
+     * 设置此命令的为 KOOK 用户服务的命令执行器。
      *
-     * @param userCommandExecutor The executor of this command
+     * @param userCommandExecutor 执行器对象
      */
     public JKookCommand executesUser(UserCommandExecutor userCommandExecutor) {
         ensureNotRegistered();
@@ -107,9 +108,9 @@ public final class JKookCommand {
     }
 
     /**
-     * Set the executor for console of this command.
+     * 设置此命令的为控制台用户服务的命令执行器。
      *
-     * @param consoleCommandExecutor The executor of this command
+     * @param consoleCommandExecutor 执行器对象
      */
     public JKookCommand executesConsole(ConsoleCommandExecutor consoleCommandExecutor) {
         ensureNotRegistered();
@@ -118,9 +119,9 @@ public final class JKookCommand {
     }
 
     /**
-     * Add a subcommand to this command.
+     * 向此命令添加子命令。
      *
-     * @param command The subcommand object
+     * @param command 子命令对象
      */
     public JKookCommand addSubcommand(JKookCommand command) {
         ensureNotRegistered();
@@ -130,9 +131,11 @@ public final class JKookCommand {
     }
 
     /**
-     * Set the description of this command.
+     * 设置此命令的简介。<br>
+     * 简介应该尽可能简短，可以写诸如介绍此命令的作用的内容。<br>
+     * 若需要具体讲解命令的使用方法，建议写进帮助信息，见 {@link #setHelpContent(String)} 方法。
      *
-     * @param description The description to set
+     * @param description 命令简介内容
      */
     public JKookCommand setDescription(String description) {
         ensureNotRegistered();
@@ -141,11 +144,12 @@ public final class JKookCommand {
     }
 
     /**
-     * Set the help content of this command. <p>
-     * The provided value will show if the user requested the help of this command. <p>
-     * For example, I have command called "hi", if user just use "/help" (provided by API implementations),
-     *  The description will show. But if user use "/help hi", the help content will be sent to the user.
-     * @param helpContent The help message content
+     * 设置此命令的帮助信息。<br>
+     * 举个例子，我有一个名称是 "hi" 的命令，如果用户使用了 /help 而未刻意指定此命令的名称，则 /help 命令应该将简介展示给用户。<br>
+     * 若用户使用 "/help hi"（指定了此命令的名称），则帮助信息将被提供给用户。<br>
+     * （注：此处的 /help 命令只是假想的，即使有，它应该由 JKook API 的实现提供）
+     *
+     * @param helpContent 帮助信息内容
      */
     public JKookCommand setHelpContent(String helpContent) {
         ensureNotRegistered();
@@ -154,8 +158,9 @@ public final class JKookCommand {
     }
 
     /**
-     * Add a prefix to this command.
-     * @param prefix The prefix to be added
+     * 向此命令添加一个前缀。
+     *
+     * @param prefix 前缀
      */
     public JKookCommand addPrefix(String prefix) {
         ensureNotRegistered();
@@ -165,9 +170,9 @@ public final class JKookCommand {
     }
 
     /**
-     * Add an alias for this command.
+     * 向此命令添加一个别称。
      *
-     * @param alias The alias to be added
+     * @param alias 别称
      */
     public JKookCommand addAlias(String alias) {
         ensureNotRegistered();
@@ -177,9 +182,9 @@ public final class JKookCommand {
     }
 
     /**
-     * Add an argument to this command.
+     * 向此命令添加一个必选参数。
      *
-     * @param clazz The type of the argument
+     * @param clazz 参数类型的 {@link Class} 对象
      */
     public JKookCommand addArgument(Class<?> clazz) {
         ensureNotRegistered();
@@ -190,12 +195,12 @@ public final class JKookCommand {
     }
 
     /**
-     * Add an optional argument to this command. <p>
-     * The default value will be used if the command line does not contain a string as the argument value.
+     * 向此命令添加一个可选参数。<br>
+     * 提供的默认值将在命令被执行时却没有为参数提供值时使用。
      *
-     * @param clazz The type of the argument
-     * @param defaultValue The default value
-     * @param <T> The type of the argument
+     * @param clazz        参数类型的 {@link Class} 对象
+     * @param defaultValue 默认值
+     * @param <T>          参数类型
      */
     public <T> JKookCommand addOptionalArgument(Class<T> clazz, T defaultValue) {
         ensureNotRegistered();
@@ -205,9 +210,8 @@ public final class JKookCommand {
     }
 
     /**
-     * Register this command. <p>
-     * Also, you can register this command using {@link CommandManager#registerCommand(Plugin, JKookCommand)}. <p>
-     * But this is easier than that. Isn't it?
+     * 注册命令。<br>
+     * 这等同于 {@link CommandManager#registerCommand(Plugin, JKookCommand)}。
      */
     public void register(Plugin plugin) {
         plugin.getCore().getCommandManager().registerCommand(plugin, this);
@@ -217,77 +221,79 @@ public final class JKookCommand {
     // Getters are following:
 
     /**
-     * Get the root name of this command.
+     * 获取命令的名称。
      */
     public String getRootName() {
         return rootName;
     }
 
     /**
-     * Get the executor of this command.
+     * 获取命令的执行器。
      */
     public CommandExecutor getExecutor() {
         return executor;
     }
 
     /**
-     * Get the executor for Kook users of this command.
+     * 获取此命令的为 KOOK 用户服务的命令执行器。
      */
     public UserCommandExecutor getUserCommandExecutor() {
         return userCommandExecutor;
     }
 
     /**
-     * Get the executor for console of this command.
+     * 获取此命令的为控制台用户服务的命令执行器。
      */
     public ConsoleCommandExecutor getConsoleCommandExecutor() {
         return consoleCommandExecutor;
     }
 
     /**
-     * Get the subcommands of this command.
+     * 获取此命令的所有子命令。
      */
     public Collection<JKookCommand> getSubcommands() {
         return Collections.unmodifiableCollection(subcommands);
     }
 
     /**
-     * Get aliases of this command.
+     * 获取此命令的所有别称。
      */
     public Collection<String> getAliases() {
         return Collections.unmodifiableCollection(aliases);
     }
 
     /**
-     * Get the description of this command.
+     * 获取此命令的简介。
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * Get the prefixes of this command.
+     * 获取此命令的所有前缀。
      */
     public Collection<String> getPrefixes() {
         return prefixes;
     }
 
     /**
-     * Get the help message content of this command.
+     * 获取此命令的帮助信息，
      */
     public String getHelpContent() {
         return helpContent;
     }
 
     /**
-     * Get the argument classes of this command.
+     * 获取此命令的所有必选参数。
      */
     public Collection<Class<?>> getArguments() {
         return Collections.unmodifiableCollection(arguments);
     }
 
     /**
-     * Get the optional argument classes and their default value of this command.
+     * 获取此命令的可选参数容器。
+     *
+     * @see OptionalArgumentContainer
      */
     public OptionalArgumentContainer getOptionalArguments() {
         return optionalArguments;

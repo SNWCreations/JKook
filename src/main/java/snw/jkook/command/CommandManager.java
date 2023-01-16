@@ -22,54 +22,53 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * Represents the command manager.
+ * 表示命令管理器。
  */
 public interface CommandManager {
 
     /**
-     * Register a command.
+     * 注册命令。
      *
-     * @param plugin The plugin as the command owner
-     * @param command The command to register
-     * @throws IllegalArgumentException Thrown if the command with the same root name was registered,
-     *                                  or the argument inside the command is not supported.
+     * @param plugin  插件作为命令的所有者
+     * @param command 命令对象
+     * @throws IllegalArgumentException 当发现与将注册的命令对象重名的命令时，或此命令指定的参数类型
+     *                                  不受支持时抛出
      */
     void registerCommand(Plugin plugin, JKookCommand command) throws IllegalArgumentException;
 
     /**
-     * Register a command.
+     * 注册命令。
      *
-     * @param plugin The plugin as the command owner
-     * @param command The supplier that provides the real command.
-     * @throws NullPointerException     Thrown if the supplier returned null.
-     * @throws IllegalArgumentException Thrown if the command with the same root name was registered,
-     *                                  or the argument inside the command is not supported.
+     * @param plugin  插件作为命令的所有者
+     * @param command 将提供命令对象的 {@link Supplier}
+     * @throws NullPointerException     当给定的 {@link Supplier} 为 null 或返回了 null 时抛出
+     * @throws IllegalArgumentException 当发现与将注册的命令对象重名的命令时，或此命令指定的参数类型
+     *                                  不受支持时抛出
      */
     void registerCommand(Plugin plugin, Supplier<JKookCommand> command) throws NullPointerException, IllegalArgumentException;
 
     /**
-     * Execute a command with given command line.
+     * 使用给定的执行者与命令行执行命令。
      *
-     * @param sender  The sender of this command
-     * @param cmdLine The command line, prefix is needed (e.g. <code>/hello</code>)
-     * @return True if command found and executed, false otherwise
-     * @throws CommandException Thrown if unexpected situation happened during the execution of the command
+     * @param sender  命令的执行者
+     * @param cmdLine 带有命令前缀的命令行（比如 <code>/hello</code>）
+     * @return 找到命令并执行后返回 {@code true}
+     * @throws CommandException 执行命令却遇到了异常时抛出
      */
     boolean executeCommand(CommandSender sender, String cmdLine) throws CommandException;
 
     /**
-     * Register the binding between the specified class and the parser.
-     * <p>
-     * The requirements of the valid argument parser are following:
+     * 注册一个参数解析器。<br>
+     * 以下为对参数解析器的要求：<br>
      * <ul>
-     *     <li>Don't throw exception if possible, or the command execution will be failed.</li>
-     *     <li>Return {@code null} instead of throwing exceptions if the parser can't understand the source string.</li>
+     *     <li>尽可能不要抛出异常。</li>
+     *     <li>当解析器无法理解传入的 {@link String} 时，返回 {@code null} 而不是抛出异常。</li>
      * </ul>
      *
-     * @param clazz  The runtime class of argument
-     * @param parser The parser function
-     * @param <T>    The argument type
-     * @throws IllegalStateException Thrown if the specified class has already bound to a parser.
+     * @param clazz  参数类型的 {@link Class} 对象
+     * @param parser 解析器对象
+     * @param <T>    参数类型
+     * @throws IllegalStateException 当给定的参数类型已有解析器时抛出
      */
     <T> void registerArgumentParser(Class<T> clazz, Function<String, T> parser) throws IllegalStateException;
 }

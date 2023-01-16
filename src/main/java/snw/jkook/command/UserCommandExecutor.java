@@ -21,7 +21,7 @@ import snw.jkook.entity.User;
 import snw.jkook.message.Message;
 
 /**
- * Represents an executor for a command, but only for Kook users.
+ * 表示一个只为 KOOK 用户服务的命令执行器。
  *
  * @see JKookCommand
  */
@@ -30,9 +30,9 @@ public interface UserCommandExecutor {
     /**
      * Execute this command with given information.
      *
-     * @param sender    The sender
-     * @param arguments The arguments
-     * @param message   The message related to this execution (Maybe null if the console executed this command)
+     * @param sender    命令执行者
+     * @param arguments 参数
+     * @param message   导致此命令被执行的消息对象（当控制台执行此命令时，值为 {@code null}）
      */
     void onCommand(User sender, Object[] arguments, @Nullable Message message);
 }

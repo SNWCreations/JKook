@@ -17,17 +17,17 @@
 package snw.jkook.command;
 
 /**
- * Represents an executor for a command, but only for console.
+ * 表示一个只为控制台服务的命令执行器。
  *
  * @see JKookCommand
  */
 public interface ConsoleCommandExecutor {
 
     /**
-     * Execute this command with given information.
+     * 使用给定的信息执行此命令
      *
-     * @param sender    The sender
-     * @param arguments The arguments
+     * @param sender    命令执行者
+     * @param arguments 参数
      */
     void onCommand(ConsoleCommandSender sender, Object[] arguments);
 }

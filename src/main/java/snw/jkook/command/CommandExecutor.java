@@ -20,18 +20,19 @@ import org.jetbrains.annotations.Nullable;
 import snw.jkook.message.Message;
 
 /**
- * Represents a executor for a command.
+ * 表示一个命令执行器。<br>
+ * 更推荐 {@link UserCommandExecutor} 以及 {@link ConsoleCommandExecutor} 。
  *
  * @see JKookCommand
  */
 public interface CommandExecutor {
 
     /**
-     * Execute this command with given information.
+     * 使用提供的信息执行此命令。
      *
-     * @param sender    The sender
-     * @param arguments The arguments
-     * @param message The message related to this execution (Maybe null if the console executed this command)
+     * @param sender    命令执行者
+     * @param arguments 参数
+     * @param message   导致此命令被执行的消息对象（当控制台执行此命令时，值为 {@code null}）
      */
     void onCommand(CommandSender sender, Object[] arguments, @Nullable Message message);
 }

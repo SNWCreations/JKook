@@ -17,7 +17,7 @@
 package snw.jkook.command;
 
 /**
- * Represents the console command sender.
+ * 表示命令执行者，但它是控制台。
  */
 public interface ConsoleCommandSender extends CommandSender {
 }

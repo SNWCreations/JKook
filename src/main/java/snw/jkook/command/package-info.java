@@ -15,7 +15,7 @@
  */
 
 /**
- * The classes about the command system in JKook framework.
+ * 此包存放 JKook 框架中命令系统的相关类。
  */
 
 package snw.jkook.command;
