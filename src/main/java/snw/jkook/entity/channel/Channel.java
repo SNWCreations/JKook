@@ -175,6 +175,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
      * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
      * @param rawDeny  The sum of the denied permissions' value
      */
+    @RequirePermission(Permission.CHANNEL_MANAGE)
     void updatePermission(int roleId, int rawAllow, int rawDeny);
 
     /**
@@ -184,6 +185,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
      * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
      * @param rawDeny  The sum of the denied permissions' value
      */
+    @RequirePermission(Permission.CHANNEL_MANAGE)
     void updatePermission(Role role, int rawAllow, int rawDeny);
 
     /**
@@ -193,6 +195,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
      * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
      * @param rawDeny  The sum of the denied permissions' value
      */
+    @RequirePermission(Permission.CHANNEL_MANAGE)
     void updatePermission(User user, int rawAllow, int rawDeny);
 
     /**
@@ -200,6 +203,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
      *
      * @param role The role
      */
+    @RequirePermission(Permission.CHANNEL_MANAGE)
     void deletePermission(Role role);
 
     /**
@@ -207,5 +211,6 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
      *
      * @param user The user
      */
+    @RequirePermission(Permission.CHANNEL_MANAGE)
     void deletePermission(User user);
 }
