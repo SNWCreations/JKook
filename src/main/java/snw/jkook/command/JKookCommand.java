@@ -248,7 +248,7 @@ public final class JKookCommand {
      * Get the subcommands of this command.
      */
     public Collection<JKookCommand> getSubcommands() {
-        return subcommands;
+        return Collections.unmodifiableCollection(subcommands);
     }
 
     /**
