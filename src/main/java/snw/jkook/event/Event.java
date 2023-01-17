@@ -20,17 +20,7 @@ package snw.jkook.event;
  * The basic Event representation.
  */
 public abstract class Event {
-    protected final long timeStamp;
 
     /* This class should not be constructed. Construct its subclass instead. */
-    protected Event(long timeStamp) {
-        this.timeStamp = timeStamp;
-    }
-
-    /**
-     * Get the time stamp of this event.
-     */
-    public long getTimeStamp() {
-        return timeStamp;
-    }
+    protected Event() {}
 }

@@ -16,12 +16,12 @@
 
 package snw.jkook.event.pm;
 
-import snw.jkook.event.Event;
+import snw.jkook.event.TimedEvent;
 
 /**
  * Represents an event related to a private message.
  */
-public abstract class PrivateMessageEvent extends Event {
+public abstract class PrivateMessageEvent extends TimedEvent {
     PrivateMessageEvent(final long timeStamp) {
         super(timeStamp);
     }

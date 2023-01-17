@@ -14,17 +14,23 @@
  * limitations under the License.
  */
 
-package snw.jkook.event.item;
-
-import snw.jkook.event.TimedEvent;
+package snw.jkook.event;
 
 /**
- * Represents an event that related to an item.
+ * The event representation with a timestamp.
  */
-public abstract class ItemEvent extends TimedEvent {
+public abstract class TimedEvent extends Event {
+    protected final long timeStamp;
 
-    ItemEvent(long timeStamp) {
-        super(timeStamp);
+    /* This class should not be constructed. Construct its subclass instead. */
+    protected TimedEvent(long timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
+    /**
+     * Get the time stamp of this event.
+     */
+    public long getTimeStamp() {
+        return timeStamp;
+    }
 }

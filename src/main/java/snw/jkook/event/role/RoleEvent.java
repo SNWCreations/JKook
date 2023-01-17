@@ -17,14 +17,14 @@
 package snw.jkook.event.role;
 
 import snw.jkook.entity.Role;
-import snw.jkook.event.Event;
+import snw.jkook.event.TimedEvent;
 
 import java.util.Objects;
 
 /**
  * Represents an event related to a role.
  */
-public abstract class RoleEvent extends Event {
+public abstract class RoleEvent extends TimedEvent {
     private final Role role;
 
     RoleEvent(final long timeStamp, final Role role) {

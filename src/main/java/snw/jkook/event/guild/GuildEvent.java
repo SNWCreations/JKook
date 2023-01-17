@@ -17,12 +17,12 @@
 package snw.jkook.event.guild;
 
 import snw.jkook.entity.Guild;
-import snw.jkook.event.Event;
+import snw.jkook.event.TimedEvent;
 
 /**
  * Represents an event related to a guild.
  */
-public abstract class GuildEvent extends Event {
+public abstract class GuildEvent extends TimedEvent {
     private final Guild guild;
 
     GuildEvent(final long timeStamp, final Guild guild) {
