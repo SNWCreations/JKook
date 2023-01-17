@@ -16,6 +16,7 @@
 
 package snw.jkook.message.component.card;
 
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.message.component.BaseComponent;
 import snw.jkook.message.component.card.module.BaseModule;
 import snw.jkook.util.Validate;
@@ -31,8 +32,9 @@ public class CardComponent extends BaseComponent {
     private final List<BaseModule> modules;
     private final Size size;
     private final Theme theme;
+    private final String color;
 
-    public CardComponent(List<BaseModule> modules, Size size, Theme theme) {
+    public CardComponent(List<BaseModule> modules, Size size, Theme theme, @Nullable String color) {
         Validate.isTrue(
                 size == Size.LG || size == Size.SM,
                 "Card object only accepts LG and SM size."
@@ -40,6 +42,7 @@ public class CardComponent extends BaseComponent {
         this.modules = Collections.unmodifiableList(new LinkedList<>(modules));
         this.size = size;
         this.theme = theme;
+        this.color = color;
     }
 
     /**
@@ -68,5 +71,15 @@ public class CardComponent extends BaseComponent {
      */
     public Theme getTheme() {
         return theme;
+    }
+
+    /**
+     * Get color of this component. <br>
+     * The color attribute affects the render of the card's left-side only, the effect is the same as theme. <br>
+     * There is an example of the color string: "#AAAAAA"
+     */
+    @Nullable
+    public String getColor() {
+        return color;
     }
 }

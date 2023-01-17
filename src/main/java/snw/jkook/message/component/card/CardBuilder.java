@@ -28,6 +28,7 @@ import java.util.List;
 public class CardBuilder {
     private Theme theme;
     private Size size;
+    private String color;
     private List<BaseModule> modules = new LinkedList<>();
     private final List<CardComponent> cards = new LinkedList<>();
 
@@ -46,6 +47,16 @@ public class CardBuilder {
      */
     public CardBuilder setSize(Size size) {
         this.size = size;
+        return this;
+    }
+
+    /**
+     * Set the color of current card.
+     * @param color The color string (e.g. "#AAAAAA")
+     * @see CardComponent#getColor()
+     */
+    public CardBuilder setColor(String color) {
+        this.color = color;
         return this;
     }
 
@@ -79,7 +90,7 @@ public class CardBuilder {
     public CardBuilder newCard() {
         Validate.notNull(size, "Size is not defined yet!");
         Validate.notNull(theme, "Theme is not defined yet!");
-        cards.add(new CardComponent(modules, size, theme));
+        cards.add(new CardComponent(modules, size, theme, color));
         // create a new one instead of clear() to make sure the added component won't be empty.
         modules = new LinkedList<>();
         theme = null;
