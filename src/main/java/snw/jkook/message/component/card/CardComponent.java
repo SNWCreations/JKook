@@ -34,6 +34,11 @@ public class CardComponent extends BaseComponent {
     private final Theme theme;
     private final String color;
 
+    // This constructor is just for backwards compatibility.
+    public CardComponent(List<BaseModule> modules, Size size, Theme theme) {
+        this(modules, size, theme, null);
+    }
+
     public CardComponent(List<BaseModule> modules, Size size, Theme theme, @Nullable String color) {
         Validate.isTrue(
                 size == Size.LG || size == Size.SM,
