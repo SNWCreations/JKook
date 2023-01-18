@@ -46,7 +46,7 @@ public interface CustomEmoji extends Nameable {
     Guild getGuild();
 
     /**
-     * Delete this emoji .
+     * Delete this emoji.
      */
     @RequirePermission(Permission.EMOJI_MANAGE)
     void delete();
