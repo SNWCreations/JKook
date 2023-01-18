@@ -190,11 +190,30 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
      * Upload an emoji to this guild.
      *
      * @param binary The binary value of the emoji. Allows PNG only. The size can not exceed 256 KB.
+     *               <b>Use {@link java.nio.charset.StandardCharsets#ISO_8859_1} instead of
+     *               default charset when you creating the String instance for the binary value.</b>
      * @param name The name of the new emoji. If empty, it will be a random string
      * @return The new emoji representation
+     * @deprecated We shouldn't use String to represent the binary values,
+     *             use {@link #uploadEmoji(byte[], String, String)} instead.
      */
+    @Deprecated
     @RequirePermission(Permission.EMOJI_MANAGE)
     CustomEmoji uploadEmoji(String binary, @Nullable String name);
+
+    /**
+     * Upload an emoji to this guild.
+     *
+     * @param binary The binary value of the emoji. The size can not exceed 256 KB.
+     * @param type The media type string of the emoji. Only support PNG, JPG, JPEG, GIF. (e.g. "image/png")
+     * @param name The name of the new emoji. If empty, it will be a random string
+     * @return The new emoji representation
+     * @throws IllegalArgumentException Thrown if the media type is invalid, or the length of
+     *                                  the emoji name is not greater or equals 2.
+     */
+    @RequirePermission(Permission.EMOJI_MANAGE)
+    CustomEmoji uploadEmoji(byte[] binary, String type, @Nullable String name)
+            throws IllegalArgumentException;
 
     /**
      * Get the users banned by this guild.
