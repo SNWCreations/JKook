@@ -189,7 +189,7 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     /**
      * Upload an emoji to this guild.
      *
-     * @param binary The binary value of the emoji. Allows PNG only. The size can not exceed 256 KB.
+     * @param binary The binary value of the emoji. Allows PNG only. The size can not exceed 512 KB.
      *               <b>Use {@link java.nio.charset.StandardCharsets#ISO_8859_1} instead of
      *               default charset when you creating the String instance for the binary value.</b>
      * @param name The name of the new emoji. If empty, it will be a random string
@@ -204,8 +204,9 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     /**
      * Upload an emoji to this guild.
      *
-     * @param binary The binary value of the emoji. The size can not exceed 256 KB.
-     * @param type The media type string of the emoji. Only support PNG, JPG, JPEG, GIF. (e.g. "image/png")
+     * @param binary The binary value of the emoji. The size can not exceed 512 KB.
+     * @param type The media type string of the emoji. Only support PNG, JPG, JPEG, GIF.
+     *             (e.g. "image/png")
      * @param name The name of the new emoji. If empty, it will be a random string
      * @return The new emoji representation
      * @throws IllegalArgumentException Thrown if the media type is invalid, or the length of
