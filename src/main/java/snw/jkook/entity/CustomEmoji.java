@@ -36,6 +36,7 @@ public interface CustomEmoji extends Nameable {
      *
      * @param name The new name of this emoji
      */
+    @RequirePermission(Permission.EMOJI_MANAGE)
     void setName(String name);
 
     /**
