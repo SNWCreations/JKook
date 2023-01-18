@@ -7,8 +7,8 @@
     <name>JKook</name>
     <groupId>snw</groupId>
     <artifactId>jkook</artifactId>
-    <version>0.44.0</version>
-    <description>The Kook Bot's Plugin Framework for Java.</description>
+    <version>0.45.0</version>
+    <description>The Kook Bots Plugin Framework for Java.</description>
 
     <developers>
         <developer>
