@@ -58,6 +58,14 @@ public interface TextChannel extends Channel {
      * Send a message to this channel.
      *
      * @param component  The message to send
+     * @return           Message ID
+     */
+    String sendComponent(BaseComponent component);
+
+    /**
+     * Send a message to this channel.
+     *
+     * @param component  The message to send
      * @param quote      If this parameter is passed in, the incoming message
      *                   will be considered a reply to the message corresponding to this parameter
      * @param tempTarget If you pass this parameter,
