@@ -16,12 +16,15 @@
 
 package snw.jkook.message;
 
+import snw.jkook.Permission;
+import snw.jkook.entity.CustomEmoji;
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.TextChannel;
 import snw.jkook.message.component.BaseComponent;
 import snw.jkook.message.component.MarkdownComponent;
 import snw.jkook.message.component.card.CardComponent;
 import snw.jkook.message.component.card.MultipleCardComponent;
+import snw.jkook.util.RequirePermission;
 
 /**
  * Represents a message from a text channel.
@@ -63,5 +66,14 @@ public interface TextChannelMessage extends Message {
      * @param component The component
      */
     void setComponentTemp(User user, BaseComponent component);
+
+    /**
+     * Remove a reaction that added by the specified user.
+     *
+     * @param emoji The emoji of the reaction
+     * @param user The user as the reaction's creator
+     */
+    @RequirePermission(Permission.MESSAGE_MANAGE)
+    void removeReaction(CustomEmoji emoji, User user);
 
 }
