@@ -66,6 +66,23 @@ public interface Message extends Receivable, ReactionHolder {
     /**
      * Send a component <b>as the reply</b> of this message.
      *
+     * @param message     The message content
+     * @return            The Message ID
+     */
+    String reply(String message);
+
+    /**
+     * Send a component to the source of this message (e.g. a user, a text channel),
+     * <b>IT IS DIFFERENT FROM {@link #reply}</b>.
+     *
+     * @param message     The message content
+     * @return            The Message ID
+     */
+    String sendToSource(String message);
+
+    /**
+     * Send a component <b>as the reply</b> of this message.
+     *
      * @param component   The component
      * @return            The Message ID
      */
