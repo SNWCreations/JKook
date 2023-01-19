@@ -18,6 +18,7 @@ package snw.jkook.plugin;
 
 import org.slf4j.Logger;
 import snw.jkook.Core;
+import snw.jkook.config.InvalidConfigurationException;
 import snw.jkook.config.file.FileConfiguration;
 import snw.jkook.config.file.YamlConfiguration;
 
@@ -125,14 +126,32 @@ public abstract class BasePlugin implements Plugin {
     // Override this if you don't want to use the YAML as the configuration.
     @Override
     public void reloadConfig() {
-        configuration = YamlConfiguration.loadConfiguration(configFile);
+        // main configuration, load data from local disk
+        configuration = new YamlConfiguration();
 
+        try {
+            configuration.load(configFile);
+        } catch (FileNotFoundException ignored) {
+        } catch (IOException | InvalidConfigurationException e) {
+            getCore().getLogger().error("Cannot load " + configFile, e);
+        }
+
+        // load backend from the plugin JAR
         final InputStream backend = getResource("config.yml");
         if (backend == null) {
+            // there is no config.yml in JAR
             return;
         }
 
-        configuration.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(backend, StandardCharsets.UTF_8)));
+        YamlConfiguration backendConfig = new YamlConfiguration();
+        try {
+            backendConfig.load(new InputStreamReader(backend, StandardCharsets.UTF_8));
+        } catch (FileNotFoundException ignored) {
+        } catch (IOException | InvalidConfigurationException e) {
+            getCore().getLogger().error("Cannot load backend configuration data", e);
+        }
+
+        configuration.setDefaults(backendConfig);
     }
 
     @Override
