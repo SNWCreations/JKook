@@ -18,6 +18,7 @@ package snw.jkook.config.serialization;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.slf4j.LoggerFactory;
 import snw.jkook.config.Configuration;
 
 import java.lang.reflect.Constructor;
@@ -26,8 +27,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Utility class for storing and retrieving classes for {@link Configuration}.
@@ -74,15 +73,16 @@ public class ConfigurationSerialization {
             ConfigurationSerializable result = (ConfigurationSerializable) method.invoke(null, args);
 
             if (result == null) {
-                Logger.getLogger(ConfigurationSerialization.class.getName()).log(Level.SEVERE, "Could not call method '" + method + "' of " + clazz + " for deserialization: method returned null");
+                LoggerFactory.getLogger(ConfigurationSerialization.class).error("Could not call method '{}' of {} for deserialization: method returned null", method, clazz);
             } else {
                 return result;
             }
         } catch (Throwable ex) {
-            Logger.getLogger(ConfigurationSerialization.class.getName()).log(
-                    Level.SEVERE,
-                    "Could not call method '" + method + "' of " + clazz + " for deserialization",
-                    ex instanceof InvocationTargetException ? ex.getCause() : ex);
+            LoggerFactory.getLogger(ConfigurationSerialization.class).error(
+                    "Could not call method '{}' of {} for deserialization",
+                    method, clazz,
+                    ex instanceof InvocationTargetException ? ex.getCause() : ex
+            );
         }
 
         return null;
@@ -93,9 +93,9 @@ public class ConfigurationSerialization {
         try {
             return ctor.newInstance(args);
         } catch (Throwable ex) {
-            Logger.getLogger(ConfigurationSerialization.class.getName()).log(
-                    Level.SEVERE,
-                    "Could not call constructor '" + ctor + "' of " + clazz + " for deserialization",
+            LoggerFactory.getLogger(ConfigurationSerialization.class).error(
+                    "Could not call constructor '{}' of {} for deserialization",
+                    ctor, clazz,
                     ex instanceof InvocationTargetException ? ex.getCause() : ex);
         }
 
