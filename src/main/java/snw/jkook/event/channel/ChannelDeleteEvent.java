@@ -17,6 +17,7 @@
 package snw.jkook.event.channel;
 
 import org.jetbrains.annotations.Contract;
+import snw.jkook.entity.Guild;
 import snw.jkook.entity.channel.Channel;
 
 import java.util.Objects;
@@ -26,10 +27,12 @@ import java.util.Objects;
  */
 public class ChannelDeleteEvent extends ChannelEvent {
     private final String channelId;
+    private final Guild guild;
 
-    public ChannelDeleteEvent(final long timeStamp, final String channelId) {
+    public ChannelDeleteEvent(final long timeStamp, final String channelId, Guild guild) {
         super(timeStamp, null);
         this.channelId = Objects.requireNonNull(channelId);
+        this.guild = guild;
     }
 
     /**
@@ -37,6 +40,13 @@ public class ChannelDeleteEvent extends ChannelEvent {
      */
     public String getChannelId() {
         return channelId;
+    }
+
+    /**
+     * Get the guild that related to this event.
+     */
+    public Guild getGuild() {
+        return guild;
     }
 
     /**
