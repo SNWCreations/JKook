@@ -47,6 +47,15 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     String getNickName(Guild guild);
 
     /**
+     * Get the full name of this user, including the name and identify number. <br>
+     * If the {@code guild} object is provided, we will use the user's nickname in the
+     * provided {@code guild}.
+     *
+     * @param guild The guild as the nickname provider
+     */
+    String getFullName(@Nullable Guild guild);
+
+    /**
      * Set the nickname of this user in the specified guild. <p>
      * If this object represents the Bot in this VM, then you won't need {@link Permission#CHANGE_OTHERS_NICKNAME}, but you will need {@link Permission#CHANGE_NICKNAME}.
      *
