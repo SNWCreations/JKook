@@ -102,6 +102,24 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     /**
      * Send a component to this user.
      *
+     * @param message The message content
+     * @return The Message ID
+     */
+    String sendPrivateMessage(String message);
+
+    /**
+     * Send a component to this user.
+     *
+     * @param message The message content
+     * @param quote   If this parameter is passed in, the incoming message
+     *                  will be considered a reply to the message corresponding to this parameter
+     * @return The Message ID
+     */
+    String sendPrivateMessage(String message, PrivateMessage quote);
+
+    /**
+     * Send a component to this user.
+     *
      * @param component The component to send
      * @return The Message ID
      */
