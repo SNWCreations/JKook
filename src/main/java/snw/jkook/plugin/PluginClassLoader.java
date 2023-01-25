@@ -39,8 +39,12 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
         ClassLoader.registerAsParallelCapable(); // I think it will make the loader faster.
     }
 
-    public PluginClassLoader() {
-        super(new URL[]{});
+    public PluginClassLoader(ClassLoader classLoader) {
+        super(new URL[]{}, classLoader);
+    }
+
+    public PluginClassLoader(URL[] urls, ClassLoader parent) {
+        super(urls, parent);
     }
 
     @Override
@@ -52,7 +56,7 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
         }
     }
 
-    private Plugin loadPlugin0(File file) throws Exception {
+    protected Plugin loadPlugin0(File file) throws Exception {
         Validate.isTrue(file.exists(), "The Plugin file does not exists.");
         Validate.isTrue(file.isFile(), "The Plugin file is invalid.");
         Validate.isTrue(file.canRead(), "The Plugin file does not accessible. (We can't read it!)");
@@ -94,16 +98,20 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
                 throw new IllegalArgumentException("The main class defined in plugin.yml has already been defined in the VM.");
             }
 
-            addURL(file.toURI().toURL()); // add URL of the Plugin archive file so that the classloader can find the Plugin main class.
-            // No check, because the Exception will be handled by the caller
-            Class<? extends Plugin> main = loadClass(description.getMainClassName(), true).asSubclass(Plugin.class);
-
-            if (main.getDeclaredConstructors().length != 1) {
-                throw new IllegalAccessException("Unexpected constructor count, expected 1, got " + main.getDeclaredConstructors().length);
-            }
-
-            return construct(main, description); // construct the final instance and return it
+            return loadPlugin1(file, description);
         }
+    }
+
+    protected Plugin loadPlugin1(File file, PluginDescription description) throws Exception {
+        addURL(file.toURI().toURL()); // add URL of the Plugin archive file so that the classloader can find the Plugin main class.
+        // No check, because the Exception will be handled by the caller
+        Class<? extends Plugin> main = loadClass(description.getMainClassName(), true).asSubclass(Plugin.class);
+
+        if (main.getDeclaredConstructors().length != 1) {
+            throw new IllegalAccessException("Unexpected constructor count, expected 1, got " + main.getDeclaredConstructors().length);
+        }
+
+        return construct(main, description);
     }
 
     /**

@@ -48,8 +48,8 @@ public abstract class BasePlugin implements Plugin {
     // And they should NEVER define new constructor.
     // This constructor should be called by Plugin loaders (provided by API implementations).
     public BasePlugin() {
-        if (!(getClass().getClassLoader() instanceof PluginLoader)) {
-            throw new InvalidPluginException("This class should be loaded by using PluginLoader.");
+        if (!MarkedClassLoader.class.isAssignableFrom(getClass().getClassLoader().getClass())) {
+            throw new InvalidPluginException("This class should be loaded by using MarkedClassLoader.");
         }
     }
 
@@ -158,7 +158,8 @@ public abstract class BasePlugin implements Plugin {
     public void saveDefaultConfig() {
         try {
             saveResource("config.yml", false, false);
-        } catch (IllegalArgumentException ignored) {}
+        } catch (IllegalArgumentException ignored) {
+        }
     }
 
     @Override

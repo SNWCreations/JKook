@@ -21,12 +21,12 @@ import java.io.File;
 /**
  * Represents a Plugin loader.
  */
-public interface PluginLoader {
+public interface PluginLoader extends MarkedClassLoader {
 
     /**
      * Load a Plugin (its main class) and return its instance. <p>
      * You don't need to call any methods in the plugin instance,
-     *  just load it into the memory and return it.
+     * just load it into the memory and return it.
      *
      * @param file The Plugin data source
      * @return The Plugin instance
