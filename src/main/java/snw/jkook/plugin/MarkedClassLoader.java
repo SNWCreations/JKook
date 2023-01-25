@@ -1,8 +1,7 @@
 package snw.jkook.plugin;
 
 /**
- * 2023/1/24<br>
- * JKook<br>
+ * Represents a object that can load plugins.
  *
  * @author huanmeng_qwq
  */
