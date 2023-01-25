@@ -49,7 +49,7 @@ public abstract class BasePlugin implements Plugin {
     // This constructor should be called by Plugin loaders (provided by API implementations).
     public BasePlugin() {
         if (!MarkedClassLoader.class.isAssignableFrom(getClass().getClassLoader().getClass())) {
-            throw new InvalidPluginException("This class should be loaded by using PluginLoader.");
+            throw new InvalidPluginException("This class should be loaded by using MarkedClassLoader.");
         }
     }
 
