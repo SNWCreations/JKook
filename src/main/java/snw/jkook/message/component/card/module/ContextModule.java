@@ -52,6 +52,11 @@ public class ContextModule extends BaseModule {
             return this;
         }
 
+        public Builder add(MarkdownElement module) {
+            modules.add(module);
+            return this;
+        }
+
         public Builder add(ImageElement module) {
             modules.add(module);
             return this;
