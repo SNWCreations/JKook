@@ -19,44 +19,47 @@ package snw.jkook.entity;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Represents a game, just a record.
+ * 表示一个游戏。
+ *
+ * @see snw.jkook.HttpAPI#setPlaying(Game)
  */
 public interface Game {
 
     /**
-     * Get the ID of this game.
+     * 获取这个游戏的 ID 。
      */
     int getId();
 
     /**
-     * Get the name of this game.
+     * 获取这个游戏的名称。
      */
     String getName();
 
     /**
-     * Set the name of this game.
+     * 设置这个游戏的名称。
      *
-     * @param name New name of this game
+     * @param name 这个游戏的新名称
      */
     void setName(String name);
 
     /**
-     * Get the icon url of this game. Empty string is returned if this game does not have an icon yet.
+     * 获取这个游戏的图标的 URL 地址。<br>
+     * 若这个游戏暂无图标，此方法将返回空字符串。
      */
     String getIcon();
 
     /**
-     * Set the icon url of this game.
+     * 设置这个游戏的图标。
      *
-     * @param iconUrl The icon url
+     * @param iconUrl 图标的 URL 地址
      */
     void setIcon(String iconUrl);
 
     /**
-     * Set the name and the icon of this game at once. This method maybe can save the network resource.
+     * 提供新的名称与图标，然后作一次设置。
      *
-     * @param name The new name of this game
-     * @param icon The new icon of this game
+     * @param name 新的名称
+     * @param icon 新的图标 URL 地址
      */
     void setNameAndIcon(@NotNull String name, @NotNull String icon);
 

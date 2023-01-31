@@ -23,34 +23,34 @@ import snw.jkook.entity.channel.Channel;
 import snw.jkook.util.RequirePermission;
 
 /**
- * Represents an invitation.
+ * 表示一个邀请。
  */
 public interface Invitation extends MasterHolder {
 
     /**
-     * Get the guild related to this invitation.
+     * 获取与此邀请关联的服务器。
      */
     Guild getGuild();
 
     /**
-     * Get the channel related to this invitation. <p>
-     * Null is returned if this invitation does not relate to a channel.
+     * 获取与此邀请关联的频道。<br>
+     * 若此邀请不是指向频道的，此方法将返回 {@code null} 。
      */
     @Nullable
     Channel getChannel();
 
     /**
-     * Get the url code of this invitation.
+     * 获取此邀请的邀请码。
      */
     String getUrlCode();
 
     /**
-     * Get the link URL of this invitation.
+     * 获取指向此邀请的邀请链接。
      */
     String getUrl();
 
     /**
-     * Mark this invitation as invalid.
+     * 使此邀请失效。
      */
     @RequirePermission(Permission.INVITE_MANAGE)
     void delete();

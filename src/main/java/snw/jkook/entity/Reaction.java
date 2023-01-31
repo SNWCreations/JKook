@@ -21,31 +21,31 @@ import snw.jkook.entity.abilities.Receivable;
 import snw.jkook.util.RequirePermission;
 
 /**
- * Represents a reaction.
+ * 表示一个回应。
  */
 public interface Reaction extends Receivable {
 
     /**
-     * Get the ID of the message which holds this reaction.
+     * 获取此回应所在的消息的 ID 。
      */
     String getMessageId();
 
     /**
-     * Get the emoji used by this reaction.
+     * 获取此回应使用的表情对象。
      */
     CustomEmoji getEmoji();
 
     /**
-     * Get the time stamp that the user sent this reaction. <p>
-     * -1 will be returned if this reaction was deleted, and we constructed this instance for first time. So this method is <b>unsafe</b>. <p>
-     * Tips: Although this reaction was deleted, the normal value will be returned if we already stored this before.
+     * 获取此回应发生时的时间戳。<br>
+     * 若此回应已被删除，而我们第一次提供此回应对象，此方法将返回 -1 。因此，这个方法是<b>不安全</b>的。<br>
+     * 但如果此回应在被删除前就已被 API 实现储存了，此方法仍然能返回正确的值。
      */
     @Override
     long getTimeStamp();
 
     /**
-     * Delete this reaction . <p>
-     * Need {@link Permission#MESSAGE_MANAGE} <b>unless this reaction has been sent by you</b>.
+     * 删除此回应。<br>
+     * 若此回应不是由你的机器人发送的，则需要 {@link Permission#MESSAGE_MANAGE} 权限。
      */
     @RequirePermission(Permission.MESSAGE_MANAGE)
     void delete();

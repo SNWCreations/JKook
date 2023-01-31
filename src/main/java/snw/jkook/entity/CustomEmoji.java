@@ -22,32 +22,32 @@ import snw.jkook.entity.abilities.Nameable;
 import snw.jkook.util.RequirePermission;
 
 /**
- * Represents a emoji.
+ * 表示一个表情。
  */
 public interface CustomEmoji extends Nameable {
 
     /**
-     * Get the ID of this emoji.
+     * 获取这个表情的 ID 。
      */
     String getId();
 
     /**
-     * Set the name of this emoji.
+     * 设置这个表情的名称。
      *
-     * @param name The new name of this emoji
+     * @param name 新的表情名称
      */
     @RequirePermission(Permission.EMOJI_MANAGE)
     void setName(String name);
 
     /**
-     * Get the guild that owns this emoji. <p>
-     * If this emoji has not owned by a guild, or you don't have permission to access it, this method will return null.
+     * 获取拥有此表情的服务器。<br>
+     * 如果这个表情不是一个服务器表情 (KOOK 原生表情？)，或者你无权访问对应的服务器，此方法将返回 {@code null} 。
      */
     @Nullable
     Guild getGuild();
 
     /**
-     * Delete this emoji.
+     * 删除这个服务器表情。
      */
     @RequirePermission(Permission.EMOJI_MANAGE)
     void delete();

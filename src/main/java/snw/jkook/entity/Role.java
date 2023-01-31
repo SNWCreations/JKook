@@ -21,75 +21,77 @@ import snw.jkook.entity.abilities.Nameable;
 import snw.jkook.util.RequirePermission;
 
 /**
- * Represents a role in a Kook guild.
+ * 表示一个服务器角色。
  */
 public interface Role extends Nameable {
 
     /**
-     * Get the guild that owns this role.
+     * 获取此角色所在的服务器。
      */
     Guild getGuild();
 
     /**
-     * Get the ID of this role.
+     * 获取此角色的 ID 。<br>
+     * <b>这个 ID 不是唯一的。</b>在不同的服务器，相同的 ID 指向的并不是同一个角色。
      */
     int getId();
 
     /**
-     * Get the color of this role.
+     * 获取此角色使用的颜色值。<br>
+     * 这个值影响 KOOK 客户端的渲染。
      */
     int getColor();
 
     /**
-     * Get the position of this role. <p>
-     * The color a user displays in the user list depends on the role in which the user has the highest position (and the lowest numerical value).
+     * 获取这个角色在服务器中的"位置"。<br>
+     * 这个值影响服务器在线列表中有对应角色的用户所处的位置。
      */
     int getPosition();
 
     /**
-     * Return true if this role has the provided permission.
+     * 若此角色拥有传入的权限，则返回 {@code true} 。
      *
-     * @param permission The permission constant
+     * @param permission 权限常量
      */
     boolean isPermissionSet(Permission permission);
 
     /**
-     * Return true if the user that have this role can be mentioned.
+     * 若允许任何人 @ 提及此角色，则此方法返回 {@code true}。<br>
+     * <b>请注意:</b> 拥有提及 @全体成员，@在线成员 和 @所有角色 权限的成员，可以绕开这个限制。
      */
     boolean isMentionable();
 
     /**
-     * Return true if put the role's users first in the user list.
+     * 若将该角色成员与普通在线成员分开显示，则此方法返回 {@code true}。
      */
     boolean isHoist();
 
     /**
-     * Set whether this role can be mentioned.
+     * 设置是否允许任何人 @ 提及此角色。
      *
-     * @param value The value to set
+     * @param value 是否允许
      */
     @RequirePermission(Permission.ROLE_MANAGE)
     void setMentionable(boolean value);
 
     /**
-     * Set the "hoist" status for this role.
+     * 设置是否将该角色成员与普通在线成员分开显示。
      *
-     * @param value The value to set
+     * @param value 是否将该角色成员与普通在线成员分开显示
      */
     @RequirePermission(Permission.ROLE_MANAGE)
     void setHoist(boolean value);
 
     /**
-     * Set the permissions of this role.
+     * 设置此角色拥有的权限。
      *
-     * @param permValueSum The sum of all the permissions' value.
-     * @see Permission#getValue()
+     * @param permValueSum 计算方法: 将所有需要的权限加在一起
      */
     @RequirePermission(Permission.ROLE_MANAGE)
     void setPermissions(int permValueSum);
 
     /**
-     * Delete this role .
+     * 删除这个角色。
      */
     @RequirePermission(Permission.ROLE_MANAGE)
     void delete();

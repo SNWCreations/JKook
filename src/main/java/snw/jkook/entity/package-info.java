@@ -15,7 +15,7 @@
  */
 
 /**
- * The interfaces for representing the entities in Kook.
+ * 此包提供对 KOOK 中的 "实体" 及其相关内容的抽象。
  */
 
 package snw.jkook.entity;
