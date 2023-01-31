@@ -19,23 +19,23 @@ package snw.jkook.entity.mute;
 import snw.jkook.entity.User;
 
 /**
- * Represents the mute status of a user. <p>
- * It is a snapshot, you should not store it.
+ * 表示一个用户在某个服务器中的闭麦/静音情况。<br>
+ * 这是一个快照，你不应该保存它。
  */
 public interface MuteData {
 
     /**
-     * Get the user related to this data.
+     * 获取与此记录关联的用户。
      */
     User getUser();
 
     /**
-     * Return true if this user has disabled his microscope.
+     * 若此用户禁用了 TA 的麦克风，则此方法返回 {@code true} 。
      */
     boolean isInputDisabled();
 
     /**
-     * Return true if this user won't hear other users' voice.
+     * 若此用户已经静音，则此方法返回 {@code true} 。
      */
     boolean isOutputDisabled();
 }

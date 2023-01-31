@@ -21,7 +21,7 @@ import snw.jkook.entity.Guild;
 import java.util.Collection;
 
 /**
- * Represents a mute result.
+ * 表示某服务器的闭麦/静音情况。
  *
  * @see Guild#getMuteStatus()
  */
