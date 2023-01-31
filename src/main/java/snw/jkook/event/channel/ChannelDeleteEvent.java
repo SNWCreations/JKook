@@ -23,7 +23,7 @@ import snw.jkook.entity.channel.Channel;
 import java.util.Objects;
 
 /**
- * Represents an event that means an operator deleted a channel.
+ * 此事件在频道被删除时触发。
  */
 public class ChannelDeleteEvent extends ChannelEvent {
     private final String channelId;
@@ -36,23 +36,21 @@ public class ChannelDeleteEvent extends ChannelEvent {
     }
 
     /**
-     * Get the ID of the deleted channel.
+     * 获取被删除的频道的 ID 。
      */
     public String getChannelId() {
         return channelId;
     }
 
     /**
-     * Get the guild that related to this event.
+     * 获取被删除的频道所在的服务器。
      */
     public Guild getGuild() {
         return guild;
     }
 
     /**
-     * Get the channel related to this event. <p>
-     * <b>DO NOT USE THIS METHOD</b>. <p>
-     * Because in some situations (e.g. We know this channel for first time), we can't provide this.
+     * <b>不要使用这个方法。</b>
      */
     @Deprecated
     @Override

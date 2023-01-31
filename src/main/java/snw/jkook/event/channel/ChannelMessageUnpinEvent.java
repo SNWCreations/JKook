@@ -20,7 +20,7 @@ import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Channel;
 
 /**
- * Represents an event that means a message was unpinned.
+ * 此事件在一条文字频道中的消息被取消置顶时触发。
  */
 public class ChannelMessageUnpinEvent extends ChannelEvent {
 
@@ -35,14 +35,14 @@ public class ChannelMessageUnpinEvent extends ChannelEvent {
     }
 
     /**
-     * Get the ID of the message that related to this event.
+     * 获取与此事件有关联的消息 ID 。
      */
     public String getMessageId() {
         return messageId;
     }
 
     /**
-     * Get the operator.
+     * 获取操作者。
      */
     public User getOperator() {
         return operator;

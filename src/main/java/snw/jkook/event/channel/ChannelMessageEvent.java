@@ -22,7 +22,7 @@ import snw.jkook.message.TextChannelMessage;
 import java.util.Objects;
 
 /**
- * Represents an event that a user sends a message in a text channel.
+ * 此事件在用户向文字频道成功发送了一条消息时触发。
  */
 public class ChannelMessageEvent extends ChannelEvent {
 
@@ -35,7 +35,7 @@ public class ChannelMessageEvent extends ChannelEvent {
     }
 
     /**
-     * Get the message related to this event.
+     * 获取与此事件关联的消息对象。
      */
     public TextChannelMessage getMessage() {
         return message;

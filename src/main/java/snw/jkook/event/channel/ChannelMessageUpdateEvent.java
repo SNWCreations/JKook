@@ -19,7 +19,7 @@ package snw.jkook.event.channel;
 import snw.jkook.entity.channel.Channel;
 
 /**
- * Represents an event that means a user modified a message.
+ * 此事件在一条文字频道的消息被编辑时触发。
  */
 public class ChannelMessageUpdateEvent extends ChannelEvent {
 
@@ -34,14 +34,14 @@ public class ChannelMessageUpdateEvent extends ChannelEvent {
     }
 
     /**
-     * Get the ID of the message that related to this event.
+     * 获取与此事件有关联的消息 ID 。
      */
     public String getMessageId() {
         return messageId;
     }
 
     /**
-     * Get the updated content of the message.
+     * 获取消息的新内容。
      */
     public String getContent() {
         return content;

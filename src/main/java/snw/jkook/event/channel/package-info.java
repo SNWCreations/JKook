@@ -15,7 +15,7 @@
  */
 
 /**
- * The events related to {@link snw.jkook.entity.channel.Channel}
+ * 此包提供与 {@link snw.jkook.entity.channel.Channel} 有关的事件。
  */
 
 package snw.jkook.event.channel;

@@ -19,7 +19,7 @@ package snw.jkook.event.channel;
 import snw.jkook.entity.channel.TextChannel;
 
 /**
- * Represents the event that means a message in a channel was deleted.
+ * 此事件在一条位于文字频道中的消息被删除时触发。
  */
 public class ChannelMessageDeleteEvent extends ChannelEvent {
 
@@ -31,7 +31,7 @@ public class ChannelMessageDeleteEvent extends ChannelEvent {
     }
 
     /**
-     * Get the ID of the deleted message.
+     * 获取被删除的消息的 ID 。
      */
     public String getMessageId() {
         return messageId;

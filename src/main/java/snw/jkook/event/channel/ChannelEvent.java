@@ -20,7 +20,7 @@ import snw.jkook.entity.channel.Channel;
 import snw.jkook.event.TimedEvent;
 
 /**
- * Represents an event related to a {@link Channel}.
+ * 表示一个与 {@link Channel} 有关的事件。
  */
 public abstract class ChannelEvent extends TimedEvent {
     private final Channel channel;
@@ -31,7 +31,7 @@ public abstract class ChannelEvent extends TimedEvent {
     }
 
     /**
-     * Get the channel related to this event.
+     * 获取与此事件有关联的频道对象。
      */
     public Channel getChannel() {
         return channel;

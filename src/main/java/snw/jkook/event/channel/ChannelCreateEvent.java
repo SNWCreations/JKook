@@ -19,7 +19,7 @@ package snw.jkook.event.channel;
 import snw.jkook.entity.channel.Channel;
 
 /**
- * Represents an event that means an operator created a channel.
+ * 此事件在频道被创建时触发。
  */
 public class ChannelCreateEvent extends ChannelEvent {
 

@@ -19,7 +19,8 @@ package snw.jkook.event.channel;
 import snw.jkook.entity.channel.Channel;
 
 /**
- * Represents an event that means a channel was updated.
+ * 此事件在一个频道的信息被更新时触发。<br>
+ * 当你拿到此事件时，对应频道的信息就已经被更新了。
  */
 public class ChannelInfoUpdateEvent extends ChannelEvent {
 
