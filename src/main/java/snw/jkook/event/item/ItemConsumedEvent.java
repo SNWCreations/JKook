@@ -19,7 +19,7 @@ package snw.jkook.event.item;
 import snw.jkook.entity.User;
 
 /**
- * Represents an event that means an item was consumed by somebody, and it affects someone else.
+ * 此事件在某位用户使用了一个道具，并对另一个用户产生了影响时触发。
  */
 public class ItemConsumedEvent extends ItemEvent {
     private final User consumer;
@@ -33,14 +33,23 @@ public class ItemConsumedEvent extends ItemEvent {
         this.itemId = itemId;
     }
 
+    /**
+     * 获取使用了道具的用户。
+     */
     public User getConsumer() {
         return consumer;
     }
 
+    /**
+     * 获取受影响的用户。
+     */
     public User getWhoBeAffected() {
         return affected;
     }
 
+    /**
+     * 获取道具的 ID 。
+     */
     public int getItemId() {
         return itemId;
     }

@@ -14,17 +14,7 @@
  * limitations under the License.
  */
 
-package snw.jkook.event.item;
-
-import snw.jkook.event.TimedEvent;
-
 /**
- * 表示一个与 KOOK 道具有关的事件。
+ * 此包提供了与 KOOK 道具有关的事件。
  */
-public abstract class ItemEvent extends TimedEvent {
-
-    ItemEvent(long timeStamp) {
-        super(timeStamp);
-    }
-
-}
+package snw.jkook.event.item;
