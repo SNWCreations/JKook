@@ -22,7 +22,7 @@ import snw.jkook.event.TimedEvent;
 import java.util.Objects;
 
 /**
- * Represents an event related to a role.
+ * 表示一个与 {@link Role} 有关的事件。
  */
 public abstract class RoleEvent extends TimedEvent {
     private final Role role;
@@ -33,7 +33,7 @@ public abstract class RoleEvent extends TimedEvent {
     }
 
     /**
-     * Get the role.
+     * 获取与此事件关联的角色对象。
      */
     public Role getRole() {
         return role;

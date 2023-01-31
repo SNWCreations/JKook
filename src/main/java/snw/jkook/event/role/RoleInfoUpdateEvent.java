@@ -19,8 +19,8 @@ package snw.jkook.event.role;
 import snw.jkook.entity.Role;
 
 /**
- * Represents an event that means a role's information was updated. <p>
- * To get the new information, use methods in {@link Role} interface.
+ * 此事件在一个服务器角色的信息被更新时触发。<br>
+ * 当你拿到此事件时，对应角色的信息就已经被更新了。
  */
 public class RoleInfoUpdateEvent extends RoleEvent {
 

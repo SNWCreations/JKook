@@ -19,8 +19,8 @@ package snw.jkook.event.role;
 import snw.jkook.entity.Role;
 
 /**
- * Represents an event that means a role was deleted. <p>
- * <b>WARNING: Do not call {@link Role#delete()} using the deleted role that provided by this event. Or unexpected bad thing will happen.</b>
+ * 此事件在一个服务器角色被删除时触发。<br>
+ * <b>在此事件发生时，对应角色对象的 {@link Role#delete()} 方法已经不再可用。</b>
  */
 public class RoleDeleteEvent extends RoleEvent {
 

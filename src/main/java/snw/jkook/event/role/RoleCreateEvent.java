@@ -19,7 +19,7 @@ package snw.jkook.event.role;
 import snw.jkook.entity.Role;
 
 /**
- * Represents an event that means a role was created.
+ * 此事件在一个新的服务器角色被创建时触发。
  */
 public class RoleCreateEvent extends RoleEvent {
 

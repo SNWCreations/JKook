@@ -15,7 +15,7 @@
  */
 
 /**
- * The events related to {@link snw.jkook.entity.Role}
+ * 此包提供了与 {@link snw.jkook.entity.Role} 有关的事件。
  */
 
 package snw.jkook.event.role;
