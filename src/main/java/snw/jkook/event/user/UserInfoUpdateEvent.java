@@ -19,12 +19,12 @@ package snw.jkook.event.user;
 import snw.jkook.entity.User;
 
 /**
- * Represents an event that means a user's information (nickname, avatar) was updated. <p>
- * To get new information, use methods in {@link User} interface. <p>
- * <b>This event will be fired only the one of the following condition is true:</b>
+ * 此事件在一个用户的信息被更新时触发。<br>
+ * 当你拿到此事件时，对应用户的信息就已经被更新了。<br>
+ * <b>此事件需要以下前提中的任意一个成立才会提供给你:</b>
  * <ul>
- * <li>The user have chat sessions with the Bot.</li>
- * <li>The user is the friend of the Bot.</li>
+ * <li>此用户与你的机器人有私信会话。</li>
+ * <li>此用户与你的机器人有好友关系。<b>(严格意义上，这一条不可能成立，因为官方未公布机器人处理好友请求的相关接口。)</b></li>
  * </ul>
  */
 public class UserInfoUpdateEvent extends UserEvent {

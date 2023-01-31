@@ -23,7 +23,7 @@ import snw.jkook.entity.channel.TextChannel;
 import java.util.Objects;
 
 /**
- * Represents the event that means a user clicked a button in a message.
+ * 此事件在用户点击了一个按钮时触发。
  */
 public class UserClickButtonEvent extends UserEvent {
 
@@ -39,22 +39,22 @@ public class UserClickButtonEvent extends UserEvent {
     }
 
     /**
-     * Get the message related to the button.
+     * 获取按钮所在的消息的 ID 。
      */
     public String getMessageId() {
         return messageId;
     }
 
     /**
-     * Get the returned value.
+     * 获取按钮返回的值。
      */
     public String getValue() {
         return value;
     }
 
     /**
-     * Get the channel on which the button is clicked. <p>
-     * Null is returned if user clicked this button in private chat session.
+     * 获取按钮所在的频道。<br>
+     * 若此事件在私信中触发，此方法将返回 {@code null} 。
      */
     @Nullable
     public TextChannel getChannel() {

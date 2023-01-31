@@ -22,7 +22,8 @@ import snw.jkook.entity.User;
 import java.util.Objects;
 
 /**
- * Represents an event that means a user left the guild.
+ * 此事件在用户离开一个服务器时触发。<br>
+ * 此事件提供给你的前提是你的机器人在用户新加入的服务器。
  */
 public class UserLeaveGuildEvent extends UserEvent {
 
@@ -34,7 +35,7 @@ public class UserLeaveGuildEvent extends UserEvent {
     }
 
     /**
-     * Get the guild which the user left.
+     * 获取用户离开的服务器。
      */
     public Guild getGuild() {
         return guild;

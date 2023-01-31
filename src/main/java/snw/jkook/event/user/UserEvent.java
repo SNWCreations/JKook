@@ -22,7 +22,7 @@ import snw.jkook.event.TimedEvent;
 import java.util.Objects;
 
 /**
- * Represents an event related to a user.
+ * 表示一个与 {@link User} 有关的事件。
  */
 public abstract class UserEvent extends TimedEvent {
     private final User user;
@@ -33,7 +33,7 @@ public abstract class UserEvent extends TimedEvent {
     }
 
     /**
-     * Get the user related to this event.
+     * 获取与此事件关联的用户对象。
      */
     public User getUser() {
         return user;

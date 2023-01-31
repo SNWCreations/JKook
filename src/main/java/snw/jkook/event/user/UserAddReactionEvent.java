@@ -22,7 +22,8 @@ import snw.jkook.entity.User;
 import java.util.Objects;
 
 /**
- * Represents an event that means a user added a reaction to a message.
+ * 此事件在某位用户向一条消息增加了一个回应时触发。<br>
+ * 这个事件提供给你的前提是你的机器人在这个消息所在的服务器中。
  */
 public class UserAddReactionEvent extends UserEvent {
 
@@ -36,14 +37,14 @@ public class UserAddReactionEvent extends UserEvent {
     }
 
     /**
-     * Get the message ID that related to this event.
+     * 获取与此事件关联的消息 ID 。
      */
     public String getMessageId() {
         return messageId;
     }
 
     /**
-     * Get the reaction object that the user added.
+     * 获取回应信息对象。
      */
     public Reaction getReaction() {
         return reaction;

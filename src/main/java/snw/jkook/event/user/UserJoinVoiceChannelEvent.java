@@ -22,7 +22,8 @@ import snw.jkook.entity.channel.VoiceChannel;
 import java.util.Objects;
 
 /**
- * Represents an event that means a user joined a voice channel.
+ * 此事件在用户加入了一个语音频道时触发。<br>
+ * 此事件提供给你的前提是你的机器人在用户加入的语音频道所在的服务器。
  */
 public class UserJoinVoiceChannelEvent extends UserEvent {
 
@@ -34,7 +35,7 @@ public class UserJoinVoiceChannelEvent extends UserEvent {
     }
 
     /**
-     * Get the voice channel related to this event.
+     * 获取用户加入的语音频道。
      */
     public VoiceChannel getChannel() {
         return channel;

@@ -19,7 +19,9 @@ package snw.jkook.event.user;
 import snw.jkook.entity.User;
 
 /**
- * Represents an event about a user offline.
+ * 此事件在一个用户下线时触发。<br>
+ * <b>在一些用户量极大的服务器中，这可能是一个容易高频发布的事件。</b> <br>
+ * 这个事件提供给你的前提是你的机器人在这个用户已加入的任意一个服务器中。
  */
 public class UserOfflineEvent extends UserEvent {
 
