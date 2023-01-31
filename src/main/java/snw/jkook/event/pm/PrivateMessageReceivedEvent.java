@@ -20,7 +20,7 @@ import snw.jkook.entity.User;
 import snw.jkook.message.PrivateMessage;
 
 /**
- * Represents the event that related to a user sent a private message to your Bot.
+ * 此事件在收到了一个用户发送的私信时触发。
  */
 public class PrivateMessageReceivedEvent extends PrivateMessageEvent {
 
@@ -34,14 +34,14 @@ public class PrivateMessageReceivedEvent extends PrivateMessageEvent {
     }
 
     /**
-     * Get the user related to this event.
+     * 获取私信的发送者。
      */
     public User getUser() {
         return user;
     }
 
     /**
-     * Get the message object.
+     * 获取消息对象。
      */
     public PrivateMessage getMessage() {
         return pm;

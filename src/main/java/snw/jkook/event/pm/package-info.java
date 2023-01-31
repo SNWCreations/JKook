@@ -14,16 +14,7 @@
  * limitations under the License.
  */
 
-package snw.jkook.event.pm;
-
-import snw.jkook.event.TimedEvent;
-import snw.jkook.message.PrivateMessage;
-
 /**
- * 表示一个与 {@link PrivateMessage} 有关的事件。
+ * 此包提供了与 KOOK 私信有关的事件。
  */
-public abstract class PrivateMessageEvent extends TimedEvent {
-    PrivateMessageEvent(final long timeStamp) {
-        super(timeStamp);
-    }
-}
+package snw.jkook.event.pm;

@@ -17,7 +17,7 @@
 package snw.jkook.event.pm;
 
 /**
- * Represents the event that means a private message was deleted.
+ * 此事件在一条位于私信中的消息被删除时触发。
  */
 public class PrivateMessageDeleteEvent extends PrivateMessageEvent {
 
@@ -29,7 +29,7 @@ public class PrivateMessageDeleteEvent extends PrivateMessageEvent {
     }
 
     /**
-     * Get the ID of the deleted message.
+     * 获取被删除的消息的 ID 。
      */
     public String getMessageId() {
         return messageId;

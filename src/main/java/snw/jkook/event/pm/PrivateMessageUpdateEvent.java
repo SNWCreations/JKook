@@ -17,7 +17,7 @@
 package snw.jkook.event.pm;
 
 /**
- * Represents the event that means the content of a private message got updated.
+ * 此事件在一条私信被编辑时触发。
  */
 public class PrivateMessageUpdateEvent extends PrivateMessageEvent {
 
@@ -31,14 +31,14 @@ public class PrivateMessageUpdateEvent extends PrivateMessageEvent {
     }
 
     /**
-     * Get the ID of the updated message.
+     * 获取与此事件有关联的消息 ID 。
      */
     public String getMessageId() {
         return messageId;
     }
 
     /**
-     * Get the updated content of the message.
+     * 获取消息的新内容。
      */
     public String getContent() {
         return content;
