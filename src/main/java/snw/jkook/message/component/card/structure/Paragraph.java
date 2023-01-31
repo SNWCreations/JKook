@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * Represents a "paragraph" module.
+ * 表示一个多列文本模块。
  */
 public class Paragraph extends BaseStructure {
     private final int columns;
@@ -41,14 +41,14 @@ public class Paragraph extends BaseStructure {
     }
 
     /**
-     * Get the columns of this module.
+     * 获取此模块中内容的列数。
      */
     public int getColumns() {
         return columns;
     }
 
     /**
-     * Get the fields that stored by this structure.
+     * 获取此模块中存储的内容。
      */
     public Collection<BaseElement> getFields() {
         return fields;

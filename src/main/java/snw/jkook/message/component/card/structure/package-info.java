@@ -15,6 +15,6 @@
  */
 
 /**
- * This package provides the "structure" of the CardMessage in Kook.
+ * 此包提供对 KOOK CardMessage 中结构体的抽象。
  */
 package snw.jkook.message.component.card.structure;

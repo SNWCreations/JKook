@@ -19,7 +19,7 @@ package snw.jkook.message.component.card.structure;
 import snw.jkook.message.component.card.CardScopeElement;
 
 /**
- * Represents a structure object in CardMessage.
+ * 表示 KOOK CardMessage 中的结构体。
  */
 public abstract class BaseStructure extends CardScopeElement {
     BaseStructure() {}
