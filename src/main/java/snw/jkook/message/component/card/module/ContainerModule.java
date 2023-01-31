@@ -24,8 +24,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Represents a group of image components. <p>
- * But it is different from {@link ImageGroupModule}, the image is not cropped to a square. Multiple images are arranged vertically.
+ * 表示一个用于存放图像元素的组模块。 <br>
+ * 这不同于 {@link ImageGroupModule}，它的图像元素会被"切割"为正方形再展示，而这个模块不会这么做。<br>
+ * 多个图像将垂直排列。
  */
 public class ContainerModule extends BaseModule {
     private final List<ImageElement> images;
@@ -37,14 +38,14 @@ public class ContainerModule extends BaseModule {
     }
 
     /**
-     * Get the images that already stored in this module.
+     * 获取此模块中已存储的图像元素。
      */
     public List<ImageElement> getImages() {
         return images;
     }
 
     /**
-     * A simple builder for building {@link ContainerModule}.
+     * 一个用于构造 {@link ContainerModule} 的建造器。
      */
     public static class Builder {
         private final List<ImageElement> modules = new LinkedList<>();

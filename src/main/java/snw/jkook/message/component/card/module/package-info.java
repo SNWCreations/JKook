@@ -15,7 +15,7 @@
  */
 
 /**
- * This package provides the modules for you to build CardMessage.
+ * 此包提供对 KOOK CardMessage 中模块的抽象。
  */
 
 package snw.jkook.message.component.card.module;

@@ -19,7 +19,7 @@ package snw.jkook.message.component.card.module;
 import snw.jkook.message.component.card.CardScopeElement;
 
 /**
- * Represents a card module.
+ * 表示一个模块。
  */
 public abstract class BaseModule extends CardScopeElement {
     BaseModule() {}

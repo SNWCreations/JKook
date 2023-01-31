@@ -24,7 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Represents a group of {@link InteractElement}.
+ * 表示一个存放 {@link InteractElement} 的组模块。
  */
 public class ActionGroupModule extends BaseModule {
     private final List<InteractElement> buttons;
@@ -36,14 +36,14 @@ public class ActionGroupModule extends BaseModule {
     }
 
     /**
-     * Get the images that already stored in this module.
+     * 获取此模块中已存储的可交互元素。
      */
     public List<InteractElement> getButtons() {
         return buttons;
     }
 
     /**
-     * A simple builder for building {@link ActionGroupModule}.
+     * 一个用于构造 {@link ActionGroupModule} 的建造器。
      */
     public static class Builder {
         private final List<InteractElement> modules = new LinkedList<>();

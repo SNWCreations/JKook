@@ -17,11 +17,11 @@
 package snw.jkook.message.component.card.module;
 
 /**
- * Represents a divider module.
+ * 表示一个分割线模块。
  */
 public class DividerModule extends BaseModule {
 
-    /** Only one the instance of this module. One per VM. */
+    /** 此模块的唯一实例。 */
     public static final DividerModule INSTANCE = new DividerModule();
 
     /*

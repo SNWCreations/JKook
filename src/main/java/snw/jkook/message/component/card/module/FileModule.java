@@ -21,7 +21,7 @@ import snw.jkook.message.component.FileComponent;
 import snw.jkook.util.Validate;
 
 /**
- * Represents the module that contains a file. Only normal files are supported.
+ * 表示一个文件模块。不支持图片。
  */
 public class FileModule extends BaseModule {
     private final FileComponent.Type type;
@@ -38,29 +38,29 @@ public class FileModule extends BaseModule {
     }
 
     /**
-     * Get the type of the file that represented by this module.
+     * 获取此模块中文件的类型。
      */
     public FileComponent.Type getType() {
         return type;
     }
 
     /**
-     * Get the source URL of the file that represented by this module.
+     * 获取此模块中文件的 URL 地址。
      */
     public String getSource() {
         return src;
     }
 
     /**
-     * Get the title of the file.
+     * 获取此模块中文件的标题。
      */
     public String getTitle() {
         return title;
     }
 
     /**
-     * Get the cover of the file that represented by this module. <p>
-     * Null is returned if this module does not represent an audio file.
+     * 获取此模块中封面文件的 URL 地址。<br>
+     * 封面属性仅对音频文件有效，所以此方法有时返回 {@code null} 。
      */
     @Nullable
     public String getCover() {

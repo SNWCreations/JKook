@@ -20,7 +20,7 @@ import snw.jkook.message.component.card.element.PlainTextElement;
 import snw.jkook.util.Validate;
 
 /**
- * Represents the header module. Accepts plain text only.
+ * 表示一个标题模块。仅接受纯文本。
  */
 public class HeaderModule extends BaseModule {
     private final PlainTextElement element;
@@ -35,7 +35,7 @@ public class HeaderModule extends BaseModule {
     }
 
     /**
-     * Get the element that stored by this module.
+     * 获取此模块已存储的纯文本元素。
      */
     public PlainTextElement getElement() {
         return element;

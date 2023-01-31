@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Represents a countdown module.
+ * 表示一个倒计时模块。
  */
 public class CountdownModule extends BaseModule {
     private final Type type;
@@ -32,21 +32,21 @@ public class CountdownModule extends BaseModule {
     }
 
     /**
-     * Return the type of this module.
+     * 获取此倒计时的类型。
      */
     public Type getType() {
         return type;
     }
 
     /**
-     * Get the end time of this countdown.
+     * 获取此倒计时的结束时间。
      */
     public long getEndTime() {
         return endTime;
     }
 
     /**
-     * Represents the type of countdown.
+     * 表示倒计时类型。
      */
     public enum Type {
 

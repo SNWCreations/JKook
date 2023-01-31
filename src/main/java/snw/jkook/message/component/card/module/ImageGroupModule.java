@@ -24,7 +24,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Represents a group of image components.
+ * 表示一个用于存储图像的组模块。
  */
 public class ImageGroupModule extends BaseModule {
     private final List<ImageElement> images;
@@ -36,14 +36,14 @@ public class ImageGroupModule extends BaseModule {
     }
 
     /**
-     * Get the images that already stored in this module.
+     * 获取此模块中已存储的图像元素。
      */
     public List<ImageElement> getImages() {
         return images;
     }
 
     /**
-     * A simple builder for building {@link ImageGroupModule}.
+     * 一个用于构造 {@link ImageGroupModule} 的建造器。
      */
     public static class Builder {
         private final List<ImageElement> modules = new LinkedList<>();

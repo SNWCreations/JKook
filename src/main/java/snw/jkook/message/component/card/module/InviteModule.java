@@ -17,7 +17,7 @@
 package snw.jkook.message.component.card.module;
 
 /**
- * Represents a module that contains an invitation link (or code).
+ * 表示一个存储邀请链接/邀请码的模块。
  */
 public class InviteModule extends BaseModule {
     private final String code;
@@ -27,7 +27,7 @@ public class InviteModule extends BaseModule {
     }
 
     /**
-     * Get the link/code that stored by this module.
+     * 获取此模块存储的邀请链接/邀请码。
      */
     public String getCode() {
         return code;

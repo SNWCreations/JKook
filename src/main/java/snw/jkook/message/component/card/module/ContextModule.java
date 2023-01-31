@@ -26,6 +26,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * 表示一个备注模块。
+ */
 public class ContextModule extends BaseModule {
     private final List<BaseElement> modules;
 
@@ -35,14 +38,14 @@ public class ContextModule extends BaseModule {
     }
 
     /**
-     * Get the modules that stored in this module.
+     * 获取已在此模块中存储的元素。
      */
     public List<BaseElement> getModules() {
         return modules;
     }
 
     /**
-     * A simple builder for building {@link ContextModule}.
+     * 一个用于构造 {@link ContextModule} 的建造器。
      */
     public static class Builder {
         private final List<BaseElement> modules = new LinkedList<>();

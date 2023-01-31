@@ -25,7 +25,7 @@ import snw.jkook.message.component.card.structure.Paragraph;
 import snw.jkook.util.Validate;
 
 /**
- * Represents a section module.
+ * 表示一个内容模块。
  */
 public class SectionModule extends BaseModule implements AccessoryHolder {
     private final CardScopeElement text;
@@ -45,7 +45,7 @@ public class SectionModule extends BaseModule implements AccessoryHolder {
     }
 
     /**
-     * Get the text that stored by this module.
+     * 获取此模块存储的内容。
      */
     public CardScopeElement getText() {
         return text;
