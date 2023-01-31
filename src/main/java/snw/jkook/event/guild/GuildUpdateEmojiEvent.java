@@ -20,7 +20,7 @@ import snw.jkook.entity.CustomEmoji;
 import snw.jkook.entity.Guild;
 
 /**
- * Represents the event that means a guild emoji was updated.
+ * 此事件在服务器更新了表情信息时（如修改了表情的名称）触发。
  */
 public class GuildUpdateEmojiEvent extends GuildEvent {
     private final CustomEmoji emoji;
@@ -31,7 +31,7 @@ public class GuildUpdateEmojiEvent extends GuildEvent {
     }
 
     /**
-     * Get the emoji that related to this event.
+     * 获取与此事件关联的表情对象。
      */
     public CustomEmoji getEmoji() {
         return emoji;

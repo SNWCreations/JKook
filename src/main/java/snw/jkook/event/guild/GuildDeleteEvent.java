@@ -19,7 +19,7 @@ package snw.jkook.event.guild;
 import snw.jkook.entity.Guild;
 
 /**
- * Represents an event that means a guild was deleted.
+ * 此事件在一个服务器已被其所有者删除时触发。
  */
 public class GuildDeleteEvent extends GuildEvent {
 
@@ -31,9 +31,9 @@ public class GuildDeleteEvent extends GuildEvent {
     }
 
     /**
-     * Get the guild related to this event.
+     * <b>不要使用这个方法。</b>
      *
-     * @deprecated Because of the guild was deleted, so we can't construct the instance of guild. Use {@link #getGuildId()} instead.
+     * @deprecated 在此事件发生时，对应服务器的信息就已经不可用了。使用 {@link #getGuildId()} 以获取本次事件发生后被删除的服务器的 ID 。
      */
     @Deprecated
     @Override
@@ -42,7 +42,7 @@ public class GuildDeleteEvent extends GuildEvent {
     }
 
     /**
-     * Get the ID of the deleted guild.
+     * 获取本次事件发生后已被删除的服务器的 ID 。
      */
     public String getGuildId() {
         return guildId;

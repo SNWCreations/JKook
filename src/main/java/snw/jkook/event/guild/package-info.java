@@ -15,7 +15,7 @@
  */
 
 /**
- * The events related to {@link snw.jkook.entity.Guild}
+ * 此包提供了与 {@link snw.jkook.entity.Guild} 有关的事件。
  */
 
 package snw.jkook.event.guild;

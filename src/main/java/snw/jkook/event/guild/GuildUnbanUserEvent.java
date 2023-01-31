@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Represents an event that a guild unbanned some users.
+ * 此事件在服务器解封了某些用户时触发。
  */
 public class GuildUnbanUserEvent extends GuildEvent {
 
@@ -38,14 +38,14 @@ public class GuildUnbanUserEvent extends GuildEvent {
     }
 
     /**
-     * Get the unbanned user.
+     * 获取本次事件中被解封的用户，
      */
     public List<User> getUnbanned() {
         return unbanned;
     }
 
     /**
-     * Get the operator.
+     * 获取操作者。
      */
     public User getOperator() {
         return operator;

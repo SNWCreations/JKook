@@ -20,7 +20,7 @@ import snw.jkook.entity.CustomEmoji;
 import snw.jkook.entity.Guild;
 
 /**
- * Represents the event that means an emoji was removed from a guild.
+ * 此事件在服务器删除了表情时触发。
  */
 public class GuildRemoveEmojiEvent extends GuildEvent {
     private final CustomEmoji emoji;
@@ -31,7 +31,8 @@ public class GuildRemoveEmojiEvent extends GuildEvent {
     }
 
     /**
-     * Get the emoji that related to this event.
+     * 获取与此事件关联的表情对象。<br>
+     * 在你拿到此事件时，对应的表情对象的 {@link CustomEmoji#delete()} 已经不再可用。
      */
     public CustomEmoji getEmoji() {
         return emoji;

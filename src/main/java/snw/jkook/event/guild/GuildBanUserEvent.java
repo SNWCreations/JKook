@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Represents an event that a guild banned some users.
+ * 此事件在服务器封禁了某些用户时触发。
  */
 public class GuildBanUserEvent extends GuildEvent {
 
@@ -40,21 +40,21 @@ public class GuildBanUserEvent extends GuildEvent {
     }
 
     /**
-     * Get the banned users.
+     * 获取本次事件中被封禁的用户，
      */
     public List<User> getBanned() {
         return banned;
     }
 
     /**
-     * Get the operator.
+     * 获取操作者。
      */
     public User getOperator() {
         return operator;
     }
 
     /**
-     * Get the reason.
+     * 获取封禁理由。
      */
     public String getReason() {
         return reason;

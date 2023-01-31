@@ -19,8 +19,8 @@ package snw.jkook.event.guild;
 import snw.jkook.entity.Guild;
 
 /**
- * Represents an event that means a guild's information was updated. <p>
- * To get the new information, use methods in {@link Guild} interface.
+ * 此事件在服务器信息被更新时触发。<br>
+ * 当你拿到此事件时，服务器的信息已被更新，相应的对象也同步更新了。
  */
 public class GuildInfoUpdateEvent extends GuildEvent {
 

@@ -20,7 +20,7 @@ import snw.jkook.entity.Guild;
 import snw.jkook.event.TimedEvent;
 
 /**
- * Represents an event related to a guild.
+ * 表示一个与 {@link Guild} 有关的事件。
  */
 public abstract class GuildEvent extends TimedEvent {
     private final Guild guild;
@@ -31,7 +31,7 @@ public abstract class GuildEvent extends TimedEvent {
     }
 
     /**
-     * Get the guild related to this event.
+     * 获取与此事件关联的服务器对象。
      */
     public Guild getGuild() {
         return guild;
