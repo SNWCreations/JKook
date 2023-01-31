@@ -74,6 +74,7 @@ public class CardBuilder {
      * After that, you can create new card! <p>
      * Example:
      * <blockquote><pre>
+     * {@code
      *     new CardBuilder()
      *         .setTheme(Theme.PRIMARY)
      *         .setSize(Size.LG)
@@ -85,6 +86,7 @@ public class CardBuilder {
      *         .addModule(new HeaderModule(new PlainTextElement("This is header of the second card", false))) // the header of the second card
      *         .addModule(new SectionModule(new PlainTextElement("This is body of the second card"), null, null)) // the body of the second card
      *         .build(); // you will got a multiple card, and two cards inside it.
+     * }
      * </pre></blockquote>
      */
     public CardBuilder newCard() {
