@@ -17,7 +17,7 @@
 package snw.jkook.event;
 
 /**
- * The basic Event representation.
+ * 表示一个事件。
  */
 public abstract class Event {
 

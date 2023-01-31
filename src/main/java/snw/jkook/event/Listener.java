@@ -17,7 +17,7 @@
 package snw.jkook.event;
 
 /**
- * A simple interface to mark the event listener class.
+ * 一个用于标记含有事件处理方法的类的接口。
  */
 public interface Listener {
 }

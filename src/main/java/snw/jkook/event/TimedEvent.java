@@ -17,7 +17,7 @@
 package snw.jkook.event;
 
 /**
- * The event representation with a timestamp.
+ * 表示一个有时间戳的事件。
  */
 public abstract class TimedEvent extends Event {
     protected final long timeStamp;
@@ -28,7 +28,7 @@ public abstract class TimedEvent extends Event {
     }
 
     /**
-     * Get the time stamp of this event.
+     * 获取此事件所包含的时间戳。
      */
     public long getTimeStamp() {
         return timeStamp;

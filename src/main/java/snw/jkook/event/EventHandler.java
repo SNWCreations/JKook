@@ -22,16 +22,16 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The annotation for mark the event handling methods.
+ * 使用此注解标记可以处理事件的方法。
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EventHandler {
 
     /**
-     * Turn this to true to mark this handler as the internal event listener. <p>
-     * Internal event listeners will be executed before the normal listener executes. <p>
-     * Plugin should <b>NEVER USE</b> this attribute, this is designed for API implementations.
+     * 将这个属性指定为 {@code true} 以使方法成为"内部事件处理方法"。<br>
+     * 这种方法将在相应事件发生时被优先执行。<br>
+     * <b>插件不应该使用这个，这是为 API 实现准备的。</b>
      */
     boolean internal() default false;
 }

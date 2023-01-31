@@ -15,8 +15,8 @@
  */
 
 /**
- * The event classes of JKook. <p>
- * Abstract events <b>CANNOT</b> be listened. Or you will get {@link java.lang.IllegalArgumentException}.
+ * 此包提供与 JKook 事件系统有关的类。<br>
+ * 抽象事件类<b>不可以</b>被监听。
  *
  * @see snw.jkook.event.Event
  * @see snw.jkook.event.EventManager#registerHandlers(snw.jkook.plugin.Plugin, snw.jkook.event.Listener)
