@@ -22,30 +22,29 @@ import snw.jkook.entity.User;
 import java.util.Collection;
 
 /**
- * Represents an object that can hold the reactions.
+ * 表示一种可以接收回应的对象。
  */
 public interface ReactionHolder {
 
     /**
-     * Get the users that added the specified emoji to this object.
+     * 获取所有向此对象添加了指定表情的用户。
      *
-     * @param emoji The emoji as the search condition
-     * @throws IllegalStateException Thrown if the Bot does not have permission to access the specified emoji.
-     *                               (e.g. The Bot is not a member of the guild behind the emoji)
+     * @param emoji 表情对象
+     * @throws IllegalStateException 当无法访问指定的表情时抛出
      */
     Collection<User> getUserByReaction(CustomEmoji emoji) throws IllegalStateException;
 
     /**
-     * Add an emoji as the reaction to this object.
+     * 向此对象添加指定的表情作为回应。
      *
-     * @param emoji The target emoji
+     * @param emoji 表情对象
      */
     void sendReaction(CustomEmoji emoji);
 
     /**
-     * Remove the specified emoji from this object.
+     * 从此对象上移除来自自己的指定的表情回应。
      *
-     * @param emoji The target emoji
+     * @param emoji 表情对象
      */
     void removeReaction(CustomEmoji emoji);
 }

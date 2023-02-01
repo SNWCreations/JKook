@@ -19,17 +19,17 @@ package snw.jkook.entity.abilities;
 import snw.jkook.entity.User;
 
 /**
- * Represents an object that would be received by users.
+ * 表示一种会被用户接收到的对象。
  */
 public interface Receivable {
 
     /**
-     * Get the sender of this object.
+     * 获取发送此对象的用户。
      */
     User getSender();
 
     /**
-     * Get the time stamp that the user sent this object.
+     * 获取发送此对象时的时间戳。
      */
     long getTimeStamp();
 }

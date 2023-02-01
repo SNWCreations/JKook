@@ -24,23 +24,39 @@ import snw.jkook.util.RequirePermission;
 import java.util.Set;
 
 /**
- * Represents the objects that can hold the invitations.
+ * 表示一种可以创建邀请的对象。
  *
  * @see Invitation
  */
 public interface InviteHolder {
 
     /**
-     * Get invitations related to this object.
+     * 获取所有指向此对象的邀请。
      */
     PageIterator<Set<Invitation>> getInvitations();
 
     /**
-     * Create an invitation of this object.
+     * 对此对象创建邀请。
      *
-     * @param validSeconds The length of time the invitation link is valid (in seconds)
-     * @param validTimes   Number of times the link is valid.
-     * @return The invite link URL string
+     * @param validSeconds 邀请链接有效时长（秒），
+     *                     可选值：
+     *                     0 => 永不过期；
+     *                     1800 => 0.5 小时；
+     *                     3600 => 1 小时；
+     *                     21600 => 6 小时；
+     *                     43200 => 12 小时；
+     *                     86400 => 1 天；
+     *                     604800 => 7 天
+     * @param validTimes   邀请链接可以使用的次数，
+     *                     可选值：
+     *                     -1 => 无限制；
+     *                     1 => 1 次使用；
+     *                     5 => 5 次使用；
+     *                     10 => 10 次使用；
+     *                     25 => 25 次使用；
+     *                     50 => 50 次使用；
+     *                     100 => 100 次使用
+     * @return 邀请链接 URL 字符串
      */
     @RequirePermission(Permission.INVITE)
     String createInvite(int validSeconds, int validTimes);

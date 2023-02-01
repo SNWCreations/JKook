@@ -16,19 +16,25 @@
 
 package snw.jkook.entity.abilities;
 
+import org.jetbrains.annotations.Nullable;
+
 /**
- * Represents the modules that can include other modules.
+ * 表示一种可以嵌入 {@link Accessory} 的模块。
  */
 public interface AccessoryHolder {
 
     /**
-     * Get the accessory that this object currently holds.
+     * 获取已嵌入此模块的模块。<br>
+     * 若此模块没有嵌入任何其他模块，则此方法返回 {@code null} 。
      */
+    @Nullable
     Accessory getAccessory();
 
     /**
-     * Get the current mode of the accessory that holds by this object.
+     * 获取应用到已嵌入的模块的模式。<br>
+     * 若此模块没有嵌入任何其他模块，则此方法返回 {@code null} 。
      */
+    @Nullable
     Accessory.Mode getMode();
 
 }

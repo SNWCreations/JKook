@@ -15,9 +15,8 @@
  */
 
 /**
- * This package has various abilities of JKook classes. <p>
- * You should <b>NOT</b> implement the methods in the classes under this package. <p>
- * Implement their subclass instead.
+ * 此包提供对 JKook 框架中实体可能拥有的各种能力的抽象。<br>
+ * <b>如果你是 JKook 实现的开发者，请不要实现此包下的任何接口，这里的接口仅供 {@code extends} 使用。</b>
  */
 
 package snw.jkook.entity.abilities;

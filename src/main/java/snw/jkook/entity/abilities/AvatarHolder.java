@@ -17,15 +17,15 @@
 package snw.jkook.entity.abilities;
 
 /**
- * Represents an object that can hold an avatar.
+ * 表示一种有图标的对象。
  */
 public interface AvatarHolder {
 
     /**
-     * Get the avatar url of this object.
+     * 获取此对象的图标 URL 地址。
      *
-     * @param vip True if you want the url of the vip avatar.
-     * @return The avatar url. Sometimes, whether true or false is provided, the result may be the same, because the object may not be a VIP.
+     * @param vip 是否获取此对象在有 KOOK 相关加持时的图标 (如服务器有 KOOK 助力时可以有动态图标)
+     * @return 图标 URL 地址
      */
     String getAvatarUrl(boolean vip);
 }

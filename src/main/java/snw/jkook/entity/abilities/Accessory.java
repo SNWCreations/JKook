@@ -17,12 +17,13 @@
 package snw.jkook.entity.abilities;
 
 /**
- * Represents the modules that can be included in other modules.
+ * 表示一种可以被嵌入到其他卡片模块的卡片模块。<br>
+ * 这是 {@link snw.jkook.message.component.card} 包的一员。
  */
 public interface Accessory {
 
     /**
-     * Represents the available modes of the accessories.
+     * 模式。
      */
     enum Mode {
 

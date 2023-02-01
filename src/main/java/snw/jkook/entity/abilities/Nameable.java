@@ -17,12 +17,12 @@
 package snw.jkook.entity.abilities;
 
 /**
- * Represents an object that can have a name.
+ * 表示一个可以有名称的对象。
  */
 public interface Nameable {
 
     /**
-     * Get the name of this object.
+     * 获取此对象的名称。
      */
     String getName();
 }

@@ -19,12 +19,12 @@ package snw.jkook.entity.abilities;
 import snw.jkook.entity.User;
 
 /**
- * Represents an object that can hold an owner.
+ * 表示一个可以记录创建者的对象。
  */
 public interface MasterHolder {
 
     /**
-     * Get the creator/owner of this object.
+     * 获取此对象的创建者。
      */
     User getMaster();
 }
