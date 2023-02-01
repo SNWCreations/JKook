@@ -1,6 +1,13 @@
 # JKook
 
-The [Kook](https://kookapp.cn) API standard & Bot framework for Java.
+The [KOOK](https://kookapp.cn) API standard & Bot framework for Java.
+
+**End Of Life!**
+
+This branch of JKook API (0.37.x) was End-Of-Life since 2023-1-31.
+
+Please migrate to newer API version for bugfixes and new features!
+See this [tutorial](https://github.com/SNWCreations/JKookTutorial/blob/master/Migrate_To_0.48.md) for more information.
 
 ## Features
 
