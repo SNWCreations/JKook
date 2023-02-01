@@ -29,77 +29,75 @@ import snw.jkook.util.RequirePermission;
 import java.util.Collection;
 
 /**
- * Represents a channel.
+ * 表示一个频道。
  */
 public interface Channel extends Nameable, InviteHolder, MasterHolder {
 
     /**
-     * Get the guild that contains this channel.
+     * 获取此频道所在的服务器。
      */
     Guild getGuild();
 
     /**
-     * Get the ID of this channel.
+     * 获取此频道的 ID 。
      */
     String getId();
 
     /**
-     * Return true if the permissions of this channel is the same as its parent.
+     * 若此频道的权限设置已与其父分组同步，则此方法返回 {@code true} .
      */
     boolean isPermissionSync();
 
     /**
-     * Return true if this channel is {@link Category}.
+     * 若此频道是一个分组，则此方法返回 {@code true} 。
      */
     default boolean isCategory() {
         return (this instanceof Category);
     }
 
     /**
-     * Get the category that holds this channel.
+     * 获取此频道的父分组，没有则返回 {@code null} 。
      */
     @Nullable
     Category getParent();
 
     /**
-     * Set the category that holds this channel.
+     * 设置此频道的父分组。
      *
-     * @param parent The parent of this channel, provide null if you don't want this channel belongs to any category
+     * @param parent 新的父分组，传入 {@code null} 时将此频道从原本所在的分组移出
      */
     void setParent(@Nullable Category parent);
 
     /**
-     * Get the "level" of this channel. (I think it should be called as "sort order")
+     * 获取此频道的"等级"。(我认为这应该叫做"排序顺序"，但 KOOK API 将其命名为"等级"。)
      */
     int getLevel();
 
     /**
-     * Set the "level" of this channel. (I think it should be called as "sort order")
+     * 设置此频道的"等级"。(我认为这应该叫做"排序顺序"，但 KOOK API 将其命名为"等级"。)
      *
-     * @param level The "level"
+     * @param level "等级"
      */
     void setLevel(int level);
 
     /**
-     * Delete this channel.
+     * 删除此频道。
      */
     @RequirePermission(Permission.CHANNEL_MANAGE)
     void delete();
 
     /**
-     * Get the overwritten role permission representations of this channel. <p>
-     * The result is read-only.
+     * 获取此频道特定的角色权限。
      */
     Collection<RolePermissionOverwrite> getOverwrittenRolePermissions();
 
     /**
-     * Get the overwritten user permission representations of this channel. <p>
-     * The result is read-only.
+     * 获取此频道特定的用户权限。
      */
     Collection<UserPermissionOverwrite> getOverwrittenUserPermissions();
 
     /**
-     * Represents the overwritten permissions for a role in the channel.
+     * 表示一个角色在频道中拥有的特定权限的信息。
      */
     class RolePermissionOverwrite {
         private final int roleId;
@@ -113,21 +111,25 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
         }
 
         /**
-         * Get the role ID that related to this representation.
+         * 获取与此信息关联的角色的 ID 。
          */
         public int getRoleId() {
             return roleId;
         }
 
         /**
-         * Get the allowed permissions' sum. You can use the result for {@link Permission#hasPermission}.
+         * 获取允许的权限值的总和。
+         *
+         * @see Permission#hasPermission
          */
         public int getRawAllow() {
             return rawAllow;
         }
 
         /**
-         * Get the denied permissions' sum. You can use the result for {@link Permission#hasPermission}.
+         * 获取拒绝的权限值的总和。
+         *
+         * @see Permission#hasPermission
          */
         public int getRawDeny() {
             return rawDeny;
@@ -135,7 +137,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     }
 
     /**
-     * Represents the overwritten permissions for a user in the channel.
+     * 表示一个用户在频道中拥有的特定权限的信息。
      */
     class UserPermissionOverwrite {
         private final User user;
@@ -149,21 +151,25 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
         }
 
         /**
-         * Get the user that related to this representation.
+         * 获取与此信息关联的用户。
          */
         public User getUser() {
             return user;
         }
 
         /**
-         * Get the allowed permissions' sum. You can use the result for {@link Permission#hasPermission}.
+         * 获取允许的权限值的总和。
+         *
+         * @see Permission#hasPermission
          */
         public int getRawAllow() {
             return rawAllow;
         }
 
         /**
-         * Get the denied permissions' sum. You can use the result for {@link Permission#hasPermission}.
+         * 获取拒绝的权限值的总和。
+         *
+         * @see Permission#hasPermission
          */
         public int getRawDeny() {
             return rawDeny;
@@ -171,47 +177,47 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     }
 
     /**
-     * Update the role permission of this channel. Will not affect the rights they already have.
+     * 更新一个角色在此频道中拥有的特定权限。
      *
-     * @param roleId   The role ID
-     * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
-     * @param rawDeny  The sum of the denied permissions' value
+     * @param roleId   角色 ID
+     * @param rawAllow 允许的权限值的总和
+     * @param rawDeny  拒绝的权限值的总和
      */
     @RequirePermission(Permission.CHANNEL_MANAGE)
     void updatePermission(int roleId, int rawAllow, int rawDeny);
 
     /**
-     * Update the role permission of this channel. Will not affect the rights they already have.
+     * 更新一个角色在此频道中拥有的特定权限。
      *
-     * @param role     The role
-     * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
-     * @param rawDeny  The sum of the denied permissions' value
+     * @param role     角色
+     * @param rawAllow 允许的权限值的总和
+     * @param rawDeny  拒绝的权限值的总和
      */
     @RequirePermission(Permission.CHANNEL_MANAGE)
     void updatePermission(Role role, int rawAllow, int rawDeny);
 
     /**
-     * Update the user's permission of this channel. Will not affect the rights they already have.
+     * 更新一个用户在此频道中拥有的特定权限。
      *
-     * @param user     The role
-     * @param rawAllow The sum of the allowed permissions' value (see {@link Permission})
-     * @param rawDeny  The sum of the denied permissions' value
+     * @param user     用户
+     * @param rawAllow 允许的权限值的总和
+     * @param rawDeny  拒绝的权限值的总和
      */
     @RequirePermission(Permission.CHANNEL_MANAGE)
     void updatePermission(User user, int rawAllow, int rawDeny);
 
     /**
-     * Delete the permission of the role in this channel. Will not affect the rights they already have.
+     * 移除一个角色在此频道中拥有的特定权限。
      *
-     * @param role The role
+     * @param role 指定的角色
      */
     @RequirePermission(Permission.CHANNEL_MANAGE)
     void deletePermission(Role role);
 
     /**
-     * Delete the permission of the user in this channel. Will not affect the rights they already have.
+     * 移除一个用户在此频道中拥有的特定权限。
      *
-     * @param user The user
+     * @param user 指定的用户
      */
     @RequirePermission(Permission.CHANNEL_MANAGE)
     void deletePermission(User user);

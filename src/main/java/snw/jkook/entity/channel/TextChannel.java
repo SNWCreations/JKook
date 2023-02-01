@@ -25,28 +25,28 @@ import snw.jkook.util.PageIterator;
 import java.util.Collection;
 
 /**
- * Represents a channel that can chat using texts.
+ * 表示一个文字频道。
  */
 public interface TextChannel extends Channel {
 
     /**
-     * Get the "topic" of this channel. (I think it should be called as "description")
+     * 获取此频道的简介。
      */
     String getTopic();
 
     /**
-     * Set the "topic" of this channel. (I think it should be called as "description")
+     * 设置此频道的简介。
      *
-     * @param topic The "topic" content, length up to 500 is allowed
+     * @param topic 简介文本，长度不可超过 500
      */
     void setTopic(String topic);
 
     /**
-     * Get the messages in this channel by given information.
+     * 使用提供的信息获取此频道的消息历史。
      *
-     * @param refer     The reference message, remote will query the data around this. <p> Null to get the latest message
-     * @param isPin     True if query pinned message. If you provide true, then you must provide null to "refer" argument, and only the pinned messages will be returned
-     * @param queryMode The query mode. Only accepts "before", "around" and "after". Case Sensitive!
+     * @param refer     参考消息，KOOK 服务端将根据这个参数查询消息，传 {@code null} 时将最新消息看着参考消息
+     * @param isPin     是否查询置顶消息。置顶消息只支持查询最新的消息(因此，当此项为 {@code true} 时，{@code refer} 参数必须为 {@code null})
+     * @param queryMode 查询模式，仅接受 "before"，"around" 和 "after"，<b>区分大小写！</b>
      */
     PageIterator<Collection<TextChannelMessage>> getMessages(
             @Nullable String refer,
@@ -55,72 +55,69 @@ public interface TextChannel extends Channel {
     );
 
     /**
-     * Send a message to this channel.
+     * 向此频道发送消息。
      *
-     * @param message    The message to send
-     * @return           Message ID
+     * @param message    消息内容
+     * @return           新消息的 ID
      */
     String sendComponent(String message);
 
     /**
-     * Send a message to this channel.
+     * 向此频道发送消息。
      *
-     * @param message    The message to send
-     * @param quote      If this parameter is passed in, the incoming message
-     *                   will be considered a reply to the message corresponding to this parameter
-     * @param tempTarget If you pass this parameter,
-     *                   only the user to whom it corresponds can see the incoming message
-     * @return           Message ID
+     * @param message    消息内容
+     * @param quote      若传入了，则新的消息将被看作是指定消息的回复
+     * @param tempTarget 若传入了，则发送的消息将只有指定的用户能看见，并且消息将被看作临时消息
+     * @return           新消息的 ID
      */
     String sendComponent(String message, @Nullable TextChannelMessage quote, @Nullable User tempTarget);
 
     /**
-     * Send a message to this channel.
+     * 向此频道发送消息。
      *
-     * @param component  The message to send
-     * @return           Message ID
+     * @param component  消息内容
+     * @return           新消息的 ID
      */
     String sendComponent(BaseComponent component);
 
     /**
-     * Send a message to this channel.
+     * 向此频道发送消息。
      *
-     * @param component  The message to send
-     * @param quote      If this parameter is passed in, the incoming message
-     *                   will be considered a reply to the message corresponding to this parameter
-     * @param tempTarget If you pass this parameter,
-     *                   only the user to whom it corresponds can see the incoming message
-     * @return           Message ID
+     * @param component  消息内容
+     * @param quote      若传入了，则新的消息将被看作是指定消息的回复
+     * @param tempTarget 若传入了，则发送的消息将只有指定的用户能看见，并且消息将被看作临时消息
+     * @return           新消息的 ID
      */
     String sendComponent(BaseComponent component, @Nullable TextChannelMessage quote, @Nullable User tempTarget);
 
     /**
-     * Get the limit of minimum speaking time between two statements. (in seconds)
+     * 获取此频道在限速模式下发送消息需要的间隔时间。<br>
+     * <b>返回值以秒为单位。</b>
      */
     int getChatLimitTime();
 
     /**
-     * Set the limit of minimum speaking time between two statements.
-     *  (in <b>milliseconds</b>, it is different from {@link #getChatLimitTime()}) <p>
-     * Only the following values are supported now:
+     * 设置此频道在限速模式下发送消息需要的间隔时间。<br>
+     * <b>参数要求以毫秒为单位。这与 {@link #getChatLimitTime()} 不同。</b><br>
+     * 以下提供了一些预先计算好的间隔时间(<b>KOOK 服务端也仅支持这些值！</b>):
      * <ul>
      *     <li>0</li>
-     *     <li>5000</li>
-     *     <li>10000</li>
-     *     <li>15000</li>
-     *     <li>30000</li>
-     *     <li>60000</li>
-     *     <li>120000</li>
-     *     <li>300000</li>
-     *     <li>600000</li>
-     *     <li>900000</li>
-     *     <li>1800000</li>
-     *     <li>3600000</li>
-     *     <li>7200000</li>
-     *     <li>21600000</li>
+     *     <li>5000 - 5 秒</li>
+     *     <li>10000 - 10 秒</li>
+     *     <li>15000 - 15 秒</li>
+     *     <li>30000 - 30 秒</li>
+     *     <li>60000 - 1 分钟</li>
+     *     <li>120000 - 2 分钟</li>
+     *     <li>300000 - 5 分钟</li>
+     *     <li>600000 - 10 分钟</li>
+     *     <li>900000 - 15 分钟</li>
+     *     <li>1800000 - 30 分钟</li>
+     *     <li>3600000 - 1 小时</li>
+     *     <li>7200000 - 2 小时</li>
+     *     <li>21600000 - 6 小时</li>
      * </ul>
      *
-     * @param ms The time in <b>milliseconds</b>
+     * @param ms <b>以毫秒为单位的时间</b>
      */
     void setChatLimitTime(int ms);
 }

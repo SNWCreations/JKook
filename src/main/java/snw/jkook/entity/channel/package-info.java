@@ -15,7 +15,7 @@
  */
 
 /**
- * The classes under this package represents things related to channel in Kook.
+ * 此包提供了对 KOOK 频道的抽象。
  */
 
 package snw.jkook.entity.channel;

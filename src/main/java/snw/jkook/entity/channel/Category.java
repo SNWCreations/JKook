@@ -22,7 +22,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 
 /**
- * Represents a group of channel.
+ * 表示一个频道分组。<br>
+ * 与邀请有关的方法在分组中不可用。
  */
 public interface Category extends Channel {
 
@@ -46,7 +47,7 @@ public interface Category extends Channel {
     }
 
     /**
-     * Return the channels in this group.
+     * 获取此分组包含的所有频道。
      */
     Collection<Channel> getChannels();
 }

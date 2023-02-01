@@ -23,38 +23,38 @@ import snw.jkook.util.RequirePermission;
 import java.util.Collection;
 
 /**
- * Represents a channel that can chat using voice.
+ * 表示一个语音频道。
  */
 public interface VoiceChannel extends Channel {
 
     /**
-     * Return the max user counts that this channel can hold. <p>
-     * If this channel can hold infinity users, <code>0</code> will be returned.
+     * 获取此语音频道的最大人数限制。<br>
+     * 若不作限制，则此方法返回 {@code 0} 。
      */
     int getMaxSize();
 
     /**
-     * Get the users that already joined this channel.
+     * 获取已加入此频道的用户。
      */
     Collection<User> getUsers();
 
     /**
-     * Get the count of the users that already joined this channel.
+     * 获取已加入此频道的用户的数量。
      */
     default int getUserCount() {
         return getUsers().size();
     }
 
     /**
-     * Return true if this channel has been protected using password.
+     * 若此频道已使用密码保护，则此方法返回 {@code true} .
      */
     boolean hasPassword();
 
     /**
-     * Move the specified users to this channel. <p>
-     * Only the users that already connected to another voice channel in the list will be moved.
+     * 把<b>在其他语音频道</b>的一些用户移动到此频道。<br>
+     * 这意味着若指定用户中的某一位不在任何一个语音频道中时，对 TA 的操作将失败。
      *
-     * @param users The target users
+     * @param users 指定的用户
      */
     @RequirePermission(Permission.VOICE_MANAGE)
     void moveToHere(Collection<User> users);
