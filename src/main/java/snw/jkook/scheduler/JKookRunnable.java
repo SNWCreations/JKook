@@ -17,7 +17,6 @@
 package snw.jkook.scheduler;
 
 import snw.jkook.plugin.Plugin;
-import snw.jkook.util.Validate;
 
 /**
  * This class provides an easy way to schedule tasks to JKook scheduler.
@@ -30,9 +29,10 @@ public abstract class JKookRunnable implements Runnable {
      *
      * @param delay    The delay time
      * @return The task object
+     * @throws IllegalStateException Thrown if this task has already scheduled
      */
-    public synchronized Task runTaskLater(Plugin plugin, long delay) {
-        Validate.isTrue(task == null, "This runnable has already scheduled.");
+    public synchronized Task runTaskLater(Plugin plugin, long delay) throws IllegalStateException {
+        ensureScheduled();
         return ((task) = plugin.getCore().getScheduler().runTaskLater(plugin, this, delay));
     }
 
@@ -42,19 +42,20 @@ public abstract class JKookRunnable implements Runnable {
      * @param delay    The time before first run
      * @param period   The time between two execution
      * @return The task object
+     * @throws IllegalStateException Thrown if this task has already scheduled
      */
-    public synchronized Task runTaskTimer(Plugin plugin, long delay, long period) {
-        Validate.isTrue(task == null, "This runnable has already scheduled.");
+    public synchronized Task runTaskTimer(Plugin plugin, long delay, long period) throws IllegalStateException {
+        ensureNotScheduled();
         return ((task) = plugin.getCore().getScheduler().runTaskTimer(plugin, this, delay, period));
     }
 
     /**
      * Attempts to cancel this task.
      *
-     * @throws IllegalStateException Thrown if this task has already cancelled
+     * @throws IllegalStateException Thrown if this task has already cancelled, or this task is not scheduled yet
      */
-    public synchronized void cancel() {
-        Validate.notNull(task, "This runnable is not scheduled yet.");
+    public synchronized void cancel() throws IllegalStateException {
+        ensureScheduled();
         task.cancel();
         task = null;
     }
@@ -63,7 +64,7 @@ public abstract class JKookRunnable implements Runnable {
      * Return true if this task has already cancelled.
      */
     public synchronized boolean isCancelled() {
-        Validate.notNull(task, "This runnable is not scheduled yet.");
+        ensureScheduled();
         return task.isCancelled();
     }
 
@@ -77,8 +78,20 @@ public abstract class JKookRunnable implements Runnable {
     /**
      * Return the task ID of this runnable.
      */
-    public synchronized int getTaskId() {
-        Validate.notNull(task, "This runnable is not scheduled yet.");
+    public synchronized int getTaskId() throws IllegalStateException {
+        ensureScheduled();
         return task.getTaskId();
+    }
+
+    private void ensureScheduled() {
+        if (!isScheduled()) {
+            throw new IllegalStateException("This runnable is not scheduled yet.");
+        }
+    }
+
+    private void ensureNotScheduled() {
+        if (isScheduled()) {
+            throw new IllegalStateException("This runnable has already scheduled.");
+        }
     }
 }
