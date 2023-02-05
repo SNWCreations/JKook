@@ -34,6 +34,13 @@ import java.util.Collection;
 public interface Channel extends Nameable, InviteHolder, MasterHolder {
 
     /**
+     * Set the name of this channel.
+     *
+     * @param name The new name of this channel
+     */
+    void setName(String name);
+
+    /**
      * Get the guild that contains this channel.
      */
     Guild getGuild();
