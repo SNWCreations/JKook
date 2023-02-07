@@ -85,7 +85,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
      *
      * @param level The "level"
      */
-    void setLevel(Integer level);
+    void setLevel(int level);
 
     /**
      * Delete this channel.
