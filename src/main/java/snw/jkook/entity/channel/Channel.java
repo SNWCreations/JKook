@@ -78,7 +78,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     /**
      * Get the "level" of this channel. (I think it should be called as "sort order")
      */
-    int getLevel();
+    Integer getLevel();
 
     /**
      * Set the "level" of this channel. (I think it should be called as "sort order")
