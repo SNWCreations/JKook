@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("all")
-public class Kmarkdown4J {
+public class KMarkdownHelper {
 
     /**
      * 加粗
