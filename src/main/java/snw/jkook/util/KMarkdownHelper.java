@@ -24,6 +24,7 @@ public class KMarkdownHelper {
 
     /**
      * 加粗.
+     *
      * @param bold 填写你要设置的加粗字体.
      */
     public static String bold(@NotNull String bold) {
@@ -35,6 +36,7 @@ public class KMarkdownHelper {
 
     /**
      * 斜体.
+     *
      * @param italic 填写你要设置的斜体字体.
      */
     public static String italic(@NotNull String italic) {
@@ -46,6 +48,7 @@ public class KMarkdownHelper {
 
     /**
      * 斜体.
+     *
      * @param boldItalics 填写你要设置的加粗斜体字体.
      */
     public static String boldItalics(@NotNull String boldItalics) {
@@ -57,6 +60,7 @@ public class KMarkdownHelper {
 
     /**
      * 删除线.
+     *
      * @param strikeThrough 填写你要设置的删除线样式.
      */
     public static String strikeThrough(@NotNull String strikeThrough) {
@@ -70,6 +74,7 @@ public class KMarkdownHelper {
      * 链接,仅允许 http , https 的链接. <br>
      * 如果我们希望链接在下面显示缩略图(即链接解析). <br>
      * 需要保证链接文字与链接地址完全一致才可以.
+     *
      * @param text 链接文字.
      * @param url 链接地址.
      */
@@ -95,6 +100,7 @@ public class KMarkdownHelper {
     /**
      * 引用: 换行会一直作用, 直到遇见两个换行(\n\n). <br>
      * 这两个换行实际不会显示换行.
+     *
      * @param references 填写引用文本.
      */
     public static String references(@NotNull String references) {
@@ -106,6 +112,7 @@ public class KMarkdownHelper {
 
     /**
      * 下划线.
+     *
      * @param underLine 填写你要设置的下划线样式.
      */
     public static String underLine(@NotNull String underLine) {
@@ -117,6 +124,7 @@ public class KMarkdownHelper {
 
     /**
      * 剧透, 内容默认是遮住的, 只有用户点击才会显示.
+     *
      * @param spoiler 遮挡住的部分.
      */
     public static String spoiler(@NotNull String spoiler) {
@@ -132,6 +140,7 @@ public class KMarkdownHelper {
      * <a href="https://www.webfx.com/tools/emoji-cheat-sheet/">shortcode</a>.
      * 写法保持一致.
      * <a href="https://img.kookapp.cn/assets/emoji.json">KOOK表情json文件</a>.
+     *
      * @param emoji 表情.
      */
     public static String emoji(@NotNull String emoji){
@@ -146,6 +155,7 @@ public class KMarkdownHelper {
 
     /**
      * 服务器表情, 需要有服务器发送服务器表情的权限.
+     *
      * @param emojiName 服务器表情名.
      * @param emojiID 服务器表情 ID.
      */
@@ -159,6 +169,7 @@ public class KMarkdownHelper {
 
     /**
      * 频道, 提及频道.
+     *
      * @param channelID 频道 ID.
      */
     public static String eitChannel(int channelID) {
@@ -171,6 +182,7 @@ public class KMarkdownHelper {
     /**
      * all-@所有用户. <br>
      * here-@所有在线用户.
+     *
      * @param eit @参数.
      */
     public static String mention(@NotNull String eit) {
@@ -182,6 +194,7 @@ public class KMarkdownHelper {
 
     /**
      * 用于@用户, all代表@所有用户, here代表@所有在线用户.
+     *
      * @param eit 用户 ID.
      */
     public static String mention(int eit) {
@@ -193,6 +206,7 @@ public class KMarkdownHelper {
 
     /**
      * 用于@某角色所有用户.
+     *
      * @param eitRole 角色 ID.
      */
     public static String mentionRole(int eitRole) {
@@ -204,6 +218,7 @@ public class KMarkdownHelper {
 
     /**
      * 行内代码.
+     *
      * @param inLineCode 内容.
      */
     public static String inLineCode(@NotNull String inLineCode) {
@@ -215,6 +230,7 @@ public class KMarkdownHelper {
 
     /**
      * 代码块.
+     *
      * @param codeLanguage 定义语言.
      * @param code 内容.
      */
