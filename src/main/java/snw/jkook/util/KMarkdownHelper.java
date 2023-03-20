@@ -23,9 +23,9 @@ import org.jetbrains.annotations.NotNull;
 public class KMarkdownHelper {
 
     /**
-     * 加粗.
+     * bold font.
      *
-     * @param bold 填写你要设置的加粗字体.
+     * @param bold Fill in the bold font you want to set.
      */
     public static String bold(@NotNull String bold) {
         return String.format(
@@ -35,9 +35,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 斜体.
+     * italic font.
      *
-     * @param italic 填写你要设置的斜体字体.
+     * @param italic Fill in the italic font you want to set.
      */
     public static String italic(@NotNull String italic) {
         return String.format(
@@ -47,9 +47,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 斜体.
+     * bold italic font.
      *
-     * @param boldItalics 填写你要设置的加粗斜体字体.
+     * @param boldItalics Fill int the bold italic font you want to set.
      */
     public static String boldItalics(@NotNull String boldItalics) {
         return String.format(
@@ -59,9 +59,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 删除线.
+     * strikethrough.
      *
-     * @param strikeThrough 填写你要设置的删除线样式.
+     * @param strikeThrough Fill in the strikeThrough style you want to set.
      */
     public static String strikeThrough(@NotNull String strikeThrough) {
         return String.format(
@@ -71,12 +71,12 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 链接,仅允许 http , https 的链接. <br>
-     * 如果我们希望链接在下面显示缩略图(即链接解析). <br>
-     * 需要保证链接文字与链接地址完全一致才可以.
+     * links, only http/https are allowed <br>
+     * if we hope show Sketch(link parsing) under the link <br>
+     * you should make text equals url
      *
-     * @param text 链接文字.
-     * @param url 链接地址.
+     * @param text link text.
+     * @param url link url.
      */
     public static String hyperLink(@NotNull String text, @NotNull String url) {
         if(!url.startsWith("http")){
@@ -90,7 +90,7 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 分割线.
+     * Cut-off line.
      */
     @Contract(pure = true)
     public static @NotNull String line() {
@@ -98,10 +98,10 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 引用: 换行会一直作用, 直到遇见两个换行(\n\n). <br>
-     * 这两个换行实际不会显示换行.
+     * Reference: Line breaks work until (\n\n) <br>
+     * these two "\n" do not actually show a new line <br>
      *
-     * @param references 填写引用文本.
+     * @param references reference text.
      */
     public static String references(@NotNull String references) {
         return String.format(
@@ -111,9 +111,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 下划线.
+     * underline.
      *
-     * @param underLine 填写你要设置的下划线样式.
+     * @param underLine Fill in the underline style you want to set.
      */
     public static String underLine(@NotNull String underLine) {
         return String.format(
@@ -123,9 +123,11 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 剧透, 内容默认是遮住的, 只有用户点击才会显示.
+     * Reveal the plot <br>
+     * the content is covered by default <br>
+     * only the user click will be displayed.
      *
-     * @param spoiler 遮挡住的部分.
+     * @param spoiler The occluded part.
      */
     public static String spoiler(@NotNull String spoiler) {
         return String.format(
@@ -135,13 +137,11 @@ public class KMarkdownHelper {
     }
 
     /**
-     * emoji表情.
-     * 基本与emoji的.
-     * <a href="https://www.webfx.com/tools/emoji-cheat-sheet/">shortcode</a>.
-     * 写法保持一致.
-     * <a href="https://img.kookapp.cn/assets/emoji.json">KOOK表情json文件</a>.
+     * emoji. <br>
+     * Basic for <a href="https://www.webfx.com/tools/emoji-cheat-sheet/">shortcode</a> same as.
+     * <a href="https://img.kookapp.cn/assets/emoji.json">KookEmojiJson</a>.
      *
-     * @param emoji 表情.
+     * @param emoji emoji.
      */
     public static String emoji(@NotNull String emoji){
         if (emoji.contains(":")) {
@@ -154,10 +154,10 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 服务器表情, 需要有服务器发送服务器表情的权限.
+     * Server emoticon, you need to have the permission for the server to send server emoticon.
      *
-     * @param emojiName 服务器表情名.
-     * @param emojiID 服务器表情 ID.
+     * @param emojiName server emoji name.
+     * @param emojiID server emoji id.
      */
     public static String serverEmoji(@NotNull String emojiName, @NotNull String emojiID) {
         return String.format(
@@ -168,9 +168,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 频道, 提及频道.
+     * channel, eit Channel.
      *
-     * @param channelID 频道 ID.
+     * @param channelID channel id.
      */
     public static String eitChannel(int channelID) {
         return String.format(
@@ -180,10 +180,10 @@ public class KMarkdownHelper {
     }
 
     /**
-     * all-@所有用户. <br>
-     * here-@所有在线用户.
+     * all-@all user. <br>
+     * here-@all online user.
      *
-     * @param eit @参数.
+     * @param eit @parameter.
      */
     public static String mention(@NotNull String eit) {
         return String.format(
@@ -193,9 +193,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 用于@用户, all代表@所有用户, here代表@所有在线用户.
+     * For @users, all indicates all @users, and here indicates all @online users.
      *
-     * @param eit 用户 ID.
+     * @param eit userId.
      */
     public static String mention(int eit) {
         return String.format(
@@ -205,9 +205,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 用于@某角色所有用户.
+     * This parameter is used for all users of a role.
      *
-     * @param eitRole 角色 ID.
+     * @param eitRole roleId.
      */
     public static String mentionRole(int eitRole) {
         return String.format(
@@ -217,9 +217,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 行内代码.
+     * inLineCode.
      *
-     * @param inLineCode 内容.
+     * @param inLineCode content.
      */
     public static String inLineCode(@NotNull String inLineCode) {
         return String.format(
@@ -229,10 +229,10 @@ public class KMarkdownHelper {
     }
 
     /**
-     * 代码块.
+     * codeBlock.
      *
-     * @param codeLanguage 定义语言.
-     * @param code 内容.
+     * @param codeLanguage codeLanguage, such as Java.
+     * @param code content.
      */
     public static String codeBlock(@NotNull String codeLanguage, @NotNull String code) {
         return String.format(
