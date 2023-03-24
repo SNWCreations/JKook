@@ -23,9 +23,9 @@ import org.jetbrains.annotations.NotNull;
 public class KMarkdownHelper {
 
     /**
-     * bold font.
+     * Bold text.
      *
-     * @param bold Fill in the bold font you want to set.
+     * @param bold Content.
      */
     public static String bold(@NotNull String bold) {
         return String.format(
@@ -35,9 +35,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * italic font.
+     * Italic text.
      *
-     * @param italic Fill in the italic font you want to set.
+     * @param italic Content.
      */
     public static String italic(@NotNull String italic) {
         return String.format(
@@ -47,9 +47,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * bold italic font.
+     * Bold italic text.
      *
-     * @param boldItalics Fill int the bold italic font you want to set.
+     * @param boldItalics Content.
      */
     public static String boldItalics(@NotNull String boldItalics) {
         return String.format(
@@ -59,9 +59,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * strikethrough.
+     * Strikethrough.
      *
-     * @param strikeThrough Fill in the strikeThrough style you want to set.
+     * @param strikeThrough Strikethrough.
      */
     public static String strikeThrough(@NotNull String strikeThrough) {
         return String.format(
@@ -71,12 +71,10 @@ public class KMarkdownHelper {
     }
 
     /**
-     * links, only http/https are allowed <br>
-     * if we hope show Sketch(link parsing) under the link <br>
-     * you should make text equals url
+     * Links, only http/https allowed <br>
      *
-     * @param text link text.
-     * @param url link url.
+     * @param text Text.
+     * @param url Url.
      */
     public static String hyperLink(@NotNull String text, @NotNull String url) {
         if(!url.startsWith("http")){
@@ -89,19 +87,16 @@ public class KMarkdownHelper {
         );
     }
 
-    /**
-     * Cut-off line.
-     */
+    /* Cut-off line. */
     @Contract(pure = true)
     public static @NotNull String line() {
         return "---";
     }
 
     /**
-     * Reference: Line breaks work until (\n\n) <br>
-     * these two "\n" do not actually show a new line <br>
+     * Reference
      *
-     * @param references reference text.
+     * @param references Content.
      */
     public static String references(@NotNull String references) {
         return String.format(
@@ -111,9 +106,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * underline.
+     * Underline.
      *
-     * @param underLine Fill in the underline style you want to set.
+     * @param underLine Content.
      */
     public static String underLine(@NotNull String underLine) {
         return String.format(
@@ -123,9 +118,7 @@ public class KMarkdownHelper {
     }
 
     /**
-     * Reveal the plot <br>
-     * the content is covered by default <br>
-     * only the user click will be displayed.
+     * Spoiler <br>
      *
      * @param spoiler The occluded part.
      */
@@ -137,11 +130,10 @@ public class KMarkdownHelper {
     }
 
     /**
-     * emoji. <br>
-     * Basic for <a href="https://www.webfx.com/tools/emoji-cheat-sheet/">shortcode</a> same as.
-     * <a href="https://img.kookapp.cn/assets/emoji.json">KookEmojiJson</a>.
+     * Emoji. <br>
+     * Reference: <a href="https://img.kookapp.cn/assets/emoji.json">KookEmojiJson</a>.
      *
-     * @param emoji emoji.
+     * @param emoji Emoji.
      */
     public static String emoji(@NotNull String emoji){
         if (emoji.contains(":")) {
@@ -154,10 +146,10 @@ public class KMarkdownHelper {
     }
 
     /**
-     * Server emoticon, you need to have the permission for the server to send server emoticon.
+     * Server emoji, you need permission from server.
      *
-     * @param emojiName server emoji name.
-     * @param emojiID server emoji id.
+     * @param emojiName Server emoji name.
+     * @param emojiID Server emoji id.
      */
     public static String serverEmoji(@NotNull String emojiName, @NotNull String emojiID) {
         return String.format(
@@ -168,9 +160,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * channel, eit Channel.
+     * Eit Channel.
      *
-     * @param channelID channel id.
+     * @param channelID Channel id.
      */
     public static String eitChannel(int channelID) {
         return String.format(
@@ -180,12 +172,13 @@ public class KMarkdownHelper {
     }
 
     /**
-     * all-@all user. <br>
-     * here-@all online user.
+     * All-@all user. <br>
+     * Here-@all online user.
+     * Id-@userId
      *
-     * @param eit @parameter.
+     * @param eit Parameter.
      */
-    public static String mention(@NotNull String eit) {
+    public static String met(@NotNull String eit) {
         return String.format(
                 "(met)%s(met)",
                 eit.replace("(", "\\(").replace(")", "\\)")
@@ -193,23 +186,11 @@ public class KMarkdownHelper {
     }
 
     /**
-     * For @users, all indicates all @users, and here indicates all @online users.
-     *
-     * @param eit userId.
-     */
-    public static String mention(int eit) {
-        return String.format(
-                "(met)%s(met)",
-                eit
-        );
-    }
-
-    /**
      * This parameter is used for all users of a role.
      *
-     * @param eitRole roleId.
+     * @param eitRole RoleId.
      */
-    public static String mentionRole(int eitRole) {
+    public static String metRole(int eitRole) {
         return String.format(
                 "(rol)%s(rol)",
                 eitRole
@@ -217,9 +198,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * inLineCode.
+     * InLineCode.
      *
-     * @param inLineCode content.
+     * @param inLineCode Content.
      */
     public static String inLineCode(@NotNull String inLineCode) {
         return String.format(
@@ -229,10 +210,10 @@ public class KMarkdownHelper {
     }
 
     /**
-     * codeBlock.
+     * CodeBlock.
      *
-     * @param codeLanguage codeLanguage, such as Java.
-     * @param code content.
+     * @param codeLanguage CodeLanguage, such as Java.
+     * @param code Content.
      */
     public static String codeBlock(@NotNull String codeLanguage, @NotNull String code) {
         return String.format(
