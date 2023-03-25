@@ -100,7 +100,7 @@ public class KMarkdownHelper {
      */
     public static String references(@NotNull String references) {
         return String.format(
-                ">%s",
+                "> %s",
                 references.replace(">", "\\>") + "\n\n"
         );
     }
