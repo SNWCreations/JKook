@@ -96,7 +96,7 @@ public class KMarkdownHelper {
     }
 
     /**
-     * Reference
+     * Reference.
      *
      * @param references Content.
      */
