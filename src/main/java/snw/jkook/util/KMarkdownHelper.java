@@ -73,11 +73,11 @@ public class KMarkdownHelper {
     /**
      * Links, only http/https allowed <br>
      *
-     * @param text Text.
+     * @param text Content.
      * @param url Url.
      */
     public static String hyperLink(@NotNull String text, @NotNull String url) {
-        if(!url.startsWith("http")){
+        if(!url.startsWith("http://") || !url.startsWith("https://")){
             throw new IllegalArgumentException("must be http or https link");
         }
         return String.format(
@@ -87,7 +87,9 @@ public class KMarkdownHelper {
         );
     }
 
-    /* Cut-off line. */
+    /**
+     * Cut-off line.
+     */
     @Contract(pure = true)
     public static @NotNull String line() {
         return "---";
@@ -100,8 +102,8 @@ public class KMarkdownHelper {
      */
     public static String references(@NotNull String references) {
         return String.format(
-                ">%s",
-                references.replace(">", "\\>") + "\n\n"
+                "> %s",
+                references.replace(">", "\\>").replace("\n\n", "\n\\200d\n") + "\n\n"
         );
     }
 
@@ -118,9 +120,9 @@ public class KMarkdownHelper {
     }
 
     /**
-     * Spoiler <br>
+     * Spoiler.
      *
-     * @param spoiler The occluded part.
+     * @param spoiler Content
      */
     public static String spoiler(@NotNull String spoiler) {
         return String.format(
@@ -131,7 +133,7 @@ public class KMarkdownHelper {
 
     /**
      * Emoji. <br>
-     * Reference: <a href="https://img.kookapp.cn/assets/emoji.json">KookEmojiJson</a>.
+     * Reference: <a href="https://img.kookapp.cn/assets/emoji.json">Kook emoji json</a>.
      *
      * @param emoji Emoji.
      */
@@ -172,11 +174,11 @@ public class KMarkdownHelper {
     }
 
     /**
-     * All-@all user. <br>
-     * Here-@all online user.
-     * Id-@userId
+     * Eit all user used by "all",
+     * Eit all online user used by "here"
+     * Eit somebody used by "userId"
      *
-     * @param eit Parameter.
+     * @param eit Parameter(userId/here/all)
      */
     public static String met(@NotNull String eit) {
         return String.format(
@@ -188,7 +190,7 @@ public class KMarkdownHelper {
     /**
      * This parameter is used for all users of a role.
      *
-     * @param eitRole RoleId.
+     * @param eitRole Role id.
      */
     public static String metRole(int eitRole) {
         return String.format(
@@ -198,7 +200,7 @@ public class KMarkdownHelper {
     }
 
     /**
-     * InLineCode.
+     * Inline code.
      *
      * @param inLineCode Content.
      */
@@ -212,14 +214,14 @@ public class KMarkdownHelper {
     /**
      * CodeBlock.
      *
-     * @param codeLanguage CodeLanguage, such as Java.
+     * @param codeLanguage CodeLanguage, such as "java", but not sure about "java" language can activate in "KooK".
      * @param code Content.
      */
     public static String codeBlock(@NotNull String codeLanguage, @NotNull String code) {
         return String.format(
-                "```%s\n%s```"
-                , codeLanguage
-                , code.replace("`", "\\`")
+                "```%s\n%s```",
+                codeLanguage,
+                code.replace("`", "\\`")
         );
     }
 }
