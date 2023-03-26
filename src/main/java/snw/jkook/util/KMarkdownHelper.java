@@ -244,6 +244,7 @@ public class KMarkdownHelper {
                 .append(codeLanguage)
                 .append("\n")
                 .append(code.replace("`", "\\`"))
+                .append("\n")
                 .append("```")
                 .toString();
     }
