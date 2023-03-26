@@ -16,7 +16,6 @@
 
 package snw.jkook.util;
 
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 @SuppressWarnings("uncheck")
@@ -74,12 +73,10 @@ public class KMarkdownHelper {
      * Links, only http/https allowed <br>
      *
      * @param text Content.
-     * @param url Url.
+     * @param url  Url.
      */
     public static String hyperLink(@NotNull String text, @NotNull String url) {
-        if(!url.startsWith("http://") || !url.startsWith("https://")){
-            throw new IllegalArgumentException("must be http or https link");
-        }
+        if (!url.startsWith("http://") && !url.startsWith("https://")) throw new IllegalArgumentException("must be http or https link");
         return String.format(
                 "[%s](%s)",
                 text.replace("[", "\\[").replace("]", "\\]"),
@@ -90,7 +87,6 @@ public class KMarkdownHelper {
     /**
      * Cut-off line.
      */
-    @Contract(pure = true)
     public static @NotNull String line() {
         return "---";
     }
@@ -103,7 +99,7 @@ public class KMarkdownHelper {
     public static String references(@NotNull String references) {
         return String.format(
                 "> %s",
-                references.replace(">", "\\>").replace("\n\n", "\n\\200d\n") + "\n\n"
+                references.replace("\r\n", "\n").replace("\r", "\n").replace("\n", "\n\\u200d") + "\n\n"
         );
     }
 
@@ -133,14 +129,13 @@ public class KMarkdownHelper {
 
     /**
      * Emoji. <br>
-     * Reference: <a href="https://img.kookapp.cn/assets/emoji.json">Kook emoji json</a>.
+     * Reference: <a href="https://img.kookapp.cn/assets/emoji.json">Kook emoji
+     * json</a>.
      *
      * @param emoji Emoji.
      */
-    public static String emoji(@NotNull String emoji){
-        if (emoji.contains(":")) {
-            throw new IllegalArgumentException("");
-        }
+    public static String emoji(@NotNull String emoji) {
+        if (emoji.contains(":")) throw new IllegalArgumentException("");
         return String.format(
                 ":%s:",
                 emoji
@@ -151,7 +146,7 @@ public class KMarkdownHelper {
      * Server emoji, you need permission from server.
      *
      * @param emojiName Server emoji name.
-     * @param emojiID Server emoji id.
+     * @param emojiID   Server emoji id.
      */
     public static String serverEmoji(@NotNull String emojiName, @NotNull String emojiID) {
         return String.format(
@@ -162,40 +157,41 @@ public class KMarkdownHelper {
     }
 
     /**
-     * Eit Channel.
+     * Mention Channel.
      *
      * @param channelID Channel id.
      */
-    public static String eitChannel(int channelID) {
+    public static String metChannel(int id) {
         return String.format(
                 "(chn)%s(chn)",
-                channelID
+                id
         );
     }
 
     /**
-     * Eit all user used by "all",
-     * Eit all online user used by "here"
-     * Eit somebody used by "userId"
+     * Mention. <br>
+     * Mention all user used by "all", <br>
+     * Mention all online user used by "here" <br>
+     * Mention somebody used by user id
      *
-     * @param eit Parameter(userId/here/all)
+     * @param target Mention target (user id, "here", "all")
      */
-    public static String met(@NotNull String eit) {
+    public static String met(@NotNull String target) {
         return String.format(
                 "(met)%s(met)",
-                eit.replace("(", "\\(").replace(")", "\\)")
+                target
         );
     }
 
     /**
      * This parameter is used for all users of a role.
      *
-     * @param eitRole Role id.
+     * @param id Role id.
      */
-    public static String metRole(int eitRole) {
+    public static String metRole(int id) {
         return String.format(
                 "(rol)%s(rol)",
-                eitRole
+                id
         );
     }
 
@@ -214,8 +210,8 @@ public class KMarkdownHelper {
     /**
      * CodeBlock.
      *
-     * @param codeLanguage CodeLanguage, such as "java", but not sure about "java" language can activate in "KooK".
-     * @param code Content.
+     * @param codeLanguage CodeLanguage, such as "java".
+     * @param code         Content.
      */
     public static String codeBlock(@NotNull String codeLanguage, @NotNull String code) {
         return String.format(
