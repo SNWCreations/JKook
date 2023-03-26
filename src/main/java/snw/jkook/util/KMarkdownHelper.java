@@ -76,7 +76,9 @@ public class KMarkdownHelper {
      * @param url  Url.
      */
     public static String hyperLink(@NotNull String text, @NotNull String url) {
-        if (!url.startsWith("http://") && !url.startsWith("https://")) throw new IllegalArgumentException("must be http or https link");
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            throw new IllegalArgumentException("must be http or https link");
+        }
         return String.format(
                 "[%s](%s)",
                 text.replace("[", "\\[").replace("]", "\\]"),
@@ -135,7 +137,9 @@ public class KMarkdownHelper {
      * @param emoji Emoji.
      */
     public static String emoji(@NotNull String emoji) {
-        if (emoji.contains(":")) throw new IllegalArgumentException("");
+        if (emoji.contains(":")) {
+            throw new IllegalArgumentException("");
+        }
         return String.format(
                 ":%s:",
                 emoji
