@@ -24,11 +24,17 @@ import java.util.Map;
  */
 public class CountdownModule extends BaseModule {
     private final Type type;
+    private final long startTime;
     private final long endTime;
 
-    public CountdownModule(Type type, long endTime) {
+    public CountdownModule(Type type, long startTime, long endTime) {
         this.type = type;
+        this.startTime = type == Type.SECOND ? startTime : -1;
         this.endTime = endTime;
+    }
+
+    public CountdownModule(Type type, long endTime) {
+        this(type, -1, endTime);
     }
 
     /**
@@ -43,6 +49,13 @@ public class CountdownModule extends BaseModule {
      */
     public long getEndTime() {
         return endTime;
+    }
+
+    /**
+     * Get ths start time of this countdown.
+     */
+    public long getStartTime() {
+        return startTime;
     }
 
     /**
