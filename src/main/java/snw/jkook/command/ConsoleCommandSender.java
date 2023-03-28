@@ -20,12 +20,4 @@ package snw.jkook.command;
  * Represents the console command sender.
  */
 public interface ConsoleCommandSender extends CommandSender {
-
-    /**
-     * Send the provided message to console.
-     * 
-     * @param message Content
-     */
-    void sendMessage(String message);
-
 }
