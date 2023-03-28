@@ -130,4 +130,98 @@ public interface HttpAPI {
      * Clear the listening status. This should fail silently.
      */
     void stopListening();
+
+    // -------- Friend API --------
+
+    /**
+     * Represents a friend request. <br>
+     * Just a snapshot, don't save it.
+     */
+    interface FriendRequest {
+
+        /**
+         * Get the ID of this request.
+         */
+        int getId();
+
+        /**
+         * Get the requester.
+         */
+        User getRequester();
+
+        /**
+         * Handle it.
+         * 
+         * @param accept True if you want to accept this request
+         */
+        void handle(boolean accept);
+
+    }
+
+    /**
+     * Represents the friend state. <br>
+     * Just a snapshot, don't save it.
+     */
+    interface FriendState {
+
+        /**
+         * Get the pending friend requests.
+         */
+        Collection<FriendRequest> getPendingFriendRequests();
+
+        /**
+         * Get the friends.
+         */
+        Collection<User> getFriends();
+
+        /**
+         * Get the users which is currently blocked by current user.
+         */
+        Collection<User> getBlockedUsers();
+
+    }
+
+    /**
+     * Get the friend state.
+     * 
+     * @see FriendState
+     */
+    FriendState getFriendState();
+
+    /**
+     * @see FriendState#getFriends()
+     */
+    // Same as it, but implementations should get the friend list only from the API.
+    Collection<User> getFriends();
+
+    /**
+     * @see FriendState#getBlockedUsers()
+     */
+    // Same as it, but implementations should get the blocked user list only from the API.
+    Collection<User> getBlockedUsers();
+
+    /**
+     * Send a friend request to the specified user.
+     * 
+     * @param userCode The user "code", NOT user ID! {@see User#getFullName(Guild)}
+     * @param method How did you found the specified user. (Maybe a client-specific argument?) 0 - Search, 2 - From a guild
+     * @param from From which server did you add this user, should be NOT NULL if {@code method == 2}
+     */
+    void addFriend(String userCode, int method, String from);
+
+    /**
+     * Handle a friend request.
+     * 
+     * @param requestId The ID of the friend request
+     * @param accept True if you want to accept the request
+     */
+    void handleFriendRequest(int requestId, boolean accept);
+
+    /**
+     * Delete a user from your friend list.
+     * 
+     * @param user The user which is being deleted from your friend list
+     */
+    void deleteFriend(User user);
+
 }
