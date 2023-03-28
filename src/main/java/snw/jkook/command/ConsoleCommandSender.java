@@ -16,6 +16,8 @@
 
 package snw.jkook.command;
 
+import org.slf4j.Logger;
+
 /**
  * Represents the console command sender.
  */
@@ -27,5 +29,13 @@ public interface ConsoleCommandSender extends CommandSender {
      * @param message Content
      */
     void sendMessage(String message);
+
+    /**
+     * Get the logger.
+     */
+    // Implementation note:
+    // This metbod should return the logger of the plugin as the command owner.
+    // If you don't know the command owner, return the result of Core#getLogger method instead.
+    Logger getLogger();
 
 }
