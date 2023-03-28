@@ -87,4 +87,14 @@ public class CardComponent extends BaseComponent {
     public String getColor() {
         return color;
     }
+
+    @Override
+    public String toString() {
+        return "CardComponent{" +
+                "modules=" + modules +
+                ", size=" + size +
+                ", theme=" + theme +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }

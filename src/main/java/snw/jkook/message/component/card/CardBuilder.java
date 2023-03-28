@@ -109,4 +109,15 @@ public class CardBuilder {
         }
         return new MultipleCardComponent(cards);
     }
+
+    @Override
+    public String toString() {
+        return "CardBuilder{" +
+                "theme=" + theme +
+                ", size=" + size +
+                ", color='" + color + '\'' +
+                ", modules=" + modules +
+                ", cards=" + cards +
+                '}';
+    }
 }

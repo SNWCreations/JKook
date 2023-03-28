@@ -57,4 +57,11 @@ public class ImageGroupModule extends BaseModule {
             return new ImageGroupModule(modules);
         }
     }
+
+    @Override
+    public String toString() {
+        return "ImageGroupModule{" +
+                "images=" + images +
+                '}';
+    }
 }

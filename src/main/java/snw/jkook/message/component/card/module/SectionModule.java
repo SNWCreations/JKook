@@ -60,4 +60,13 @@ public class SectionModule extends BaseModule implements AccessoryHolder {
     public Accessory.Mode getMode() {
         return mode;
     }
+
+    @Override
+    public String toString() {
+        return "SectionModule{" +
+                "text=" + text +
+                ", accessory=" + accessory +
+                ", mode=" + mode +
+                '}';
+    }
 }

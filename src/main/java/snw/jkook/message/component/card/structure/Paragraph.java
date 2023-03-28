@@ -53,4 +53,12 @@ public class Paragraph extends BaseStructure {
     public Collection<BaseElement> getFields() {
         return fields;
     }
+
+    @Override
+    public String toString() {
+        return "Paragraph{" +
+                "columns=" + columns +
+                ", fields=" + fields +
+                '}';
+    }
 }

@@ -66,4 +66,9 @@ public enum Theme {
     public static Theme value(String name) {
         return values.get(name);
     }
+
+    @Override
+    public String toString() {
+        return getValue();
+    }
 }

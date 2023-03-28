@@ -49,4 +49,11 @@ public class MultipleCardComponent extends BaseComponent {
     public List<CardComponent> getComponents() {
         return components;
     }
+
+    @Override
+    public String toString() {
+        return "MultipleCardComponent{" +
+                "components=" + components +
+                '}';
+    }
 }

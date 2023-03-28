@@ -64,4 +64,9 @@ public enum Size {
     public static Size value(String name) {
         return values.get(name);
     }
+
+    @Override
+    public String toString() {
+        return getValue();
+    }
 }

@@ -32,4 +32,11 @@ public class InviteModule extends BaseModule {
     public String getCode() {
         return code;
     }
+
+    @Override
+    public String toString() {
+        return "InviteModule{" +
+                "code='" + code + '\'' +
+                '}';
+    }
 }
