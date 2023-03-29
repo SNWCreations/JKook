@@ -26,7 +26,7 @@ public class KMarkdownHelper {
      *
      * @param bold Content.
      */
-    public static String bold(@NotNull String bold) {
+    public static @NotNull String bold(@NotNull String bold) {
         return new StringBuilder()
                 .append("**")
                 .append(bold.replace("*", "\\*"))
@@ -39,7 +39,7 @@ public class KMarkdownHelper {
      *
      * @param italic Content.
      */
-    public static String italic(@NotNull String italic) {
+    public static @NotNull String italic(@NotNull String italic) {
         return new StringBuilder()
                 .append("*")
                 .append(italic.replace("*", "\\*"))
@@ -52,7 +52,7 @@ public class KMarkdownHelper {
      *
      * @param boldItalics Content.
      */
-    public static String boldItalics(@NotNull String boldItalics) {
+    public static @NotNull String boldItalics(@NotNull String boldItalics) {
         return new StringBuilder()
                 .append("***")
                 .append(boldItalics.replace("*", "\\*"))
@@ -65,7 +65,7 @@ public class KMarkdownHelper {
      *
      * @param strikeThrough Strikethrough.
      */
-    public static String strikeThrough(@NotNull String strikeThrough) {
+    public static @NotNull String strikeThrough(@NotNull String strikeThrough) {
         return new StringBuilder()
                 .append("~~")
                 .append(strikeThrough.replace("~", "\\~"))
@@ -79,7 +79,7 @@ public class KMarkdownHelper {
      * @param text Content.
      * @param url  Url.
      */
-    public static String hyperLink(@NotNull String text, @NotNull String url) {
+    public static @NotNull String hyperLink(@NotNull String text, @NotNull String url) {
         if (!url.startsWith("http://") && !url.startsWith("https://")) {
             throw new IllegalArgumentException("must be http or https link");
         }
@@ -105,7 +105,7 @@ public class KMarkdownHelper {
      *
      * @param references Content.
      */
-    public static String references(@NotNull String references) {
+    public static @NotNull String references(@NotNull String references) {
         return new StringBuilder()
                 .append("> ")
                 .append(references.replace("\r\n", "\n").replace("\r", "\n").replace("\n", "\n\\u200d"))
@@ -118,7 +118,7 @@ public class KMarkdownHelper {
      *
      * @param underLine Content.
      */
-    public static String underLine(@NotNull String underLine) {
+    public static @NotNull String underLine(@NotNull String underLine) {
         return new StringBuilder()
                 .append("(ins)")
                 .append(underLine.replace("(", "\\(").replace(")", "\\)"))
@@ -131,7 +131,7 @@ public class KMarkdownHelper {
      *
      * @param spoiler Content
      */
-    public static String spoiler(@NotNull String spoiler) {
+    public static @NotNull String spoiler(@NotNull String spoiler) {
         return new StringBuilder()
                 .append("(spl)")
                 .append(spoiler.replace("(", "\\(").replace(")", "\\)"))
@@ -141,12 +141,11 @@ public class KMarkdownHelper {
 
     /**
      * Emoji. <br>
-     * Reference: <a href="https://img.kookapp.cn/assets/emoji.json">Kook emoji
-     * json</a>.
+     * Reference: <a href="https://img.kookapp.cn/assets/emoji.json">Kook emoji json</a>.
      *
      * @param emoji Emoji.
      */
-    public static String emoji(@NotNull String emoji) {
+    public static @NotNull String emoji(@NotNull String emoji) {
         if (emoji.contains(":")) {
             throw new IllegalArgumentException("");
         }
@@ -161,15 +160,15 @@ public class KMarkdownHelper {
      * Server emoji, you need permission from server.
      *
      * @param emojiName Server emoji name.
-     * @param emojiID   Server emoji id.
+     * @param emojiId   Server emoji id.
      */
-    public static String serverEmoji(@NotNull String emojiName, @NotNull String emojiID) {
+    public static @NotNull String serverEmoji(@NotNull String emojiName, @NotNull String emojiId) {
         return new StringBuilder()
                 .append("(emj)")
                 .append(emojiName.replace("(", "\\(").replace(")", "\\)"))
                 .append("(emj)")
                 .append("[")
-                .append(emojiID.replace("[", "\\[").replace("]", "\\]"))
+                .append(emojiId.replace("[", "\\[").replace("]", "\\]"))
                 .append("]")
                 .toString();
     }
@@ -179,7 +178,7 @@ public class KMarkdownHelper {
      *
      * @param channelID Channel id.
      */
-    public static String metChannel(int id) {
+    public static @NotNull String metChannel(String id) {
         return new StringBuilder()
                 .append("(chn)")
                 .append(id)
@@ -195,7 +194,7 @@ public class KMarkdownHelper {
      *
      * @param target Mention target (user id, "here", "all")
      */
-    public static String met(@NotNull String target) {
+    public static @NotNull String met(@NotNull String target) {
         return new StringBuilder()
                 .append("(met)")
                 .append(target)
@@ -208,7 +207,7 @@ public class KMarkdownHelper {
      *
      * @param id Role id.
      */
-    public static String metRole(int id) {
+    public static @NotNull String metRole(int id) {
         String.format(
                 "(rol)%s(rol)",
                 id);
@@ -224,7 +223,7 @@ public class KMarkdownHelper {
      *
      * @param inLineCode Content.
      */
-    public static String inLineCode(@NotNull String inLineCode) {
+    public static @NotNull String inLineCode(@NotNull String inLineCode) {
         return new StringBuilder()
                 .append("`")
                 .append(inLineCode.replace("`", "\\`"))
@@ -238,7 +237,7 @@ public class KMarkdownHelper {
      * @param codeLanguage CodeLanguage, such as "java".
      * @param code         Content.
      */
-    public static String codeBlock(@NotNull String codeLanguage, @NotNull String code) {
+    public static @NotNull String codeBlock(@NotNull String codeLanguage, @NotNull String code) {
         return new StringBuilder()
                 .append("```")
                 .append(codeLanguage)
@@ -246,6 +245,25 @@ public class KMarkdownHelper {
                 .append(code.replace("`", "\\`"))
                 .append("\n")
                 .append("```")
+                .toString();
+    }
+
+    /**
+     * Color Content
+     * @param text content
+     * @param theme Theme, such as "success", but you should reference <a href="https://www.kookapp.cn/tools/message-builder.html#/card">Kook card message</a>.
+     */
+    public static @NotNull String colorContent(@NotNull String text, @NotNull String theme) {
+        if (theme.contains("[") || theme.contains("]")) {
+            throw new IllegalArgumentException();
+        }
+        return new StringBuilder()
+                .append("(font)")
+                .append(text.replace("(", "\\(").replace(")", "\\)"))
+                .append("(font)")
+                .append("[")
+                .append(theme)
+                .append("]")
                 .toString();
     }
 }
