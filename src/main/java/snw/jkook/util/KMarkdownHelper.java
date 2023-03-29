@@ -255,7 +255,7 @@ public class KMarkdownHelper {
      */
     public static @NotNull String colorContent(@NotNull String text, @NotNull String theme) {
         if (theme.contains("[") || theme.contains("]")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("can not be '[' or ']'.");
         }
         return new StringBuilder()
                 .append("(font)")
