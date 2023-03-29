@@ -147,7 +147,7 @@ public class KMarkdownHelper {
      */
     public static @NotNull String emoji(@NotNull String emoji) {
         if (emoji.contains(":")) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("can't input a ':' in content !");
         }
         return new StringBuilder()
                 .append(":")
@@ -252,6 +252,19 @@ public class KMarkdownHelper {
      * Color Content
      * @param text content
      * @param theme Theme, such as "success", but you should reference <a href="https://www.kookapp.cn/tools/message-builder.html#/card">Kook card message</a>.
+     *
+     * <ul>
+     *      <li>primary</li>
+     *      <li>success</li>
+     *      <li>danger</li>
+     *      <li>warning</li>
+     *      <li>info</li>
+     *      <li>secondary</li>
+     *      <li>body</li>
+     *      <li>tips</li>
+     *      <li>pink</li>
+     *      <li>purple</li>
+     * </ul>
      */
     public static @NotNull String colorContent(@NotNull String text, @NotNull String theme) {
         if (theme.contains("[") || theme.contains("]")) {
