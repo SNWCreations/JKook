@@ -18,6 +18,8 @@ package snw.jkook.util;
 
 import org.jetbrains.annotations.NotNull;
 
+import snw.jkook.entity.channel.TextChannel;
+
 @SuppressWarnings("uncheck")
 public class KMarkdownHelper {
 
@@ -249,10 +251,8 @@ public class KMarkdownHelper {
     }
 
     /**
-     * Color Content
-     * @param text content
-     * @param theme Theme, such as "success", but you should reference <a href="https://www.kookapp.cn/tools/message-builder.html#/card">Kook card message</a>.
-     *
+     * Color text. <br>
+     * The possible values of "theme" parameter is following:
      * <ul>
      *      <li>primary</li>
      *      <li>success</li>
@@ -265,14 +265,16 @@ public class KMarkdownHelper {
      *      <li>pink</li>
      *      <li>purple</li>
      * </ul>
+     * @param text content
+     * @param theme Theme, such as "success", but you should reference <a href="https://www.kookapp.cn/tools/message-builder.html#/card">Kook card message</a>.
      */
-    public static @NotNull String colorContent(@NotNull String text, @NotNull String theme) {
+    public static @NotNull String colorText(@NotNull String content, @NotNull String theme) {
         if (theme.contains("[") || theme.contains("]")) {
-            throw new IllegalArgumentException("can not be '[' or ']'.");
+            throw new IllegalArgumentException("Theme cannot contain '[' or ']'.");
         }
         return new StringBuilder()
                 .append("(font)")
-                .append(text.replace("(", "\\(").replace(")", "\\)"))
+                .append(content.replace("(", "\\(").replace(")", "\\)"))
                 .append("(font)")
                 .append("[")
                 .append(theme)
