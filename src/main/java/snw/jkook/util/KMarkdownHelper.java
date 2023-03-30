@@ -18,17 +18,17 @@ package snw.jkook.util;
 
 import org.jetbrains.annotations.NotNull;
 
-import snw.jkook.entity.channel.TextChannel;
-
 /**
  * A utility class for building KMarkdown-specific content.
  *
  * @author NatholDallas
  */
 
+@SuppressWarnings("unused")
 public final class KMarkdownHelper {
-    
-    private KMarkdownHelper() {} // cannot call constructor
+
+    private KMarkdownHelper() {
+    } // Cannot call constructor.
 
     /**
      * Bold text.
@@ -36,11 +36,9 @@ public final class KMarkdownHelper {
      * @param bold Text Content
      */
     public static @NotNull String bold(@NotNull String bold) {
-        return new StringBuilder()
-                .append("**")
-                .append(bold.replace("*", "\\*"))
-                .append("**")
-                .toString();
+        return "**" +
+                bold.replace("*", "\\*") +
+                "**";
     }
 
     /**
@@ -49,11 +47,9 @@ public final class KMarkdownHelper {
      * @param italic Text Content
      */
     public static @NotNull String italic(@NotNull String italic) {
-        return new StringBuilder()
-                .append("*")
-                .append(italic.replace("*", "\\*"))
-                .append("*")
-                .toString();
+        return "*" +
+                italic.replace("*", "\\*") +
+                "*";
     }
 
     /**
@@ -62,11 +58,9 @@ public final class KMarkdownHelper {
      * @param boldItalics Text Content
      */
     public static @NotNull String boldItalics(@NotNull String boldItalics) {
-        return new StringBuilder()
-                .append("***")
-                .append(boldItalics.replace("*", "\\*"))
-                .append("***")
-                .toString();
+        return "***" +
+                boldItalics.replace("*", "\\*") +
+                "***";
     }
 
     /**
@@ -75,15 +69,13 @@ public final class KMarkdownHelper {
      * @param strikeThrough Text Content
      */
     public static @NotNull String strikeThrough(@NotNull String strikeThrough) {
-        return new StringBuilder()
-                .append("~~")
-                .append(strikeThrough.replace("~", "\\~"))
-                .append("~~")
-                .toString();
+        return "~~" +
+                strikeThrough.replace("~", "\\~") +
+                "~~";
     }
 
     /**
-     * Links, only http/https links are allowed. <br>
+     * Links, only http/https links are allowed.
      *
      * @param text Content
      * @param url  URL
@@ -92,18 +84,16 @@ public final class KMarkdownHelper {
         if (!url.startsWith("http://") && !url.startsWith("https://")) {
             throw new IllegalArgumentException("must be http or https link");
         }
-        return new StringBuilder()
-                .append("[")
-                .append(text.replace("[", "\\[").replace("]", "\\]"))
-                .append("]")
-                .append("(")
-                .append(url.replace("(", "\\(").replace(")", "\\)"))
-                .append(")")
-                .toString();
+        return "[" +
+                text.replace("[", "\\[").replace("]", "\\]") +
+                "]" +
+                "(" +
+                url.replace("(", "\\(").replace(")", "\\)") +
+                ")";
     }
 
     /**
-     * Divider line.
+     * Divider line
      */
     public static @NotNull String line() {
         return "---";
@@ -115,11 +105,9 @@ public final class KMarkdownHelper {
      * @param references Content
      */
     public static @NotNull String references(@NotNull String references) {
-        return new StringBuilder()
-                .append("> ")
-                .append(references.replace("\r\n", "\n").replace("\r", "\n").replace("\n", "\n\\u200d"))
-                .append("\n\n")
-                .toString();
+        return "> " +
+                references.replace("\r\n", "\n").replace("\r", "\n").replace("\n", "\n\\u200d") +
+                "\n\n";
     }
 
     /**
@@ -128,11 +116,9 @@ public final class KMarkdownHelper {
      * @param underLine Content
      */
     public static @NotNull String underLine(@NotNull String underLine) {
-        return new StringBuilder()
-                .append("(ins)")
-                .append(underLine.replace("(", "\\(").replace(")", "\\)"))
-                .append("(ins)")
-                .toString();
+        return "(ins)" +
+                underLine.replace("(", "\\(").replace(")", "\\)") +
+                "(ins)";
     }
 
     /**
@@ -141,11 +127,9 @@ public final class KMarkdownHelper {
      * @param spoiler Content
      */
     public static @NotNull String spoiler(@NotNull String spoiler) {
-        return new StringBuilder()
-                .append("(spl)")
-                .append(spoiler.replace("(", "\\(").replace(")", "\\)"))
-                .append("(spl)")
-                .toString();
+        return "(spl)" +
+                spoiler.replace("(", "\\(").replace(")", "\\)") +
+                "(spl)";
     }
 
     /**
@@ -158,28 +142,24 @@ public final class KMarkdownHelper {
         if (emoji.contains(":")) {
             throw new IllegalArgumentException("can't input a ':' in content!");
         }
-        return new StringBuilder()
-                .append(":")
-                .append(emoji)
-                .append(":")
-                .toString();
+        return ":" +
+                emoji +
+                ":";
     }
 
     /**
      * Guild emoji, you need to have the permission for using the guild emoji.
      *
-     * @param emojiName Emoji name
-     * @param emojiId   Emoji ID
+     * @param name Emoji name
+     * @param id   Emoji ID
      */
     public static @NotNull String guildEmoji(@NotNull String name, @NotNull String id) {
-        return new StringBuilder()
-                .append("(emj)")
-                .append(name.replace("(", "\\(").replace(")", "\\)"))
-                .append("(emj)")
-                .append("[")
-                .append(id.replace("[", "\\[").replace("]", "\\]"))
-                .append("]")
-                .toString();
+        return "(emj)" +
+                name.replace("(", "\\(").replace(")", "\\)") +
+                "(emj)" +
+                "[" +
+                id.replace("[", "\\[").replace("]", "\\]") +
+                "]";
     }
 
     /**
@@ -188,11 +168,9 @@ public final class KMarkdownHelper {
      * @param id Channel ID
      */
     public static @NotNull String metChannel(String id) {
-        return new StringBuilder()
-                .append("(chn)")
-                .append(id)
-                .append("(chn)")
-                .toString();
+        return "(chn)" +
+                id +
+                "(chn)";
     }
 
     /**
@@ -204,11 +182,9 @@ public final class KMarkdownHelper {
      * @param target Mention target (user ID, "here", "all")
      */
     public static @NotNull String met(@NotNull String target) {
-        return new StringBuilder()
-                .append("(met)")
-                .append(target)
-                .append("(met)")
-                .toString();
+        return "(met)" +
+                target +
+                "(met)";
     }
 
     /**
@@ -217,14 +193,9 @@ public final class KMarkdownHelper {
      * @param id Role id
      */
     public static @NotNull String metRole(int id) {
-
-
-
-        return new StringBuilder()
-                .append("(rol)")
-                .append(id)
-                .append("(rol)")
-                .toString();
+        return "(rol)" +
+                id +
+                "(rol)";
     }
 
     /**
@@ -233,28 +204,24 @@ public final class KMarkdownHelper {
      * @param inLineCode Content
      */
     public static @NotNull String inLineCode(@NotNull String inLineCode) {
-        return new StringBuilder()
-                .append("`")
-                .append(inLineCode.replace("`", "\\`"))
-                .append("`")
-                .toString();
+        return "`" +
+                inLineCode.replace("`", "\\`") +
+                "`";
     }
 
     /**
      * Code block.
      *
-     * @param codeLanguage Code language, such as "java".
+     * @param codeLanguage Code language, such as "java"
      * @param code         Content
      */
     public static @NotNull String codeBlock(@NotNull String codeLanguage, @NotNull String code) {
-        return new StringBuilder()
-                .append("```")
-                .append(codeLanguage)
-                .append("\n")
-                .append(code.replace("`", "\\`"))
-                .append("\n")
-                .append("```")
-                .toString();
+        return "```" +
+                codeLanguage +
+                "\n" +
+                code.replace("`", "\\`") +
+                "\n" +
+                "```";
     }
 
     /**
@@ -273,20 +240,18 @@ public final class KMarkdownHelper {
      *      <li>purple</li>
      * </ul>
      *
-     * @param text Text Content
-     * @param theme Theme, such as "success", all possible values are provided above.
+     * @param content  Text Content
+     * @param theme Theme, such as "success", all possible values are provided above
      */
     public static @NotNull String colorText(@NotNull String content, @NotNull String theme) {
         if (theme.contains("[") || theme.contains("]")) {
             throw new IllegalArgumentException("Theme cannot contain '[' or ']'.");
         }
-        return new StringBuilder()
-                .append("(font)")
-                .append(content.replace("(", "\\(").replace(")", "\\)"))
-                .append("(font)")
-                .append("[")
-                .append(theme)
-                .append("]")
-                .toString();
+        return "(font)" +
+                content.replace("(", "\\(").replace(")", "\\)") +
+                "(font)" +
+                "[" +
+                theme +
+                "]";
     }
 }
