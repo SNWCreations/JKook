@@ -20,13 +20,20 @@ import org.jetbrains.annotations.NotNull;
 
 import snw.jkook.entity.channel.TextChannel;
 
-@SuppressWarnings("uncheck")
-public class KMarkdownHelper {
+/**
+ * A utility class for building KMarkdown-specific content.
+ *
+ * @author NatholDallas
+ */
+
+public final class KMarkdownHelper {
+    
+    private KMarkdownHelper() {} // cannot call constructor
 
     /**
      * Bold text.
      *
-     * @param bold Content.
+     * @param bold Text Content
      */
     public static @NotNull String bold(@NotNull String bold) {
         return new StringBuilder()
@@ -39,7 +46,7 @@ public class KMarkdownHelper {
     /**
      * Italic text.
      *
-     * @param italic Content.
+     * @param italic Text Content
      */
     public static @NotNull String italic(@NotNull String italic) {
         return new StringBuilder()
@@ -52,7 +59,7 @@ public class KMarkdownHelper {
     /**
      * Bold italic text.
      *
-     * @param boldItalics Content.
+     * @param boldItalics Text Content
      */
     public static @NotNull String boldItalics(@NotNull String boldItalics) {
         return new StringBuilder()
@@ -65,7 +72,7 @@ public class KMarkdownHelper {
     /**
      * Strikethrough.
      *
-     * @param strikeThrough Strikethrough.
+     * @param strikeThrough Text Content
      */
     public static @NotNull String strikeThrough(@NotNull String strikeThrough) {
         return new StringBuilder()
@@ -76,10 +83,10 @@ public class KMarkdownHelper {
     }
 
     /**
-     * Links, only http/https allowed <br>
+     * Links, only http/https links are allowed. <br>
      *
-     * @param text Content.
-     * @param url  Url.
+     * @param text Content
+     * @param url  URL
      */
     public static @NotNull String hyperLink(@NotNull String text, @NotNull String url) {
         if (!url.startsWith("http://") && !url.startsWith("https://")) {
@@ -96,7 +103,7 @@ public class KMarkdownHelper {
     }
 
     /**
-     * Cut-off line.
+     * Divider line.
      */
     public static @NotNull String line() {
         return "---";
@@ -105,7 +112,7 @@ public class KMarkdownHelper {
     /**
      * Reference.
      *
-     * @param references Content.
+     * @param references Content
      */
     public static @NotNull String references(@NotNull String references) {
         return new StringBuilder()
@@ -118,7 +125,7 @@ public class KMarkdownHelper {
     /**
      * Underline.
      *
-     * @param underLine Content.
+     * @param underLine Content
      */
     public static @NotNull String underLine(@NotNull String underLine) {
         return new StringBuilder()
@@ -143,13 +150,13 @@ public class KMarkdownHelper {
 
     /**
      * Emoji. <br>
-     * Reference: <a href="https://img.kookapp.cn/assets/emoji.json">Kook emoji json</a>.
+     * Reference: <a href="https://img.kookapp.cn/assets/emoji.json">KOOK Emoji JSON</a>.
      *
-     * @param emoji Emoji.
+     * @param emoji Emoji
      */
     public static @NotNull String emoji(@NotNull String emoji) {
         if (emoji.contains(":")) {
-            throw new IllegalArgumentException("can't input a ':' in content !");
+            throw new IllegalArgumentException("can't input a ':' in content!");
         }
         return new StringBuilder()
                 .append(":")
@@ -159,18 +166,18 @@ public class KMarkdownHelper {
     }
 
     /**
-     * Server emoji, you need permission from server.
+     * Guild emoji, you need to have the permission for using the guild emoji.
      *
-     * @param emojiName Server emoji name.
-     * @param emojiId   Server emoji id.
+     * @param emojiName Emoji name
+     * @param emojiId   Emoji ID
      */
-    public static @NotNull String serverEmoji(@NotNull String emojiName, @NotNull String emojiId) {
+    public static @NotNull String guildEmoji(@NotNull String name, @NotNull String id) {
         return new StringBuilder()
                 .append("(emj)")
-                .append(emojiName.replace("(", "\\(").replace(")", "\\)"))
+                .append(name.replace("(", "\\(").replace(")", "\\)"))
                 .append("(emj)")
                 .append("[")
-                .append(emojiId.replace("[", "\\[").replace("]", "\\]"))
+                .append(id.replace("[", "\\[").replace("]", "\\]"))
                 .append("]")
                 .toString();
     }
@@ -178,7 +185,7 @@ public class KMarkdownHelper {
     /**
      * Mention Channel.
      *
-     * @param channelID Channel id.
+     * @param id Channel ID
      */
     public static @NotNull String metChannel(String id) {
         return new StringBuilder()
@@ -191,10 +198,10 @@ public class KMarkdownHelper {
     /**
      * Mention. <br>
      * Mention all user used by "all", <br>
-     * Mention all online user used by "here" <br>
-     * Mention somebody used by user id
+     * Mention all online user used by "here". <br>
+     * Mention somebody used by user ID.
      *
-     * @param target Mention target (user id, "here", "all")
+     * @param target Mention target (user ID, "here", "all")
      */
     public static @NotNull String met(@NotNull String target) {
         return new StringBuilder()
@@ -205,14 +212,14 @@ public class KMarkdownHelper {
     }
 
     /**
-     * This parameter is used for all users of a role.
+     * Mention all users who have the provided role.
      *
-     * @param id Role id.
+     * @param id Role id
      */
     public static @NotNull String metRole(int id) {
-        String.format(
-                "(rol)%s(rol)",
-                id);
+
+
+
         return new StringBuilder()
                 .append("(rol)")
                 .append(id)
@@ -223,7 +230,7 @@ public class KMarkdownHelper {
     /**
      * Inline code.
      *
-     * @param inLineCode Content.
+     * @param inLineCode Content
      */
     public static @NotNull String inLineCode(@NotNull String inLineCode) {
         return new StringBuilder()
@@ -234,10 +241,10 @@ public class KMarkdownHelper {
     }
 
     /**
-     * CodeBlock.
+     * Code block.
      *
-     * @param codeLanguage CodeLanguage, such as "java".
-     * @param code         Content.
+     * @param codeLanguage Code language, such as "java".
+     * @param code         Content
      */
     public static @NotNull String codeBlock(@NotNull String codeLanguage, @NotNull String code) {
         return new StringBuilder()
@@ -265,8 +272,9 @@ public class KMarkdownHelper {
      *      <li>pink</li>
      *      <li>purple</li>
      * </ul>
-     * @param text content
-     * @param theme Theme, such as "success", but you should reference <a href="https://www.kookapp.cn/tools/message-builder.html#/card">Kook card message</a>.
+     *
+     * @param text Text Content
+     * @param theme Theme, such as "success", all possible values are provided above.
      */
     public static @NotNull String colorText(@NotNull String content, @NotNull String theme) {
         if (theme.contains("[") || theme.contains("]")) {
