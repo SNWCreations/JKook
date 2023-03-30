@@ -24,7 +24,6 @@ import org.jetbrains.annotations.NotNull;
  * @author NatholDallas
  */
 
-@SuppressWarnings("unused")
 public final class KMarkdownHelper {
 
     private KMarkdownHelper() {
