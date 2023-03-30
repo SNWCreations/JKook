@@ -16,6 +16,7 @@
 
 package snw.jkook.command;
 
+import snw.jkook.message.Message;
 import snw.jkook.plugin.Plugin;
 
 import java.util.function.Function;
@@ -56,6 +57,17 @@ public interface CommandManager {
      * @throws CommandException Thrown if unexpected situation happened during the execution of the command
      */
     boolean executeCommand(CommandSender sender, String cmdLine) throws CommandException;
+
+    /**
+     * Execute a command with given command line.
+     *
+     * @param sender  The sender of this command
+     * @param cmdLine The command line, prefix is needed (e.g. <code>/hello</code>)
+     * @param message The message object as the cause of this command execution
+     * @return True if command found and executed, false otherwise
+     * @throws CommandException Thrown if unexpected situation happened during the execution of the command
+     */
+    boolean executeCommand(CommandSender sender, String cmdLine, Message message) throws CommandException;
 
     /**
      * Register the binding between the specified class and the parser.
