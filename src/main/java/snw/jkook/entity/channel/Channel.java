@@ -139,6 +139,15 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
         public int getRawDeny() {
             return rawDeny;
         }
+
+        @Override
+        public String toString() {
+            return "RolePermissionOverwrite{" +
+                    "roleId=" + roleId +
+                    ", rawAllow=" + rawAllow +
+                    ", rawDeny=" + rawDeny +
+                    '}';
+        }
     }
 
     /**
