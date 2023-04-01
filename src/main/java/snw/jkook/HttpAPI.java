@@ -97,6 +97,16 @@ public interface HttpAPI {
     PageIterator<Collection<Game>> getGames();
 
     /**
+     * Get the game data that stored in the Kook's database.
+     *
+     * @param type The game data type. <br>
+     *             0 - All, <br>
+     *             1 - Created by user (including Bot?), <br>
+     *             2 - Created by KOOK
+     */
+    PageIterator<Collection<Game>> getGames(int type);
+
+    /**
      * Create a new game data record at the Kook's database.
      * This method can be called only five times a day.
      *
