@@ -210,6 +210,16 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     void revokeRole(Guild guild, int roleId);
 
     /**
+     * Add this user to the Bots personal black list.
+     */
+    void block();
+
+    /**
+     * Remove this user from the Bots personal black list.
+     */
+    void unblock();
+
+    /**
      * Represents the Bots' intimacy information of the user. <br>
      * It is a snapshot. Don't save it.
      */
