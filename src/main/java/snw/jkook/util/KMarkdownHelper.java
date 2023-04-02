@@ -225,7 +225,7 @@ public final class KMarkdownHelper {
 
     /**
      * Color text. <br>
-     * The possible values of "theme" parameter is following:
+     * The possible values of "theme" parameter are following:
      * <ul>
      *      <li>primary</li>
      *      <li>success</li>
