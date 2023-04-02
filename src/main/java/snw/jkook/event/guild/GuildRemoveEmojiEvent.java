@@ -36,4 +36,12 @@ public class GuildRemoveEmojiEvent extends GuildEvent {
     public CustomEmoji getEmoji() {
         return emoji;
     }
+
+    @Override
+    public String toString() {
+        return "GuildRemoveEmojiEvent{" +
+                "timeStamp=" + timeStamp +
+                ", emojiId='" + emoji.getId() +'\'' +
+                '}';
+    }
 }

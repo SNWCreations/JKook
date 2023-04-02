@@ -48,4 +48,12 @@ public class ChannelMessageUnpinEvent extends ChannelEvent {
         return operator;
     }
 
+    @Override
+    public String toString() {
+        return "ChannelMessageUnpinEvent{" +
+                "timeStamp=" + timeStamp +
+                ", messageId='" + messageId + '\'' +
+                ", operatorName='" + operator.getName() +
+                '}';
+    }
 }

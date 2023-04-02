@@ -27,4 +27,10 @@ public class UserOnlineEvent extends UserEvent {
         super(timeStamp, user);
     }
 
+    @Override
+    public String toString() {
+        return "UserOnlineEvent{" +
+                "timeStamp=" + timeStamp +
+                '}';
+    }
 }

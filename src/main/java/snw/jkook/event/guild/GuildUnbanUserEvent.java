@@ -50,4 +50,22 @@ public class GuildUnbanUserEvent extends GuildEvent {
     public User getOperator() {
         return operator;
     }
+
+    @Override
+    public String toString() {
+        return "GuildUnbanUserEvent{" +
+                "timeStamp=" + timeStamp +
+                ", unbanned=" + unbannedToString(unbanned) +
+                ", operatorName=" + operator.getName() +
+                '}';
+    }
+
+    private String unbannedToString(List<User> unbanned){
+        StringBuilder stringBack = new StringBuilder();
+        for(User user: unbanned) {
+            stringBack.append(user.getName());
+            stringBack.append(",");
+        }
+        return stringBack.toString();
+    }
 }

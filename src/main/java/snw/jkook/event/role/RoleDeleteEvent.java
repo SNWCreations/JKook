@@ -28,4 +28,10 @@ public class RoleDeleteEvent extends RoleEvent {
         super(timeStamp, role);
     }
 
+    @Override
+    public String toString() {
+        return "RoleDeleteEvent{" +
+                "timeStamp=" + timeStamp +
+                '}';
+    }
 }

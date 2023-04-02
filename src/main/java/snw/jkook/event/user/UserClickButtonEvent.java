@@ -61,4 +61,13 @@ public class UserClickButtonEvent extends UserEvent {
         return channel;
     }
 
+    @Override
+    public String toString() {
+        return "UserClickButtonEvent{" +
+                "timeStamp=" + timeStamp +
+                ", messageId='" + messageId + '\'' +
+                ", value='" + value + '\'' +
+                ", channelId=" + channel.getId() +
+                '}';
+    }
 }

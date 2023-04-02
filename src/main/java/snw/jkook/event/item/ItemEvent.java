@@ -27,4 +27,10 @@ public abstract class ItemEvent extends TimedEvent {
         super(timeStamp);
     }
 
+    @Override
+    public String toString() {
+        return "ItemEvent{" +
+                "timeStamp=" + timeStamp +
+                '}';
+    }
 }

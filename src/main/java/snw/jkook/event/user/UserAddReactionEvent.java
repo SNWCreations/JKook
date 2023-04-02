@@ -49,4 +49,12 @@ public class UserAddReactionEvent extends UserEvent {
         return reaction;
     }
 
+    @Override
+    public String toString() {
+        return "UserAddReactionEvent{" +
+                "timeStamp=" + timeStamp +
+                ", messageId='" + messageId + '\'' +
+                ", reaction=" + reaction +
+                '}';
+    }
 }

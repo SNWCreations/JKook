@@ -60,4 +60,23 @@ public class GuildBanUserEvent extends GuildEvent {
         return reason;
     }
 
+    @Override
+    public String toString() {
+        return "GuildBanUserEvent{" +
+                "timeStamp=" + timeStamp +
+                ", banned=" + bannedToString(banned) +
+                ", operatorName=" + operator.getName() +
+                ", reason='" + reason + '\'' +
+                '}';
+    }
+
+    private String bannedToString(List<User> banned){
+        StringBuilder stringBack = new StringBuilder();
+        for(User user: banned) {
+            stringBack.append(user.getName());
+            stringBack.append(",");
+        }
+        return stringBack.toString();
+    }
+
 }

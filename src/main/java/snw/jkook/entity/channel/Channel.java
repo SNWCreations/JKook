@@ -188,7 +188,7 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
         @Override
         public String toString() {
             return "UserPermissionOverwrite{" +
-                    "user=" + user +
+                    "userName=" + user.getName() +
                     ", rawAllow=" + rawAllow +
                     ", rawDeny=" + rawDeny +
                     '}';

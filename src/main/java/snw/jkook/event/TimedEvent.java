@@ -33,4 +33,11 @@ public abstract class TimedEvent extends Event {
     public long getTimeStamp() {
         return timeStamp;
     }
+
+    @Override
+    public String toString() {
+        return "TimedEvent{" +
+                "timeStamp=" + timeStamp +
+                '}';
+    }
 }

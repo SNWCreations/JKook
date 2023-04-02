@@ -28,4 +28,10 @@ public class RoleInfoUpdateEvent extends RoleEvent {
         super(timeStamp, role);
     }
 
+    @Override
+    public String toString() {
+        return "RoleInfoUpdateEvent{" +
+                "timeStamp=" + timeStamp +
+                '}';
+    }
 }

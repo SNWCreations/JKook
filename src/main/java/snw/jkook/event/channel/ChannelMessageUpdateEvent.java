@@ -47,4 +47,12 @@ public class ChannelMessageUpdateEvent extends ChannelEvent {
         return content;
     }
 
+    @Override
+    public String toString() {
+        return "ChannelMessageUpdateEvent{" +
+                "timeStamp=" + timeStamp +
+                ", messageId='" + messageId + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

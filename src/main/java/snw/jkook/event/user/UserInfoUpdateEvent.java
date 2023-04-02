@@ -33,4 +33,8 @@ public class UserInfoUpdateEvent extends UserEvent {
         super(timeStamp, user);
     }
 
+    @Override
+    public String toString() {
+        return "UserInfoUpdateEvent{}";
+    }
 }

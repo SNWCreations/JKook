@@ -46,4 +46,11 @@ public class ChannelMessageEvent extends ChannelEvent {
         return (TextChannel) super.getChannel();
     }
 
+    @Override
+    public String toString() {
+        return "ChannelMessageEvent{" +
+                "timeStamp=" + timeStamp +
+                ", messageId='" + message.getId() + '\'' +
+                '}';
+    }
 }
