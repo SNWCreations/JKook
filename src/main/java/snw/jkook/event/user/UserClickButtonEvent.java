@@ -67,7 +67,7 @@ public class UserClickButtonEvent extends UserEvent {
                 "timeStamp=" + timeStamp +
                 ", messageId='" + messageId + '\'' +
                 ", value='" + value + '\'' +
-                ", channelId=" + channel.getId() +
+                ", channel=" + channel +
                 '}';
     }
 }

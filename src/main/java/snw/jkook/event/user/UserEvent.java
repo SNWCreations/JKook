@@ -43,7 +43,7 @@ public abstract class UserEvent extends TimedEvent {
     public String toString() {
         return "UserEvent{" +
                 "timeStamp=" + timeStamp +
-                ", userName=" + user.getName() +
+                ", user=" + user +
                 '}';
     }
 }

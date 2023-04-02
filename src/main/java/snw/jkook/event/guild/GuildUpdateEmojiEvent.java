@@ -41,7 +41,7 @@ public class GuildUpdateEmojiEvent extends GuildEvent {
     public String toString() {
         return "GuildUpdateEmojiEvent{" +
                 "timeStamp=" + timeStamp +
-                ", emojiId='" + emoji + '\'' +
+                ", emoji=" + emoji +
                 '}';
     }
 }

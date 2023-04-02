@@ -66,7 +66,7 @@ public class ChannelDeleteEvent extends ChannelEvent {
         return "ChannelDeleteEvent{" +
                 "timeStamp=" + timeStamp +
                 ", channelId='" + channelId + '\'' +
-                ", guildId='" + guild.getId() + '\'' +
+                ", guild=" + guild +
                 '}';
     }
 }

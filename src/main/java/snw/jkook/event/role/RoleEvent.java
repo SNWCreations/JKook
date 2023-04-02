@@ -43,7 +43,7 @@ public abstract class RoleEvent extends TimedEvent {
     public String toString() {
         return "RoleEvent{" +
                 "timeStamp=" + timeStamp +
-                ", roleName=" + role.getName() +
+                ", role=" + role +
                 '}';
     }
 }

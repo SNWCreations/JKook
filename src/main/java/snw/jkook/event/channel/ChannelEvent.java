@@ -41,7 +41,7 @@ public abstract class ChannelEvent extends TimedEvent {
     public String toString() {
         return "ChannelEvent{" +
                 "timeStamp=" + timeStamp +
-                ", channelId='" + channel.getId() + '\'' +
+                ", channel=" + channel +
                 '}';
     }
 }

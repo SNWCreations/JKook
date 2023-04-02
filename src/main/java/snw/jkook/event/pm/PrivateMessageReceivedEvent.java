@@ -51,8 +51,8 @@ public class PrivateMessageReceivedEvent extends PrivateMessageEvent {
     public String toString() {
         return "PrivateMessageReceivedEvent{" +
                 "timeStamp=" + timeStamp +
-                ", userName=" + user.getName() +
-                ", pmId=" + pm.getId() +
+                ", user=" + user +
+                ", pm=" + pm +
                 '}';
     }
 }

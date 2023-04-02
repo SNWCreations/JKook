@@ -53,7 +53,7 @@ public class ChannelMessageUnpinEvent extends ChannelEvent {
         return "ChannelMessageUnpinEvent{" +
                 "timeStamp=" + timeStamp +
                 ", messageId='" + messageId + '\'' +
-                ", operatorName='" + operator.getName() +
+                ", operator=" + operator +
                 '}';
     }
 }

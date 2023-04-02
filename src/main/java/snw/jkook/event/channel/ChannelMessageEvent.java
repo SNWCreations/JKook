@@ -50,7 +50,7 @@ public class ChannelMessageEvent extends ChannelEvent {
     public String toString() {
         return "ChannelMessageEvent{" +
                 "timeStamp=" + timeStamp +
-                ", messageId='" + message.getId() + '\'' +
+                ", message=" + message +
                 '}';
     }
 }

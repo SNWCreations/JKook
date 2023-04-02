@@ -41,7 +41,7 @@ public abstract class GuildEvent extends TimedEvent {
     public String toString() {
         return "GuildEvent{" +
                 "timeStamp=" + timeStamp +
-                ", guildId='" + guild.getId() + '\'' +
+                ", guild=" + guild +
                 '}';
     }
 }

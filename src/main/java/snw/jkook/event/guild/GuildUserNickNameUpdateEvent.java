@@ -51,7 +51,7 @@ public class GuildUserNickNameUpdateEvent extends GuildEvent {
     public String toString() {
         return "GuildUserNickNameUpdateEvent{" +
                 "timeStamp=" + timeStamp +
-                ", userName=" + user.getName() +
+                ", user=" + user +
                 ", newNickName='" + newNickName + '\'' +
                 '}';
     }

@@ -49,8 +49,8 @@ public class ItemConsumedEvent extends ItemEvent {
     public String toString() {
         return "ItemConsumedEvent{" +
                 "timeStamp=" + timeStamp +
-                ", consumerName=" + consumer.getName() +
-                ", affectedName=" + affected.getName() +
+                ", consumer=" + consumer +
+                ", affected=" + affected +
                 ", itemId=" + itemId +
                 '}';
     }

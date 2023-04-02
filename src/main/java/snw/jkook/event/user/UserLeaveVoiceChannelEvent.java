@@ -44,7 +44,7 @@ public class UserLeaveVoiceChannelEvent extends UserEvent {
     public String toString() {
         return "UserLeaveVoiceChannelEvent{" +
                 "timeStamp=" + timeStamp +
-                ", channelId=" + channel.getId() +
+                ", channel=" + channel +
                 '}';
     }
 }

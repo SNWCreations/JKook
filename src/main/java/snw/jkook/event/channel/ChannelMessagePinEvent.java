@@ -53,7 +53,7 @@ public class ChannelMessagePinEvent extends ChannelEvent {
         return "ChannelMessagePinEvent{" +
                 "timeStamp=" + timeStamp +
                 ", messageId='" + messageId + '\'' +
-                ", operatorName='" + operator.getName() + '\'' +
+                ", operator=" + operator +
                 '}';
     }
 }

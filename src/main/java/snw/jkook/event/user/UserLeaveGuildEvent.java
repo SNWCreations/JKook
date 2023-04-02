@@ -44,7 +44,7 @@ public class UserLeaveGuildEvent extends UserEvent {
     public String toString() {
         return "UserLeaveGuildEvent{" +
                 "timeStamp=" + timeStamp +
-                ", guildId=" + guild.getId() +
+                ", guild=" + guild +
                 '}';
     }
 }
