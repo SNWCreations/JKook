@@ -42,6 +42,7 @@ public class ChannelMessageDeleteEvent extends ChannelEvent {
         return "ChannelMessageDeleteEvent{" +
                 "timeStamp=" + timeStamp +
                 ", messageId='" + messageId + '\'' +
+                ", channel=" + getChannel() +
                 '}';
     }
 }

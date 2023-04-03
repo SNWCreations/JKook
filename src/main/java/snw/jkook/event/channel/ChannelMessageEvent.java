@@ -51,6 +51,7 @@ public class ChannelMessageEvent extends ChannelEvent {
         return "ChannelMessageEvent{" +
                 "timeStamp=" + timeStamp +
                 ", message=" + message +
+                ", channel=" + getChannel() +
                 '}';
     }
 }

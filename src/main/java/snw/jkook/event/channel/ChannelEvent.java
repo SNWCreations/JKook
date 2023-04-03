@@ -37,11 +37,4 @@ public abstract class ChannelEvent extends TimedEvent {
         return channel;
     }
 
-    @Override
-    public String toString() {
-        return "ChannelEvent{" +
-                "timeStamp=" + timeStamp +
-                ", channel=" + channel +
-                '}';
-    }
 }

@@ -68,6 +68,7 @@ public class UserClickButtonEvent extends UserEvent {
                 ", messageId='" + messageId + '\'' +
                 ", value='" + value + '\'' +
                 ", channel=" + channel +
+                ", user=" + getUser() +
                 '}';
     }
 }

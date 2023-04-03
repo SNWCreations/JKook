@@ -39,11 +39,4 @@ public abstract class UserEvent extends TimedEvent {
         return user;
     }
 
-    @Override
-    public String toString() {
-        return "UserEvent{" +
-                "timeStamp=" + timeStamp +
-                ", user=" + user +
-                '}';
-    }
 }

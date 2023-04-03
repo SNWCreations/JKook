@@ -45,6 +45,7 @@ public class UserLeaveGuildEvent extends UserEvent {
         return "UserLeaveGuildEvent{" +
                 "timeStamp=" + timeStamp +
                 ", guild=" + guild +
+                ", user=" + getUser() +
                 '}';
     }
 }

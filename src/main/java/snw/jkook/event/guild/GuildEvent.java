@@ -37,11 +37,4 @@ public abstract class GuildEvent extends TimedEvent {
         return guild;
     }
 
-    @Override
-    public String toString() {
-        return "GuildEvent{" +
-                "timeStamp=" + timeStamp +
-                ", guild=" + guild +
-                '}';
-    }
 }

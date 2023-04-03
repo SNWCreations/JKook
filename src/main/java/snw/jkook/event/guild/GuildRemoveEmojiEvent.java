@@ -42,6 +42,7 @@ public class GuildRemoveEmojiEvent extends GuildEvent {
         return "GuildRemoveEmojiEvent{" +
                 "timeStamp=" + timeStamp +
                 ", emoji=" + emoji +
+                ", guild=" + getGuild() +
                 '}';
     }
 }

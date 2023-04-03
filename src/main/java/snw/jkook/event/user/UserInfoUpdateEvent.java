@@ -35,6 +35,9 @@ public class UserInfoUpdateEvent extends UserEvent {
 
     @Override
     public String toString() {
-        return "UserInfoUpdateEvent{}";
+        return "UserInfoUpdateEvent{" +
+                "timeStamp=" + timeStamp +
+                ", user=" + getUser() +
+                '}';
     }
 }

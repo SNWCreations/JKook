@@ -31,6 +31,7 @@ public class UserOfflineEvent extends UserEvent {
     public String toString() {
         return "UserOfflineEvent{" +
                 "timeStamp=" + timeStamp +
+                ", user=" + getUser() +
                 '}';
     }
 }

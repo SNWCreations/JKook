@@ -31,6 +31,7 @@ public class ChannelCreateEvent extends ChannelEvent {
     public String toString() {
         return "ChannelCreateEvent{" +
                 "timeStamp=" + timeStamp +
+                ", channel=" + getChannel() +
                 '}';
     }
 }

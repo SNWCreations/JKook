@@ -57,6 +57,7 @@ public class GuildUnbanUserEvent extends GuildEvent {
                 "timeStamp=" + timeStamp +
                 ", unbanned=" + unbanned +
                 ", operator=" + operator +
+                ", guild=" + getGuild() +
                 '}';
     }
 }

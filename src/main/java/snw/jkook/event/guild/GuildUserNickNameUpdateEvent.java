@@ -53,6 +53,7 @@ public class GuildUserNickNameUpdateEvent extends GuildEvent {
                 "timeStamp=" + timeStamp +
                 ", user=" + user +
                 ", newNickName='" + newNickName + '\'' +
+                ", guild=" + getGuild() +
                 '}';
     }
 }

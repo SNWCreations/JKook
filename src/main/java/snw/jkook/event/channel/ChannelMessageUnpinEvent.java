@@ -54,6 +54,7 @@ public class ChannelMessageUnpinEvent extends ChannelEvent {
                 "timeStamp=" + timeStamp +
                 ", messageId='" + messageId + '\'' +
                 ", operator=" + operator +
+                ", channel=" + getChannel() +
                 '}';
     }
 }

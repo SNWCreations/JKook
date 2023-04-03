@@ -31,6 +31,7 @@ public class UserOnlineEvent extends UserEvent {
     public String toString() {
         return "UserOnlineEvent{" +
                 "timeStamp=" + timeStamp +
+                ", user=" + getUser() +
                 '}';
     }
 }

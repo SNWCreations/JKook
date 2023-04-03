@@ -45,6 +45,7 @@ public class UserJoinVoiceChannelEvent extends UserEvent {
         return "UserJoinVoiceChannelEvent{" +
                 "timeStamp=" + timeStamp +
                 ", channel=" + channel +
+                ", user=" + getUser() +
                 '}';
     }
 }

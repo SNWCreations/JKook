@@ -42,6 +42,7 @@ public class GuildUpdateEmojiEvent extends GuildEvent {
         return "GuildUpdateEmojiEvent{" +
                 "timeStamp=" + timeStamp +
                 ", emoji=" + emoji +
+                ", guild=" + getGuild() +
                 '}';
     }
 }

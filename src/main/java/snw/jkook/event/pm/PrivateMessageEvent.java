@@ -26,10 +26,4 @@ public abstract class PrivateMessageEvent extends TimedEvent {
         super(timeStamp);
     }
 
-    @Override
-    public String toString() {
-        return "PrivateMessageEvent{" +
-                "timeStamp=" + timeStamp +
-                '}';
-    }
 }

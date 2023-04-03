@@ -31,6 +31,7 @@ public class ChannelInfoUpdateEvent extends ChannelEvent {
     public String toString() {
         return "ChannelInfoUpdateEvent{" +
                 "timeStamp=" + timeStamp +
+                ", channel=" + getChannel() +
                 '}';
     }
 }

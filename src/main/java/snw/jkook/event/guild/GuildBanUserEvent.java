@@ -67,6 +67,7 @@ public class GuildBanUserEvent extends GuildEvent {
                 ", banned=" + banned +
                 ", operator=" + operator +
                 ", reason='" + reason + '\'' +
+                ", guild=" + getGuild() +
                 '}';
     }
 }

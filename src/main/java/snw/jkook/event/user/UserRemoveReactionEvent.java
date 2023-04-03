@@ -55,6 +55,7 @@ public class UserRemoveReactionEvent extends UserEvent {
                 "timeStamp=" + timeStamp +
                 ", messageId='" + messageId + '\'' +
                 ", reaction=" + reaction +
+                ", user=" + getUser() +
                 '}';
     }
 }

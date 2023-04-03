@@ -53,6 +53,7 @@ public class ChannelMessageUpdateEvent extends ChannelEvent {
                 "timeStamp=" + timeStamp +
                 ", messageId='" + messageId + '\'' +
                 ", content='" + content + '\'' +
+                ", channel=" + getChannel() +
                 '}';
     }
 }

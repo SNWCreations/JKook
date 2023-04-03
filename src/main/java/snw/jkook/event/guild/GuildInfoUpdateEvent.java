@@ -32,6 +32,7 @@ public class GuildInfoUpdateEvent extends GuildEvent {
     public String toString() {
         return "GuildInfoUpdateEvent{" +
                 "timeStamp=" + timeStamp +
+                ", guild=" + getGuild() +
                 '}';
     }
 }

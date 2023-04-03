@@ -45,6 +45,7 @@ public class UserJoinGuildEvent extends UserEvent {
         return "UserJoinGuildEvent{" +
                 "timeStamp=" + timeStamp +
                 ", guild=" + guild +
+                ", user=" + getUser() +
                 '}';
     }
 }
