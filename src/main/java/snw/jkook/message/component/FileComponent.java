@@ -115,4 +115,14 @@ public class FileComponent extends BaseComponent {
             return values.get(value);
         }
     }
+
+    @Override
+    public String toString() {
+        return "FileComponent{" +
+                "url='" + url + '\'' +
+                ", title='" + title + '\'' +
+                ", size=" + size +
+                ", type=" + type +
+                '}';
+    }
 }

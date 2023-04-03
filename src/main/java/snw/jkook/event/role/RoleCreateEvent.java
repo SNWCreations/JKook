@@ -27,4 +27,11 @@ public class RoleCreateEvent extends RoleEvent {
         super(timeStamp, role);
     }
 
+    @Override
+    public String toString() {
+        return "RoleCreateEvent{" +
+                "timeStamp=" + timeStamp +
+                ", role=" + getRole() +
+                '}';
+    }
 }

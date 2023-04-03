@@ -66,4 +66,11 @@ public class ContextModule extends BaseModule {
             return new ContextModule(modules);
         }
     }
+
+    @Override
+    public String toString() {
+        return "ContextModule{" +
+                "modules=" + modules +
+                '}';
+    }
 }

@@ -25,4 +25,5 @@ public abstract class PrivateMessageEvent extends TimedEvent {
     PrivateMessageEvent(final long timeStamp) {
         super(timeStamp);
     }
+
 }

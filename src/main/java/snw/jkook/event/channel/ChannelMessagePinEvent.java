@@ -48,4 +48,13 @@ public class ChannelMessagePinEvent extends ChannelEvent {
         return operator;
     }
 
+    @Override
+    public String toString() {
+        return "ChannelMessagePinEvent{" +
+                "timeStamp=" + timeStamp +
+                ", messageId='" + messageId + '\'' +
+                ", operator=" + operator +
+                ", channel=" + getChannel() +
+                '}';
+    }
 }

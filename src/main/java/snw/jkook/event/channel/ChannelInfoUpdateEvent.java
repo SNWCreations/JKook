@@ -27,4 +27,11 @@ public class ChannelInfoUpdateEvent extends ChannelEvent {
         super(timeStamp, channel);
     }
 
+    @Override
+    public String toString() {
+        return "ChannelInfoUpdateEvent{" +
+                "timeStamp=" + timeStamp +
+                ", channel=" + getChannel() +
+                '}';
+    }
 }

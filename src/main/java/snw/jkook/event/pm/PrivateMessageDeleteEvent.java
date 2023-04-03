@@ -35,4 +35,11 @@ public class PrivateMessageDeleteEvent extends PrivateMessageEvent {
         return messageId;
     }
 
+    @Override
+    public String toString() {
+        return "PrivateMessageDeleteEvent{" +
+                "timeStamp=" + timeStamp +
+                ", messageId='" + messageId + '\'' +
+                '}';
+    }
 }

@@ -38,4 +38,5 @@ public abstract class UserEvent extends TimedEvent {
     public User getUser() {
         return user;
     }
+
 }

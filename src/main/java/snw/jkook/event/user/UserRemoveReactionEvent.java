@@ -49,4 +49,13 @@ public class UserRemoveReactionEvent extends UserEvent {
         return reaction;
     }
 
+    @Override
+    public String toString() {
+        return "UserRemoveReactionEvent{" +
+                "timeStamp=" + timeStamp +
+                ", messageId='" + messageId + '\'' +
+                ", reaction=" + reaction +
+                ", user=" + getUser() +
+                '}';
+    }
 }

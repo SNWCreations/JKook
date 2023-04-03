@@ -66,4 +66,14 @@ public class ImageElement extends BaseElement implements Accessory {
     public boolean isCircled() {
         return circle;
     }
+
+    @Override
+    public String toString() {
+        return "ImageElement{" +
+                "src='" + src + '\'' +
+                ", alt='" + alt + '\'' +
+                ", size=" + size +
+                ", circle=" + circle +
+                '}';
+    }
 }

@@ -125,4 +125,14 @@ public class ButtonElement extends InteractElement implements Accessory {
             return values.get(name);
         }
     }
+
+    @Override
+    public String toString() {
+        return "ButtonElement{" +
+                "theme=" + theme +
+                ", value='" + value + '\'' +
+                ", type=" + type +
+                ", element=" + element +
+                '}';
+    }
 }

@@ -57,4 +57,11 @@ public class ActionGroupModule extends BaseModule {
             return new ActionGroupModule(modules);
         }
     }
+
+    @Override
+    public String toString() {
+        return "ActionGroupModule{" +
+                "buttons=" + buttons +
+                '}';
+    }
 }

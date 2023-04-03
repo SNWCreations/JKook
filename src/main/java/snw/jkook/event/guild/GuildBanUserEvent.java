@@ -60,4 +60,14 @@ public class GuildBanUserEvent extends GuildEvent {
         return reason;
     }
 
+    @Override
+    public String toString() {
+        return "GuildBanUserEvent{" +
+                "timeStamp=" + timeStamp +
+                ", banned=" + banned +
+                ", operator=" + operator +
+                ", reason='" + reason + '\'' +
+                ", guild=" + getGuild() +
+                '}';
+    }
 }

@@ -47,4 +47,13 @@ public class GuildUserNickNameUpdateEvent extends GuildEvent {
         return newNickName;
     }
 
+    @Override
+    public String toString() {
+        return "GuildUserNickNameUpdateEvent{" +
+                "timeStamp=" + timeStamp +
+                ", user=" + user +
+                ", newNickName='" + newNickName + '\'' +
+                ", guild=" + getGuild() +
+                '}';
+    }
 }

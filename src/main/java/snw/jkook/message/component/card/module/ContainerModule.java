@@ -58,4 +58,11 @@ public class ContainerModule extends BaseModule {
             return new ContainerModule(modules);
         }
     }
+
+    @Override
+    public String toString() {
+        return "ContainerModule{" +
+                "images=" + images +
+                '}';
+    }
 }

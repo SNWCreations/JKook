@@ -40,4 +40,12 @@ public class UserLeaveVoiceChannelEvent extends UserEvent {
         return channel;
     }
 
+    @Override
+    public String toString() {
+        return "UserLeaveVoiceChannelEvent{" +
+                "timeStamp=" + timeStamp +
+                ", channel=" + channel +
+                ", user=" + getUser() +
+                '}';
+    }
 }

@@ -45,4 +45,13 @@ public class ItemConsumedEvent extends ItemEvent {
         return itemId;
     }
 
+    @Override
+    public String toString() {
+        return "ItemConsumedEvent{" +
+                "timeStamp=" + timeStamp +
+                ", consumer=" + consumer +
+                ", affected=" + affected +
+                ", itemId=" + itemId +
+                '}';
+    }
 }

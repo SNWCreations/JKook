@@ -37,4 +37,12 @@ public class ChannelMessageDeleteEvent extends ChannelEvent {
         return messageId;
     }
 
+    @Override
+    public String toString() {
+        return "ChannelMessageDeleteEvent{" +
+                "timeStamp=" + timeStamp +
+                ", messageId='" + messageId + '\'' +
+                ", channel=" + getChannel() +
+                '}';
+    }
 }

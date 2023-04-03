@@ -40,4 +40,12 @@ public class UserLeaveGuildEvent extends UserEvent {
         return guild;
     }
 
+    @Override
+    public String toString() {
+        return "UserLeaveGuildEvent{" +
+                "timeStamp=" + timeStamp +
+                ", guild=" + guild +
+                ", user=" + getUser() +
+                '}';
+    }
 }

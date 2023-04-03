@@ -40,4 +40,12 @@ public class UserJoinGuildEvent extends UserEvent {
         return guild;
     }
 
+    @Override
+    public String toString() {
+        return "UserJoinGuildEvent{" +
+                "timeStamp=" + timeStamp +
+                ", guild=" + guild +
+                ", user=" + getUser() +
+                '}';
+    }
 }

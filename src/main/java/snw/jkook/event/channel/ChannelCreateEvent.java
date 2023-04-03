@@ -27,4 +27,11 @@ public class ChannelCreateEvent extends ChannelEvent {
         super(timeStamp, channel);
     }
 
+    @Override
+    public String toString() {
+        return "ChannelCreateEvent{" +
+                "timeStamp=" + timeStamp +
+                ", channel=" + getChannel() +
+                '}';
+    }
 }

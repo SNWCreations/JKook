@@ -40,4 +40,12 @@ public class UserJoinVoiceChannelEvent extends UserEvent {
         return channel;
     }
 
+    @Override
+    public String toString() {
+        return "UserJoinVoiceChannelEvent{" +
+                "timeStamp=" + timeStamp +
+                ", channel=" + channel +
+                ", user=" + getUser() +
+                '}';
+    }
 }

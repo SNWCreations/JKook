@@ -27,4 +27,11 @@ public class UserOfflineEvent extends UserEvent {
         super(timeStamp, user);
     }
 
+    @Override
+    public String toString() {
+        return "UserOfflineEvent{" +
+                "timeStamp=" + timeStamp +
+                ", user=" + getUser() +
+                '}';
+    }
 }

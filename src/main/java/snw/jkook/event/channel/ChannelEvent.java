@@ -36,4 +36,5 @@ public abstract class ChannelEvent extends TimedEvent {
     public Channel getChannel() {
         return channel;
     }
+
 }

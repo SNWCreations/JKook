@@ -38,4 +38,5 @@ public abstract class RoleEvent extends TimedEvent {
     public Role getRole() {
         return role;
     }
+
 }

@@ -44,4 +44,12 @@ public class PrivateMessageUpdateEvent extends PrivateMessageEvent {
         return content;
     }
 
+    @Override
+    public String toString() {
+        return "PrivateMessageUpdateEvent{" +
+                "timeStamp=" + timeStamp +
+                ", messageId='" + messageId + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

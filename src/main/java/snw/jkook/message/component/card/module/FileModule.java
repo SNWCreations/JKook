@@ -66,4 +66,14 @@ public class FileModule extends BaseModule {
     public String getCover() {
         return cover;
     }
+
+    @Override
+    public String toString() {
+        return "FileModule{" +
+                "type=" + type +
+                ", src='" + src + '\'' +
+                ", title='" + title + '\'' +
+                ", cover='" + cover + '\'' +
+                '}';
+    }
 }

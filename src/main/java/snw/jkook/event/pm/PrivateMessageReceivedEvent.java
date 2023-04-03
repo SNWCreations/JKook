@@ -47,4 +47,12 @@ public class PrivateMessageReceivedEvent extends PrivateMessageEvent {
         return pm;
     }
 
+    @Override
+    public String toString() {
+        return "PrivateMessageReceivedEvent{" +
+                "timeStamp=" + timeStamp +
+                ", user=" + user +
+                ", pm=" + pm +
+                '}';
+    }
 }

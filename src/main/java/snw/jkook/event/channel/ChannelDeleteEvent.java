@@ -61,4 +61,12 @@ public class ChannelDeleteEvent extends ChannelEvent {
         throw new UnsupportedOperationException("No channel available for ChannelDeleteEvent!");
     }
 
+    @Override
+    public String toString() {
+        return "ChannelDeleteEvent{" +
+                "timeStamp=" + timeStamp +
+                ", channelId='" + channelId + '\'' +
+                ", guild=" + guild +
+                '}';
+    }
 }

@@ -40,4 +40,11 @@ public class HeaderModule extends BaseModule {
     public PlainTextElement getElement() {
         return element;
     }
+
+    @Override
+    public String toString() {
+        return "HeaderModule{" +
+                "element=" + element +
+                '}';
+    }
 }

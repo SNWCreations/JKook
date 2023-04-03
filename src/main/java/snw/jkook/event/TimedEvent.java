@@ -33,4 +33,5 @@ public abstract class TimedEvent extends Event {
     public long getTimeStamp() {
         return timeStamp;
     }
+
 }

@@ -48,4 +48,12 @@ public class PlainTextElement extends BaseElement {
     public boolean willConvertEmoji() {
         return emoji;
     }
+
+    @Override
+    public String toString() {
+        return "PlainTextElement{" +
+                "content='" + content + '\'' +
+                ", emoji=" + emoji +
+                '}';
+    }
 }

@@ -28,4 +28,11 @@ public class GuildInfoUpdateEvent extends GuildEvent {
         super(timeStamp, guild);
     }
 
+    @Override
+    public String toString() {
+        return "GuildInfoUpdateEvent{" +
+                "timeStamp=" + timeStamp +
+                ", guild=" + getGuild() +
+                '}';
+    }
 }

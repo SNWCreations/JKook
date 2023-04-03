@@ -47,4 +47,12 @@ public class GuildDeleteEvent extends GuildEvent {
     public String getGuildId() {
         return guildId;
     }
+
+    @Override
+    public String toString() {
+        return "GuildDeleteEvent{" +
+                "timeStamp=" + timeStamp +
+                ", guildId='" + guildId + '\'' +
+                '}';
+    }
 }

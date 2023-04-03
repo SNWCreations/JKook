@@ -99,4 +99,13 @@ public class CountdownModule extends BaseModule {
             return values.get(name);
         }
     }
+
+    @Override
+    public String toString() {
+        return "CountdownModule{" +
+                "type=" + type +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                '}';
+    }
 }
