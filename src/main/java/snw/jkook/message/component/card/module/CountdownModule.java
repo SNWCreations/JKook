@@ -19,6 +19,8 @@ package snw.jkook.message.component.card.module;
 import java.util.HashMap;
 import java.util.Map;
 
+import snw.jkook.util.Validate;
+
 /**
  * Represents a countdown module.
  */
@@ -28,6 +30,7 @@ public class CountdownModule extends BaseModule {
     private final long endTime;
 
     public CountdownModule(Type type, long startTime, long endTime) {
+        Validate.isTrue(endTime > System.currentTimeMillis(), "endTime must be greater than current timestamp.");
         this.type = type;
         this.startTime = type == Type.SECOND ? startTime : -1;
         this.endTime = endTime;
