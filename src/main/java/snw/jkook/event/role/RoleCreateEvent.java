@@ -31,6 +31,7 @@ public class RoleCreateEvent extends RoleEvent {
     public String toString() {
         return "RoleCreateEvent{" +
                 "timeStamp=" + timeStamp +
+                ", role=" + getRole() +
                 '}';
     }
 }
