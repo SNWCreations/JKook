@@ -298,7 +298,7 @@ public class YamlConfiguration extends FileConfiguration {
             config.load(file);
         } catch (FileNotFoundException ignored) {
         } catch (IOException | InvalidConfigurationException e) {
-            JKook.getLogger().error("Cannot load " + file, e);
+            JKook.getLogger().error("Cannot load {}", file, e);
         }
 
         return config;

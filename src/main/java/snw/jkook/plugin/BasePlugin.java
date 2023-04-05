@@ -133,7 +133,7 @@ public abstract class BasePlugin implements Plugin {
             configuration.load(configFile);
         } catch (FileNotFoundException ignored) {
         } catch (IOException | InvalidConfigurationException e) {
-            getCore().getLogger().error("Cannot load " + configFile, e);
+            getCore().getLogger().error("Cannot load {}", configFile, e);
         }
 
         // load backend from the plugin JAR
@@ -199,10 +199,10 @@ public abstract class BasePlugin implements Plugin {
                 out.close();
                 in.close();
             } else {
-                logger.warn("Could not save " + outFile.getName() + " to " + outFile + " because " + outFile.getName() + " already exists.");
+                logger.warn("Could not save {} to {} because {} already exists.", outFile.getName(), outFile, outFile.getName());
             }
         } catch (IOException ex) {
-            logger.warn("Could not save " + outFile.getName() + " to " + outFile, ex);
+            logger.warn("Could not save {} to {}", outFile.getName(), outFile, ex);
         }
     }
 
@@ -211,7 +211,7 @@ public abstract class BasePlugin implements Plugin {
         try {
             getConfig().save(configFile);
         } catch (IOException ex) {
-            logger.error("Could not save config to " + configFile, ex);
+            logger.error("Could not save config to {}", configFile, ex);
         }
     }
 
