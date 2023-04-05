@@ -85,6 +85,15 @@ public interface HttpAPI {
     String uploadFile(String filename, byte[] content);
 
     /**
+     * Upload a file to Kook server.
+     *
+     * @param filename The name of the file (with the extension name)
+     * @param url The URL of another remote file
+     * @return The URL string of the remote file
+     */
+    String uploadFile(String filename, String url);
+
+    /**
      * Mark the invitation that represented by the provided url code as invalid.
      *
      * @param urlCode The target
