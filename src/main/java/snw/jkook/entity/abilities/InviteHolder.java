@@ -33,6 +33,7 @@ public interface InviteHolder {
     /**
      * Get invitations related to this object.
      */
+    @RequirePermission(Permission.INVITE_MANAGE)
     PageIterator<Set<Invitation>> getInvitations();
 
     /**
