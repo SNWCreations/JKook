@@ -32,6 +32,27 @@ public class SectionModule extends BaseModule implements AccessoryHolder {
     private final Accessory accessory;
     private final Accessory.Mode mode;
 
+    /**
+     * @param text <b>KMarkdown</b> text.
+     *             If you want to use plain text, use the constructor
+     *             with arguments {@code (String, boolean)} instead.
+     */
+    public SectionModule(String text) {
+        this(text, true);
+    }
+
+    public SectionModule(String text, boolean isKMD) {
+        this(text, isKMD, false);
+    }
+
+    public SectionModule(String text, boolean isKMD, boolean emojiIfPlain) {
+        this(isKMD ? new MarkdownElement(text) : new PlainTextElement(text, emojiIfPlain), null, null);
+    }
+
+    public SectionModule(CardScopeElement text) {
+        this(text, null, null);
+    }
+
     public SectionModule(CardScopeElement text, Accessory accessory, Accessory.Mode mode) {
         Validate.isTrue(
                 text instanceof PlainTextElement ||
