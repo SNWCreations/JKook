@@ -45,6 +45,14 @@ public interface Message extends Receivable, ReactionHolder {
     void setComponent(BaseComponent component);
 
     /**
+     * Set the content that stored by this message. <br>
+     * This method just constructs the {@link MarkdownComponent} with provided content and pass it to {@link #setComponent(BaseComponent)}.
+     *
+     * @param content The new content
+     */
+    void setComponent(String content);
+
+    /**
      * Get the ID of this message.
      */
     String getId();

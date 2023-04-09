@@ -86,6 +86,16 @@ public interface TextChannelMessage extends Message {
     void setComponentTemp(User user, BaseComponent component);
 
     /**
+     * Temporary set the component that stored by this message. <p>
+     * Only the user that specified by the user parameter will see the new component. <p>
+     * This method just constructs the {@link MarkdownComponent} with provided content and pass it to {@link #setComponentTemp(User, BaseComponent)}.
+     *
+     * @param user The user as the receiver of the new content
+     * @param content The new content
+     */
+    void setComponentTemp(User user, String content);
+
+    /**
      * Remove a reaction that added by the specified user.
      *
      * @param emoji The emoji of the reaction
