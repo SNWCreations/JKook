@@ -21,8 +21,10 @@ import snw.jkook.message.component.card.element.MarkdownElement;
 import snw.jkook.message.component.card.element.PlainTextElement;
 import snw.jkook.util.Validate;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Represents a "paragraph" module.
@@ -52,6 +54,32 @@ public class Paragraph extends BaseStructure {
      */
     public Collection<BaseElement> getFields() {
         return fields;
+    }
+
+    /**
+     * A simple builder for building {@link Paragraph}.
+     */
+    public static final class Builder {
+        private final int columns;
+        private final List<BaseElement> fields = new ArrayList<>();
+
+        public Builder(int columns) {
+            this.columns = columns;
+        }
+
+        public Builder addField(PlainTextElement element) {
+            fields.add(element);
+            return this;
+        }
+
+        public Builder addField(MarkdownElement element) {
+            fields.add(element);
+            return this;
+        }
+
+        public Paragraph build() {
+            return new Paragraph(columns, fields);
+        }
     }
 
     @Override
