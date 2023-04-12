@@ -16,8 +16,16 @@
 
 package snw.jkook.command;
 
+import org.slf4j.Logger;
+
 /**
  * Represents the console command sender.
  */
 public interface ConsoleCommandSender extends CommandSender {
+
+    /**
+     * Get the logger which can be used to print things to console.
+     */
+    Logger getLogger();
+    
 }
