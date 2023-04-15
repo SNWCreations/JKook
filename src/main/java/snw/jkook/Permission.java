@@ -18,6 +18,7 @@ package snw.jkook;
 
 import snw.jkook.entity.channel.TextChannel;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -204,6 +205,10 @@ public enum Permission {
         return value;
     }
 
+    public boolean isIncludedIn(int sum) {
+        return hasPermission(this, sum);
+    }
+
     /**
      * Return true if the targeted permission is included in <code>rawPermissionSum</code>.
      *
@@ -215,6 +220,36 @@ public enum Permission {
             return true;
         }
         return (rawPermissionSum & permission.getValue()) == permission.getValue();
+    }
+
+    public static int sum(Permission... perms) {
+        if (perms.length == 0) {
+            return 0;
+        }
+        if (perms.length == 1) {
+            return perms[0].getValue();
+        }
+        return sum(perms[0].getValue(), Arrays.copyOfRange(perms, 1, perms.length));
+    }
+
+    public static int sum(int sum, Permission... perms) {
+        int result = 0;
+        for (Permission p : perms) {
+            if (!hasPermission(p, sum)) { // if doesn't contains sum yet
+                result += p.getValue();
+            }
+        }
+        return result;
+    }
+
+    public static int removeFrom(int sum, Permission... toRemove) {
+        int result = 0;
+        for (Permission p : toRemove) {
+            if (hasPermission(p, sum)) { // if contains sum now
+                result -= p.getValue();
+            }
+        }
+        return result;
     }
 
     /**
