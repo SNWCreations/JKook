@@ -226,6 +226,38 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     void updatePermission(User user, int rawAllow, int rawDeny);
 
     /**
+     * Add a specified special permission for the user to this channel. Will not affect the rights they already have.
+     *
+     * @param user     The user
+     * @param sum The sum of the value of the permissions being added (see {@link Permission})
+     */
+    void addPermission(User user, int sum);
+
+    /**
+     * Remove the user's specified special permission from this channel. Will not affect the rights they already have.
+     *
+     * @param user     The user
+     * @param sum The sum of the value of the permissions being removed (see {@link Permission})
+     */
+    void removePermission(User user, int sum);
+
+    /**
+     * Add a specified special permission for the role to this channel. Will not affect the rights they already have.
+     *
+     * @param role The role
+     * @param sum The sum of the value of the permissions being added (see {@link Permission})
+     */
+    void addPermission(Role role, int sum);
+
+    /**
+     * Remove the role's specified special permission from this channel. Will not affect the rights they already have.
+     *
+     * @param role The role
+     * @param sum The sum of the value of the permissions being removed (see {@link Permission})
+     */
+    void removePermission(Role role, int sum);
+
+    /**
      * Delete the permission of the role in this channel. Will not affect the rights they already have.
      *
      * @param role The role
