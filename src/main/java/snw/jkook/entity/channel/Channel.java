@@ -106,6 +106,33 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     Collection<UserPermissionOverwrite> getOverwrittenUserPermissions();
 
     /**
+     * Get the permission overwrite data for specified user. Return null if not found.
+     *
+     * @param user The search condition
+     * @return The data object
+     */
+    @Nullable
+    UserPermissionOverwrite getUserPermissionOverwriteByUser(User user);
+
+    /**
+     * Get the permission overwrite data for specified role. Return null if not found.
+     *
+     * @param role The search condition
+     * @return The data object
+     */
+    @Nullable
+    RolePermissionOverwrite getRolePermissionOverwriteByRole(Role role);
+
+    /**
+     * Get the permission overwrite data for specified role. Return null if not found.
+     *
+     * @param roleId The search condition
+     * @return The data object
+     */
+    @Nullable
+    RolePermissionOverwrite getRolePermissionOverwriteByRole(int roleId);
+
+    /**
      * Represents the overwritten permissions for a role in the channel.
      */
     class RolePermissionOverwrite {
