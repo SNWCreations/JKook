@@ -216,7 +216,7 @@ public enum Permission {
      * @param rawPermissionSum The sum of a set of permissions
      */
     public static boolean hasPermission(Permission permission, int rawPermissionSum) {
-        if ((rawPermissionSum & 1) == 1) {
+        if ((rawPermissionSum & Permission.ADMIN.getValue()) == Permission.ADMIN.getValue()) {
             return true;
         }
         return (rawPermissionSum & permission.getValue()) == permission.getValue();
