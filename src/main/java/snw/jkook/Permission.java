@@ -233,7 +233,7 @@ public enum Permission {
     }
 
     public static int sum(int sum, Permission... perms) {
-        int result = 0;
+        int result = sum;
         for (Permission p : perms) {
             if (!hasPermission(p, sum)) { // if doesn't contains sum yet
                 result += p.getValue();
@@ -243,7 +243,7 @@ public enum Permission {
     }
 
     public static int removeFrom(int sum, Permission... toRemove) {
-        int result = 0;
+        int result = sum;
         for (Permission p : toRemove) {
             if (hasPermission(p, sum)) { // if contains sum now
                 result -= p.getValue();
