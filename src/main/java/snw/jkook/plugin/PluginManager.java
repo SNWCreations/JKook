@@ -20,6 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
+import java.util.function.Preidicate;
+import java.util.function.Supplier;
 
 /**
  * Represents the plugin manager. Handles the management of the plugins.
@@ -124,4 +126,12 @@ public interface PluginManager {
      * @param plugin The plugin reference
      */
     void removePlugin(Plugin plugin);
+    
+    /**
+     * Register plugin loader for loading plugins which are not recognised by default plugin loader
+     * 
+     * @param condition Condition to check whether the file is loadable by the provided loader type
+     * @param provider PluginLoader provider
+     */
+    void registerPluginLoader(Predicate<File> condition, Supplier<PluginLoader> provider);
 }
