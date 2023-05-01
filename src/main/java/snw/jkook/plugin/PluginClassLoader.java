@@ -41,7 +41,7 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
     }
 
     public PluginClassLoader(ClassLoader classLoader) {
-        super(new URL[]{}, classLoader);
+        this(new URL[]{}, classLoader);
     }
 
     public PluginClassLoader(URL[] urls, ClassLoader parent) {
