@@ -34,6 +34,7 @@ import java.util.jar.JarFile;
  * Represents a basic Plugin loader implementation.
  */
 public abstract class PluginClassLoader extends URLClassLoader implements PluginLoader {
+    protected static final String PLUGIN_METADATA_ENTRY = "plugin.yml";
 
     static {
         ClassLoader.registerAsParallelCapable(); // I think it will make the loader faster.
@@ -57,61 +58,68 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
     }
 
     protected Plugin loadPlugin0(File file) throws Exception {
-        Validate.isTrue(file.exists(), "The Plugin file does not exists.");
-        Validate.isTrue(file.isFile(), "The Plugin file is invalid.");
-        Validate.isTrue(file.canRead(), "The Plugin file does not accessible. (We can't read it!)");
+        beforeOpen(file);
 
         // load the given file as JarFile
         try (final JarFile jar = new JarFile(file)) { // try-with-resources!
             // try to find plugin.yml
-            JarEntry entry = jar.getJarEntry("plugin.yml");
-            if (entry == null) {
-                throw new IllegalArgumentException("We cannot find plugin.yml ."); // plugin.yml is not found, so we don't know where is the main class
+            JarEntry entry = jar.getJarEntry(PLUGIN_METADATA_ENTRY);
+            if (entry == null) { // if not found
+                throw new IllegalArgumentException("We cannot find " + PLUGIN_METADATA_ENTRY); // fail
             }
             // or we should read the plugin.yml and parse it to get information
-            final InputStream plugin = jar.getInputStream(entry);
-            final Yaml parser = new Yaml();
+            final InputStream pluginYmlStream = jar.getInputStream(entry);
 
             // construct description
-            final PluginDescription description;
-            try {
-                final Map<String, Object> ymlContent = parser.load(plugin);
-                // noinspection unchecked
-                description = new PluginDescription(
-                        Objects.requireNonNull(ymlContent.get("name"), "name is missing").toString(),
-                        Objects.requireNonNull(ymlContent.get("version"), "version is missing").toString(),
-                        Objects.requireNonNull(ymlContent.get("api-version"), "api-version is missing").toString(),
-                        ymlContent.getOrDefault("description", "").toString(),
-                        ymlContent.getOrDefault("website", "").toString(),
-                        Objects.requireNonNull(ymlContent.get("main"), "main is missing").toString(),
-                        (List<String>) ymlContent.getOrDefault("authors", Collections.emptyList()),
-                        (List<String>) ymlContent.getOrDefault("depend", Collections.emptyList()),
-                        (List<String>) ymlContent.getOrDefault("softdepend", Collections.emptyList())
-                );
-            } catch (ClassCastException e) {
-                throw new IllegalArgumentException("Invalid plugin.yml", e);
-            }
-
-            // if the class has already loaded, a conflict has been found.
-            // so many things can cause the conflict, such as a class with the same binary name, or the Plugin author trying to use internal classes (e.g. java.lang.Object)
-            if (findLoadedClass(description.getMainClassName()) != null) {
-                throw new IllegalArgumentException("The main class defined in plugin.yml has already been defined in the VM.");
-            }
-
-            return loadPlugin1(file, description);
+            final PluginDescription description = createDescription(pluginYmlStream);
+            final String mainClassName = description.getMainClassName();
+            final Class<? extends Plugin> main = lookForMainClass(mainClassName, file);
+            return construct(main, description);
         }
     }
 
-    protected Plugin loadPlugin1(File file, PluginDescription description) throws Exception {
-        addURL(file.toURI().toURL()); // add URL of the Plugin archive file so that the classloader can find the Plugin main class.
-        // No check, because the Exception will be handled by the caller
-        Class<? extends Plugin> main = loadClass(description.getMainClassName(), true).asSubclass(Plugin.class);
+    protected void beforeOpen(File file) {
+        Validate.isTrue(file.exists(), "The Plugin file does not exists.");
+        Validate.isTrue(file.isFile(), "The Plugin file is invalid.");
+        Validate.isTrue(file.canRead(), "The Plugin file does not accessible. (We can't read it!)");
+    }
 
-        if (main.getDeclaredConstructors().length != 1) {
-            throw new IllegalAccessException("Unexpected constructor count, expected 1, got " + main.getDeclaredConstructors().length);
+    protected Class<? extends Plugin> lookForMainClass(String mainClassName, File file) throws Exception {
+        // if the class has already loaded, a conflict has been found.
+        // so many things can cause the conflict, such as a class with the same binary name, or the Plugin author trying to use internal classes (e.g. java.lang.Object)
+        if (findLoadedClass(mainClassName) != null) {
+            throw new IllegalArgumentException("The main class defined in plugin.yml has already been defined in the VM.");
         }
 
-        return construct(main, description);
+        addURL(file.toURI().toURL()); // add URL of the Plugin archive file so that the classloader can find the Plugin main class.
+        // No check, because the Exception will be handled by the caller
+        Class<? extends Plugin> main = loadClass(mainClassName, true).asSubclass(Plugin.class);
+
+        if (main.getDeclaredConstructors().length != 1) {
+            throw new IllegalStateException("Unexpected constructor count, expected 1, got " + main.getDeclaredConstructors().length);
+        }
+        return main;
+    }
+
+    protected PluginDescription createDescription(InputStream stream) {
+        final Yaml parser = new Yaml();
+        try {
+            final Map<String, Object> ymlContent = parser.load(stream);
+            // noinspection unchecked
+            return new PluginDescription(
+                    Objects.requireNonNull(ymlContent.get("name"), "name is missing").toString(),
+                    Objects.requireNonNull(ymlContent.get("version"), "version is missing").toString(),
+                    Objects.requireNonNull(ymlContent.get("api-version"), "api-version is missing").toString(),
+                    ymlContent.getOrDefault("description", "").toString(),
+                    ymlContent.getOrDefault("website", "").toString(),
+                    Objects.requireNonNull(ymlContent.get("main"), "main is missing").toString(),
+                    (List<String>) ymlContent.getOrDefault("authors", Collections.emptyList()),
+                    (List<String>) ymlContent.getOrDefault("depend", Collections.emptyList()),
+                    (List<String>) ymlContent.getOrDefault("softdepend", Collections.emptyList())
+            );
+        } catch (ClassCastException e) {
+            throw new IllegalArgumentException("Invalid plugin.yml", e);
+        }
     }
 
     /**
