@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
-import java.util.function.Preidicate;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
