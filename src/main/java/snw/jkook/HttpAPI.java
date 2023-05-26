@@ -23,10 +23,13 @@ import snw.jkook.entity.Guild;
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Category;
 import snw.jkook.entity.channel.Channel;
+import snw.jkook.message.PrivateMessage;
+import snw.jkook.message.TextChannelMessage;
 import snw.jkook.util.PageIterator;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.NoSuchElementException;
 
 /**
  * Represents the entry of Kook HTTP API.
@@ -149,6 +152,24 @@ public interface HttpAPI {
      * Clear the listening status. This should fail silently.
      */
     void stopListening();
+
+    /**
+     * Get a {@link TextChannelMessage} which matches the provided ID.
+     *
+     * @param id The ID
+     * @return The requested {@link TextChannelMessage} object
+     * @throws NoSuchElementException Thrown if there is no message object matches the provided ID
+     */
+    TextChannelMessage getTextChannelMessage(String id) throws NoSuchElementException;
+
+    /**
+     * Get a {@link PrivateMessage} which matches the provided ID.
+     *
+     * @param id The ID
+     * @return The requested {@link PrivateMessage} object
+     * @throws NoSuchElementException Thrown if there is no message object matches the provided ID
+     */
+    PrivateMessage getPrivateMessage(String id) throws NoSuchElementException;
 
     // -------- Friend API --------
 

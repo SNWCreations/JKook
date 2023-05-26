@@ -34,14 +34,20 @@ public interface Unsafe {
      * Just simply constructs the text channel message with the provided ID and return it.
      *
      * @param id Message ID
+     * @deprecated We have {@link HttpAPI#getTextChannelMessage(String)} as the replacement now,
+     *             if you just need simple features like delete, use this can get better performance
      */
+    @Deprecated
     TextChannelMessage getTextChannelMessage(String id);
 
     /**
      * Just simply constructs the private message with the provided ID and return it.
      *
      * @param id Message ID
+     * @deprecated We have {@link HttpAPI#getPrivateMessage(String)} as the replacement now,
+     *             if you just need simple features like delete, use this can get better performance
      */
+    @Deprecated
     PrivateMessage getPrivateMessage(String id);
 
     /**
