@@ -25,7 +25,7 @@ import java.util.Collection;
 /**
  * Represents a channel that can chat using voice.
  */
-public interface VoiceChannel extends Channel {
+public interface VoiceChannel extends NonCategoryChannel {
 
     /**
      * Return the max user counts that this channel can hold. <p>

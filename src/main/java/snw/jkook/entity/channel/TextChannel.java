@@ -27,7 +27,7 @@ import java.util.Collection;
 /**
  * Represents a channel that can chat using texts.
  */
-public interface TextChannel extends Channel {
+public interface TextChannel extends NonCategoryChannel {
 
     /**
      * Get the "topic" of this channel. (I think it should be called as "description")

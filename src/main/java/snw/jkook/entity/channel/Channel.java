@@ -21,7 +21,6 @@ import snw.jkook.Permission;
 import snw.jkook.entity.Guild;
 import snw.jkook.entity.Role;
 import snw.jkook.entity.User;
-import snw.jkook.entity.abilities.InviteHolder;
 import snw.jkook.entity.abilities.MasterHolder;
 import snw.jkook.entity.abilities.Nameable;
 import snw.jkook.util.RequirePermission;
@@ -31,7 +30,7 @@ import java.util.Collection;
 /**
  * Represents a channel.
  */
-public interface Channel extends Nameable, InviteHolder, MasterHolder {
+public interface Channel extends Nameable, MasterHolder {
 
     /**
      * Set the name of this channel.
@@ -61,19 +60,6 @@ public interface Channel extends Nameable, InviteHolder, MasterHolder {
     default boolean isCategory() {
         return (this instanceof Category);
     }
-
-    /**
-     * Get the category that holds this channel.
-     */
-    @Nullable
-    Category getParent();
-
-    /**
-     * Set the category that holds this channel.
-     *
-     * @param parent The parent of this channel, provide null if you don't want this channel belongs to any category
-     */
-    void setParent(@Nullable Category parent);
 
     /**
      * Get the "level" of this channel. (I think it should be called as "sort order")

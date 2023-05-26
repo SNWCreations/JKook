@@ -16,16 +16,25 @@
 
 package snw.jkook.entity.channel;
 
-import java.util.Collection;
+import org.jetbrains.annotations.Nullable;
+import snw.jkook.entity.abilities.InviteHolder;
 
 /**
- * Represents a group of channel.
+ * Represents a type of channel which is not a {@link Category}.
  */
-public interface Category extends Channel {
+public interface NonCategoryChannel extends Channel, InviteHolder {
 
     /**
-     * Return the channels in this group.
+     * Get the category that holds this channel.
      */
-    Collection<Channel> getChannels();
+    @Nullable
+    Category getParent();
+
+    /**
+     * Set the category that holds this channel.
+     *
+     * @param parent The parent of this channel, provide null if you don't want this channel belongs to any category
+     */
+    void setParent(@Nullable Category parent);
 
 }
