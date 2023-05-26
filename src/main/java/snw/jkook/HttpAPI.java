@@ -165,11 +165,12 @@ public interface HttpAPI {
     /**
      * Get a {@link PrivateMessage} which matches the provided ID.
      *
-     * @param id The ID
+     * @param user The user of the chat session where the message resides
+     * @param id The message ID
      * @return The requested {@link PrivateMessage} object
      * @throws NoSuchElementException Thrown if there is no message object matches the provided ID
      */
-    PrivateMessage getPrivateMessage(String id) throws NoSuchElementException;
+    PrivateMessage getPrivateMessage(User user, String id) throws NoSuchElementException;
 
     // -------- Friend API --------
 
