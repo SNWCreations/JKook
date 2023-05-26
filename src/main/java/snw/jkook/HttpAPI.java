@@ -234,12 +234,11 @@ public interface HttpAPI {
     /**
      * Send a friend request to the specified user.
      * 
-     * @param userCode The user "code", NOT user ID!
-     *                 (I think you should pass the result of {@code user.getFullName(null)} to this argument)
+     * @param user The target user
      * @param method How did you found the specified user. (Maybe a client-specific argument?) 0 - Search, 2 - From a guild
      * @param from From which server did you add this user, should be NOT NULL if {@code method == 2}
      */
-    void addFriend(String userCode, int method, String from);
+    void addFriend(User user, int method, String from);
 
     /**
      * Handle a friend request.
