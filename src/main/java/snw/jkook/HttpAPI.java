@@ -225,20 +225,11 @@ public interface HttpAPI {
      * Get the friend state.
      * 
      * @see FriendState
+     * @param lazyInit True if you don't need all data before returning the final object,
+     *                 which means the API request won't be performed until you called the method
+     *                 of the resulting object
      */
-    FriendState getFriendState();
-
-    /**
-     * @see FriendState#getFriends()
-     */
-    // Same as it, but implementations should get the friend list only from the API.
-    Collection<User> getFriends();
-
-    /**
-     * @see FriendState#getBlockedUsers()
-     */
-    // Same as it, but implementations should get the blocked user list only from the API.
-    Collection<User> getBlockedUsers();
+    FriendState getFriendState(boolean lazyInit);
 
     /**
      * Send a friend request to the specified user.
