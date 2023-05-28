@@ -119,24 +119,26 @@ public interface Channel extends Nameable, MasterHolder {
     RolePermissionOverwrite getRolePermissionOverwriteByRole(int roleId);
 
     /**
-     * Represents the overwritten permissions for a role in the channel.
+     * Represents a permission overwrite configuration.
+     *
+     * @param <T> The target type
      */
-    class RolePermissionOverwrite {
-        private final int roleId;
-        private final int rawAllow;
-        private final int rawDeny;
+    abstract class PermissionOverwrite<T> {
+        protected final T target;
+        protected final int rawAllow;
+        protected final int rawDeny;
 
-        public RolePermissionOverwrite(int roleId, int rawAllow, int rawDeny) {
-            this.roleId = roleId;
+        protected PermissionOverwrite(T target, int rawAllow, int rawDeny) {
+            this.target = target;
             this.rawAllow = rawAllow;
             this.rawDeny = rawDeny;
         }
 
         /**
-         * Get the role ID that related to this representation.
+         * Get the affected object.
          */
-        public int getRoleId() {
-            return roleId;
+        public T getTarget() {
+            return target;
         }
 
         /**
@@ -153,10 +155,28 @@ public interface Channel extends Nameable, MasterHolder {
             return rawDeny;
         }
 
+    }
+
+    /**
+     * Represents the overwritten permissions for a role in the channel.
+     */
+    class RolePermissionOverwrite extends PermissionOverwrite<Integer> {
+
+        public RolePermissionOverwrite(int roleId, int rawAllow, int rawDeny) {
+            super(roleId, rawAllow, rawDeny);
+        }
+
+        /**
+         * Get the role ID that related to this representation.
+         */
+        public int getRoleId() {
+            return getTarget();
+        }
+
         @Override
         public String toString() {
             return "RolePermissionOverwrite{" +
-                    "roleId=" + roleId +
+                    "roleId=" + getRoleId() +
                     ", rawAllow=" + rawAllow +
                     ", rawDeny=" + rawDeny +
                     '}';
@@ -166,42 +186,23 @@ public interface Channel extends Nameable, MasterHolder {
     /**
      * Represents the overwritten permissions for a user in the channel.
      */
-    class UserPermissionOverwrite {
-        private final User user;
-        private final int rawAllow;
-        private final int rawDeny;
+    class UserPermissionOverwrite extends PermissionOverwrite<User> {
 
         public UserPermissionOverwrite(User user, int rawAllow, int rawDeny) {
-            this.user = user;
-            this.rawAllow = rawAllow;
-            this.rawDeny = rawDeny;
+            super(user, rawAllow, rawDeny);
         }
 
         /**
          * Get the user that related to this representation.
          */
         public User getUser() {
-            return user;
-        }
-
-        /**
-         * Get the allowed permissions' sum. You can use the result for {@link Permission#hasPermission}.
-         */
-        public int getRawAllow() {
-            return rawAllow;
-        }
-
-        /**
-         * Get the denied permissions' sum. You can use the result for {@link Permission#hasPermission}.
-         */
-        public int getRawDeny() {
-            return rawDeny;
+            return getTarget();
         }
 
         @Override
         public String toString() {
             return "UserPermissionOverwrite{" +
-                    "user=" + user +
+                    "user=" + getUser() +
                     ", rawAllow=" + rawAllow +
                     ", rawDeny=" + rawDeny +
                     '}';
