@@ -1,0 +1,6 @@
+# This configuration is created for building Javadoc using JDK 11 for the search feature.
+
+jdk:
+  - openjdk11
+install:
+  - mvn install
