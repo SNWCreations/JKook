@@ -66,9 +66,29 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     void setNickName(Guild guild, String name);
 
     /**
-     * Return identify number. It can be changed!
+     * Return identify number. It can be changed! <br>
+     * <b>WARNING: The value returned by this method does NOT in a format like "0001", which means, no "0" as padding,
+     *   If you need the correct form of the value, use {@link #getIdentifyNumberAsString()} instead.</b>
      */
     int getIdentifyNumber();
+
+    /**
+     * Get the identify number as string.
+     */
+    default String getIdentifyNumberAsString() {
+        final int num = getIdentifyNumber();
+        final String s = String.valueOf(num);
+        if (s.length() < 4) {
+            final StringBuilder sb = new StringBuilder();
+            final int padLength = 4 - s.length();
+            for (int i = 1; i <= padLength; i++) {
+                sb.append(0);
+            }
+            sb.append(num);
+            return sb.toString();
+        }
+        return s;
+    }
 
     /**
      * Return true if this user has "Kook BUFF".
