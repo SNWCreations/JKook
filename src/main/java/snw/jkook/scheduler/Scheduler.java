@@ -54,6 +54,17 @@ public interface Scheduler {
     Task runTaskTimer(Plugin plugin, Runnable runnable, long delay, long period); // note: both period and delay are in millisecond.
 
     /**
+     * Schedule a task which will be executed after all plugins got loaded and initialized correctly. <br>
+     * You should <b>ONLY</b> call this method in {@link Plugin#onLoad()} or {@link Plugin#onEnable()}.
+     *
+     * @param plugin The plugin which owns the provided task
+     * @param runnable The runnable to execute
+     * @return The task object
+     * @throws IllegalStateException If this method got called at a wrong time
+     */
+    Task scheduleAfterPluginInitTask(Plugin plugin, Runnable runnable) throws IllegalStateException;
+
+    /**
      * Return true if the task that represented by the ID is scheduled.
      *
      * @param taskId The ID to check
