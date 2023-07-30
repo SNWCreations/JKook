@@ -25,7 +25,8 @@ public interface EventManager {
 
     /**
      * Call an event. The listeners of the provided event type will be called. <p>
-     * It is a sync method.
+     * This method won't return until all listener methods which are subscribed on the type of
+     *  the provided event got called and returned.
      *
      * @param event The event to call
      */
