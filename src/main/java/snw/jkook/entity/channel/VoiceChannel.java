@@ -16,11 +16,15 @@
 
 package snw.jkook.entity.channel;
 
+import org.jetbrains.annotations.NotNull;
 import snw.jkook.Permission;
 import snw.jkook.entity.User;
 import snw.jkook.util.RequirePermission;
+import snw.jkook.util.Validate;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Represents a channel that can chat using voice.
@@ -58,4 +62,75 @@ public interface VoiceChannel extends NonCategoryChannel {
      */
     @RequirePermission(Permission.VOICE_MANAGE)
     void moveToHere(Collection<User> users);
+
+    /**
+     * Return the current voice quality level of this channel.
+     */
+    int getQuality();
+
+    /**
+     * Return the current voice quality level of this channel. But the value is represented by {@link Quality}.
+     *
+     * @throws IllegalArgumentException Thrown if result from {@link #getQuality()} is not bound to any constant
+     *                                   in {@link Quality} enum.
+     */
+    default Quality getQualityAsEnum() throws IllegalArgumentException {
+        final int quality = getQuality();
+        final Quality result = Quality.value(quality);
+        if (result == null) {
+            throw new IllegalArgumentException("Cannot find an enum constant in Quality with value " + quality);
+        }
+        return result;
+    }
+
+    /**
+     * Set the voice quality level for this channel.
+     *
+     * @param quality New quality level
+     */
+    default void setQuality(@NotNull Quality quality) {
+        Validate.notNull(quality, "Quality enum object must be not null");
+        setQuality(quality.getValue());
+    }
+
+    /**
+     * Same as {@link #setQuality(Quality)}. Just exist for further compatibility.
+     *
+     * @param qualityLevel New quality level
+     */
+    void setQuality(int qualityLevel);
+
+    /**
+     * Represents possible voice quality level for a voice channel.
+     */
+    enum Quality {
+        FLUENCY(0),
+        NORMAL(1),
+        HIGH(2);
+        private static final Map<Integer, Quality> byId = new HashMap<>();
+        private final int value;
+
+        static {
+            for (Quality value : values()) {
+                byId.put(value.getValue(), value);
+            }
+        }
+
+        Quality(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+
+        /**
+         * Return the enum instance that represented the provided value.
+         *
+         * @param value The value
+         */
+        public static Quality value(int value) {
+            return byId.get(value);
+        }
+    }
 }
