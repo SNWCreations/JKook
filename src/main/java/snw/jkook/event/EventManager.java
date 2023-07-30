@@ -33,6 +33,18 @@ public interface EventManager {
     void callEvent(Event event);
 
     /**
+     * Call an event in the plugin's scheduler thread pool. <br>
+     * This method is different from the {@link #callEvent(Event)} method, this will return immediately
+     *  because we'll create a task for the {@link #callEvent(Event)} call so that we can prevent blocking.
+     *
+     * @param plugin The plugin used to create task
+     * @param event The event object
+     */
+    static void callEventInScheduler(Plugin plugin, Event event) {
+        plugin.getCore().getScheduler().runTask(plugin, () -> plugin.getCore().getEventManager().callEvent(event));
+    }
+
+    /**
      * Register a handler that can process events.
      *
      * @param plugin   The plugin as the listener's owner
