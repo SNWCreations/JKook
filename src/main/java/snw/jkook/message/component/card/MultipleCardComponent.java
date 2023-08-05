@@ -21,7 +21,6 @@ import snw.jkook.message.component.BaseComponent;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Represents the component with multiple cards.
@@ -33,12 +32,12 @@ public class MultipleCardComponent extends BaseComponent {
         if (components.size() > 5) { // Kook Official limit!
             throw new IllegalStateException("Unexpected card count. Expected <= 5, got " + components.size());
         }
-        AtomicInteger totalModules = new AtomicInteger();
         for (CardComponent component : components) {
-            totalModules.addAndGet(component.moduleCount());
-        }
-        if (totalModules.get() > 50) {
-            throw new IllegalStateException("The card module count is out of allowed range! Expected <= 50, got " + totalModules);
+            final int moduleCount = component.moduleCount();
+            if (moduleCount > 50) {
+                throw new IllegalStateException(
+                        "The card module count is out of allowed range! Expected <= 50, got " + moduleCount);
+            }
         }
         this.components = Collections.unmodifiableList(new LinkedList<>(components));
     }
