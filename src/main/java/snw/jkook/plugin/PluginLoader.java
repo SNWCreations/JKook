@@ -33,4 +33,12 @@ public interface PluginLoader extends MarkedClassLoader {
      * @throws InvalidPluginException Thrown if an error occurred while the loader attempting to load the Plugin
      */
     Plugin loadPlugin(final File file) throws InvalidPluginException;
+
+    /**
+     * Create plugin description from the provided file.
+     *
+     * @param file The source file
+     * @return The {@link PluginDescription} instance
+     */
+    PluginDescription createDescription(final File file);
 }

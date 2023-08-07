@@ -20,6 +20,7 @@ import org.yaml.snakeyaml.Yaml;
 import snw.jkook.util.Validate;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -60,22 +61,11 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
     protected Plugin loadPlugin0(File file) throws Exception {
         beforeOpen(file);
 
-        // load the given file as JarFile
-        try (final JarFile jar = new JarFile(file)) { // try-with-resources!
-            // try to find plugin.yml
-            JarEntry entry = jar.getJarEntry(PLUGIN_METADATA_ENTRY);
-            if (entry == null) { // if not found
-                throw new IllegalArgumentException("We cannot find " + PLUGIN_METADATA_ENTRY); // fail
-            }
-            // or we should read the plugin.yml and parse it to get information
-            final InputStream pluginYmlStream = jar.getInputStream(entry);
-
-            // construct description
-            final PluginDescription description = createDescription(pluginYmlStream);
-            final String mainClassName = description.getMainClassName();
-            final Class<? extends Plugin> main = lookForMainClass(mainClassName, file);
-            return construct(main, description);
-        }
+        // construct description
+        final PluginDescription description = createDescription(file);
+        final String mainClassName = description.getMainClassName();
+        final Class<? extends Plugin> main = lookForMainClass(mainClassName, file);
+        return construct(main, description);
     }
 
     protected void beforeOpen(File file) {
@@ -99,6 +89,23 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
             throw new IllegalStateException("Unexpected constructor count, expected 1, got " + main.getDeclaredConstructors().length);
         }
         return main;
+    }
+
+    @Override
+    public PluginDescription createDescription(File file) {
+        // load the given file as JarFile
+        try (final JarFile jar = new JarFile(file)) { // try-with-resources!
+            // try to find plugin.yml
+            JarEntry entry = jar.getJarEntry(PLUGIN_METADATA_ENTRY);
+            if (entry == null) { // if not found
+                throw new IllegalArgumentException("We cannot find " + PLUGIN_METADATA_ENTRY); // fail
+            }
+            // or we should read the plugin.yml and parse it to get information
+            final InputStream pluginYmlStream = jar.getInputStream(entry);
+            return createDescription(pluginYmlStream);
+        } catch (IOException e) {
+            throw new RuntimeException("Exception occurred while reading " + PLUGIN_METADATA_ENTRY, e);
+        }
     }
 
     protected PluginDescription createDescription(InputStream stream) {
