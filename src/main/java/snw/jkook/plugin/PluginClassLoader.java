@@ -16,7 +16,6 @@
 
 package snw.jkook.plugin;
 
-import org.jetbrains.annotations.ApiStatus;
 import org.yaml.snakeyaml.Yaml;
 import snw.jkook.util.Validate;
 
@@ -93,26 +92,9 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
     }
 
     protected PluginDescription createDescription(File file) {
-        // load the given file as JarFile
-        try (final JarFile jar = new JarFile(file)) { // try-with-resources!
-            // try to find plugin.yml
-            JarEntry entry = jar.getJarEntry(PLUGIN_METADATA_ENTRY);
-            if (entry == null) { // if not found
-                throw new IllegalArgumentException("We cannot find " + PLUGIN_METADATA_ENTRY); // fail
-            }
-            // or we should read the plugin.yml and parse it to get information
-            final InputStream pluginYmlStream = jar.getInputStream(entry);
-            return createDescription(pluginYmlStream);
-        } catch (IOException e) {
-            throw new RuntimeException("Exception occurred while reading " + PLUGIN_METADATA_ENTRY, e);
-        }
+        return PluginDotYMLResolver.INSTANCE.resolve(file);
     }
 
-    /**
-     * @deprecated It's recommended to read the plugin.yml using {@link PluginDotYMLResolver} directly.
-     */
-    @Deprecated
-    @ApiStatus.ScheduledForRemoval(inVersion = "0.51.0")
     protected PluginDescription createDescription(InputStream stream) {
         return getPluginDescriptionResolver().resolve(stream);
     }
@@ -136,6 +118,23 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
      */
     public static final class PluginDotYMLResolver implements PluginDescriptionResolver {
         public static final PluginDotYMLResolver INSTANCE = new PluginDotYMLResolver();
+
+        @Override
+        public PluginDescription resolve(File file) {
+            // load the given file as JarFile
+            try (final JarFile jar = new JarFile(file)) { // try-with-resources!
+                // try to find plugin.yml
+                JarEntry entry = jar.getJarEntry(PLUGIN_METADATA_ENTRY);
+                if (entry == null) { // if not found
+                    throw new IllegalArgumentException("We cannot find " + PLUGIN_METADATA_ENTRY); // fail
+                }
+                // or we should read the plugin.yml and parse it to get information
+                final InputStream pluginYmlStream = jar.getInputStream(entry);
+                return resolve(pluginYmlStream);
+            } catch (IOException e) {
+                throw new RuntimeException("Exception occurred while reading " + PLUGIN_METADATA_ENTRY, e);
+            }
+        }
 
         @Override
         public PluginDescription resolve(InputStream stream) {
