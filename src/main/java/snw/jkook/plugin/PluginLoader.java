@@ -17,6 +17,8 @@
 package snw.jkook.plugin;
 
 import java.io.File;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  * Represents a Plugin loader.
@@ -35,10 +37,13 @@ public interface PluginLoader extends MarkedClassLoader {
     Plugin loadPlugin(final File file) throws InvalidPluginException;
 
     /**
-     * Create plugin description from the provided file.
+     * Get the plugin description resolver of this plugin loader implementation. <br>
+     * You can return null in this method, we'll look up the suitable {@link PluginDescriptionResolver}
+     *  in {@link PluginManager} when this situation happens. <br>
+     * An requirement of the implementation of this method is mentioned in the JavaDoc of the
+     *  {@link PluginManager#registerPluginDescriptionResolver(Predicate, Supplier)} method.
      *
-     * @param file The source file
-     * @return The {@link PluginDescription} instance
+     * @return The plugin description resolver
      */
-    PluginDescription createDescription(final File file);
+    PluginDescriptionResolver getPluginDescriptionResolver();
 }

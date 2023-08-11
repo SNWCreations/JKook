@@ -16,6 +16,7 @@
 
 package snw.jkook.plugin;
 
+import org.jetbrains.annotations.ApiStatus;
 import org.yaml.snakeyaml.Yaml;
 import snw.jkook.util.Validate;
 
@@ -91,8 +92,7 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
         return main;
     }
 
-    @Override
-    public PluginDescription createDescription(File file) {
+    protected PluginDescription createDescription(File file) {
         // load the given file as JarFile
         try (final JarFile jar = new JarFile(file)) { // try-with-resources!
             // try to find plugin.yml
@@ -108,25 +108,13 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
         }
     }
 
+    /**
+     * @deprecated It's recommended to read the plugin.yml using {@link PluginDotYMLResolver} directly.
+     */
+    @Deprecated
+    @ApiStatus.ScheduledForRemoval(inVersion = "0.51.0")
     protected PluginDescription createDescription(InputStream stream) {
-        final Yaml parser = new Yaml();
-        try {
-            final Map<String, Object> ymlContent = parser.load(stream);
-            // noinspection unchecked
-            return new PluginDescription(
-                    Objects.requireNonNull(ymlContent.get("name"), "name is missing").toString(),
-                    Objects.requireNonNull(ymlContent.get("version"), "version is missing").toString(),
-                    Objects.requireNonNull(ymlContent.get("api-version"), "api-version is missing").toString(),
-                    ymlContent.getOrDefault("description", "").toString(),
-                    ymlContent.getOrDefault("website", "").toString(),
-                    Objects.requireNonNull(ymlContent.get("main"), "main is missing").toString(),
-                    (List<String>) ymlContent.getOrDefault("authors", Collections.emptyList()),
-                    (List<String>) ymlContent.getOrDefault("depend", Collections.emptyList()),
-                    (List<String>) ymlContent.getOrDefault("softdepend", Collections.emptyList())
-            );
-        } catch (ClassCastException e) {
-            throw new IllegalArgumentException("Invalid plugin.yml", e);
-        }
+        return getPluginDescriptionResolver().resolve(stream);
     }
 
     /**
@@ -137,4 +125,41 @@ public abstract class PluginClassLoader extends URLClassLoader implements Plugin
      * @throws Exception Thrown if something went really wrong
      */
     protected abstract <T extends Plugin> T construct(final Class<T> cls, final PluginDescription description) throws Exception;
+
+    @Override
+    public PluginDescriptionResolver getPluginDescriptionResolver() {
+        return PluginDotYMLResolver.INSTANCE;
+    }
+
+    /**
+     * The standard implementation of {@link PluginDescriptionResolver} which can resolve a plugin.yml file.
+     */
+    public static final class PluginDotYMLResolver implements PluginDescriptionResolver {
+        public static final PluginDotYMLResolver INSTANCE = new PluginDotYMLResolver();
+
+        @Override
+        public PluginDescription resolve(InputStream stream) {
+            final Yaml parser = new Yaml();
+            try {
+                final Map<String, Object> ymlContent = parser.load(stream);
+                // noinspection unchecked
+                return new PluginDescription(
+                        Objects.requireNonNull(ymlContent.get("name"), "name is missing").toString(),
+                        Objects.requireNonNull(ymlContent.get("version"), "version is missing").toString(),
+                        Objects.requireNonNull(ymlContent.get("api-version"), "api-version is missing").toString(),
+                        ymlContent.getOrDefault("description", "").toString(),
+                        ymlContent.getOrDefault("website", "").toString(),
+                        Objects.requireNonNull(ymlContent.get("main"), "main is missing").toString(),
+                        (List<String>) ymlContent.getOrDefault("authors", Collections.emptyList()),
+                        (List<String>) ymlContent.getOrDefault("depend", Collections.emptyList()),
+                        (List<String>) ymlContent.getOrDefault("softdepend", Collections.emptyList())
+                );
+            } catch (ClassCastException e) {
+                throw new IllegalArgumentException("Invalid plugin.yml", e);
+            }
+        }
+
+        private PluginDotYMLResolver() {
+        }
+    }
 }

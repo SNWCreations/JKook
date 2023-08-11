@@ -22,6 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.File;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 /**
  * Represents the plugin manager. Handles the management of the plugins.
@@ -134,4 +135,15 @@ public interface PluginManager {
      * @param provider PluginLoader provider, requires a ClassLoader as its parent (maybe needed)
      */
     void registerPluginLoader(Predicate<File> condition, Function<ClassLoader, PluginLoader> provider);
+
+    /**
+     * Register the plugin description resolver for resolving plugin descriptions.
+     *
+     * @param condition Condition to check whether the file is acceptable by the provided resolver type.
+     *                    If you're going to register new plugin loader type, the resolver implementation
+     *                    type you've provided must be same as the return value of your
+     *                    {@link PluginLoader#getPluginDescriptionResolver()} method.
+     * @param resolverSupplier The supplier of {@link PluginDescriptionResolver}
+     */
+    void registerPluginDescriptionResolver(Predicate<File> condition, Supplier<PluginDescriptionResolver> resolverSupplier);
 }
