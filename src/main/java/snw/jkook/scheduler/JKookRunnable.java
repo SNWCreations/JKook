@@ -32,7 +32,7 @@ public abstract class JKookRunnable implements Runnable {
      * @throws IllegalStateException Thrown if this task has already scheduled
      */
     public synchronized Task runTaskLater(Plugin plugin, long delay) throws IllegalStateException {
-        this.ensureNotScheduled();
+        ensureNotScheduled();
         return ((task) = plugin.getCore().getScheduler().runTaskLater(plugin, this, delay));
     }
 
