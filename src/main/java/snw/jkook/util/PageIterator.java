@@ -19,6 +19,7 @@ package snw.jkook.util;
 import org.jetbrains.annotations.Range;
 
 import java.util.Iterator;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 /**
@@ -41,6 +42,11 @@ public interface PageIterator<E> extends Iterator<E> {
      * @param size The size to set
      */
     void setPageSize(@Range(from = 50, to = 100) int size);
+
+    /**
+     * Get the meta returned in api.
+     */
+    Optional<Meta> getMeta();
 
     // Unsupported operations are following:
 
