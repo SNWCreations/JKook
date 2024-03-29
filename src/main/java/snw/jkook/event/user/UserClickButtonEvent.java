@@ -18,7 +18,7 @@ package snw.jkook.event.user;
 
 import org.jetbrains.annotations.Nullable;
 import snw.jkook.entity.User;
-import snw.jkook.entity.channel.TextChannel;
+import snw.jkook.entity.channel.NonCategoryChannel;
 
 import java.util.Objects;
 
@@ -29,9 +29,9 @@ public class UserClickButtonEvent extends UserEvent {
 
     private final String messageId;
     private final String value;
-    private final TextChannel channel;
+    private final NonCategoryChannel channel;
 
-    public UserClickButtonEvent(final long timeStamp, final User user, final String messageId, final String value, TextChannel channel) {
+    public UserClickButtonEvent(final long timeStamp, final User user, final String messageId, final String value, NonCategoryChannel channel) {
         super(timeStamp, user);
         this.messageId = Objects.requireNonNull(messageId);
         this.value = Objects.requireNonNull(value);
@@ -57,7 +57,7 @@ public class UserClickButtonEvent extends UserEvent {
      * Null is returned if user clicked this button in private chat session.
      */
     @Nullable
-    public TextChannel getChannel() {
+    public NonCategoryChannel getChannel() {
         return channel;
     }
 

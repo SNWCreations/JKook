@@ -72,7 +72,7 @@ public interface VoiceChannel extends NonCategoryChannel {
      * Return the current voice quality level of this channel. But the value is represented by {@link Quality}.
      *
      * @throws IllegalArgumentException Thrown if result from {@link #getQuality()} is not bound to any constant
-     *                                   in {@link Quality} enum.
+     *                                  in {@link Quality} enum.
      */
     default Quality getQualityAsEnum() throws IllegalArgumentException {
         final int quality = getQuality();
@@ -132,5 +132,6 @@ public interface VoiceChannel extends NonCategoryChannel {
         public static Quality value(int value) {
             return byId.get(value);
         }
+
     }
 }

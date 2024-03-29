@@ -16,7 +16,7 @@
 
 package snw.jkook.event.channel;
 
-import snw.jkook.entity.channel.TextChannel;
+import snw.jkook.entity.channel.Channel;
 
 /**
  * Represents the event that means a message in a channel was deleted.
@@ -25,7 +25,7 @@ public class ChannelMessageDeleteEvent extends ChannelEvent {
 
     private final String messageId;
 
-    public ChannelMessageDeleteEvent(long timeStamp, TextChannel channel, String messageId) {
+    public ChannelMessageDeleteEvent(long timeStamp, Channel channel, String messageId) {
         super(timeStamp, channel);
         this.messageId = messageId;
     }

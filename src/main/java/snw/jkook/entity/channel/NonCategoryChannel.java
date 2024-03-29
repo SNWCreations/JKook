@@ -17,7 +17,10 @@
 package snw.jkook.entity.channel;
 
 import org.jetbrains.annotations.Nullable;
+import snw.jkook.entity.User;
 import snw.jkook.entity.abilities.InviteHolder;
+import snw.jkook.message.ChannelMessage;
+import snw.jkook.message.component.BaseComponent;
 
 /**
  * Represents a type of channel which is not a {@link Category}.
@@ -37,4 +40,73 @@ public interface NonCategoryChannel extends Channel, InviteHolder {
      */
     void setParent(@Nullable Category parent);
 
+    /**
+     * Send a message to this channel.
+     *
+     * @param message The message to send
+     * @return Message ID
+     */
+    String sendComponent(String message);
+
+    /**
+     * Send a message to this channel.
+     *
+     * @param message    The message to send
+     * @param quote      If this parameter is passed in, the incoming message
+     *                   will be considered a reply to the message corresponding to this parameter
+     * @param tempTarget If you pass this parameter,
+     *                   only the user to whom it corresponds can see the incoming message
+     * @return Message ID
+     */
+    String sendComponent(String message, @Nullable ChannelMessage quote, @Nullable User tempTarget);
+
+    /**
+     * Send a message to this channel.
+     *
+     * @param component The message to send
+     * @return Message ID
+     */
+    String sendComponent(BaseComponent component);
+
+    /**
+     * Send a message to this channel.
+     *
+     * @param component  The message to send
+     * @param quote      If this parameter is passed in, the incoming message
+     *                   will be considered a reply to the message corresponding to this parameter
+     * @param tempTarget If you pass this parameter,
+     *                   only the user to whom it corresponds can see the incoming message
+     * @return Message ID
+     */
+    String sendComponent(BaseComponent component, @Nullable ChannelMessage quote, @Nullable User tempTarget);
+
+    /**
+     * Get the limit of minimum speaking time between two statements. (in seconds)
+     */
+    int getChatLimitTime();
+
+    /**
+     * Set the limit of minimum speaking time between two statements.
+     * (in <b>milliseconds</b>, it is different from {@link #getChatLimitTime()}) <p>
+     * Only the following values are supported now:
+     * <ul>
+     *     <li>0</li>
+     *     <li>5000</li>
+     *     <li>10000</li>
+     *     <li>15000</li>
+     *     <li>30000</li>
+     *     <li>60000</li>
+     *     <li>120000</li>
+     *     <li>300000</li>
+     *     <li>600000</li>
+     *     <li>900000</li>
+     *     <li>1800000</li>
+     *     <li>3600000</li>
+     *     <li>7200000</li>
+     *     <li>21600000</li>
+     * </ul>
+     *
+     * @param ms The time in <b>milliseconds</b>
+     */
+    void setChatLimitTime(int ms);
 }
