@@ -23,6 +23,7 @@ import snw.jkook.entity.Guild;
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Category;
 import snw.jkook.entity.channel.Channel;
+import snw.jkook.message.ChannelMessage;
 import snw.jkook.message.PrivateMessage;
 import snw.jkook.message.TextChannelMessage;
 import snw.jkook.util.PageIterator;
@@ -161,6 +162,15 @@ public interface HttpAPI {
      * @throws NoSuchElementException Thrown if there is no message object matches the provided ID
      */
     TextChannelMessage getTextChannelMessage(String id) throws NoSuchElementException;
+
+    /**
+     * Get a {@link ChannelMessage} which matches the provided ID.
+     *
+     * @param id The ID
+     * @return The requested {@link ChannelMessage} object
+     * @throws NoSuchElementException Thrown if there is no message object matches the provided ID
+     */
+    ChannelMessage getChannelMessage(String id) throws NoSuchElementException;
 
     /**
      * Get a {@link PrivateMessage} which matches the provided ID.

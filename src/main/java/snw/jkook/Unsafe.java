@@ -19,6 +19,7 @@ package snw.jkook;
 import snw.jkook.entity.CustomEmoji;
 import snw.jkook.entity.Game;
 import snw.jkook.entity.User;
+import snw.jkook.message.ChannelMessage;
 import snw.jkook.message.PrivateMessage;
 import snw.jkook.message.TextChannelMessage;
 
@@ -40,6 +41,16 @@ public interface Unsafe {
      */
     @Deprecated
     TextChannelMessage getTextChannelMessage(String id);
+
+    /**
+     * Just simply constructs the channel message with the provided ID and return it.
+     *
+     * @param id Message ID
+     * @deprecated We have {@link HttpAPI#getChannelMessage(String)} as the replacement now,
+     *             if you just need simple features like delete, use this can get better performance
+     */
+    @Deprecated
+    ChannelMessage getChannelMessage(String id);
 
     /**
      * Just simply constructs the private message with the provided ID and return it.
