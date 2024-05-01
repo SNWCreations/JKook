@@ -69,6 +69,22 @@ public interface VoiceChannel extends NonCategoryChannel {
     int getQuality();
 
     /**
+     * Set the password for this channel.
+     * Use a empty string to remove the password.
+     *
+     * @param password New password
+     */
+    void setPassword(@NotNull String password);
+
+    /**
+     * Set the maximum number of people in the voice channel.
+     * 0 means no maximum number of people.
+     *
+     * @param size New size
+     */
+    void setSize(int size);
+
+    /**
      * Return the current voice quality level of this channel. But the value is represented by {@link Quality}.
      *
      * @throws IllegalArgumentException Thrown if result from {@link #getQuality()} is not bound to any constant
@@ -134,4 +150,5 @@ public interface VoiceChannel extends NonCategoryChannel {
         }
 
     }
+
 }
