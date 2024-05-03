@@ -74,6 +74,7 @@ public interface VoiceChannel extends NonCategoryChannel {
      *
      * @param password New password
      */
+    @RequirePermission(Permission.VOICE_MANAGE)
     void setPassword(@NotNull String password);
 
     /**
@@ -82,6 +83,7 @@ public interface VoiceChannel extends NonCategoryChannel {
      *
      * @param size New size
      */
+    @RequirePermission(Permission.VOICE_MANAGE)
     void setSize(int size);
 
     /**
@@ -104,6 +106,7 @@ public interface VoiceChannel extends NonCategoryChannel {
      *
      * @param quality New quality level
      */
+    @RequirePermission(Permission.VOICE_MANAGE)
     default void setQuality(@NotNull Quality quality) {
         Validate.notNull(quality, "Quality enum object must be not null");
         setQuality(quality.getValue());
@@ -114,6 +117,7 @@ public interface VoiceChannel extends NonCategoryChannel {
      *
      * @param qualityLevel New quality level
      */
+    @RequirePermission(Permission.VOICE_MANAGE)
     void setQuality(int qualityLevel);
 
     /**
