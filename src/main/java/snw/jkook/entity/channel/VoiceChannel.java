@@ -69,6 +69,24 @@ public interface VoiceChannel extends NonCategoryChannel {
     int getQuality();
 
     /**
+     * Set the password for this channel.
+     * Use a empty string to remove the password.
+     *
+     * @param password New password
+     */
+    @RequirePermission(Permission.VOICE_MANAGE)
+    void setPassword(@NotNull String password);
+
+    /**
+     * Set the maximum number of people in the voice channel.
+     * 0 means no maximum number of people.
+     *
+     * @param size New size
+     */
+    @RequirePermission(Permission.VOICE_MANAGE)
+    void setSize(int size);
+
+    /**
      * Return the current voice quality level of this channel. But the value is represented by {@link Quality}.
      *
      * @throws IllegalArgumentException Thrown if result from {@link #getQuality()} is not bound to any constant
@@ -88,6 +106,7 @@ public interface VoiceChannel extends NonCategoryChannel {
      *
      * @param quality New quality level
      */
+    @RequirePermission(Permission.VOICE_MANAGE)
     default void setQuality(@NotNull Quality quality) {
         Validate.notNull(quality, "Quality enum object must be not null");
         setQuality(quality.getValue());
@@ -98,6 +117,7 @@ public interface VoiceChannel extends NonCategoryChannel {
      *
      * @param qualityLevel New quality level
      */
+    @RequirePermission(Permission.VOICE_MANAGE)
     void setQuality(int qualityLevel);
 
     /**
@@ -134,4 +154,5 @@ public interface VoiceChannel extends NonCategoryChannel {
         }
 
     }
+
 }
