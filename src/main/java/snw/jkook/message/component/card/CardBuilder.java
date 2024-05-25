@@ -91,12 +91,14 @@ public class CardBuilder {
      */
     public CardBuilder newCard() {
         Validate.notNull(size, "Size is not defined yet!");
-        Validate.notNull(theme, "Theme is not defined yet!");
+        Validate.isTrue(theme != null || color != null,
+                "Color-related property (theme or color) is not defined yet!");
         cards.add(new CardComponent(modules, size, theme, color));
         // create a new one instead of clear() to make sure the added component won't be empty.
         modules = new LinkedList<>();
         theme = null;
         size = null;
+        color = null;
         return this;
     }
 
