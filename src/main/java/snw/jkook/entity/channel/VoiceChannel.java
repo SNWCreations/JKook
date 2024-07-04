@@ -158,7 +158,8 @@ public interface VoiceChannel extends NonCategoryChannel {
     }
 
     /**
-     * Request the streaming info with default values.
+     * Request the streaming info with default values. <br>
+     * See default values at the Javadoc of the overload version of this version.
      *
      * @param password The password of this channel, used for authentication
      * @return The streaming info
