@@ -182,6 +182,11 @@ public interface VoiceChannel extends NonCategoryChannel {
     );
 
     /**
+     * Let the streaming server close our connection, if any.
+     */
+    void stopStreaming();
+
+    /**
      * Represents the streaming information provided by KOOK API.
      */
     interface StreamingInfo {
