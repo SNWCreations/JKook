@@ -16,7 +16,9 @@
 
 package snw.jkook.entity.channel;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.Permission;
 import snw.jkook.entity.User;
 import snw.jkook.util.RequirePermission;
@@ -153,6 +155,55 @@ public interface VoiceChannel extends NonCategoryChannel {
             return byId.get(value);
         }
 
+    }
+
+    /**
+     * Request the streaming info with default values.
+     *
+     * @param password The password of this channel, used for authentication
+     * @return The streaming info
+     */
+    StreamingInfo requestStreamingInfo(@Nullable String password);
+
+    /**
+     * Request the streaming info with specified values.
+     *
+     * @param password The password of this channel, used for authentication
+     * @param audioSSRC The SSRC of transferred audio data, see RFC 3350. Default: 1111
+     * @param audioPayloadType The payload type of transferred audio data, see RFC 3551. Default: 111
+     * @param rtcpMux Decides if RTCP and RTP will use same port for transferring, see RFC 5761. Default: true
+     * @return The streaming info
+     */
+    StreamingInfo requestStreamingInfo(
+            @Nullable String password,
+            String audioSSRC,
+            String audioPayloadType,
+            boolean rtcpMux
+    );
+
+    /**
+     * Represents the streaming information provided by KOOK API.
+     */
+    interface StreamingInfo {
+        /**
+         * Get the IP address of the streaming server.
+         */
+        String getIp();
+
+        /**
+         * Get the port of the streaming server.
+         */
+        int getPort();
+
+        /**
+         * Get the RTCP port of the streaming server.
+         */
+        int getRTCPPort();
+
+        /**
+         * Get the maximum bit-rate allowed by the server when streaming.
+         */
+        int getBitRate();
     }
 
 }
