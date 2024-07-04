@@ -166,6 +166,16 @@ public interface VoiceChannel extends NonCategoryChannel {
     StreamingInfo requestStreamingInfo(@Nullable String password);
 
     /**
+     * Request the streaming info, this method allow you to decide if rtcpMux is enabled,
+     *  but other arguments use their default values.
+     *
+     * @param password The password of this channel, used for authentication
+     * @param rtcpMux Decides if RTCP and RTP will use same port for transferring, see RFC 5761. Default: true
+     * @return The streaming info
+     */
+    StreamingInfo requestStreamingInfo(@Nullable String password, boolean rtcpMux);
+
+    /**
      * Request the streaming info with specified values.
      *
      * @param password The password of this channel, used for authentication
