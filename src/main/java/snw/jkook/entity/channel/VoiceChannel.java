@@ -224,12 +224,12 @@ public interface VoiceChannel extends NonCategoryChannel {
         /**
          * Get the final audio SSRC accepted by the server.
          */
-        int getAudioSSRC();
+        String getAudioSSRC();
 
         /**
          * Get the final audio payload type accepted by the server.
          */
-        int getAudioPayloadType();
+        String getAudioPayloadType();
     }
 
 }
