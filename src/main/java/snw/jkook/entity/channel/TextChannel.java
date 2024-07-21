@@ -17,7 +17,7 @@
 package snw.jkook.entity.channel;
 
 import org.jetbrains.annotations.Nullable;
-import snw.jkook.message.TextChannelMessage;
+import snw.jkook.message.ChannelMessage;
 import snw.jkook.util.PageIterator;
 
 import java.util.Collection;
@@ -46,7 +46,7 @@ public interface TextChannel extends NonCategoryChannel {
      * @param isPin     True if query pinned message. If you provide true, then you must provide null to "refer" argument, and only the pinned messages will be returned
      * @param queryMode The query mode. Only accepts "before", "around" and "after". Case Sensitive!
      */
-    PageIterator<Collection<TextChannelMessage>> getMessages(
+    PageIterator<Collection<ChannelMessage>> getMessages(
             @Nullable String refer,
             boolean isPin,
             String queryMode
