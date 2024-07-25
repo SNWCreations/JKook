@@ -23,6 +23,7 @@ import snw.jkook.entity.Guild;
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Category;
 import snw.jkook.entity.channel.Channel;
+import snw.jkook.entity.channel.VoiceChannel;
 import snw.jkook.message.ChannelMessage;
 import snw.jkook.message.PrivateMessage;
 import snw.jkook.message.TextChannelMessage;
@@ -31,6 +32,7 @@ import snw.jkook.util.PageIterator;
 import java.io.File;
 import java.util.Collection;
 import java.util.NoSuchElementException;
+import java.util.function.Supplier;
 
 /**
  * Represents the entry of Kook HTTP API.
@@ -265,5 +267,12 @@ public interface HttpAPI {
      * @param user The user which is being deleted from your friend list
      */
     void deleteFriend(User user);
+
+    /**
+     * Get the reference collection of joined voice channels.
+     *
+     * @return The collection of joined voice channels.
+     */
+    PageIterator<Collection<VoiceChannel>> getJoinedVoiceChannels();
 
 }
