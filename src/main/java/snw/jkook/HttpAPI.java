@@ -23,6 +23,7 @@ import snw.jkook.entity.Guild;
 import snw.jkook.entity.User;
 import snw.jkook.entity.channel.Category;
 import snw.jkook.entity.channel.Channel;
+import snw.jkook.entity.channel.TextChannel;
 import snw.jkook.entity.channel.VoiceChannel;
 import snw.jkook.message.ChannelMessage;
 import snw.jkook.message.PrivateMessage;
@@ -63,8 +64,26 @@ public interface HttpAPI {
      * Get a channel by ID.
      *
      * @param id The channel ID
+     * @deprecated Use the exact get channel methods instead.
      */
+    @Deprecated
     Channel getChannel(String id);
+
+    /**
+     * Get a text channel by ID. <br>
+     * We don't check if the underlying channel is a text channel.
+     *
+     * @param id The ID
+     */
+    TextChannel getTextChannel(String id);
+
+    /**
+     * Get a voice channel by ID. <br>
+     * We don't check if the underlying channel is a voice channel.
+     *
+     * @param id The ID
+     */
+    VoiceChannel getVoiceChannel(String id);
 
     /**
      * Get a category by ID.
