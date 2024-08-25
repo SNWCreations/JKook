@@ -193,6 +193,11 @@ public interface VoiceChannel extends NonCategoryChannel {
     );
 
     /**
+     * Keep the voice connection active
+     */
+    void keepStreaming();
+
+    /**
      * Let the streaming server close our connection, if any.
      */
     void stopStreaming();
