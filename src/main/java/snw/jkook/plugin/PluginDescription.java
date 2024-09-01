@@ -16,6 +16,8 @@
 
 package snw.jkook.plugin;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -109,5 +111,17 @@ public final class PluginDescription {
      */
     public List<String> getSoftDepend() {
         return softDepend;
+    }
+
+    /**
+     * Returns the name of a plugin, including the version. This method is
+     * provided for convenience; it uses the {@link #getName()} and {@link
+     * #getVersion()} entries.
+     *
+     * @return a descriptive name of the plugin and respective version
+     */
+    @NotNull
+    public String getFullName() {
+        return name + " v" + version;
     }
 }
