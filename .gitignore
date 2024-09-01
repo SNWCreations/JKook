@@ -18,7 +18,6 @@ out/
 *.ctxt
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
@@ -113,3 +112,5 @@ buildNumber.properties
 run/
 
 .vscode/
+build/
+.gradle/
