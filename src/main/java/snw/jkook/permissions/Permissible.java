@@ -60,51 +60,13 @@ public interface Permissible extends BotOperator {
      * name and value
      *
      * @param plugin Plugin responsible for this attachment, may not be null
-     *     or disabled
-     * @param name Name of the permission to attach
-     * @param value Value of the permission
+     *               or disabled
+     * @param name   Name of the permission to attach
+     * @param value  Value of the permission
      * @return The PermissionAttachment that was just created
      */
     @NotNull
     public PermissionAttachment addAttachment(@NotNull Plugin plugin, @NotNull String name, boolean value);
-
-    /**
-     * Adds a new empty {@link PermissionAttachment} to this object
-     *
-     * @param plugin Plugin responsible for this attachment, may not be null
-     *     or disabled
-     * @return The PermissionAttachment that was just created
-     */
-    @NotNull
-    public PermissionAttachment addAttachment(@NotNull Plugin plugin);
-
-    /**
-     * Temporarily adds a new {@link PermissionAttachment} with a single
-     * permission by name and value
-     *
-     * @param plugin Plugin responsible for this attachment, may not be null
-     *     or disabled
-     * @param name Name of the permission to attach
-     * @param value Value of the permission
-     * @param ticks Amount of ticks to automatically remove this attachment
-     *     after
-     * @return The PermissionAttachment that was just created
-     */
-    @Nullable
-    public PermissionAttachment addAttachment(@NotNull Plugin plugin, @NotNull String name, boolean value, int ticks);
-
-    /**
-     * Temporarily adds a new empty {@link PermissionAttachment} to this
-     * object
-     *
-     * @param plugin Plugin responsible for this attachment, may not be null
-     *     or disabled
-     * @param ticks Amount of ticks to automatically remove this attachment
-     *     after
-     * @return The PermissionAttachment that was just created
-     */
-    @Nullable
-    public PermissionAttachment addAttachment(@NotNull Plugin plugin, int ticks);
 
     /**
      * Gets a set containing all the permissions currently in effect by
