@@ -18,7 +18,6 @@ package snw.jkook.plugin;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import snw.jkook.permissions.Permission;
 
 import java.io.File;
 import java.util.function.Function;
@@ -69,7 +68,7 @@ public interface PluginManager {
      * Loads the plugin in the specified file.
      * <p>
      * Tips: this method just <b>load</b> the plugin,
-     * won't call {@link Plugin#onLoad()}, {@link Plugin#reloadConfig()} and {@link Plugin#onEnable()}, won't save the reference of the loaded plugin.
+     *  won't call {@link Plugin#onLoad()}, {@link Plugin#reloadConfig()} and {@link Plugin#onEnable()}, won't save the reference of the loaded plugin.
      *
      * @param file The file that represents a plugin
      * @return The loaded plugin
@@ -128,22 +127,22 @@ public interface PluginManager {
      * @param plugin The plugin reference
      */
     void removePlugin(Plugin plugin);
-
+    
     /**
      * Register plugin loader for loading plugins which are not recognised by default plugin loader
-     *
+     * 
      * @param condition Condition to check whether the file is loadable by the provided loader type
-     * @param provider  PluginLoader provider, requires a ClassLoader as its parent (maybe needed)
+     * @param provider PluginLoader provider, requires a ClassLoader as its parent (maybe needed)
      */
     void registerPluginLoader(Predicate<File> condition, Function<ClassLoader, PluginLoader> provider);
 
     /**
      * Register the plugin description resolver for resolving plugin descriptions.
      *
-     * @param condition        Condition to check whether the file is acceptable by the provided resolver type.
-     *                         If you're going to register new plugin loader type, the resolver implementation
-     *                         type you've provided must be same as the return value of your
-     *                         {@link PluginLoader#getPluginDescriptionResolver()} method.
+     * @param condition Condition to check whether the file is acceptable by the provided resolver type.
+     *                    If you're going to register new plugin loader type, the resolver implementation
+     *                    type you've provided must be same as the return value of your
+     *                    {@link PluginLoader#getPluginDescriptionResolver()} method.
      * @param resolverSupplier The supplier of {@link PluginDescriptionResolver}
      */
     void registerPluginDescriptionResolver(Predicate<File> condition, Supplier<PluginDescriptionResolver> resolverSupplier);
