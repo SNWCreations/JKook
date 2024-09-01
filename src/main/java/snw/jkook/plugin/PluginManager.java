@@ -147,7 +147,4 @@ public interface PluginManager {
      * @param resolverSupplier The supplier of {@link PluginDescriptionResolver}
      */
     void registerPluginDescriptionResolver(Predicate<File> condition, Supplier<PluginDescriptionResolver> resolverSupplier);
-
-    Permission getPermission(String name);
-
 }
