@@ -21,6 +21,9 @@ import snw.jkook.Permission;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The class has been modified to define the default permissions for 'KOOK'
+ */
 public final class Permissions {
     private static final Map<Permission, Permissions> PERMISSIONS_MAP = new HashMap<>();
     private final String name;
