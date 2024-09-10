@@ -31,7 +31,7 @@ public interface Permissible {
      * @param perm Permission to get
      * @return Value of the permission
      */
-    public boolean hasPermission(@NotNull Permission perm);
+    boolean hasPermission(@NotNull Permission perm);
 
     /**
      * Checks if this object contains an override for the specified
@@ -40,7 +40,7 @@ public interface Permissible {
      * @param name Name of the permission
      * @return true if the permission is set, otherwise false
      */
-    public boolean isPermissionSet(@NotNull String name);
+    boolean isPermissionSet(@NotNull String name);
 
     /**
      * Checks if this object contains an override for the specified {@link
@@ -49,7 +49,7 @@ public interface Permissible {
      * @param perm Permission to check
      * @return true if the permission is set, otherwise false
      */
-    public boolean isPermissionSet(@NotNull Permission perm);
+    boolean isPermissionSet(@NotNull Permission perm);
 
     void recalculatePermissions();
 
@@ -65,8 +65,7 @@ public interface Permissible {
      * @param value  Value of the permission
      * @return The PermissionAttachment that was just created
      */
-    @NotNull
-    public PermissionAttachment addAttachment(@NotNull Plugin plugin, @NotNull String name, boolean value);
+    @NotNull PermissionAttachment addAttachment(@NotNull Plugin plugin, @NotNull String name, boolean value);
 
     /**
      * Gets a set containing all the permissions currently in effect by
@@ -74,6 +73,5 @@ public interface Permissible {
      *
      * @return Set of currently effective permissions
      */
-    @NotNull
-    public Set<PermissionAttachmentInfo> getEffectivePermissions();
+    @NotNull Set<PermissionAttachmentInfo> getEffectivePermissions();
 }
