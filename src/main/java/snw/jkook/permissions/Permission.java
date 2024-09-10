@@ -12,11 +12,9 @@ import java.util.Map;
  * Permissible}
  */
 public class Permission {
-    public static final PermissionDefault DEFAULT_PERMISSION = PermissionDefault.OP;
-
     private final String name;
     private final Map<String, Boolean> children = new LinkedHashMap<String, Boolean>();
-    private PermissionDefault defaultValue = DEFAULT_PERMISSION;
+    private PermissionDefault defaultValue = PermissionDefault.FALSE;
     private String description;
 
     public Permission(@NotNull String name) {

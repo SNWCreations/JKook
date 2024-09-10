@@ -7,7 +7,7 @@ import snw.jkook.plugin.Plugin;
 
 import java.util.Set;
 
-public interface Permissible extends BotOperator {
+public interface Permissible {
 
     /**
      * @param permission Permission nodes to be checked
