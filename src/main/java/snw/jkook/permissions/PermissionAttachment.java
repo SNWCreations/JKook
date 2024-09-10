@@ -3,7 +3,6 @@ package snw.jkook.permissions;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import snw.jkook.plugin.Plugin;
 
 /**
@@ -11,7 +10,6 @@ import snw.jkook.plugin.Plugin;
  * object
  */
 public class PermissionAttachment {
-    private PermissionRemovedExecutor removed;
     private final Map<String, Boolean> permissions = new LinkedHashMap<String, Boolean>();
     private final Permissible permissible;
     private final Plugin plugin;
@@ -33,27 +31,6 @@ public class PermissionAttachment {
     @NotNull
     public Plugin getPlugin() {
         return plugin;
-    }
-
-    /**
-     * Sets an object to be called for when this attachment is removed from a
-     * {@link Permissible}. May be null.
-     *
-     * @param ex Object to be called when this is removed
-     */
-    public void setRemovalCallback(@Nullable PermissionRemovedExecutor ex) {
-        removed = ex;
-    }
-
-    /**
-     * Gets the class that was previously set to be called when this
-     * attachment was removed from a {@link Permissible}. May be null.
-     *
-     * @return Object to be called when this is removed
-     */
-    @Nullable
-    public PermissionRemovedExecutor getRemovalCallback() {
-        return removed;
     }
 
     /**
