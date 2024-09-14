@@ -1,9 +1,10 @@
 package snw.jkook.permissions;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import org.jetbrains.annotations.NotNull;
 import snw.jkook.plugin.Plugin;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Holds information about a permission attachment on a {@link Permissible}
@@ -16,7 +17,7 @@ public class PermissionAttachment {
 
     public PermissionAttachment(@NotNull Plugin plugin, @NotNull Permissible permissible) {
         if (!plugin.isEnabled()) {
-            throw new IllegalArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
+            throw new IllegalArgumentException("Plugin " + plugin.getDescription().getName() + " v" + plugin.getDescription().getVersion() + " is disabled");
         }
 
         this.permissible = permissible;
@@ -60,7 +61,7 @@ public class PermissionAttachment {
     /**
      * Sets a permission to the given value, by its fully qualified name
      *
-     * @param name Name of the permission
+     * @param name  Name of the permission
      * @param value New value of the permission
      */
     public void setPermission(@NotNull String name, boolean value) {
@@ -71,7 +72,7 @@ public class PermissionAttachment {
     /**
      * Sets a permission to the given value
      *
-     * @param perm Permission to set
+     * @param perm  Permission to set
      * @param value New value of the permission
      */
     public void setPermission(@NotNull Permission perm, boolean value) {
@@ -107,7 +108,7 @@ public class PermissionAttachment {
      * Removes this attachment from its registered {@link Permissible}
      *
      * @return true if the permissible was removed successfully, false if it
-     *     did not exist
+     * did not exist
      */
     public boolean remove() {
         try {
