@@ -16,8 +16,10 @@
 
 package snw.jkook.command;
 
+import snw.jkook.permissions.Permissible;
+
 /**
  * Represents an object that can execute a command.
  */
-public interface CommandSender {
+public interface CommandSender extends Permissible {
 }
