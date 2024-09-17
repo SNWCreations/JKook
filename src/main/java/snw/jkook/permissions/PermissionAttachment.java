@@ -75,7 +75,7 @@ public class PermissionAttachment {
      * @param perm  Permission to set
      * @param value New value of the permission
      */
-    public void setPermission(@NotNull Permission perm, boolean value) {
+    public void setPermission(@NotNull PermissionNode perm, boolean value) {
         setPermission(perm.getName(), value);
     }
 
@@ -100,7 +100,7 @@ public class PermissionAttachment {
      *
      * @param perm Permission to remove
      */
-    public void unsetPermission(@NotNull Permission perm) {
+    public void unsetPermission(@NotNull PermissionNode perm) {
         unsetPermission(perm.getName());
     }
 

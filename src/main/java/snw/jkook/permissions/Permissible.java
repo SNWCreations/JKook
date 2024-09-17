@@ -31,7 +31,7 @@ public interface Permissible {
      * @param perm Permission to get
      * @return Value of the permission
      */
-    boolean hasPermission(@NotNull Permission perm);
+    boolean hasPermission(@NotNull PermissionNode perm);
 
     /**
      * Checks if this object contains an override for the specified
@@ -44,12 +44,12 @@ public interface Permissible {
 
     /**
      * Checks if this object contains an override for the specified {@link
-     * Permission}
+     * PermissionNode}
      *
      * @param perm Permission to check
      * @return true if the permission is set, otherwise false
      */
-    boolean isPermissionSet(@NotNull Permission perm);
+    boolean isPermissionSet(@NotNull PermissionNode perm);
 
     void recalculatePermissions();
 

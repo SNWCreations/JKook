@@ -8,44 +8,44 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Represents a unique permission that may be attached to a {@link
+ * Represents a unique permission node that may be attached to a {@link
  * Permissible}
  */
-public class Permission {
+public class PermissionNode {
     private final String name;
     private final Map<String, Boolean> children = new LinkedHashMap<String, Boolean>();
     private PermissionDefault defaultValue = PermissionDefault.FALSE;
     private String description;
 
-    public Permission(@NotNull String name) {
+    public PermissionNode(@NotNull String name) {
         this(name, null, null, null);
     }
 
-    public Permission(@NotNull String name, @Nullable String description) {
+    public PermissionNode(@NotNull String name, @Nullable String description) {
         this(name, description, null, null);
     }
 
-    public Permission(@NotNull String name, @Nullable PermissionDefault defaultValue) {
+    public PermissionNode(@NotNull String name, @Nullable PermissionDefault defaultValue) {
         this(name, null, defaultValue, null);
     }
 
-    public Permission(@NotNull String name, @Nullable String description, @Nullable PermissionDefault defaultValue) {
+    public PermissionNode(@NotNull String name, @Nullable String description, @Nullable PermissionDefault defaultValue) {
         this(name, description, defaultValue, null);
     }
 
-    public Permission(@NotNull String name, @Nullable Map<String, Boolean> children) {
+    public PermissionNode(@NotNull String name, @Nullable Map<String, Boolean> children) {
         this(name, null, null, children);
     }
 
-    public Permission(@NotNull String name, @Nullable String description, @Nullable Map<String, Boolean> children) {
+    public PermissionNode(@NotNull String name, @Nullable String description, @Nullable Map<String, Boolean> children) {
         this(name, description, null, children);
     }
 
-    public Permission(@NotNull String name, @Nullable PermissionDefault defaultValue, @Nullable Map<String, Boolean> children) {
+    public PermissionNode(@NotNull String name, @Nullable PermissionDefault defaultValue, @Nullable Map<String, Boolean> children) {
         this(name, null, defaultValue, children);
     }
 
-    public Permission(@NotNull String name, @Nullable String description, @Nullable PermissionDefault defaultValue, @Nullable Map<String, Boolean> children) {
+    public PermissionNode(@NotNull String name, @Nullable String description, @Nullable PermissionDefault defaultValue, @Nullable Map<String, Boolean> children) {
         this.name = name;
         this.description = (description == null) ? "" : description;
 
@@ -148,7 +148,7 @@ public class Permission {
      * @return Permission object
      */
     @NotNull
-    public static Permission loadPermission(@NotNull String name, @NotNull Map<?, ?> data, @Nullable PermissionDefault def, @Nullable List<Permission> output) {
+    public static PermissionNode loadPermission(@NotNull String name, @NotNull Map<?, ?> data, @Nullable PermissionDefault def, @Nullable List<PermissionNode> output) {
         String desc = null;
         Map<String, Boolean> children = null;
 
@@ -181,11 +181,11 @@ public class Permission {
             desc = data.get("description").toString();
         }
 
-        return new Permission(name, desc, def, children);
+        return new PermissionNode(name, desc, def, children);
     }
 
     @NotNull
-    private static Map<String, Boolean> extractChildren(@NotNull Map<?, ?> input, @NotNull String name, @Nullable PermissionDefault def, @Nullable List<Permission> output) {
+    private static Map<String, Boolean> extractChildren(@NotNull Map<?, ?> input, @NotNull String name, @Nullable PermissionDefault def, @Nullable List<PermissionNode> output) {
         Map<String, Boolean> children = new LinkedHashMap<String, Boolean>();
 
         for (Map.Entry<?, ?> entry : input.entrySet()) {
@@ -193,7 +193,7 @@ public class Permission {
                 children.put(entry.getKey().toString(), (Boolean) entry.getValue());
             } else if ((entry.getValue() instanceof Map)) {
                 try {
-                    Permission perm = loadPermission(entry.getKey().toString(), (Map<?, ?>) entry.getValue(), def, output);
+                    PermissionNode perm = loadPermission(entry.getKey().toString(), (Map<?, ?>) entry.getValue(), def, output);
                     children.put(perm.getName(), Boolean.TRUE);
 
                     if (output != null) {
