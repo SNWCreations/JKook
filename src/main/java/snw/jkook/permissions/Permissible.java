@@ -7,6 +7,9 @@ import snw.jkook.plugin.Plugin;
 
 import java.util.Set;
 
+/**
+ * Represents an object which could hold permissions.
+ */
 public interface Permissible {
 
     /**
