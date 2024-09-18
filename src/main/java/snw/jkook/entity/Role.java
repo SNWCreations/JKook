@@ -18,12 +18,13 @@ package snw.jkook.entity;
 
 import snw.jkook.Permission;
 import snw.jkook.entity.abilities.Nameable;
+import snw.jkook.permissions.PermissionContext;
 import snw.jkook.util.RequirePermission;
 
 /**
  * Represents a role in a Kook guild.
  */
-public interface Role extends Nameable {
+public interface Role extends Nameable, PermissionContext {
 
     /**
      * Get the guild that owns this role.

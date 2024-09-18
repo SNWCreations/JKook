@@ -18,6 +18,7 @@ package snw.jkook.permissions;
 
 import snw.jkook.Permission;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -167,5 +168,9 @@ public final class Permissions {
             return PERMISSIONS_MAP.get(permission).getPermission();
         }
         return null;
+    }
+
+    public Collection<Permissions> values() {
+        return PERMISSIONS_MAP.values();
     }
 }

@@ -17,11 +17,11 @@ public interface Permissible {
      * @return If allowed
      * @see snw.jkook.permissions.Permissions
      */
-    @Contract(value = "null -> true", pure = true)
-    boolean hasPermission(@Nullable String permission);
+    @Contract(value = "_, null -> true", pure = true)
+    boolean hasPermission(PermissionContext context, @Nullable String permission);
 
-    default boolean hasPermission(snw.jkook.Permission permission) {
-        return hasPermission(Permissions.getPermission(permission));
+    default boolean hasPermission(PermissionContext context, snw.jkook.Permission permission) {
+        return hasPermission(context, Permissions.getPermission(permission));
     }
 
 
@@ -34,7 +34,7 @@ public interface Permissible {
      * @param perm Permission to get
      * @return Value of the permission
      */
-    boolean hasPermission(@NotNull PermissionNode perm);
+    boolean hasPermission(PermissionContext context, @NotNull PermissionNode perm);
 
     /**
      * Checks if this object contains an override for the specified
@@ -43,7 +43,7 @@ public interface Permissible {
      * @param name Name of the permission
      * @return true if the permission is set, otherwise false
      */
-    boolean isPermissionSet(@NotNull String name);
+    boolean isPermissionSet(PermissionContext context, @NotNull String name);
 
     /**
      * Checks if this object contains an override for the specified {@link
@@ -52,11 +52,11 @@ public interface Permissible {
      * @param perm Permission to check
      * @return true if the permission is set, otherwise false
      */
-    boolean isPermissionSet(@NotNull PermissionNode perm);
+    boolean isPermissionSet(PermissionContext context, @NotNull PermissionNode perm);
 
-    void recalculatePermissions();
+    void recalculatePermissions(PermissionContext context);
 
-    void removeAttachment(PermissionAttachment permissionAttachment);
+    void removeAttachment(PermissionContext context, PermissionAttachment permissionAttachment);
 
     /**
      * Adds a new {@link PermissionAttachment} with a single permission by
@@ -68,7 +68,7 @@ public interface Permissible {
      * @param value  Value of the permission
      * @return The PermissionAttachment that was just created
      */
-    @NotNull PermissionAttachment addAttachment(@NotNull Plugin plugin, @NotNull String name, boolean value);
+    @NotNull PermissionAttachment addAttachment(PermissionContext context, @NotNull Plugin plugin, @NotNull String name, boolean value);
 
     /**
      * Gets a set containing all the permissions currently in effect by
@@ -76,5 +76,5 @@ public interface Permissible {
      *
      * @return Set of currently effective permissions
      */
-    @NotNull Set<PermissionAttachmentInfo> getEffectivePermissions();
+    @NotNull Set<PermissionAttachmentInfo> getEffectivePermissions(PermissionContext context);
 }

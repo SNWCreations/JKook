@@ -28,4 +28,8 @@ public interface Category extends Channel {
      */
     Collection<Channel> getChannels();
 
+    @Override
+    default String getPermissionGroup() {
+        throw new UnsupportedOperationException();
+    }
 }

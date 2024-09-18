@@ -28,6 +28,7 @@ import snw.jkook.entity.channel.Channel;
 import snw.jkook.entity.channel.TextChannel;
 import snw.jkook.entity.channel.VoiceChannel;
 import snw.jkook.entity.mute.MuteResult;
+import snw.jkook.permissions.PermissionContext;
 import snw.jkook.util.PageIterator;
 import snw.jkook.util.RequirePermission;
 
@@ -39,7 +40,7 @@ import java.util.Set;
 /**
  * Represents a Guild.
  */
-public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolder {
+public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolder, PermissionContext {
 
     /**
      * Get the ID of this guild.
