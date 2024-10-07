@@ -170,7 +170,7 @@ public final class Permissions {
         return null;
     }
 
-    public Collection<Permissions> values() {
+    public static Collection<Permissions> values() {
         return PERMISSIONS_MAP.values();
     }
 }
