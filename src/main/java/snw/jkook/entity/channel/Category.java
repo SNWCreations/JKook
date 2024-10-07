@@ -27,9 +27,4 @@ public interface Category extends Channel {
      * Return the channels in this group.
      */
     Collection<Channel> getChannels();
-
-    @Override
-    default String getPermissionGroup() {
-        throw new UnsupportedOperationException();
-    }
 }

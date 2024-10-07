@@ -1,9 +1,7 @@
 package snw.jkook.permissions;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import snw.jkook.plugin.Plugin;
-import snw.jkook.util.Pair;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -13,7 +11,7 @@ import java.util.Map;
  * object
  */
 public class PermissionAttachment {
-    private final Map<Pair<PermissionContext, String>, Boolean> permissions = new LinkedHashMap<Pair<PermissionContext, String>, Boolean>();
+    private final Map<String, Boolean> permissions = new LinkedHashMap<String, Boolean>();
     private final Permissible permissible;
     private final Plugin plugin;
 
@@ -56,8 +54,8 @@ public class PermissionAttachment {
      * @return Copy of all permissions and values expressed by this attachment
      */
     @NotNull
-    public Map<Pair<PermissionContext, String>, Boolean> getPermissions() {
-        return new LinkedHashMap<Pair<PermissionContext, String>, Boolean>(permissions);
+    public Map<String, Boolean> getPermissions() {
+        return new LinkedHashMap<String, Boolean>(permissions);
     }
 
     /**
@@ -66,9 +64,9 @@ public class PermissionAttachment {
      * @param name  Name of the permission
      * @param value New value of the permission
      */
-    public void setPermission(@NotNull PermissionContext context, @NotNull String name, boolean value) {
-        permissions.put(Pair.of(context, name.toLowerCase(java.util.Locale.ENGLISH)), value);
-        permissible.recalculatePermissions(context);
+    public void setPermission(@NotNull String name, boolean value) {
+        permissions.put(name.toLowerCase(java.util.Locale.ENGLISH), value);
+        permissible.recalculatePermissions();
     }
 
     /**
@@ -77,8 +75,8 @@ public class PermissionAttachment {
      * @param perm  Permission to set
      * @param value New value of the permission
      */
-    public void setPermission(PermissionContext context, @NotNull PermissionNode perm, boolean value) {
-        setPermission(context, perm.getName(), value);
+    public void setPermission(@NotNull PermissionNode perm, boolean value) {
+        setPermission(perm.getName(), value);
     }
 
     /**
@@ -89,9 +87,9 @@ public class PermissionAttachment {
      *
      * @param name Name of the permission to remove
      */
-    public void unsetPermission(PermissionContext context, @NotNull String name) {
-        permissions.remove(Pair.of(context, name.toLowerCase(java.util.Locale.ENGLISH)));
-        permissible.recalculatePermissions(context);
+    public void unsetPermission(@NotNull String name) {
+        permissions.remove(name.toLowerCase(java.util.Locale.ENGLISH));
+        permissible.recalculatePermissions();
     }
 
     /**
@@ -100,23 +98,21 @@ public class PermissionAttachment {
      * If the permission does not exist in this attachment, nothing will
      * happen.
      *
-     * @param context if the context is null, all will be removed
-     * @param perm    Permission to remove
+     * @param perm Permission to remove
      */
-    public void unsetPermission(@Nullable PermissionContext context, @NotNull PermissionNode perm) {
-        unsetPermission(context, perm.getName());
+    public void unsetPermission(@NotNull PermissionNode perm) {
+        unsetPermission(perm.getName());
     }
 
     /**
      * Removes this attachment from its registered {@link Permissible}
      *
-     * @param context if the context is null, all will be removed
      * @return true if the permissible was removed successfully, false if it
      * did not exist
      */
-    public boolean remove(@Nullable PermissionContext context) {
+    public boolean remove() {
         try {
-            permissible.removeAttachment(context, this);
+            permissible.removeAttachment(this);
             return true;
         } catch (IllegalArgumentException ex) {
             return false;

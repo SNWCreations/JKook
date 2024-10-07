@@ -3,6 +3,7 @@ package snw.jkook.permissions;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import snw.jkook.entity.channel.Channel;
 import snw.jkook.plugin.Plugin;
 
 import java.util.Set;
@@ -18,9 +19,14 @@ public interface Permissible {
      * @see snw.jkook.permissions.Permissions
      */
     @Contract(value = "_, null -> true", pure = true)
-    boolean hasPermission(PermissionContext context, @Nullable String permission);
+    boolean hasPermission(@Nullable Channel context, @Nullable String permission);
 
-    default boolean hasPermission(PermissionContext context, snw.jkook.Permission permission) {
+    @Contract(value = "null -> true", pure = true)
+    default boolean hasPermission(@Nullable String permission) {
+        return hasPermission(null, permission);
+    }
+
+    default boolean hasPermission(Channel context, snw.jkook.Permission permission) {
         return hasPermission(context, Permissions.getPermission(permission));
     }
 
@@ -34,7 +40,11 @@ public interface Permissible {
      * @param perm Permission to get
      * @return Value of the permission
      */
-    boolean hasPermission(PermissionContext context, @NotNull PermissionNode perm);
+    boolean hasPermission(@Nullable Channel context, @NotNull PermissionNode perm);
+
+    default boolean hasPermission(@NotNull PermissionNode perm) {
+        return hasPermission(null, perm);
+    }
 
     /**
      * Checks if this object contains an override for the specified
@@ -43,7 +53,11 @@ public interface Permissible {
      * @param name Name of the permission
      * @return true if the permission is set, otherwise false
      */
-    boolean isPermissionSet(PermissionContext context, @NotNull String name);
+    boolean isPermissionSet(Channel context, @NotNull String name);
+
+    default boolean isPermissionSet(@NotNull String name) {
+        return isPermissionSet(null, name);
+    }
 
     /**
      * Checks if this object contains an override for the specified {@link
@@ -52,11 +66,15 @@ public interface Permissible {
      * @param perm Permission to check
      * @return true if the permission is set, otherwise false
      */
-    boolean isPermissionSet(PermissionContext context, @NotNull PermissionNode perm);
+    boolean isPermissionSet(@Nullable Channel context, @NotNull PermissionNode perm);
 
-    void recalculatePermissions(PermissionContext context);
+    default boolean isPermissionSet(@NotNull PermissionNode perm) {
+        return isPermissionSet(null, perm);
+    }
 
-    void removeAttachment(PermissionContext context, PermissionAttachment permissionAttachment);
+    void recalculatePermissions();
+
+    void removeAttachment(PermissionAttachment permissionAttachment);
 
     /**
      * Adds a new {@link PermissionAttachment} with a single permission by
@@ -68,7 +86,12 @@ public interface Permissible {
      * @param value  Value of the permission
      * @return The PermissionAttachment that was just created
      */
-    @NotNull PermissionAttachment addAttachment(PermissionContext context, @NotNull Plugin plugin, @NotNull String name, boolean value);
+    @NotNull PermissionAttachment addAttachment(@Nullable Channel context, @NotNull Plugin plugin, @NotNull String name, boolean value);
+
+    @NotNull
+    default PermissionAttachment addAttachment(@NotNull Plugin plugin, @NotNull String name, boolean value) {
+        return addAttachment(null, plugin, name, value);
+    }
 
     /**
      * Gets a set containing all the permissions currently in effect by
@@ -76,5 +99,10 @@ public interface Permissible {
      *
      * @return Set of currently effective permissions
      */
-    @NotNull Set<PermissionAttachmentInfo> getEffectivePermissions(PermissionContext context);
+    @NotNull Set<PermissionAttachmentInfo> getEffectivePermissions(@Nullable Channel context);
+
+    @NotNull
+    default Set<PermissionAttachmentInfo> getEffectivePermissions() {
+        return getEffectivePermissions(null);
+    }
 }

@@ -9,18 +9,15 @@ import snw.jkook.util.Validate;
  * provides it
  */
 public class PermissionAttachmentInfo {
-    private final PermissionContext context;
     private final Permissible permissible;
     private final String permission;
     private final PermissionAttachment attachment;
     private final boolean value;
 
-    public PermissionAttachmentInfo(@NotNull PermissionContext context, @NotNull Permissible permissible, @NotNull String permission, @Nullable PermissionAttachment attachment, boolean value) {
+    public PermissionAttachmentInfo(@NotNull Permissible permissible, @NotNull String permission, @Nullable PermissionAttachment attachment, boolean value) {
         Validate.notNull(permissible, "Permissible must not be null");
-        Validate.notNull(context, "Context must not be null");
         Validate.notNull(permission, "Permission must not be null");
 
-        this.context = context;
         this.permissible = permissible;
         this.permission = permission;
         this.attachment = attachment;
@@ -65,12 +62,5 @@ public class PermissionAttachmentInfo {
      */
     public boolean getValue() {
         return value;
-    }
-
-    /**
-     * @see PermissionContext
-     */
-    public PermissionContext getContext() {
-        return context;
     }
 }

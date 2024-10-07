@@ -28,7 +28,6 @@ import snw.jkook.entity.channel.Channel;
 import snw.jkook.entity.channel.TextChannel;
 import snw.jkook.entity.channel.VoiceChannel;
 import snw.jkook.entity.mute.MuteResult;
-import snw.jkook.permissions.PermissionContext;
 import snw.jkook.util.PageIterator;
 import snw.jkook.util.RequirePermission;
 
@@ -40,7 +39,7 @@ import java.util.Set;
 /**
  * Represents a Guild.
  */
-public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolder, PermissionContext {
+public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolder {
 
     /**
      * Get the ID of this guild.
@@ -240,7 +239,7 @@ public interface Guild extends Nameable, AvatarHolder, MasterHolder, InviteHolde
     /**
      * Get the boost information in the provided time range. <br>
      * The timestamp is in <b>seconds</b>.
-     * 
+     *
      * @param start The start of the range
      * @param end The end of the range
      * @throws IllegalArgumentException Thrown if the "start" timestamp is greater than the "end" timestamp, or one of them is negative.

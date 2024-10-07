@@ -23,7 +23,6 @@ import snw.jkook.entity.Role;
 import snw.jkook.entity.User;
 import snw.jkook.entity.abilities.MasterHolder;
 import snw.jkook.entity.abilities.Nameable;
-import snw.jkook.permissions.PermissionContext;
 import snw.jkook.util.RequirePermission;
 
 import java.util.Collection;
@@ -31,7 +30,7 @@ import java.util.Collection;
 /**
  * Represents a channel.
  */
-public interface Channel extends Nameable, MasterHolder, PermissionContext {
+public interface Channel extends Nameable, MasterHolder {
 
     /**
      * Set the name of this channel.
