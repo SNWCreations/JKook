@@ -20,6 +20,7 @@ import snw.jkook.Permission;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -27,14 +28,24 @@ import java.util.Map;
  */
 public final class Permissions {
     private static final Map<Permission, Permissions> PERMISSIONS_MAP = new HashMap<>();
+    private final Permission pEnum;
     private final String name;
 
-    private Permissions(String name) {
+    private Permissions(Permission pEnum, String name) {
+        this.pEnum = pEnum;
         this.name = name;
     }
 
     public String getPermission() {
         return "kook." + name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Permission getPermissionEnum() {
+        return this.pEnum;
     }
 
     /**
@@ -155,7 +166,7 @@ public final class Permissions {
     public static final String KEY_TALK_ONLY = create(Permission.KEY_TALK_ONLY);
 
     private static String create(Permission permission) {
-        Permissions permissions = new Permissions(permission.name());
+        Permissions permissions = new Permissions(permission, permission.name().toLowerCase(Locale.ENGLISH));
         PERMISSIONS_MAP.put(permission, permissions);
         return permissions.getPermission();
     }
