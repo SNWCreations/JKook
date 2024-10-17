@@ -37,6 +37,8 @@ public enum Theme {
 
     SECONDARY("secondary"),
 
+    INVISIBLE("invisible"),
+
     // This is unsupported for buttons!
     NONE("none");
 
