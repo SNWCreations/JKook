@@ -18,10 +18,7 @@ package snw.jkook.permissions;
 
 import snw.jkook.Permission;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The class has been modified to define the default permissions for 'KOOK'
@@ -165,6 +162,8 @@ public final class Permissions {
      */
     public static final String KEY_TALK_ONLY = create(Permission.KEY_TALK_ONLY);
 
+    private static final Collection<Permissions> VALUES = Collections.unmodifiableCollection(PERMISSIONS_MAP.values());
+
     private static String create(Permission permission) {
         Permissions permissions = new Permissions(permission, permission.name().toLowerCase(Locale.ENGLISH));
         PERMISSIONS_MAP.put(permission, permissions);
@@ -182,6 +181,6 @@ public final class Permissions {
     }
 
     public static Collection<Permissions> values() {
-        return PERMISSIONS_MAP.values();
+        return VALUES;
     }
 }
