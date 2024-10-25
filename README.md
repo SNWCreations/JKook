@@ -27,12 +27,12 @@ You just need to add the JitPack repository as the one of the repositories in yo
 
 #### Uses Maven 3
 
-JKook is a Java "program" and it uses [Maven 3](https://maven.apache.org) for compilation.
+JKook is a Java "program" and it uses [Gradle](https://gradle.org) for compilation.
 
 To compile and install it, you should perform the following steps:
-* Install Maven and Git
+* Install Gradle and Git
 * Clone this repository (`git clone https://github.com/SNWCreations/JKook.git`)
-* `mvn clean install`
+* `gradlew build publishToMavenLocal`
 
 #### Uses Gradle
 

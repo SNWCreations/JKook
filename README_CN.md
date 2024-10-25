@@ -27,12 +27,12 @@ JKook 的官方 Kook 服务器: [点我加入](https://kook.top/aecCr6)
 
 #### 使用 Maven 3
 
-JKook 是一个 Java“程序”, 它使用 [Maven 3](https://maven.apache.org) 进行编译.
+JKook 是一个 Java“程序”, 它使用 [Gradle](https://gradle.org) 进行编译.
 
 要编译和安装它，您应该执行以下步骤:
-* 安装 Maven 和 Git
+* 安装 Gradle 和 Git
 * 克隆此存储库 (`git clone https://github.com/SNWCreations/JKook.git`)
-* `mvn clean install`
+* `gradlew build publishToMavenLocal`
 
 #### 使用 Gradle
 
