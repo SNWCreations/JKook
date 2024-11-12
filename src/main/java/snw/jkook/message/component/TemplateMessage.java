@@ -22,14 +22,17 @@ package snw.jkook.message.component;
 public class TemplateMessage extends BaseComponent {
     private final long id;
     private final String content;
+    private final int type;
 
     /**
      * @param id      template id
      * @param content input content
+     * @param type    message type
      */
-    public TemplateMessage(long id, String content) {
+    public TemplateMessage(long id, String content, int type) {
         this.id = id;
         this.content = content;
+        this.type = type;
     }
 
     /**
@@ -44,5 +47,20 @@ public class TemplateMessage extends BaseComponent {
      */
     public String getContent() {
         return content;
+    }
+
+    /**
+     * @return Get template type
+     */
+    public int getType() {
+        return type;
+    }
+
+    public static TemplateMessage markdown(long templateId, String content) {
+        return new TemplateMessage(templateId, content, 9);
+    }
+
+    public static TemplateMessage card(long templateId, String content) {
+        return new TemplateMessage(templateId, content, 10);
     }
 }
