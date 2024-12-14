@@ -17,7 +17,7 @@ dependencies {
 }
 
 group = "snw"
-version = "0.54.0"
+version = "0.54.1"
 description = "JKook"
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8
