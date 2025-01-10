@@ -93,8 +93,8 @@ tasks.sonatypeCentralUpload {
     val privateKeyPwd = System.getenv("CENTRAL_PRIVATE_KEY_PWD") ?: findProperty("CENTRAL_PRIVATE_KEY_PWD")?.toString()
     val publicKey = System.getenv("CENTRAL_PUBLIC_KEY") ?: findProperty("CENTRAL_PUBLIC_KEY")?.toString()
     dependsOn(tasks.build, tasks.generatePomFileForMavenPublication, cleanUpload)
-//    this.username = centralUsername
-//    this.password = centralPassword
+    this.username = centralUsername
+    this.password = centralPassword
     this.publishingType = "AUTOMATIC" // MANUAL
     this.signingKey = privateKey
     this.signingKeyPassphrase = privateKeyPwd
