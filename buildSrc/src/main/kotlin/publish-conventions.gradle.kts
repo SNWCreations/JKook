@@ -106,11 +106,11 @@ val cleanUpload by tasks.creating(Delete::class) {
 
 tasks.sonatypeCentralUpload {
     // gradle sonatypeCentralUpload -PCENTRAL_USERNAME=<username> -PCENTRAL_PASSWORD=<password> -PCENTRAL_PRIVATE_KEY=<privateKey> -PCENTRAL_PRIVATE_KEY_PWD=<privateKeyPwd> -PCENTRAL_PUBLIC_KEY=<publicKey>
-    val centralUsername = read(System.getenv("MAVEN_USERNAME") ?: findProperty("CENTRAL_USERNAME")?.toString())
-    val centralPassword = read(System.getenv("MAVEN_PASSWORD") ?: findProperty("CENTRAL_PASSWORD")?.toString())
-    val privateKey = read(System.getenv("MAVEN_PRIVATE_KEY") ?: findProperty("CENTRAL_PRIVATE_KEY")?.toString())
-    val privateKeyPwd = read(System.getenv("MAVEN_PRIVATE_KEY_PWD") ?: findProperty("CENTRAL_PRIVATE_KEY_PWD")?.toString())
-    val publicKey = read(System.getenv("MAVEN_PUBLIC_KEY") ?: findProperty("CENTRAL_PUBLIC_KEY")?.toString())
+    val centralUsername = read(System.getenv("CENTRAL_USERNAME") ?: findProperty("CENTRAL_USERNAME")?.toString())
+    val centralPassword = read(System.getenv("CENTRAL_PASSWORD") ?: findProperty("CENTRAL_PASSWORD")?.toString())
+    val privateKey = read(System.getenv("CENTRAL_PRIVATE_KEY") ?: findProperty("CENTRAL_PRIVATE_KEY")?.toString())
+    val privateKeyPwd = read(System.getenv("CENTRAL_PRIVATE_KEY_PWD") ?: findProperty("CENTRAL_PRIVATE_KEY_PWD")?.toString())
+    val publicKey = read(System.getenv("CENTRAL_PUBLIC_KEY") ?: findProperty("CENTRAL_PUBLIC_KEY")?.toString())
     dependsOn(tasks.build, tasks.generatePomFileForMavenPublication, cleanUpload)
     this.username = centralUsername
     this.password = centralPassword
