@@ -1,6 +1,7 @@
 plugins {
     `java-library`
     `maven-publish`
+    id("publish-conventions")
 }
 
 repositories {
@@ -16,7 +17,7 @@ dependencies {
     compileOnly("org.jetbrains:annotations:23.0.0")
 }
 
-group = "snw"
+group = "io.github.snwcreations"
 version = "0.54.1"
 description = "JKook"
 
@@ -26,12 +27,6 @@ java.targetCompatibility = JavaVersion.VERSION_1_8
 java {
     withSourcesJar()
     withJavadocJar()
-}
-
-publishing {
-    publications.create<MavenPublication>("maven") {
-        from(components["java"])
-    }
 }
 
 tasks.compileJava {
