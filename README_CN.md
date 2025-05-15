@@ -1,5 +1,7 @@
 # JKook
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/SNWCreations/JKook)
+
 选择其他语言的README: [English](README.md)
 
 Java 平台的 [Kook](https://kookapp.cn) 机器人插件框架。
