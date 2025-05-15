@@ -1,5 +1,7 @@
 # JKook
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/SNWCreations/JKook)
+
 Select Other Language README: [简体中文](README_CN.md)
 
 The [Kook](https://kookapp.cn) Bot's Plugin framework for Java.
