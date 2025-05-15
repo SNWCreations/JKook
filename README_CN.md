@@ -40,11 +40,11 @@ JKook 是一个 Java“程序”, 它使用 [Gradle](https://gradle.org) 进行�
 
 ```
 repositories {
-    maven { url "https://jitpack.io" }
+    mavenCentral()
 }
 
 dependencies {
-    implementation 'com.github.SNWCreations:JKook:{version}'
+    implementation("io.github.snwcreations:jkook:{version}")
 }
 ```
 
@@ -53,12 +53,6 @@ dependencies {
 ---
 
 最后，将组件作为依赖项添加到您的项目中。
-
-_提示:_
-
-如果你使用的是来自 JitPack 的库, 则 `groupId` 为 `com.github.SNWCreations`, `artifactId` 为 `JKook`.
-
-如果你选择自己编译, 则 `groupId` 为 `snw`, `artifactId` 为 `jkook`.
 
 万事俱备! 现在你可以开始编写你的代码!
 
