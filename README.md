@@ -40,11 +40,11 @@ Create a Gradle project and import dependencies in `build.gradle`
 
 ```
 repositories {
-    maven { url "https://jitpack.io" }
+    mavenCentral()
 }
 
 dependencies {
-    implementation 'com.github.SNWCreations:JKook:{version}'
+    implementation("io.github.snwcreations:jkook:{version}")
 }
 ```
 
@@ -53,12 +53,6 @@ dependencies {
 ---
 
 In the end, add the artifact as the dependency in your project.
-
-_Tips:_
-
-If you use the artifacts from JitPack, then `groupId` is `com.github.SNWCreations`, `artifactId` is `JKook`.
-
-If you use the artifacts that compiled by yourself, then `groupId` is `snw`, `artifactId` is `jkook`.
 
 All done! You can create your things right now!
 
