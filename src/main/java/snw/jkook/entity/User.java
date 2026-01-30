@@ -156,6 +156,30 @@ public interface User extends Nameable, AvatarHolder, CommandSender {
     String sendPrivateMessage(BaseComponent component, PrivateMessage quote);
 
     /**
+     * Send a component to this user.
+     *
+     * @param message    The message content
+     * @param quote      If this parameter is passed in, the incoming message
+     *                   will be considered a reply to the message corresponding to this parameter
+     * @param replyMsgId The msg_id of a message sent by the user within 5 minutes.
+     *                   If this is the first reply from the bot, the daily quota consumption will be reduced.
+     * @return The Message ID
+     */
+    String sendPrivateMessage(String message, @Nullable PrivateMessage quote, @Nullable String replyMsgId);
+
+    /**
+     * Send a component to this user.
+     *
+     * @param component  The component to send
+     * @param quote      If this parameter is passed in, the incoming message
+     *                   will be considered a reply to the message corresponding to this parameter
+     * @param replyMsgId The msg_id of a message sent by the user within 5 minutes.
+     *                   If this is the first reply from the bot, the daily quota consumption will be reduced.
+     * @return The Message ID
+     */
+    String sendPrivateMessage(BaseComponent component, @Nullable PrivateMessage quote, @Nullable String replyMsgId);
+
+    /**
      * Get the voice channel which this user joined.<br>
      *
      * Why this method return a {@code PageIterator<Collection<VoiceChannel>>}?<br>

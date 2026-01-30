@@ -1,5 +1,6 @@
 package snw.jkook.message;
 
+import org.jetbrains.annotations.Nullable;
 import snw.jkook.Permission;
 import snw.jkook.entity.CustomEmoji;
 import snw.jkook.entity.User;
@@ -75,6 +76,28 @@ public interface ChannelMessage extends Message {
      * @param content The new content
      */
     void setComponentTemp(User user, String content);
+
+    /**
+     * Set the component that stored by this message. <p>
+     * Only support messages that contains {@link MarkdownComponent} or Card (both {@link CardComponent} and {@link MultipleCardComponent}) <b>now</b>.
+     *
+     * @param component  The component
+     * @param quote      The msgId to quote. Pass empty string to remove quote, pass null to keep unchanged.
+     * @param replyMsgId The msg_id of a message sent by the user within 5 minutes in the same channel.
+     *                   If this is the first reply from the bot, the daily quota consumption will be reduced.
+     */
+    void setComponent(BaseComponent component, @Nullable String quote, @Nullable String replyMsgId);
+
+    /**
+     * Set the content that stored by this message. <br>
+     * This method just constructs the {@link MarkdownComponent} with provided content and pass it to {@link #setComponent(BaseComponent, String, String)}.
+     *
+     * @param content    The new content
+     * @param quote      The msgId to quote. Pass empty string to remove quote, pass null to keep unchanged.
+     * @param replyMsgId The msg_id of a message sent by the user within 5 minutes in the same channel.
+     *                   If this is the first reply from the bot, the daily quota consumption will be reduced.
+     */
+    void setComponent(String content, @Nullable String quote, @Nullable String replyMsgId);
 
     /**
      * Remove a reaction that added by the specified user.
