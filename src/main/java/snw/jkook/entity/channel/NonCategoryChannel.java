@@ -109,4 +109,32 @@ public interface NonCategoryChannel extends Channel, InviteHolder {
      * @param ms The time in <b>milliseconds</b>
      */
     void setChatLimitTime(int ms);
+
+    /**
+     * Send a message to this channel.
+     *
+     * @param message    The message to send
+     * @param quote      If this parameter is passed in, the incoming message
+     *                   will be considered a reply to the message corresponding to this parameter
+     * @param tempTarget If you pass this parameter,
+     *                   only the user to whom it corresponds can see the incoming message
+     * @param replyMsgId The msg_id of a message sent by the user within 5 minutes in the same channel.
+     *                   If this is the first reply from the bot, the daily quota consumption will be reduced.
+     * @return Message ID
+     */
+    String sendComponent(String message, @Nullable ChannelMessage quote, @Nullable User tempTarget, @Nullable String replyMsgId);
+
+    /**
+     * Send a message to this channel.
+     *
+     * @param component  The message to send
+     * @param quote      If this parameter is passed in, the incoming message
+     *                   will be considered a reply to the message corresponding to this parameter
+     * @param tempTarget If you pass this parameter,
+     *                   only the user to whom it corresponds can see the incoming message
+     * @param replyMsgId The msg_id of a message sent by the user within 5 minutes in the same channel.
+     *                   If this is the first reply from the bot, the daily quota consumption will be reduced.
+     * @return Message ID
+     */
+    String sendComponent(BaseComponent component, @Nullable ChannelMessage quote, @Nullable User tempTarget, @Nullable String replyMsgId);
 }
